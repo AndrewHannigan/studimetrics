@@ -245,7 +245,6 @@ DEPENDENCIES
   foreman
   high_voltage
   honeybadger
-  jbuilder (~> 1.2)
   jquery-rails
   launchy
   mailcatcher
