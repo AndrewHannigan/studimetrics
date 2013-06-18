@@ -13,7 +13,7 @@ gem 'flutie'
 gem 'high_voltage'
 gem 'rack-timeout'
 gem 'simple_form'
-
+gem 'slim'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc2'
@@ -48,6 +48,7 @@ end
 gem 'unicorn'
 
 gem 'sidekiq'
+gem 'redis'
 
 group :development do
   gem 'foreman'
@@ -55,7 +56,7 @@ group :development do
   gem 'binding_of_caller'
 end
 
-group :develoment, :test do
+group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
 end
