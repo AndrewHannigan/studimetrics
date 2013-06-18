@@ -77,4 +77,12 @@ Studimetrics::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.mandrillapp.com",
+    :port                 => 587,
+    :user_name            => 'app16365796@heroku.com',
+    :password             => '6N6ha_7llE87oKNhkEsmlg',
+  }
 end
