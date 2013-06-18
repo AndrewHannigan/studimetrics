@@ -8,6 +8,7 @@ gem 'rails', '4.0.0.rc2'
 gem 'pg'
 
 gem 'bourbon'
+gem 'dalli'
 gem 'neat'
 gem 'flutie'
 gem 'high_voltage'
