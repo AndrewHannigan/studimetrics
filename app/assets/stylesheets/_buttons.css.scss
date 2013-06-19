@@ -1,0 +1,14 @@
+button, a.button {
+  background: $blue;
+  border: 1px darken($blue, 10%);
+  color: #fff;
+  padding: 12px;
+  font-size: 1.2em;
+  color: #fff;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
