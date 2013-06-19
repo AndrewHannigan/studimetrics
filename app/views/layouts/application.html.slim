@@ -10,8 +10,9 @@ html
     = csrf_meta_tags
 
   body class="#{body_class}"
-    = render 'user_session'
-    = render 'flashes'
-    = yield
-    = render 'javascript'
-
+    = render 'header'
+    
+    #main-container
+      = render 'flashes'
+      = yield
+      = render 'javascript'
