@@ -81,10 +81,22 @@ Studimetrics::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.mandrillapp.com",
-    :port                 => 587,
-    :user_name            => 'app16365796@heroku.com',
-    :password             => '6N6ha_7llE87oKNhkEsmlg',
-  }
+  if ENV['MAILTRAP_HOST'].present?
+    config.action_mailer.smtp_settings = {
+      :user_name => ENV['MAILTRAP_USER_NAME'],
+      :password => ENV['MAILTRAP_PASSWORD'],
+      :address => ENV['MAILTRAP_HOST'],
+      :port => ENV['MAILTRAP_PORT'],
+      :authentication => :plain
+    }
+  else
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.mandrillapp.com",
+      :port                 => 587,
+      :user_name            => ENV['MANDRILL_USERNAME'],
+      :password             => ENV['MANDRILL_APIKEY'],
+      :authentication       => 'plain',
+      :enable_starttls_auto => true
+    }
+  end
 end
