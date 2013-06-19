@@ -52,10 +52,12 @@ Studimetrics::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  config.cache_store = :mem_cache_store, ENV["MEMCACHIER_SERVERS"].split(","),
+  config.cache_store = :mem_cache_store, ENV["MEMCACHIER_SERVERS"].try(:split,","),
                       { username: ENV["MEMCACHIER_USERNAME"], password: ENV["MEMCACHIER_PASSWORD"] }
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
+
+  config.assets.initialize_on_precompile = false
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
@@ -79,10 +81,22 @@ Studimetrics::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.mandrillapp.com",
-    :port                 => 587,
-    :user_name            => 'app16365796@heroku.com',
-    :password             => '6N6ha_7llE87oKNhkEsmlg',
-  }
+  if ENV['MAILTRAP_HOST'].present?
+    config.action_mailer.smtp_settings = {
+      :user_name => ENV['MAILTRAP_USER_NAME'],
+      :password => ENV['MAILTRAP_PASSWORD'],
+      :address => ENV['MAILTRAP_HOST'],
+      :port => ENV['MAILTRAP_PORT'],
+      :authentication => :plain
+    }
+  else
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.mandrillapp.com",
+      :port                 => 587,
+      :user_name            => ENV['MANDRILL_USERNAME'],
+      :password             => ENV['MANDRILL_APIKEY'],
+      :authentication       => 'plain',
+      :enable_starttls_auto => true
+    }
+  end
 end
