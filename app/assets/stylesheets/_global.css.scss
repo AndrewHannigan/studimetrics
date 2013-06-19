@@ -1,0 +1,32 @@
+header {
+  border-bottom: 1px solid #ccc;
+  @include clearfix;
+  padding: 10px;
+}
+
+#main-container, .container {
+  @include outer-container;
+}
+
+#logo {
+  float:left;
+  color: $red;
+  font-size: 1.5em;
+  font-weight: normal;
+}
+
+#main-menu {
+  float: right;
+
+   ul {
+     margin: 0;
+     padding: 0;
+     list-style: none;
+   }
+
+   li {
+     margin-left: 20px;
+     display: inline-block;
+   }
+}
+
