@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'bourbon'
+gem 'clearance', '1.0.0.rc7'
 gem 'dalli'
 gem 'flutie'
 gem 'high_voltage'
@@ -52,6 +53,7 @@ end
 group :test do
   gem 'bourne', require: false
   gem 'poltergeist'
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'simplecov', require: false

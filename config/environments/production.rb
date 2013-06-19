@@ -81,6 +81,7 @@ Studimetrics::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => ENV['HOST']}
   if ENV['MAILTRAP_HOST'].present?
     config.action_mailer.smtp_settings = {
       :user_name => ENV['MAILTRAP_USER_NAME'],
@@ -91,7 +92,7 @@ Studimetrics::Application.configure do
     }
   else
     config.action_mailer.smtp_settings = {
-      :address              => "smtp.mandrillapp.com",
+      :address              => ENV['EMAIL_SERVER'],
       :port                 => 587,
       :user_name            => ENV['MANDRILL_USERNAME'],
       :password             => ENV['MANDRILL_APIKEY'],

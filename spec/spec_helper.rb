@@ -18,9 +18,11 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
   config.mock_with :mocha
 
+  require 'capybara/rspec'
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
+  config.include Capybara::DSL, :type => :request
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -37,5 +39,4 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
-
 Capybara.javascript_driver = :poltergeist
