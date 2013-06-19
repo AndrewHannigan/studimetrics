@@ -52,10 +52,12 @@ Studimetrics::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  config.cache_store = :mem_cache_store, ENV["MEMCACHIER_SERVERS"].split(","),
+  config.cache_store = :mem_cache_store, ENV["MEMCACHIER_SERVERS"].try(:split,","),
                       { username: ENV["MEMCACHIER_USERNAME"], password: ENV["MEMCACHIER_PASSWORD"] }
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
+
+  config.assets.initialize_on_precompile = false
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
