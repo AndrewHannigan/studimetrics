@@ -39,9 +39,9 @@ en:
   layouts:
     application:
       sign_in:
-        'Sign in'
+        'sign in'
       sign_out:
-        'Sign out'
+        'sign out'
   passwords:
     create:
       description:
