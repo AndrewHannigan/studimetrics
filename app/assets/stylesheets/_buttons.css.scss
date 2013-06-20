@@ -1,4 +1,4 @@
-button, a.button {
+button, a.button, input[type="submit"] {
   background: $blue;
   border: 1px darken($blue, 10%);
   color: #fff;

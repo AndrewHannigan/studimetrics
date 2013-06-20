@@ -1,13 +1,12 @@
 header
   .container
-    #logo studimetrics
+    #logo
+      = link_to 'studimetrics', root_path
     #main-menu
       ul
         li
           = link_to 'home', ''
         li
           = link_to 'about', ''
-        li
-          = link_to 'profile', ''
         li
           = render 'user_session'

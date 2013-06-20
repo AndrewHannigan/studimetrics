@@ -1,0 +1,38 @@
+#clearance {
+  margin: 100px auto;
+  border: 1px solid #ddd;
+  // box-shadow: 0 0 6px #ddd;
+  width: 40%;
+  border-radius: 4px;
+
+  h2 {
+    background: $blue;
+    color: #fff;
+    // @include linear-gradient(#fafafa, #dedede);
+    // text-shadow: 1px 1px 0 #fafafa;
+    // border-bottom: 1px solid #ccc;
+    padding: 6px 20px;
+    margin: 0;
+    font-size: 22px;
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  input[type="email"], input[type="password"] {
+    @include fill-parent;
+  }
+
+  .password-field {
+    label, span {
+      display: inline-block;
+    }
+  }
+}
+
+.forgot-password {
+  font-weight: bold;
+  font-size: 12px;
+  margin-left: 2px;
+}
