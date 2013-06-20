@@ -42,6 +42,8 @@ en:
         'sign in'
       sign_out:
         'sign out'
+      sign_up:
+        'sign up'
   passwords:
     create:
       description:
