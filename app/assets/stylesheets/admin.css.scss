@@ -1,0 +1,48 @@
+@import 'normalize';
+@import 'bourbon';
+@import 'neat';
+@import 'bitters/base';
+
+@import 'buttons';
+
+@import 'global';
+
+#main-container {
+  margin-top: 20px;
+}
+
+#sidebar {
+  margin-top: 20px;
+  @include span-columns(3);
+
+  h3 {
+    margin-top: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+#main {
+  margin-top: 20px;
+  @include span-columns(9);
+}
+
+.breadcrumbs {
+  a {
+    display: inline-block;
+  }
+  span {
+    display: inline-block;
+    margin: 0 10px;
+  }
+}
