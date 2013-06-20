@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:thoughtbot/clearance.git
+  revision: c15a81436a989f9065356aa49d444f45a2a75eb2
+  specs:
+    clearance (1.0.0.rc7)
+      bcrypt-ruby
+      email_validator (~> 1.4)
+      rails (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -48,10 +57,6 @@ GEM
       xpath (~> 2.0)
     celluloid (0.14.1)
       timers (>= 1.0.0)
-    clearance (1.0.0.rc7)
-      bcrypt-ruby
-      email_validator
-      rails (>= 3.0)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -251,7 +256,7 @@ DEPENDENCIES
   bourbon
   bourne
   capybara
-  clearance (= 1.0.0.rc7)
+  clearance!
   coffee-rails (~> 4.0.0)
   dalli
   database_cleaner

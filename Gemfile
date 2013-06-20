@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'bourbon'
-gem 'clearance', '1.0.0.rc7'
+gem 'clearance', git: "git@github.com:thoughtbot/clearance.git"
 gem 'dalli'
 gem 'flutie'
 gem 'high_voltage'
