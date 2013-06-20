@@ -55,5 +55,9 @@ Studimetrics::Application.routes.draw do
   #   end
   #
 
+  namespace 'admin' do
+  end
+  get '/admin', to: 'admin/dashboard#show', as: 'admin'
+
   root :to => 'high_voltage/pages#show', :id => 'home'
 end
