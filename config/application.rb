@@ -11,7 +11,6 @@ Bundler.require(:default, Rails.env)
 module Studimetrics
   class Application < Rails::Application
     config.active_record.default_timezone = :utc
-    config.active_record.whitelist_attributes = false
     config.active_support.escape_html_entities_in_json = true
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
