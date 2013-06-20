@@ -1,0 +1,14 @@
+- plural = resource_class.name.pluralize
+
+= breadcrumbs 'Admin' => admin_path
+
+.action-links
+  = link_to "New #{resource_class.name}", new_resource_path
+
+h3 Listing #{plural}
+
+- if collection.blank?
+  p.no-records == "No #{plural}. #{link_to 'Create one', new_resource_path}"
+
+- else
+  = render 'table'

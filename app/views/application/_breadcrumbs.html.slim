@@ -1,4 +1,9 @@
 .breadcrumbs
-  - breadcrumbs.each do |text, link|
-    = link_to text, link
-    span &raquo;
+  - breadcrumb_items = []
+  - breadcrumbs.each do |link_text, link|
+    - if link.present?
+      - breadcrumb_items << link_to(link_text, link)
+    - else
+      - breadcrumb_items << content_tag(:span, link_text)
+
+  == breadcrumb_items.join "<span class='divider'>&raquo;</span>"

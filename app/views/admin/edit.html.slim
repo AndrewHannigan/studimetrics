@@ -1,0 +1,8 @@
+= breadcrumbs 'Admin' => admin_path, resource_class.name.pluralize => collection_path
+
+.action-links
+  = link_to "Edit #{resource_class.name}", edit_resource_path(resource)
+
+h3 = "Editing #{resource_class.name} ##{resource.id}"
+
+= render 'form'
