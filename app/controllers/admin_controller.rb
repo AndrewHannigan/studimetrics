@@ -6,7 +6,7 @@ class AdminController < ApplicationController
   private
 
   def authorize_admin
-    if current_user.nil? || !current_user.admin?
+    unless current_user.admin?
       redirect_to root_path
     end
   end
