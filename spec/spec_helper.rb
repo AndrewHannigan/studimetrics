@@ -39,4 +39,5 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist

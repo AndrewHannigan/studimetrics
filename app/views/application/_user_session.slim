@@ -1,4 +1,5 @@
 - if signed_in?
   = link_to t('layouts.application.sign_out'), sign_out_path, :method => :delete
 - else
-  = link_to t('layouts.application.sign_in'), sign_in_path
+  li = link_to t('layouts.application.sign_in'), sign_in_path
+  li = link_to t('layouts.application.sign_up'), sign_up_path
