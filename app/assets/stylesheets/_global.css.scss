@@ -10,9 +10,13 @@ header {
 
 #logo {
   float:left;
-  color: $red;
   font-size: 1.5em;
   font-weight: normal;
+
+  a {
+    color: $red;
+    text-decoration: none;
+  }
 }
 
 #main-menu {

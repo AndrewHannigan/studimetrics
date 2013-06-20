@@ -1,0 +1,19 @@
+<%= form_for :session, :url => session_path do |form| %>
+  <div class='text-field'>
+    <%= form.label :email %>
+    <%= form.text_field :email, :type => 'email', tabindex: 1 %>
+  </div>
+
+  <div class='password-field'>
+    <%= form.label :password %>
+    <span class="forgot-password">
+      (<%= link_to t('.forgot_password'), new_password_path %>)
+    </span>
+    <%= form.password_field :password, tabindex: 2 %>
+  </div>
+
+  <div class='submit-field'>
+    <%= form.submit %>
+  </div>
+
+<% end %>
