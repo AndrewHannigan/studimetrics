@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'User signs up', js: true do
+feature 'User signs up' do
   scenario 'with complete basic information' do
     visit root_path
     click_link "sign up"
