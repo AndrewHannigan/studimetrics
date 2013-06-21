@@ -6,16 +6,16 @@ table
     td = resource.id
   tr
     td Name
-    td = "#{resource.first_name} #{resource.last_name}"
+    td = resource.full_name
   tr
     td Email
     td = resource.email
   tr
     td Location
-    td = "#{resource.city}, #{resource.state}"
+    td = resource.location
   tr
     td Grade
-    td = resource.grade 
+    td = resource.grade
   tr
     td Created At
     td = resource.created_at

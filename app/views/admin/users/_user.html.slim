@@ -1,8 +1,8 @@
 tr data-id='#{user.id}'
   td = user.id
-  td = "#{user.first_name} #{user.last_name}"
+  td = user.full_name
   td = user.email
-  td = "#{user.city}, #{user.state}"
+  td = user.location
   td = user.grade
   td = user.created_at
   td.actions = render "actions", resource: user
