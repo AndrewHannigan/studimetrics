@@ -40,6 +40,10 @@ label {
   abbr {
     display: none;
   }
+
+  &.boolean {
+    display: inline-block;
+  }
 }
 
 textarea,
