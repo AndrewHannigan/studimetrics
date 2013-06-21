@@ -1,7 +1,7 @@
 = breadcrumbs 'Admin' => admin_path, resource_class.name.pluralize => collection_path
 
 .action-links
-  = link_to "Edit #{resource_class.name}", edit_resource_path(resource)
+  = link_to "Delete #{resource_class.name.titleize}", resource_path(resource), method: 'delete', data: { confirm: 'Are you sure?' }
 
 h3 = "Editing #{resource_class.name} ##{resource.id}"
 

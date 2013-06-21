@@ -1,0 +1,5 @@
+= simple_form_for ['admin', resource] do |f|
+  = f.input :name, label: 'Test name'
+  = f.association :book, include_blank: false
+
+  = f.submit
