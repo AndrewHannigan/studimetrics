@@ -46,3 +46,19 @@
     margin: 0 10px;
   }
 }
+
+.action-links {
+  text-align: right;
+
+  a {
+    display: inline-block;
+    margin-left: 10px;
+  }
+}
+
+td.actions {
+  a {
+    display: inline-block;
+    margin-right: 4px;
+  }
+}

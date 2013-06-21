@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'bourbon'
-gem 'clearance', git: "git://github.com/thoughtbot/clearance.git"
+gem 'clearance', github: 'thoughtbot/clearance'
 gem 'dalli'
 gem 'flutie'
 gem 'high_voltage'
@@ -30,6 +30,7 @@ gem 'unicorn'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'honeybadger'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

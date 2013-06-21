@@ -1,0 +1,6 @@
+= simple_form_for ['admin', resource] do |f|
+  = f.input :name
+  = f.input :publisher, collection: Book::PUBLISHERS, include_blank: false
+  = f.input :publish_date, start_year: Date.today.year-20, end_year: Date.today.year
+
+  = f.submit
