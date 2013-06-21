@@ -4,6 +4,7 @@ Studimetrics::Application.routes.draw do
   resources :users
   namespace 'admin' do
     resources :books
+    resources :users
   end
   get '/admin', to: 'admin/dashboard#show', as: 'admin'
 
