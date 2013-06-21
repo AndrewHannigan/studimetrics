@@ -1,5 +1,6 @@
 class PracticeTest < ActiveRecord::Base
   belongs_to :book
+  has_many :sections
 
   validates :book, :name, presence: true
 
