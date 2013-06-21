@@ -1,6 +1,6 @@
 GIT
-  remote: git@github.com:thoughtbot/clearance.git
-  revision: c15a81436a989f9065356aa49d444f45a2a75eb2
+  remote: git://github.com/thoughtbot/clearance.git
+  revision: 7e1053d31b8b09ff2dda82e8140d87cc938aba8f
   specs:
     clearance (1.0.0.rc7)
       bcrypt-ruby
