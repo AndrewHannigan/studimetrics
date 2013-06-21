@@ -1,0 +1,5 @@
+= simple_form_for ['admin', parent, resource] do |f|
+  = f.input :name
+  = f.association :topic, include_blank: false
+
+  = f.submit

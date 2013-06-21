@@ -1,0 +1,8 @@
+tr
+  td = section.id
+  td = section.name
+  td = section.topic.name
+  td = section.updated_at
+
+  - if defined?(parent)
+    td.actions = render "actions", resource: section
