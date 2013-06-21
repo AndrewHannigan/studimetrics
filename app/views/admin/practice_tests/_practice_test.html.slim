@@ -1,0 +1,9 @@
+tr
+  td = practice_test.id
+  td = practice_test.book.name
+  td = practice_test.name
+  td = practice_test.created_at
+  td.actions
+    = link_to 'View', admin_practice_test_path(practice_test)
+    = link_to 'Edit', edit_admin_practice_test_path(practice_test)
+    = link_to 'Delete', admin_practice_test_path(practice_test), method: 'delete', data: { confirm: 'Are you sure?' }
