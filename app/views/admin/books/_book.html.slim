@@ -1,0 +1,10 @@
+tr
+  td = book.id
+  td = book.name
+  td = book.publisher
+  td = book.publish_date
+  td = book.created_at
+  td.actions
+    = link_to 'View', admin_book_path(book)
+    = link_to 'Edit', edit_admin_book_path(book)
+    = link_to 'Delete', admin_book_path(book), method: 'delete', data: { confirm: 'Are you sure?' }
