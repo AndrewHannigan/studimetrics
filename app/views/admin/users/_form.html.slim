@@ -1,0 +1,10 @@
+= simple_form_for ['admin', resource] do |f|
+  = f.input :email, type: 'email'
+  - if resource.new_record?
+   = f.input :password
+  = f.input :first_name, label: "First Name"
+  = f.input :last_name, label: "Last Name"
+  = f.input :city
+  = f.input :state, collection: State::US
+  = f.input :grade, collection: User::GRADES
+  = f.submit

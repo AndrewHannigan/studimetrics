@@ -1,0 +1,21 @@
+table
+  tr
+    th colspan="2" User Information
+  tr
+    td ID
+    td = resource.id
+  tr
+    td Name
+    td = "#{resource.first_name} #{resource.last_name}"
+  tr
+    td Email
+    td = resource.email
+  tr
+    td Location
+    td = "#{resource.city}, #{resource.state}"
+  tr
+    td Grade
+    td = resource.grade 
+  tr
+    td Created At
+    td = resource.created_at
