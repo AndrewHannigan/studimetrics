@@ -14,3 +14,13 @@
     tr
       td Created At
       td = resource.created_at
+
+.admin-block
+  h4 Answers
+  .action-links
+    = link_to 'Edit Answers', admin_question_answers_path(resource)
+
+  - if resource.answers.blank?
+    p There are no Answers.
+  - else
+    = render 'admin/answers/table', collection: resource.answers

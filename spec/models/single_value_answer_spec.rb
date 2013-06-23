@@ -14,4 +14,13 @@ describe SingleValueAnswer do
       expect(answer.valid_answer?("A")).to eq true
     end
   end
+
+  describe "#answer" do
+    it "returns the same value as the value field" do
+      answer = SingleValueAnswer.new(value: "A")
+
+      expect(answer.answer).to eq answer.value
+
+    end
+  end
 end

@@ -8,6 +8,14 @@ class RangeAnswer < ActiveRecord::Base
     response >= min_value && response <= max_value
   end
 
+  def to_partial_path
+    "admin/answers/range_answer"
+  end
+
+  def answer
+    "#{self.min_value}-#{self.max_value}"
+  end
+
   private
     def min_must_be_less_than_max
       if min_value > max_value

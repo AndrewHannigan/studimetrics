@@ -4,4 +4,12 @@ class SingleValueAnswer < ActiveRecord::Base
   def valid_answer?(response)
     self.value == response
   end
+
+  def to_partial_path
+    "admin/answers/single_value_answer"
+  end
+
+  def answer
+    value
+  end
 end

@@ -26,4 +26,12 @@ describe RangeAnswer do
       expect(answer.valid_answer?(5)).to eq true
     end
   end
+
+  describe "#answer" do
+    it "returns a string representation of the min/max range" do
+      answer = FactoryGirl.create :range_answer, min_value: 1, max_value: 10
+
+      expect(answer.answer).to eq "1.0-10.0"
+    end
+  end
 end

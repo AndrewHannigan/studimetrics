@@ -12,7 +12,9 @@ Studimetrics::Application.routes.draw do
       resources :questions
     end
     resources :topics
-    resources :questions
+    resources :questions, only: [] do
+      resources :answers
+    end
   end
   get '/admin', to: 'admin/dashboard#show', as: 'admin'
 

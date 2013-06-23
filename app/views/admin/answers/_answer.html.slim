@@ -5,5 +5,5 @@ tr
   td = question.section.name
   td = question.updated_at
 
-  - if parent.try(:is_a?, Section)
+  - if defined?(parent)
     td.actions = render "actions", resource: question
