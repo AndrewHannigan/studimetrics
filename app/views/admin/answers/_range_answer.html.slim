@@ -1,0 +1,9 @@
+tr
+  td = range_answer.id
+  td = range_answer.question.name
+  td = range_answer.answer
+  td = range_answer.question.name
+  td = range_answer.updated_at
+
+  - if defined?(parent)
+    td.actions = render "actions", resource: range_answer
