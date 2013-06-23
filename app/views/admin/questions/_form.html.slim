@@ -1,0 +1,6 @@
+= simple_form_for ['admin', parent, resource] do |f|
+  = f.input :name
+  = f.input :question_type, collection: Question::QUESTION_TYPES
+  = f.association :section, include_blank: false
+
+  = f.submit

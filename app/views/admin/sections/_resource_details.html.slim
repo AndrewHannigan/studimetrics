@@ -1,18 +1,29 @@
-table
-  tr
-    th colspan="2" Basic Information
-  tr
-    td ID
-    td = resource.id
-  tr
-    td Name
-    td = resource.name
-  tr
-    td Practice Test
-    td = resource.practice_test.name
-  tr
-    td Topic
-    td = resource.topic.name
-  tr
-    td Created At
-    td = resource.created_at
+.admin-block
+  table
+    tr
+      th colspan="2" Basic Information
+    tr
+      td ID
+      td = resource.id
+    tr
+      td Name
+      td = resource.name
+    tr
+      td Practice Test
+      td = resource.practice_test.name
+    tr
+      td Topic
+      td = resource.topic.name
+    tr
+      td Created At
+      td = resource.created_at
+
+.admin-block
+  h4 Questions
+  .action-links
+    = link_to 'Edit Questions', admin_section_questions_path(resource)
+
+  - if resource.questions.blank?
+    p There are no Questions.
+  - else
+    = render 'admin/questions/table', collection: resource.questions

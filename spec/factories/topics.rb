@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :topic do
-    name "Math"
+    sequence(:name) {|n| "Math #{n}"}
     subject "something"
   end
 end

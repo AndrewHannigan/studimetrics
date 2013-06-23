@@ -1,0 +1,10 @@
+table
+  tr
+    th Id
+    th Name
+    th Section
+    th Updated
+    - if defined?(parent)
+      th Actions
+
+  = render collection
