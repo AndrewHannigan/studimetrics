@@ -1,6 +1,5 @@
 - plural = resource_class.name.pluralize.titleize
-
-= breadcrumbs 'Admin' => admin_path
+= render 'index_breadcrumbs'
 
 .action-links
   = link_to "New #{resource_class.name.titleize}", new_resource_path
