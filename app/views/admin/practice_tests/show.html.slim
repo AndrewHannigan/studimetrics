@@ -1,0 +1,6 @@
+= breadcrumbs 'Admin' => admin_path, 'Practice Tests' => collection_path
+= action_links "Edit Practice Test" => edit_resource_path, "Edit Sections" => admin_practice_test_sections_path(resource)
+
+h3 = "#{resource_class.name.titleize} ##{resource.id}"
+
+= render 'resource_details'

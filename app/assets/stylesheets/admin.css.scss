@@ -51,8 +51,9 @@
 
 .action-links {
   text-align: right;
+  list-style: none;
 
-  a {
+  li {
     display: inline-block;
     margin-left: 10px;
   }

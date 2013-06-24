@@ -20,8 +20,6 @@
 
 .admin-block
   h4 Questions
-  .action-links
-    = link_to 'Edit Questions', admin_section_questions_path(resource)
 
   - if resource.questions.blank?
     p There are no Questions.

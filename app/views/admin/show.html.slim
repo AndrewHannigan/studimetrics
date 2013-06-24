@@ -1,8 +1,6 @@
-= breadcrumbs 'Admin' => admin_path, resource_class.name.pluralize => collection_path
+= breadcrumbs 'Admin' => admin_path, resource_class.name.pluralize.titleize => collection_path
+= action_links "Edit #{resource_class.name.titleize}" => edit_resource_path
 
-.action-links
-  = link_to "Edit #{resource_class.name.titleize}", edit_resource_path
-
-h3 = "#{resource_class.name} ##{resource.id}"
+h3 = "#{resource_class.name.titleize} ##{resource.id}"
 
 = render 'resource_details'
