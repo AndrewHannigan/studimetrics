@@ -1,6 +1,6 @@
 class RangeAnswer < ActiveRecord::Base
   belongs_to :question
-  validates :question_id, :min_value, :max_value, presence: true
+  validates :min_value, :max_value, presence: true
 
   validate :min_must_be_less_than_max
 

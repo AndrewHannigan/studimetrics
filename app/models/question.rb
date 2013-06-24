@@ -1,6 +1,8 @@
 class Question < ActiveRecord::Base
   QUESTION_TYPES = ["Range", "Single Value"]
   belongs_to :section
+  has_many :range_answers, dependent: :destroy
+  accepts_nested_attributes_for :range_answers, allow_destroy: true
 
   validates :name, presence: true, uniqueness: { scope: :section_id }
   validates :question_type, presence: true, inclusion: { in: QUESTION_TYPES, message: "Valid question types are: #{QUESTION_TYPES.to_sentence}"}
