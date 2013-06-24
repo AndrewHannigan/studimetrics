@@ -13,7 +13,7 @@
 
 #sidebar {
   margin-top: 20px;
-  @include span-columns(3);
+  @include span-columns(2);
 
   h3 {
     margin-top: 0;
@@ -34,7 +34,7 @@
 
 #main {
   margin-top: 20px;
-  @include span-columns(9);
+  @include span-columns(10);
 }
 
 .breadcrumbs {
@@ -43,6 +43,8 @@
   }
   span {
     display: inline-block;
+  }
+  .divider {
     margin: 0 10px;
   }
 }
