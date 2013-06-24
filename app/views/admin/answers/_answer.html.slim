@@ -1,0 +1,9 @@
+tr
+  td = question.id
+  td = question.name
+  td = question.question_type
+  td = question.section.name
+  td = question.updated_at
+
+  - if defined?(parent)
+    td.actions = render "actions", resource: question

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130621045618) do
+ActiveRecord::Schema.define(version: 20130623010016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,26 @@ ActiveRecord::Schema.define(version: 20130621045618) do
 
   add_index "practice_tests", ["book_id"], name: "index_practice_tests_on_book_id", using: :btree
 
+  create_table "questions", force: true do |t|
+    t.string   "name"
+    t.string   "question_type"
+    t.integer  "section_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions", ["section_id"], name: "index_questions_on_section_id", using: :btree
+
+  create_table "range_answers", force: true do |t|
+    t.integer  "question_id"
+    t.decimal  "min_value"
+    t.decimal  "max_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "range_answers", ["question_id"], name: "index_range_answers_on_question_id", using: :btree
+
   create_table "sections", force: true do |t|
     t.string   "name"
     t.integer  "practice_test_id"
@@ -43,6 +63,15 @@ ActiveRecord::Schema.define(version: 20130621045618) do
 
   add_index "sections", ["practice_test_id"], name: "index_sections_on_practice_test_id", using: :btree
   add_index "sections", ["topic_id"], name: "index_sections_on_topic_id", using: :btree
+
+  create_table "single_value_answers", force: true do |t|
+    t.integer  "question_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "single_value_answers", ["question_id"], name: "index_single_value_answers_on_question_id", using: :btree
 
   create_table "topics", force: true do |t|
     t.string   "name"
