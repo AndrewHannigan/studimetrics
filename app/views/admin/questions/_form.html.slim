@@ -1,7 +1,8 @@
 = simple_form_for ['admin', parent, resource] do |f|
-  = f.association :section, include_blank: false
-  = f.input :name
-  = f.input :question_type, collection: Question::QUESTION_TYPES, include_blank: false
+  .admin-block
+    = f.association :section, include_blank: false
+    = f.input :question_type, collection: Question::QUESTION_TYPES, include_blank: false
+    = f.input :name
 
   .admin-block
     h5 Answers

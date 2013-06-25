@@ -30,7 +30,6 @@ feature 'Admin manages questions and answers' do
 
     fill_in 'Name', with: 'Question 1'
     select section.name, from: 'Section'
-    select "Range", from: "Question type"
 
     fill_in 'Value', with: '1'
 
@@ -48,7 +47,6 @@ feature 'Admin manages questions and answers' do
 
     fill_in 'Name', with: 'Updated Question 1'
     select question.section.name, from: 'Section'
-    select "Range", from: "Question type"
 
     click_link 'add answer'
 
@@ -58,6 +56,25 @@ feature 'Admin manages questions and answers' do
     click_button 'Update Question'
 
     expect(page).to have_content("Question was successfully updated.")
+  end
+
+  scenario 'switches question type after the page loads', js: true do
+    admin = FactoryGirl.create :admin
+    section = FactoryGirl.create :section
+
+    visit new_admin_section_question_path(section, question_type: 'Single Value', as: admin.id)
+
+    select 'Range', from: 'Question type'
+
+    sleep 0.5
+    fill_in 'Name', with: 'New range question'
+    fill_in 'Minimum Value', with: '1'
+    fill_in 'Maximum Value', with: '23'
+
+    page.save_screenshot '/Users/cball/Desktop/blah.png'
+    click_button 'Create Question'
+
+    expect(page).to have_content("Question was successfully created.")
   end
 
 end

@@ -13,6 +13,6 @@ class Admin::QuestionsController < AdminController
   private
 
   def permitted_params
-    params.permit(question: [:id, :section_id, :name, :question_type, :section_id, range_answers_attributes: [:id, :min_value, :max_value, :_destroy]])
+    params.permit(question: [:id, :section_id, :name, :question_type, :section_id, single_value_answers_attributes: [:id, :value, :_destroy], range_answers_attributes: [:id, :min_value, :max_value, :_destroy]])
   end
 end
