@@ -25,7 +25,7 @@ feature 'admin manages users' do
     admin = FactoryGirl.create :admin
 
     visit admin_users_path as: admin.id
-    user_on_page = find("[data-id='#{user.id}']")
+    user_on_page = find("[data-id='user-#{user.id}']")
     user_on_page.click_link "Edit"
 
     fill_in "First Name", with: "Robert"

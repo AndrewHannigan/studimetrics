@@ -1,9 +1,0 @@
-tr
-  td = single_value_answer.id
-  td = single_value_answer.question.name
-  td = single_value_answer.answer
-  td = single_value_answer.question.name
-  td = single_value_answer.updated_at
-
-  - if defined?(parent)
-    td.actions = render "actions", resource: single_value_answer

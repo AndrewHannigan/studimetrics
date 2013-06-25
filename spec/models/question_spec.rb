@@ -18,6 +18,13 @@ describe Question do
     end
   end
 
+  describe '#answer_association_name' do
+    it 'returns the underscored answer association' do
+      question = Question.new question_type: 'Single Value'
+      expect(question.answer_association_name).to eq 'single_value_answers'
+    end
+  end
+
   describe '#answers' do
     Question::QUESTION_TYPES.each do |type|
       it "returns answers when type is #{type}" do

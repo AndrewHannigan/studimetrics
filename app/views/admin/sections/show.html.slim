@@ -1,3 +1,8 @@
+= breadcrumbs 'Admin' => admin_path, 'Practice Tests' => collection_path, 'Sections' => collection_path
+= action_links "Edit Section" => edit_resource_path, 'Edit Questions' => admin_section_questions_path(resource)
+
+h3 = "#{resource_class.name.titleize} ##{resource.id}"
+
 .admin-block
   table
     tr
@@ -20,10 +25,8 @@
 
 .admin-block
   h4 Questions
-  .action-links
-    = link_to 'Edit Questions', admin_section_questions_path(resource)
 
   - if resource.questions.blank?
     p There are no Questions.
   - else
-    = render 'admin/questions/table', collection: resource.questions
+    = admin_table resource.questions, columns: [:id, :name, :question_type, :created_at, :updated_at], hide_action_links: true

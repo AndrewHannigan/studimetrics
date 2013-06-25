@@ -7,6 +7,12 @@ GIT
       responders (~> 1.0.0.rc)
 
 GIT
+  remote: git://github.com/nathanvda/cocoon.git
+  revision: 80b73cd66d90be3d4795d3492d6940b22ce3eba7
+  specs:
+    cocoon (1.1.2)
+
+GIT
   remote: git://github.com/thoughtbot/clearance.git
   revision: 7e1053d31b8b09ff2dda82e8140d87cc938aba8f
   specs:
@@ -276,6 +282,7 @@ DEPENDENCIES
   bourne
   capybara
   clearance!
+  cocoon!
   coffee-rails (~> 4.0.0)
   dalli
   database_cleaner
