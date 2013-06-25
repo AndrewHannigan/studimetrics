@@ -29,4 +29,4 @@ h3 = "#{resource_class.name.titleize} ##{resource.id}"
   - if resource.questions.blank?
     p There are no Questions.
   - else
-    = admin_table resource.questions, columns: [:id, :name, :question_type, :created_at, :updated_at], hide_action_links: true
+    = admin_table resource.questions, columns: [:position, :name, :question_type, :created_at, :updated_at], hide_action_links: true
