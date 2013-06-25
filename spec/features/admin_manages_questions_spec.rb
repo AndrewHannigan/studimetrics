@@ -87,7 +87,6 @@ feature 'Admin manages questions and answers' do
     fill_in 'Minimum Value', with: '1'
     fill_in 'Maximum Value', with: '23'
 
-    page.save_screenshot '/Users/cball/Desktop/blah.png'
     click_button 'Create Question'
 
     expect(page).to have_content("Question was successfully created.")
