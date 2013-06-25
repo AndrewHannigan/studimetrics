@@ -1,6 +1,32 @@
-= breadcrumbs 'Admin' => admin_path, 'Practice Tests' => collection_path, 'Sections' => admin_practice_test_sections_path(parent)
+= breadcrumbs 'Admin' => admin_path, 'Practice Tests' => collection_path, 'Sections' => collection_path
 = action_links "Edit Section" => edit_resource_path, 'Edit Questions' => admin_section_questions_path(resource)
 
 h3 = "#{resource_class.name.titleize} ##{resource.id}"
 
-= render 'resource_details'
+.admin-block
+  table
+    tr
+      th colspan="2" Basic Information
+    tr
+      td ID
+      td = resource.id
+    tr
+      td Name
+      td = resource.name
+    tr
+      td Practice Test
+      td = resource.practice_test.name
+    tr
+      td Topic
+      td = resource.topic.name
+    tr
+      td Created At
+      td = resource.created_at
+
+.admin-block
+  h4 Questions
+
+  - if resource.questions.blank?
+    p There are no Questions.
+  - else
+    = admin_table resource.questions, columns: [:id, :name, :question_type, :created_at, :updated_at], hide_action_links: true

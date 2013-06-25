@@ -3,4 +3,27 @@
 
 h3 = "#{resource_class.name.titleize} ##{resource.id}"
 
-= render 'resource_details'
+.admin-block
+  table
+    tr
+      th colspan="2" Basic Information
+    tr
+      td ID
+      td = resource.id
+    tr
+      td Book
+      td = resource.book.name
+    tr
+      td Test Name
+      td = resource.name
+    tr
+      td Created At
+      td = resource.created_at
+
+.admin-block
+  h4 Sections
+
+  - if resource.sections.blank?
+    p There are no Sections.
+  - else
+    = admin_table resource.sections, columns: [:id, :name, :topic_name, :created_at, :updated_at], hide_action_links: true

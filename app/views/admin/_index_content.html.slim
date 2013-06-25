@@ -1,0 +1,12 @@
+- plural = resource_class.name.pluralize.titleize
+= content_for(:breadcrumbs) || breadcrumbs('Admin' => admin_path, resource_class.name.pluralize.titleize => nil)
+
+.action-links
+  = link_to "New #{resource_class.name.titleize}", new_resource_path
+
+h3 Listing #{plural}
+
+- if collection.blank?
+  p.no-records == "No #{plural}. #{link_to 'Create one', new_resource_path}"
+- else
+  = content_for(:admin_table) || admin_table(collection)

@@ -1,18 +1,13 @@
 class Admin::QuestionsController < AdminController
   respond_to :html
   inherit_resources
-  belongs_to :section
+  belongs_to :section, optional: true
 
   def new
-   @question = Question.new question_type: 'Range'
-   @question.range_answers.build
+    question_type = params[:question_type] || 'Range'
+    @question = Question.new question_type: question_type
+    @question.send(:"#{@question.answer_association_name}").build
    new!
-  end
-
-  def create
-    create! do |success, failure|
-      failure.html { Rails.logger.debug resource.errors.inspect  }
-    end
   end
 
   private

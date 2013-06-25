@@ -1,3 +1,8 @@
+= breadcrumbs 'Admin' => admin_path, resource_class.name.pluralize.titleize => collection_path
+= action_links "Edit #{resource_class.name.titleize}" => edit_resource_path
+
+h3 = "#{resource_class.name.titleize} ##{resource.id}"
+
 table
   tr
     th colspan="2" User Information

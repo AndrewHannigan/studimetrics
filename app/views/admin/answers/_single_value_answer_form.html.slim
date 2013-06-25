@@ -1,5 +1,0 @@
-- url = resource.new_record? ? admin_question_answers_path(question_id: parent.id) : admin_question_answer_path(question_id: parent.id, id: resource.id)
-= simple_form_for ['admin', parent, resource], url: url do |f|
-  = f.input :value, label: "Answer"
-
-  = f.submit
