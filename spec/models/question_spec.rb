@@ -33,8 +33,9 @@ describe Question do
 
         expect(question.answers).to eq [answer]
       end
-    end
+   end
   end
+
 
   describe "#valid_answer?" do
     context "RangeAnswer" do
