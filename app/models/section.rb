@@ -5,4 +5,6 @@ class Section < ActiveRecord::Base
 
   validates :topic, :practice_test, presence: true
   validates :name, presence: true, uniqueness: { scope: :practice_test_id }
+
+  delegate :name, to: :topic, prefix: true
 end

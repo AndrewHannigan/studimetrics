@@ -6,7 +6,7 @@ html
     title = page_title
 
     = stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "admin", "data-turbolinks-track" => true
     = csrf_meta_tags
 
   body class="#{body_class}"
@@ -21,11 +21,11 @@ html
           li
             = link_to 'Books', admin_books_path
           li
-            = link_to 'Users', admin_users_path
-          li
-            = link_to 'Tests', admin_practice_tests_path
+            = link_to 'Practice Tests', admin_practice_tests_path
           li
             = link_to 'Topics', admin_topics_path
+          li
+            = link_to 'Users', admin_users_path
       #main
         = yield
 

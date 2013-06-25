@@ -3,6 +3,7 @@ class PracticeTest < ActiveRecord::Base
   has_many :sections
 
   validates :book, :name, presence: true
+  delegate :name, to: :book, prefix: true
 
   def book
     super || NullBook.new

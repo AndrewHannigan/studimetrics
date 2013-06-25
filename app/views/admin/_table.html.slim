@@ -1,0 +1,19 @@
+- columns ||= []
+- collection ||= []
+- hide_action_links ||= false
+
+table
+  tr
+    - columns.each do |column|
+      th = column.to_s.titleize
+
+    - unless hide_action_links
+      th Actions
+
+  - collection.each do |collection_item|
+    tr data-id="#{collection_item.class.name.underscore}-#{collection_item.id}"
+      - columns.each do |column|
+        td = collection_item.send(column)
+
+      - unless hide_action_links
+        td.actions = render 'actions', resource: collection_item

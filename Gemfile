@@ -31,6 +31,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'honeybadger'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'cocoon', github: 'nathanvda/cocoon'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

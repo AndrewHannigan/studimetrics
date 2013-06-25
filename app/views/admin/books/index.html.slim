@@ -1,0 +1,4 @@
+- content_for :admin_table do
+  = admin_table(collection, columns: [:id, :name, :publisher, :publish_date])
+
+= render 'index_content'

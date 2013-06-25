@@ -8,11 +8,11 @@ Studimetrics::Application.routes.draw do
     resources :practice_tests do
       resources :sections
     end
-    resources :sections, only: [] do
+    resources :sections do
       resources :questions
     end
     resources :topics
-    resources :questions, only: [] do
+    resources :questions do
       resources :answers
     end
   end

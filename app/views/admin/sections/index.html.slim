@@ -1,0 +1,11 @@
+= content_for :breadcrumbs do
+  - if parent?
+    = breadcrumbs 'Admin' => admin_path, 'Tests' => admin_practice_tests_path, parent.name => parent_path, 'Sections' => nil
+  - else
+    = breadcrumbs 'Admin' => admin_path, 'Sections' => nil
+
+= content_for :admin_table do
+  = admin_table collection, columns: [:id, :name, :topic_name, :created_at, :updated_at]
+
+
+= render 'index_content'

@@ -1,6 +1,17 @@
 = simple_form_for ['admin', parent, resource] do |f|
-  = f.input :name
-  = f.input :question_type, collection: Question::QUESTION_TYPES
-  = f.association :section, include_blank: false
+  .admin-block
+    = f.association :section, include_blank: false
+    = f.input :question_type, collection: Question::QUESTION_TYPES, include_blank: false
+    = f.input :name
+
+  .admin-block
+    h5 Answers
+    - association_name = f.object.send(:answer_association_name)
+
+    = f.simple_fields_for association_name.to_sym do |answer|
+      = render "#{association_name.singularize}_fields", f: answer
+
+    .links
+      = link_to_add_association 'add answer', f, association_name.to_sym
 
   = f.submit
