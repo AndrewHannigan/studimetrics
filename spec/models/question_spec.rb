@@ -20,8 +20,8 @@ describe Question do
 
   describe '#answer_association_name' do
     it 'returns the underscored answer association' do
-      question = Question.new question_type: 'Single Value'
-      expect(question.answer_association_name).to eq 'single_value_answers'
+      question = Question.new question_type: 'Multiple Choice'
+      expect(question.answer_association_name).to eq 'multiple_choice_answers'
     end
   end
 
