@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130625130659) do
+ActiveRecord::Schema.define(version: 20130626014220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,13 +66,13 @@ ActiveRecord::Schema.define(version: 20130625130659) do
   create_table "sections", force: true do |t|
     t.string   "name"
     t.integer  "practice_test_id"
-    t.integer  "topic_id"
+    t.integer  "subject_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "sections", ["practice_test_id"], name: "index_sections_on_practice_test_id", using: :btree
-  add_index "sections", ["topic_id"], name: "index_sections_on_topic_id", using: :btree
+  add_index "sections", ["subject_id"], name: "index_sections_on_subject_id", using: :btree
 
   create_table "single_value_answers", force: true do |t|
     t.integer  "question_id"
@@ -83,9 +83,14 @@ ActiveRecord::Schema.define(version: 20130625130659) do
 
   add_index "single_value_answers", ["question_id"], name: "index_single_value_answers_on_question_id", using: :btree
 
+  create_table "subjects", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "topics", force: true do |t|
     t.string   "name"
-    t.string   "subject"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

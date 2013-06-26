@@ -5,6 +5,6 @@ class Admin::TopicsController < AdminController
   private
 
   def permitted_params
-    params.permit(:topic => [:name, :subject])
+    params.permit(:topic => [:name])
   end
 end
