@@ -1,11 +1,11 @@
 class Question < ActiveRecord::Base
-  QUESTION_TYPES = ["Range", "Single Value", "Free Response"]
+  QUESTION_TYPES = ["Range", "Multiple Choice", "Free Response"]
 
   belongs_to :section
   has_many :range_answers, dependent: :destroy
   accepts_nested_attributes_for :range_answers, allow_destroy: true
-  has_many :single_value_answers, dependent: :destroy
-  accepts_nested_attributes_for :single_value_answers, allow_destroy: true
+  has_many :multiple_choice_answers, dependent: :destroy
+  accepts_nested_attributes_for :multiple_choice_answers, allow_destroy: true
   has_many :free_response_answers, dependent: :destroy
   accepts_nested_attributes_for :free_response_answers, allow_destroy: true
 
