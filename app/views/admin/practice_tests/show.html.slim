@@ -26,4 +26,4 @@ h3 = "#{resource_class.name.titleize} ##{resource.id}"
   - if resource.sections.blank?
     p There are no Sections.
   - else
-    = admin_table resource.sections, columns: [:id, :name, :topic_name, :created_at, :updated_at], hide_action_links: true
+    = admin_table resource.sections, columns: [:id, :name, :subject_name, :created_at, :updated_at], hide_action_links: true

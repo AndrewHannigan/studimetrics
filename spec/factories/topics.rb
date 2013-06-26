@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :topic do
-    sequence(:name) {|n| "Math #{n}"}
-    subject "something"
+    sequence(:name) {|n| "geometry #{n}"}
   end
 end
