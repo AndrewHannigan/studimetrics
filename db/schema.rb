@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130626014220) do
+ActiveRecord::Schema.define(version: 20130626021246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 20130626014220) do
   end
 
   add_index "free_response_answers", ["question_id"], name: "index_free_response_answers_on_question_id", using: :btree
+
+  create_table "multiple_choice_answers", force: true do |t|
+    t.integer  "question_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "multiple_choice_answers", ["question_id"], name: "index_multiple_choice_answers_on_question_id", using: :btree
 
   create_table "practice_tests", force: true do |t|
     t.string   "name"
@@ -73,15 +82,6 @@ ActiveRecord::Schema.define(version: 20130626014220) do
 
   add_index "sections", ["practice_test_id"], name: "index_sections_on_practice_test_id", using: :btree
   add_index "sections", ["subject_id"], name: "index_sections_on_subject_id", using: :btree
-
-  create_table "single_value_answers", force: true do |t|
-    t.integer  "question_id"
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "single_value_answers", ["question_id"], name: "index_single_value_answers_on_question_id", using: :btree
 
   create_table "subjects", force: true do |t|
     t.string   "name"

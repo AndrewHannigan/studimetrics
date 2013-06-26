@@ -26,7 +26,7 @@ feature 'Admin manages questions and answers' do
     admin = FactoryGirl.create :admin
     section = FactoryGirl.create :section
 
-    visit new_admin_section_question_path(section, question_type: 'Single Value', as: admin.id)
+    visit new_admin_section_question_path(section, question_type: 'Multiple Choice', as: admin.id)
 
     fill_in 'Name', with: 'Question 1'
     select section.name, from: 'Section'
@@ -78,7 +78,7 @@ feature 'Admin manages questions and answers' do
     admin = FactoryGirl.create :admin
     section = FactoryGirl.create :section
 
-    visit new_admin_section_question_path(section, question_type: 'Single Value', as: admin.id)
+    visit new_admin_section_question_path(section, question_type: 'Multiple Choice', as: admin.id)
 
     select 'Range', from: 'Question type'
 

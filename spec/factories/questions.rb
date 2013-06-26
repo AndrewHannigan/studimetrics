@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :question do
     name "MyString"
-    question_type "Single Value"
+    question_type "Multiple Choice"
     section
   end
 end
