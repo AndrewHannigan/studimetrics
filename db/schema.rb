@@ -34,10 +34,10 @@ ActiveRecord::Schema.define(version: 20130627010552) do
   add_index "multiple_choice_answers", ["question_id"], name: "index_multiple_choice_answers_on_question_id", using: :btree
 
   create_table "practice_tests", force: true do |t|
-    t.string   "name"
     t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "number",     default: 0, null: false
   end
 
   add_index "practice_tests", ["book_id"], name: "index_practice_tests_on_book_id", using: :btree

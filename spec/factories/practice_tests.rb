@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :practice_test do
-    name 'Test 1'
+    sequence(:number) {|n| n}
     book
   end
 end

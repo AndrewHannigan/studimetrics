@@ -9,4 +9,8 @@ class PracticeTest < ActiveRecord::Base
     super || NullBook.new
   end
 
+  def name
+    "Test #{number}"
+  end
+
 end
