@@ -9,8 +9,6 @@ class Question < ActiveRecord::Base
   has_many :free_response_answers, dependent: :destroy
   accepts_nested_attributes_for :free_response_answers, allow_destroy: true
 
-
-  validates :name, presence: true, uniqueness: { scope: :section_id }
   validates :question_type, presence: true, inclusion: { in: QUESTION_TYPES, message: "Valid question types are: #{QUESTION_TYPES.to_sentence}"}
 
   delegate :name, to: :section, prefix: true
@@ -31,6 +29,10 @@ class Question < ActiveRecord::Base
 
   def valid_answer?(response)
     answers.any?{|answer| answer.valid_answer?(response)}
+  end
+
+  def name
+    "Question #{position}"
   end
 
   private
