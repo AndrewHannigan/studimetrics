@@ -2,6 +2,6 @@ FactoryGirl.define do
   factory :section do
     name "Cool Section"
     practice_test
-    topic
+    subject
   end
 end
