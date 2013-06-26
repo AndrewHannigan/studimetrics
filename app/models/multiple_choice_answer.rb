@@ -1,4 +1,4 @@
-class SingleValueAnswer < ActiveRecord::Base
+class MultipleChoiceAnswer < ActiveRecord::Base
   belongs_to :question
 
   def valid_answer?(response)
@@ -6,7 +6,7 @@ class SingleValueAnswer < ActiveRecord::Base
   end
 
   def to_partial_path
-    "admin/answers/single_value_answer"
+    "admin/answers/multiple_choice_answer"
   end
 
   def answer
