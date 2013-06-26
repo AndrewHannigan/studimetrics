@@ -1,6 +1,6 @@
 class CreateMultipleChoiceAnswers < ActiveRecord::Migration
   def up
-    drop_table :single_value_answera
+    drop_table :single_value_answers
     create_table :multiple_choice_answers do |t|
       t.references :question, index: true
       t.string :value
