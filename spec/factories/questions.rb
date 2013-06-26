@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :question do
-    name "MyString"
     question_type "Multiple Choice"
     section
+    position nil
   end
 end
