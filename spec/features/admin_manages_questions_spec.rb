@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 feature 'Admin manages questions and answers' do
   scenario 'adds a range question by default' do
     admin = FactoryGirl.create :admin
@@ -10,7 +9,7 @@ feature 'Admin manages questions and answers' do
     click_link 'Edit Questions'
     click_link 'New Question'
 
-    fill_in 'Name', with: 'Question 1'
+    fill_in 'Position', with: '1'
     select section.name, from: 'Section'
     select "Range", from: "Question type"
 
@@ -28,7 +27,7 @@ feature 'Admin manages questions and answers' do
 
     visit new_admin_section_question_path(section, question_type: 'Multiple Choice', as: admin.id)
 
-    fill_in 'Name', with: 'Question 1'
+    fill_in 'Position', with: '1'
     select section.name, from: 'Section'
 
     fill_in 'Value', with: '1'
@@ -44,7 +43,7 @@ feature 'Admin manages questions and answers' do
 
     visit new_admin_section_question_path(section, question_type: 'Free Response', as: admin.id)
 
-    fill_in 'Name', with: 'Question 1'
+    fill_in 'Position', with: '1'
     select section.name, from: 'Section'
 
     fill_in 'Value', with: '1234'
@@ -61,7 +60,7 @@ feature 'Admin manages questions and answers' do
     visit admin_section_questions_path(question.section, as: admin.id)
     click_link 'Edit'
 
-    fill_in 'Name', with: 'Updated Question 1'
+    fill_in 'Position', with: '1'
     select question.section.name, from: 'Section'
 
     click_link 'add answer'
@@ -83,7 +82,7 @@ feature 'Admin manages questions and answers' do
     select 'Range', from: 'Question type'
 
     sleep 0.5
-    fill_in 'Name', with: 'New range question'
+    fill_in 'Position', with: '1'
     fill_in 'Minimum Value', with: '1'
     fill_in 'Maximum Value', with: '23'
 
