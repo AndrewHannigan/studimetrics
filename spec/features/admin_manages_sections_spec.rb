@@ -9,7 +9,7 @@ feature 'Admin manages sections' do
     click_link 'Edit Sections'
     click_link 'New Section'
 
-    fill_in 'Name', with: 'Section 1'
+    fill_in 'Number', with: '3'
     select section.subject.name, from: 'Subject'
 
     click_button 'Create Section'
@@ -25,7 +25,7 @@ feature 'Admin manages sections' do
     click_link 'Edit Sections'
     click_link 'Edit'
 
-    fill_in 'Name', with: 'Updated Section 1'
+    fill_in 'Number', with: '2'
     select section.subject.name, from: 'Subject'
 
     click_button 'Update Section'
