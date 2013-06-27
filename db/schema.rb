@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130627010552) do
+ActiveRecord::Schema.define(version: 20130627022500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 20130627010552) do
 
   add_index "range_answers", ["question_id"], name: "index_range_answers_on_question_id", using: :btree
 
+  create_table "section_completions", force: true do |t|
+    t.integer  "section_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "section_completions", ["section_id"], name: "index_section_completions_on_section_id", using: :btree
+
   create_table "sections", force: true do |t|
     t.integer  "practice_test_id"
     t.integer  "subject_id"
@@ -84,6 +93,19 @@ ActiveRecord::Schema.define(version: 20130627010552) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "user_responses", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "section_completion_id"
+    t.string   "value"
+    t.boolean  "correct"
+    t.integer  "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_responses", ["question_id"], name: "index_user_responses_on_question_id", using: :btree
+  add_index "user_responses", ["section_completion_id"], name: "index_user_responses_on_section_completion_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at",                                     null: false
