@@ -3,6 +3,6 @@ $ ->
 
 
 reloadQuestionForm = (event) ->
-  editQuestionUrl = document.location.href.split('?')[0]
-  document.location.href = "#{editQuestionUrl}?question_type=#{$(event.target).val()}"
+  editQuestionUrl = window.location.href.split('?')[0]
+  window.location.href = "#{editQuestionUrl}?question_type=#{$(event.target).val()}"
 
