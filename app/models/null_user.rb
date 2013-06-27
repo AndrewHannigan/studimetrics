@@ -1,13 +1,5 @@
 class NullUser
-  attr_accessor :email
-
-  def first_name
-    'Guest'
-  end
-
-  def last_name
-    'User'
-  end
+  attr_accessor :email, :first_name, :last_name, :full_name
 
   def admin
     false
