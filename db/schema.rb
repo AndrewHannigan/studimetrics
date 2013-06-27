@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130627010552) do
+ActiveRecord::Schema.define(version: 20130627021522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 20130627010552) do
   end
 
   add_index "range_answers", ["question_id"], name: "index_range_answers_on_question_id", using: :btree
+
+  create_table "section_completions", force: true do |t|
+    t.integer  "section_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "section_completions", ["section_id"], name: "index_section_completions_on_section_id", using: :btree
 
   create_table "sections", force: true do |t|
     t.integer  "practice_test_id"
