@@ -6,6 +6,6 @@ class Admin::SectionsController < AdminController
   private
 
   def permitted_params
-    params.permit(:section => [:subject_id, :name])
+    params.permit(:section => [:subject_id, :name, :number])
   end
 end
