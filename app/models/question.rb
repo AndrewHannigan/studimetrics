@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  QUESTION_TYPES = ["Range", "Multiple Choice", "Free Response"]
+  QUESTION_TYPES = ["Range", "Multiple Choice"]
 
   belongs_to :section
   has_many :range_answers, dependent: :destroy
