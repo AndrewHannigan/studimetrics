@@ -7,6 +7,7 @@ class Section < ActiveRecord::Base
   validates :number, presence: true, uniqueness: { scope: :practice_test_id }
 
   delegate :name, to: :subject, prefix: true
+  delegate :name, to: :practice_test, prefix: true
 
   def name
     "Section #{number}"
