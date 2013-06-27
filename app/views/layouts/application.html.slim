@@ -15,7 +15,8 @@ html
     #main-container
       = render 'flashes'
 
-      = render 'submenu'
+      - if signed_in?
+        = render 'submenu'
 
       = yield
 

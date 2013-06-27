@@ -5,7 +5,7 @@ class Admin::PracticeTestsController < AdminController
   private
 
   def permitted_params
-    params.permit(:practice_test => [:book_id, :name])
+    params.permit(:practice_test => [:book_id, :name, :number])
   end
 
 end

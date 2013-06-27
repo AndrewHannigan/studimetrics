@@ -2,6 +2,8 @@ Studimetrics::Application.routes.draw do
 
   resources :users, only: [:create]
   resource :profile
+  resources :practice_tests, only: [:index]
+  resources :sections, only: [:show]
 
   # admin routes
   namespace 'admin' do

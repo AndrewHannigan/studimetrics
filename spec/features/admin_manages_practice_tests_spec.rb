@@ -9,7 +9,7 @@ feature 'Admin manages practice tests' do
 
     click_link 'New Practice Test'
 
-    fill_in 'Test name', with: 'Test 1'
+    fill_in 'Number', with: '1'
     select book.name, from: 'Book'
 
     click_button 'Create Practice test'
@@ -24,7 +24,7 @@ feature 'Admin manages practice tests' do
     visit admin_practice_test_path(test, as: admin.id)
     click_link 'Edit Practice Test'
 
-    fill_in 'Test name', with: 'Test 2'
+    fill_in 'Number', with: '2'
 
     click_button 'Update Practice test'
 
