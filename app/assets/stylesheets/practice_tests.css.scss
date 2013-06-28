@@ -1,6 +1,5 @@
 #test-sidebar {
-  @include span-columns(4);
-  border-right: 1px solid #ccc;
+  @include span-columns(3);
   min-height: 700px;
   padding: 20px 10px;
 
@@ -53,7 +52,9 @@
 }
 
 #test-content {
-  @include span-columns(8);
+  @include span-columns(9);
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
   min-height: 700px;
 }
 

@@ -1,0 +1,7 @@
+.question
+  .question-number
+    = "#{f.object.question.position}."
+  .inputs
+    = f.input :question_id, as: :hidden
+    = f.input :value, label: false;
+

@@ -1,0 +1,22 @@
+- current_test = @section_completion.present? ? @section_completion.section.practice_test : current_user.current_test
+
+#test-sidebar
+  ul.test-list
+    - PracticeTest.all.each do |practice_test|
+      - collapsed_class = practice_test == current_test ? '' : 'collapsed'
+
+      li.test-item
+        = link_to practice_test.name, '', class: 'test-link'
+        = link_to '', '', class: "icon plus #{collapsed_class}"
+      li class="#{collapsed_class}"
+        ul.section-list
+          - subject_name = nil
+          - practice_test.sections_by_subject.each do |section|
+            - if section.subject_name != subject_name
+              - subject_name = section.subject_name
+              li.test-item.subject-name
+                span = subject_name
+            li
+              ul
+                li.section-item
+                  = link_to section.name, new_section_completion_path(section_id: section.id), data: { id: "section-#{section.id}" }

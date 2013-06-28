@@ -3,6 +3,8 @@ class MultipleChoiceAnswer < ActiveRecord::Base
   validates :value, :length => { :maximum => 4,
             :too_long => "%{count} characters is the maximum allowed" }
 
+  INPUT_CHOICES = %w(A B C D E Skip)
+
   def valid_answer?(response)
     self.value == response
   end

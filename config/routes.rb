@@ -4,6 +4,11 @@ Studimetrics::Application.routes.draw do
   resource :profile
   resources :practice_tests, only: [:index]
   resources :sections, only: [:show]
+  resources :section_completions, only: [:new, :create, :update] do
+    member do
+      get :review
+    end
+  end
 
   # admin routes
   namespace 'admin' do

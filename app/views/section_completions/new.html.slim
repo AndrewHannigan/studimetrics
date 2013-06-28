@@ -1,0 +1,18 @@
+= render 'test_sidebar'
+
+#test-content
+  = simple_form_for @section_completion do |f|
+    = f.input :section_id, as: :hidden
+    .test-header
+      .test-info
+        h3 = @section_completion.section.practice_test_name
+        h4 = @section_completion.section_name
+      .test-nav
+        | < >
+      .test-timer
+        = f.button :submit, 'Submit'
+
+
+    #question-list
+      = f.simple_fields_for :user_responses do |user_response_form|
+        = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
