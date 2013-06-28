@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20130628021711) do
     t.integer  "time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",               null: false
   end
 
   add_index "user_responses", ["question_id"], name: "index_user_responses_on_question_id", using: :btree
