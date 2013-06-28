@@ -53,6 +53,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'mailcatcher'
   gem 'pry'
+  gem "jasminerice", github: 'bradphelan/jasminerice'
+  gem 'guard-jasmine'
 end
 
 group :test do
