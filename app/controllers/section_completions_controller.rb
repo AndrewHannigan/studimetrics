@@ -16,9 +16,8 @@ class SectionCompletionsController < ApplicationController
 
   def create
     @section_completion = SectionCompletion.new section_completion_params
-    @section_completion.user_responses.tap do |user_response|
-      # TODO: uncomment after user is added to user_responses
-      # user_response.user = current_user
+    @section_completion.user_responses.each do |user_response|
+      user_response.user = current_user
     end
 
     if @section_completion.save
