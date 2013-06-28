@@ -12,6 +12,7 @@ Studimetrics::Application.routes.draw do
 
   # admin routes
   namespace 'admin' do
+    resources :colleges
     resources :books
     resources :users
     resources :practice_tests do
