@@ -1,6 +1,7 @@
 class SectionCompletion < ActiveRecord::Base
   STATUS = ["Completed", "In-Progress"]
   belongs_to :section
+  belongs_to :user
   has_many :user_responses
   accepts_nested_attributes_for :user_responses, reject_if: proc { |attributes| attributes['value'].blank? }
 
