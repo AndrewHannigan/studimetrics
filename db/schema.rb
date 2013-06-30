@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130628030224) do
+ActiveRecord::Schema.define(version: 20130630201619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,9 +76,11 @@ ActiveRecord::Schema.define(version: 20130628030224) do
     t.string   "status",     default: "In-Progress", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",                            null: false
   end
 
   add_index "section_completions", ["section_id"], name: "index_section_completions_on_section_id", using: :btree
+  add_index "section_completions", ["user_id"], name: "index_section_completions_on_user_id", using: :btree
 
   create_table "sections", force: true do |t|
     t.integer  "practice_test_id"
@@ -111,7 +113,6 @@ ActiveRecord::Schema.define(version: 20130628030224) do
     t.integer  "time"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id",               null: false
   end
 
   add_index "user_responses", ["question_id"], name: "index_user_responses_on_question_id", using: :btree

@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :section_completion do
+    user
     section
     status "In-Progress"
   end
