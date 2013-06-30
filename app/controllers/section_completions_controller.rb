@@ -16,9 +16,7 @@ class SectionCompletionsController < ApplicationController
 
   def create
     @section_completion = SectionCompletion.new section_completion_params
-    @section_completion.user_responses.each do |user_response|
-      user_response.user = current_user
-    end
+    @section_completion.user_id = current_user.id
 
     if @section_completion.save
       redirect_to review_section_completion_path(@section_completion)
