@@ -7,7 +7,8 @@ FactoryGirl.define do
     correct true
     time 100
     after(:create) do |user_response|
-      user_response.section_completion = FactoryGirl.create :section_completion, section: user_response.question.section
+      user = create :user
+      user_response.section_completion = FactoryGirl.create :section_completion, section: user_response.question.section, user: user
       user_response.correct = user_response.question.answers.first.value == user_response.value
     end
   end
