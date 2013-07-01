@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/bradphelan/jasminerice.git
+  revision: 13ae61378afdf66aed7eb945172eb1f5c75b451b
+  specs:
+    jasminerice (0.1.0)
+      coffee-rails
+
+GIT
   remote: git://github.com/josevalim/inherited_resources.git
   revision: 2656ca0cea51cc7469be1d30cace24752d5b4e3b
   specs:
@@ -79,6 +86,8 @@ GEM
       xpath (~> 2.0)
     celluloid (0.14.1)
       timers (>= 1.0.0)
+    childprocess (0.3.9)
+      ffi (~> 1.0, >= 1.0.11)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -107,10 +116,24 @@ GEM
       railties (>= 3.0.0)
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
+    ffi (1.9.0)
     flutie (2.0.0)
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
+    formatador (0.2.4)
+    guard (1.8.1)
+      formatador (>= 0.2.4)
+      listen (>= 1.0.0)
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      thor (>= 0.14.6)
+    guard-jasmine (1.17.0)
+      childprocess
+      guard (>= 1.1.0)
+      multi_json
+      thor
+      tilt
     haml (4.0.3)
       tilt
     has_scope (0.6.0.rc)
@@ -129,6 +152,11 @@ GEM
     kgio (2.8.0)
     launchy (2.3.0)
       addressable (~> 2.3)
+    listen (1.2.2)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      rb-kqueue (>= 0.2)
+    lumberjack (1.0.4)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -193,6 +221,11 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.11.0)
     rake (10.0.4)
+    rb-fsevent (0.9.3)
+    rb-inotify (0.9.0)
+      ffi (>= 0.5.0)
+    rb-kqueue (0.2.0)
+      ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
     redis (3.0.4)
@@ -298,9 +331,11 @@ DEPENDENCIES
   factory_girl_rails
   flutie
   foreman
+  guard-jasmine
   high_voltage
   honeybadger
   inherited_resources!
+  jasminerice!
   jquery-rails
   launchy
   mailcatcher

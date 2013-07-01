@@ -11,4 +11,14 @@ button, a.button, input[type="submit"] {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+
+  &:hover {
+    color: lighten($blue, 38%);
+  }
+
+  &[data-disabled] {
+    cursor: normal;
+    color: #eee;
+    background: #ddd;
+  }
 }
