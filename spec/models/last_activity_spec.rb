@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe LastActivity do
-  describe "#last_section" do
+  describe "#section" do
     context "when the user has not started any sections" do
       it "should return nil" do
         user = create :user
