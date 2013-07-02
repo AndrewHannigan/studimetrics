@@ -8,9 +8,11 @@ $ ->
 pageLoaded = ->
   $('#question-list').disableChildren()
   $('#test-timer').timer()
+  questionTimer = $('#test-timer').data('timer')
+  $('[data-behavior~="submit-user-response-click"]').userResponse(timer: questionTimer)
+  $('[data-behavior~="submit-user-response-blur"]').userResponse(timer: questionTimer)
   $('#test-timer').scrollToFixed { marginTop: 143, dontSetWidth: true }
   # $('.test-header').scrollToFixed()
-
 
 toggleTestSubMenu = (event) ->
   unless $(event.target).hasClass('test-link')
