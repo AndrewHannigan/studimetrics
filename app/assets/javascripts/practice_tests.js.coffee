@@ -1,6 +1,8 @@
 $ ->
   $(document).on 'click', '.test-item', toggleTestSubMenu
   $(document).on 'page:load', pageLoaded
+  $(window).unload pauseTimer
+  $(document).on 'page:fetch', pauseTimer
   $(document).on 'timer:start', ->
     $('#question-list').removeAttr('data-disabled').enableChildren()
   pageLoaded()
@@ -13,6 +15,11 @@ pageLoaded = ->
   $('[data-behavior~="submit-user-response-blur"]').userResponse(timer: questionTimer)
   $('#test-timer').scrollToFixed { marginTop: 143, dontSetWidth: true }
   # $('.test-header').scrollToFixed()
+
+pauseTimer = ->
+  timer = $('#test-timer').data('timer')
+  if timer
+    timer.pause()
 
 toggleTestSubMenu = (event) ->
   unless $(event.target).hasClass('test-link')
