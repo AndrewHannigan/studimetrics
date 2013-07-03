@@ -20,6 +20,10 @@ class UserResponsesController < ApplicationController
     @section_completion ||= SectionCompletion.in_progress.where(user_id: current_user.id).where(section_id: question.section_id).first_or_create
   end
 
+  def user_response
+    UserResponse.where(question_id: question.id).where(section_completion_id: section_completion.id).first_or_create
+  end
+
   def question
     Question.find user_response_params[:question_id]
   end

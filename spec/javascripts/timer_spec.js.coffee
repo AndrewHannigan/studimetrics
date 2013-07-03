@@ -9,30 +9,58 @@ describe "Timer", ->
 
   afterEach ->
     this.clock.restore()
+    localStorage.clear()
 
-  it 'increments time after starting', ->
-    timer = new Timer()
-    timer.start()
+  describe '#start', ->
+    it 'increments time', ->
+      timer = new Timer()
+      timer.start()
 
-    this.clock.tick(1234)
-    expect(timer.currentTime()).toBe(1.2)
+      this.clock.tick(1234)
+      expect(timer.currentTime()).toBe(1.2)
 
-  it 'resets the timer', ->
-    timer = new Timer()
-    timer.elapsedTime = 2000
+    it 'starts from a previous point', ->
+      localStorage.setItem('currentTime', 20.23)
+      timer = new Timer()
+      timer.start()
 
-    timer.reset()
-    expect(timer.currentTime()).toBe(0)
+      this.clock.tick(1000)
+      expect(timer.currentTime()).toBe(21.23)
 
-  it 'pauses the timer', ->
-    timer = new Timer()
-    timer.start()
+  describe '#reset',  ->
+    it 'resets the timer', ->
+      timer = new Timer()
+      timer.elapsedTime = 2000
 
-    this.clock.tick(1100)
-    timer.pause()
-    this.clock.tick(200)
+      timer.reset()
+      expect(timer.currentTime()).toBe(0)
 
-    expect(timer.currentTime()).toBe(1.1)
+    it 'resets the local storage', ->
+      localStorage.setItem('currentTime', 2000)
+      timer = new Timer()
+
+      timer.reset()
+      expect(localStorage.getItem('currentTime')).toBe(null)
+
+  describe '#pause', ->
+    it 'pauses the timer', ->
+      timer = new Timer()
+      timer.start()
+
+      this.clock.tick(1100)
+      timer.pause()
+      this.clock.tick(200)
+
+      expect(timer.currentTime()).toBe(1.1)
+
+   it 'saves the current time in local storage', ->
+     timer = new Timer()
+     timer.start()
+
+     this.clock.tick(1200)
+     timer.pause()
+
+     expect(parseFloat(localStorage.getItem('currentTime'))).toBe(1.2)
 
   it 'resumes the timer', ->
     timer = new Timer()
