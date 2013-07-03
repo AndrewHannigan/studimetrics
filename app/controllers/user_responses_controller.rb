@@ -17,7 +17,7 @@ class UserResponsesController < ApplicationController
   end
 
   def section_completion
-    @section_completion ||= SectionCompletion.in_progress.where(user_id: current_user.id).where(section_id: question.section_id).first_or_create
+    @section_completion ||= SectionCompletion.in_progress.where(user_id: current_user.id).where(section_id: question.section_id).first
   end
 
   def user_response
