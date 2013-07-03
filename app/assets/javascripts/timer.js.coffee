@@ -13,8 +13,10 @@ class @Timer
 
   start: =>
     @startTime = new Date().getTime()
-    @triggerEvent('start')
+    @previouslyElapsedTime = parseFloat(localStorage.getItem('currentTime') || 0)
+
     @resume()
+    @triggerEvent('start')
 
   resume: =>
     @startTime = new Date().getTime()
@@ -22,19 +24,25 @@ class @Timer
     @elapsedTime = 0
     @interval = setInterval @tick, 100
     @updateTimerUI()
+    @triggerEvent('resume')
 
   tick: =>
     time = new Date().getTime() - @startTime
     @elapsedTime = Math.floor(time / 10) / 100
     @updateTimerContent()
+    @triggerEvent('tick')
 
   reset: =>
     @elapsedTime = 0
     @previouslyElapsedTime = 0
+    localStorage.removeItem('currentTime')
     @clearIntervalAndUpdateUI()
+    @triggerEvent('tick')
 
   pause: =>
+    localStorage.setItem('currentTime', @currentTime())
     @clearIntervalAndUpdateUI()
+    @triggerEvent('tick')
 
   toggle: (event) =>
     event.preventDefault()
@@ -91,7 +99,7 @@ class @Timer
 
   triggerEvent: (type) =>
     if @domElement
-      @domElement.trigger 'timer:start'
+      @domElement.trigger "timer:#{type}"
 
 $.fn.timer = ->
   @each ->
