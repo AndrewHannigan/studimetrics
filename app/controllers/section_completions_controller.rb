@@ -32,6 +32,6 @@ class SectionCompletionsController < ApplicationController
   private
 
   def section_completion_params
-    params.require(:section_completion).permit(user_responses_attributes: [:question_id, :value])
+    params.require(:section_completion).permit(:section_id)
   end
 end

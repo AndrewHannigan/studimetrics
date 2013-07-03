@@ -1,0 +1,35 @@
+form action="/section_completions" class="simple_form section_completion" id="new_section_completion" method="post" data-user-response-url="/user_responses"
+  input class="hidden" id="section_completion_section_id" name="section_completion[section_id]" type="hidden" value="1"
+
+  .question data-id="question-1" data-behavior="submit-user-response-click"
+    .question-number 1.
+    .inputs
+      .inputs
+        input#section_completion_user_responses_attributes_0_question_id.hidden name="section_completion[user_responses_attributes][0][question_id]" type="hidden" value="1"
+        .input.radio.optional
+          span
+            input#section_completion_user_responses_attributes_0_value_a.radio.optional name="section_completion[user_responses_attributes][0][value]" type="radio" value="A"
+            label.collection_radio for="section_completion_user_responses_attributes_0_value_a"
+          span
+            input#section_completion_user_responses_attributes_0_value_b.radio.optional name="section_completion[user_responses_attributes][0][value]" type="radio" value="B"
+            label.collection_radio for="section_completion_user_responses_attributes_0_value_b"
+          span
+            input#section_completion_user_responses_attributes_0_value_c.radio.optional name="section_completion[user_responses_attributes][0][value]" type="radio" value="C"
+            label.collection_radio for="section_completion_user_responses_attributes_0_value_c"
+          span
+            input#section_completion_user_responses_attributes_0_value_d.radio.optional name="section_completion[user_responses_attributes][0][value]" type="radio" value="D"
+            label.collection_radio for="section_completion_user_responses_attributes_0_value_d"
+          span
+            input#section_completion_user_responses_attributes_0_value_e.radio.optional name="section_completion[user_responses_attributes][0][value]" type="radio" value="E"
+            label.collection_radio for="section_completion_user_responses_attributes_0_value_e"
+          span
+            input#section_completion_user_responses_attributes_0_value_skip.radio.optional name="section_completion[user_responses_attributes][0][value]" type="radio" value="Skip"
+            label.collection_radio for="section_completion_user_responses_attributes_0_value_skip"
+
+  .question data-id="question-1" data-behavior="submit-user-response-blur"
+    .question-number 2.
+    .inputs
+      input#section_completion_user_responses_attributes_1_question_id.hidden name="section_completion[user_responses_attributes][1][question_id]" type="hidden" value="2"
+      .input.string.optional
+        input#section_completion_user_responses_attributes_1_value.string.optional maxlength="255" name="section_completion[user_responses_attributes][1][value]" size="50" type="text"
+  input.button name="commit" type="submit" value="Submit"

@@ -8,6 +8,7 @@ class @Timer
   constructor: (domElement) ->
     if domElement
       @domElement = $(domElement)
+      $(domElement).data('timer', this)
       @setupListeners()
 
   start: =>

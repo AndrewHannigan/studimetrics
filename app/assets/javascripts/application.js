@@ -3,6 +3,7 @@
 //= require jquery-scrolltofixed
 //= require turbolinks
 
-//= require practice_tests
 //= require timer
 //= require disable_children
+//= require user_responses
+//= require practice_tests

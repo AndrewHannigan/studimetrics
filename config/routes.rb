@@ -9,6 +9,7 @@ Studimetrics::Application.routes.draw do
       get :review
     end
   end
+  resources :user_responses, only: [:create]
 
   # admin routes
   namespace 'admin' do
