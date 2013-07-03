@@ -1,8 +1,6 @@
-.question data-id="question-#{f.object.question.id}"
+.question data-id="question-#{f.object.question.id}" data-behavior="submit-user-response-click"
   .question-number
     = "#{f.object.question.position}."
   .inputs
     = f.input :question_id, as: :hidden
     = f.input :value, as: :radio, collection: MultipleChoiceAnswer::INPUT_CHOICES, label: false
-
-
