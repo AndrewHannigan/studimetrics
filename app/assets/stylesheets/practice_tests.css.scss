@@ -45,6 +45,20 @@
       margin-top: 10px;
     }
   }
+
+  .section-item {
+    a {
+      width: 100px;
+    }
+  }
+  span.section-status {
+    vertical-align: middle;
+    color: $dark-gray;
+
+    &.completed {
+      color: $light-green;
+    }
+  }
 }
 
 .test-item, .subject-name {

@@ -10,4 +10,8 @@ class SectionCompletion < ActiveRecord::Base
   STATUS.each do |status|
     singleton_class.send(:define_method, :"#{status.downcase.underscore}") { where(:status => status) }
   end
+
+  def self.for_section_and_user(section, user)
+    SectionCompletion.where(section: section, user: user).first || NullSectionCompletion.new
+  end
 end
