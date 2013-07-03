@@ -3,6 +3,8 @@ class SectionCompletion < ActiveRecord::Base
   belongs_to :section
   belongs_to :user
   has_many :user_responses
+  has_many :questions, -> { order 'position asc' }, through: :user_responses
+
   accepts_nested_attributes_for :user_responses, reject_if: proc { |attributes| attributes['value'].blank? }
 
   delegate :name, to: :section, prefix: true

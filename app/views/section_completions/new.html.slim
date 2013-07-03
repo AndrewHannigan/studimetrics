@@ -13,7 +13,7 @@
       - if f.object.user_responses.blank?
         p There are no questions in this test.
       - else
-        = f.simple_fields_for :user_responses do |user_response_form|
+        = f.simple_fields_for :user_responses, @section_completion.user_responses.sort_by{|r| r.question.position} do |user_response_form|
           = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
 
       = f.button :submit, 'Submit'
