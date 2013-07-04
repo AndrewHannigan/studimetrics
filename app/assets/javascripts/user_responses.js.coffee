@@ -20,10 +20,18 @@ class @UserResponse
 
   updateResponse: (event) =>
     @value = $(event.target).val()
+    @updateTimeAndSave()
+
+  manualResponse: (value) =>
+    @value =  value
+    @updateTimeAndSave()
+
+  updateTimeAndSave: =>
     @time = @timer.currentTime()
     @timer.reset()
     @timer.start()
     @save()
+
 
   setupListeners: =>
     if @domElement.data('behavior') == 'submit-user-response-click'

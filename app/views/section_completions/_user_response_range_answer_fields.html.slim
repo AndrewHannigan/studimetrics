@@ -1,7 +1,9 @@
 .question data-id="question-#{f.object.question.id}" data-behavior="submit-user-response-blur"
   .question-number
     = "#{f.object.question.position}."
-  .inputs
+  .inputs.range-answer
     = f.input :question_id, as: :hidden
-    = f.input :value, label: false;
+    = f.input :value, label: false do
+      = f.input_field :value, value: f.object.value_or_skip
+      button class="skip-button #{f.object.skipped? ? 'selected' : ''}" Skip
 

@@ -6,6 +6,7 @@ $ ->
   $(document).on 'timer:start', ->
     $('#question-list').removeAttr('data-disabled').enableChildren()
   pageLoaded()
+  setupSkipButtons()
 
 pageLoaded = ->
   $('#question-list').disableChildren()
@@ -15,6 +16,20 @@ pageLoaded = ->
   $('[data-behavior~="submit-user-response-blur"]').userResponse(timer: questionTimer)
   $('#test-timer').scrollToFixed { marginTop: 143, dontSetWidth: true }
   # $('.test-header').scrollToFixed()
+
+setupSkipButtons = ->
+  $(document).on 'click', '.skip-button', setSkipButton
+  $(document).on 'focus', 'input[type="text"]', clearSkipButton
+
+setSkipButton = (event) ->
+  event.preventDefault()
+  $(this).addClass 'selected'
+  $(this).prev('input').val('')
+  userResponse = $(this).closest('.question').data('user-response')
+  userResponse.manualResponse 'Skip'
+
+clearSkipButton = (event) ->
+  $(this).next('.skip-button').removeClass 'selected'
 
 pauseTimer = ->
   timer = $('#test-timer').data('timer')
