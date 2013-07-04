@@ -21,6 +21,25 @@ feature 'user answers multiple choice' do
 
     expect(page).to have_content('review!')
   end
+
+  scenario 'saves previous answers for that section', js: true do
+    user = create :user
+    visit practice_tests_path as: user.id
+
+    section_on_page(@question.section).click
+
+    click_link 'Click here to begin'
+
+    make_radios_visible
+    question_on_page(@question).choose('A')
+
+    click_link('studimetrics')
+    click_link('Practice')
+    section_on_page(@question.section).click
+
+    make_radios_visible
+    expect(question_on_page(@question).find('input[checked=checked]').value).to eq('A')
+  end
 end
 
 def section_on_page(section)
@@ -29,4 +48,9 @@ end
 
 def question_on_page(question)
   find("[data-id='question-#{question.id}']")
+end
+
+def make_radios_visible
+  # capybara cant select these if they are display: none
+  page.execute_script "$('input.radio').show()"
 end

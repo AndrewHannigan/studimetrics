@@ -8,15 +8,17 @@ class SectionCompletionsController < ApplicationController
       return redirect_to :back
     end
 
-    @section_completion = SectionCompletion.new section: section
+    @section_completion = SectionCompletion.in_progress.where(user_id: current_user.id).where(section_id: section.id).first_or_create
+    question_ids = @section_completion.question_ids
     section.questions.each do |question|
-      @section_completion.user_responses.build question: question
+      unless question_ids.include? question.id
+        @section_completion.user_responses.build question: question
+      end
     end
   end
 
-  def create
-    @section_completion = SectionCompletion.new section_completion_params
-    @section_completion.user_id = current_user.id
+  def update
+    @section_completion = SectionCompletion.find params[:id]
 
     if @section_completion.save
       redirect_to review_section_completion_path(@section_completion)
