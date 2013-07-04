@@ -12,7 +12,7 @@ class UserResponse < ActiveRecord::Base
   end
 
   def value_or_skip
-    value.gsub Question::SKIP_VALUE, ''
+    value.to_s.gsub Question::SKIP_VALUE, ''
   end
 
   def skipped?
