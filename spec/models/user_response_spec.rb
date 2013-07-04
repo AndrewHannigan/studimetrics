@@ -32,10 +32,31 @@ describe UserResponse do
       expect(response).to be_correct
     end
   end
+  
+  describe '#time' do
+    it 'returns 0 if nil' do
+      response = UserResponse.new
+      expect(response.time).to eq(0)
+    end
+  end
+
+  describe '#value_or_skip' do
+    it 'returns the value' do
+      response = UserResponse.new value: 'A'
+      expect(response.value_or_skip).to eq('A')
+    end
+
+    it 'returns an empty string if the response is marked skip' do
+      response = UserResponse.new value: Question::SKIP_VALUE
+      expect(response.value_or_skip).to be_blank
+    end
+  end
+
 
   describe '_score_response' do
     it 'updates the correct column' do
       response = create :user_response
+
 
       expect {
         response.update_attributes value: 'B'
@@ -48,6 +69,13 @@ describe UserResponse do
       expect {
         response.update_attributes value: Question::SKIP_VALUE
       }.to_not change{response.correct}
+    end
+  end
+
+  describe '#skipped?' do
+    it 'returns true if the response is marked skip' do
+      response = UserResponse.new value: Question::SKIP_VALUE
+      expect(response).to be_skipped
     end
   end
 end
