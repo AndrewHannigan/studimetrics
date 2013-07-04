@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
   QUESTION_TYPES = ["Range", "Multiple Choice"]
+  SKIP_VALUE = 'Skip'
 
   belongs_to :section
   has_many :range_answers, dependent: :destroy

@@ -9,4 +9,12 @@ class UserResponse < ActiveRecord::Base
   def time
     super || 0
   end
+
+  def value_or_skip
+    value.gsub Question::SKIP_VALUE, ''
+  end
+
+  def skipped?
+    value == Question::SKIP_VALUE
+  end
 end

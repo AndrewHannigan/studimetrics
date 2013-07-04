@@ -33,16 +33,6 @@ describe 'User Response', ->
       expect($.post).toHaveBeenCalledWith('/user_responses', { user_response: { question_id: 1, value: 2, time: 3000 }}, null, 'json')
 
   describe '#updateResponse', ->
-    it 'gets the current time from the attached timer', ->
-      timer = new Timer()
-      response = new UserResponse(null, {timer: timer})
-      spyOn timer, 'currentTime'
-
-      fakeEvent = $.Event("click")
-      response.updateResponse(fakeEvent)
-
-      expect(timer.currentTime).toHaveBeenCalled()
-
     it 'gets the value from the domElement', ->
       response = new UserResponse()
 
@@ -51,4 +41,41 @@ describe 'User Response', ->
       response.updateResponse(fakeEvent)
 
       expect(response.value).toBe('wee')
+
+  describe '#manualResponse', ->
+    it 'sets the value manually', ->
+      response = new UserResponse()
+
+      response.manualResponse 'Skip'
+      expect(response.value).toBe 'Skip'
+
+    it 'calls updateTimeAndSave', ->
+      response = new UserResponse()
+      spyOn response, 'updateTimeAndSave'
+
+      response.manualResponse 'Skip'
+
+      expect(response.updateTimeAndSave).toHaveBeenCalled()
+
+  describe '#updateTimeAndSave', ->
+    it 'gets the current time from the attached timer', ->
+      timer = new Timer()
+      response = new UserResponse null, timer: timer
+      spyOn timer, 'currentTime'
+
+      fakeEvent = $.Event("click")
+      response.updateResponse(fakeEvent)
+
+      expect(timer.currentTime).toHaveBeenCalled()
+
+    it 'resets and starts the timer again', ->
+      timer = new Timer()
+      response = new UserResponse null, timer: timer
+      spyOn timer, 'reset'
+      spyOn timer, 'start'
+
+      response.updateTimeAndSave()
+
+      expect(timer.reset).toHaveBeenCalled()
+      expect(timer.start).toHaveBeenCalled()
 
