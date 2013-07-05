@@ -38,20 +38,42 @@ header {
    }
 }
 
-#user-info {
+#user-info-and-test-info {
   @include outer-container;
-  margin-top: 10px;
 
-  span {
-    display: inline-block;
-    margin-right: 10px;
+  #user-info {
+    @include span-columns(9);
+    margin-top: 10px;
+
+    span {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .subject {
+      padding: 2px;
+      background: #ccc;
+      text-align: center;
+      width: 34px;
+    }
   }
+  #test-info {
+    @include span-columns(3);
 
-  .subject {
-    padding: 2px;
-    background: #ccc;
-    text-align: center;
-    width: 34px;
+    span.title {
+      display: inline-block;
+      color: $dark-gray;
+      font-weight: bold;
+      width: 120px;
+    }
+    span.test {
+      color: $red;
+      margin-right: 10px;
+    }
+    span.section {
+      color: $red;
+      margin-left: 5px;
+    }
   }
 }
 
