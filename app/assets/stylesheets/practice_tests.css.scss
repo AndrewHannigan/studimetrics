@@ -63,6 +63,13 @@
 
 .test-item, .subject-name {
   font-weight: bold;
+
+  span.percentage-complete {
+    display: inline-block;
+    width: 143px;
+    text-align:right;
+    vertical-align: middle;
+  }
 }
 
 #test-content {

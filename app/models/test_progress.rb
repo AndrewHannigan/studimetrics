@@ -14,10 +14,11 @@ class TestProgress
 
     def adjusted_percent
       percent = calculate_percent
-      percent > 1 ? 100 : percent * 100
+      (percent > 1 ? 1 : percent) * 100
     end
 
     def calculate_percent
+      return 0 if total_questions_for_test == 0
       (total_completed_questions_for_test.to_f/total_questions_for_test).round(2)
     end
 
@@ -26,7 +27,7 @@ class TestProgress
     end
 
     def question_ids_for_test
-      @question_ids_for_test ||= practice_test.question_ids 
+      @question_ids_for_test ||= practice_test.question_ids
     end
 
     def total_completed_questions_for_test

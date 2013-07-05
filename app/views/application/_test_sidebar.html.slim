@@ -8,6 +8,7 @@
       li.test-item
         = link_to practice_test.name, new_practice_test_next_section_for_test_path(practice_test_id: practice_test), class: 'test-link'
         = link_to '', '', class: "icon plus #{collapsed_class}"
+        = display_test_percentage_complete(practice_test)
       li class="#{collapsed_class}"
         ul.section-list
           - subject_name = nil
