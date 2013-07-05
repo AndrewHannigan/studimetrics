@@ -1,0 +1,22 @@
+require 'spec_helper'
+
+feature 'user visits practice page' do
+
+  scenario 'sees list of tests' do
+    user = create :user
+    section = create :section
+    section2 = create :section, practice_test: section.practice_test
+
+    section_completion = create :section_completion, user: user, section: section2
+    visit root_path as: user.id
+
+    click_on 'Practice'
+    click_on section2.practice_test.name
+
+    within("div.test-header div.wrapper div.test-info") do
+      expect(page).to have_css "h3", text: section.practice_test_name
+      expect(page).to have_css "h4", text: section2.name
+    end
+  end
+
+end
