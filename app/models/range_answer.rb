@@ -11,7 +11,8 @@ class RangeAnswer < ActiveRecord::Base
             :too_long => "%{count} characters is the maximum allowed" }
 
   def valid_answer?(response)
-    response >= min_value && response <= max_value
+    response_as_float = response.to_f
+    response_as_float >= min_value && response_as_float <= max_value
   end
 
   def to_partial_path
