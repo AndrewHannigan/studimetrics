@@ -37,6 +37,20 @@ feature 'Admin manages questions and answers' do
     expect(page).to have_content("Question was successfully created.")
   end
 
+  scenario 'adds a free response question' do
+    admin = create :admin
+    section = create :section
+
+    visit new_admin_section_question_path(section, question_type: 'Free Response', as: admin.id)
+
+    fill_in 'Position', with: '2'
+    select section.name, from: 'Section'
+    fill_in 'Value', with: '1'
+    click_button 'Create Question'
+
+    expect(page).to have_content("Question was successfully created.")
+  end
+
   scenario 'edits question', js: true do
     admin = FactoryGirl.create :admin
     question = FactoryGirl.create :question, question_type: 'Range'
