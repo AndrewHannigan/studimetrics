@@ -13,9 +13,11 @@ header
           = render 'user_session'
 
   - if signed_in?
-    #user-info
-      span.name = current_user.full_name
-      span.messages = 'E'
-      span.subject = 'CR'
-      span.subject = 'M'
-      span.subject = 'W'
+    #user-info-and-test-info
+      #user-info
+        span.name = current_user.full_name
+        span.messages = 'E'
+        span.subject = 'CR'
+        span.subject = 'M'
+        span.subject = 'W'
+      = last_activity_and_suggested_display(current_user)
