@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  QUESTION_TYPES = ["Range", "Multiple Choice"]
+  QUESTION_TYPES = ["Range", "Multiple Choice", "Free Response"]
   SKIP_VALUE = 'Skip'
 
   belongs_to :section

@@ -24,12 +24,4 @@ describe MultipleChoiceAnswer do
     end
   end
 
-  describe "validations" do
-    it "returns error if the value is > 4 characters" do
-      answer = FactoryGirl.build :multiple_choice_answer, value: "12345"
-      answer.valid?
-
-      expect(answer.errors[:value]).to eq ["4 characters is the maximum allowed"]
-    end
-  end
 end
