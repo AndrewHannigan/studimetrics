@@ -25,6 +25,13 @@ describe RangeAnswer do
 
       expect(answer.valid_answer?(5)).to eq true
     end
+
+    it 'converts the response to a float for comparison' do
+      answer = build :range_answer, min_value: 5, max_value: 6
+
+      expect(answer.valid_answer?('5.23')).to eq true
+    end
+
   end
 
   describe "#answer" do
