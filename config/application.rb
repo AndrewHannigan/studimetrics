@@ -15,7 +15,7 @@ module Studimetrics
     config.assets.enabled = true
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.initialize_on_precompile = false
-    config.assets.precompile += ['admin.css']
+    config.assets.precompile += ['admin.css', 'admin.js']
     config.assets.version = '1.0'
     config.encoding = 'utf-8'
     config.filter_parameters += [:password]
