@@ -21,22 +21,6 @@ feature 'Admin manages questions and answers' do
     expect(page).to have_content("Question was successfully created.")
   end
 
-  scenario 'adds a single value question' do
-    admin = FactoryGirl.create :admin
-    section = FactoryGirl.create :section
-
-    visit new_admin_section_question_path(section, question_type: 'Multiple Choice', as: admin.id)
-
-    fill_in 'Position', with: '1'
-    select section.name, from: 'Section'
-
-    fill_in 'Value', with: '1'
-
-    click_button 'Create Question'
-
-    expect(page).to have_content("Question was successfully created.")
-  end
-
   scenario 'adds a free response question' do
     admin = create :admin
     section = create :section
@@ -46,6 +30,20 @@ feature 'Admin manages questions and answers' do
     fill_in 'Position', with: '2'
     select section.name, from: 'Section'
     fill_in 'Value', with: '1'
+    click_button 'Create Question'
+
+    expect(page).to have_content("Question was successfully created.")
+  end
+
+  scenario 'adds a multiple choice question' do
+    admin = create :admin
+    section = create :section
+
+    visit new_admin_section_question_path(section, question_type: 'Multiple Choice', as: admin.id)
+
+    fill_in 'Position', with: '3'
+    select section.name, from: 'Section'
+    select 'A', from: 'Value'
     click_button 'Create Question'
 
     expect(page).to have_content("Question was successfully created.")
