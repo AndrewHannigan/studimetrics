@@ -1,3 +1,3 @@
 .nested-fields
-  = f.input :value
+  = f.input :value, collection: %w(A B C D E)
   = link_to_remove_association 'remove answer', f
