@@ -3,7 +3,7 @@
   min-height: 700px;
   padding: 20px 10px;
 
-  a {
+  a, .name-without-link {
     display: inline-block;
     vertical-align: middle;
   }
@@ -47,7 +47,7 @@
   }
 
   .section-item {
-    a {
+    a, .name-without-link {
       width: 100px;
     }
   }
