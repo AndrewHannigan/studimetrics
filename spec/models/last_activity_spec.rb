@@ -31,5 +31,24 @@ describe LastActivity do
         expect(last_activity.section).to eq nil
       end
     end
+
+    context "when the user starts two sections and then answers a question on the first section started" do
+      it "returns the last section that had a question answered" do
+        user_response = create :user_response
+        section_completion = user_response.section_completion
+        user = section_completion.user
+        practice_test = section_completion.section.practice_test
+
+        section = create :section, practice_test: practice_test
+        section_completion2 = create :section_completion, section_id: section.id, user: user
+
+        question = create :question, section: section_completion.section
+        user_response = UserResponse.create(question: question, value: "A", correct: true, time: 100, section_completion: section_completion)
+        last_activity = LastActivity.new(user: user)
+
+        expect(last_activity.section).to eq section_completion.section
+
+      end
+    end
   end
 end

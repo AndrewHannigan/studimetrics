@@ -1,6 +1,6 @@
 class UserResponse < ActiveRecord::Base
   belongs_to :question
-  belongs_to :section_completion
+  belongs_to :section_completion, touch: true
   after_save :score_response
 
   def add_time(new_time)
