@@ -4,6 +4,10 @@ FactoryGirl.define do
   factory :section_completion do
     user
     section
-    status "In-Progress"
+    status "Not Started"
+
+    trait :in_progress do
+      status "In-Progress"
+    end
   end
 end

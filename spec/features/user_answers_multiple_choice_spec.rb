@@ -10,7 +10,7 @@ feature 'user answers multiple choice' do
     user = create :user
     visit practice_tests_path as: user.id
 
-    section_on_page(@question.section).click
+    section_link_on_page(@question.section).click
 
     click_link 'Click here to begin'
 
@@ -31,7 +31,7 @@ feature 'user answers multiple choice' do
     user = create :user
     visit practice_tests_path as: user.id
 
-    section_on_page(@question.section).click
+    section_link_on_page(@question.section).click
 
     click_link 'Click here to begin'
 
@@ -40,7 +40,7 @@ feature 'user answers multiple choice' do
 
     click_link('studimetrics')
     click_link('Practice')
-    section_on_page(@question.section).click
+    section_link_on_page(@question.section).click
 
     make_radios_visible
     expect(question_on_page(@question).find('input[checked=checked]').value).to eq('A')
@@ -64,3 +64,8 @@ def make_radios_invisible
   # capybara cant select these if they are display: none
   page.execute_script "$('input.radio').hide()"
 end
+
+def section_link_on_page(section)
+  section_on_page(section).find("a")
+end
+

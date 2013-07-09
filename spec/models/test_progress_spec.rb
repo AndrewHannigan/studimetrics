@@ -32,7 +32,8 @@ describe TestProgress do
         question2 = create :question, :with_answers, section: question.section
 
         user_response = create :user_response, question: question
-        user_response = create :user_response, question: question2
+        section_completion = user_response.section_completion
+        user_response = create :user_response, question: question2, section_completion: section_completion
 
         test_progress = TestProgress.new(user: user_response.section_completion.user, practice_test: question.section.practice_test)
 
@@ -45,9 +46,13 @@ describe TestProgress do
         question = create :question, :with_answers
         question2 = create :question, :with_answers, section: question.section
 
+
         user_response = create :user_response, question: question
-        user_response = create :user_response, question: question2
-        user_response = create :user_response, question: question
+        section_completion = user_response.section_completion
+        user_response = create :user_response, question: question2, section_completion: section_completion
+
+        section_completion2 = create :section_completion, user: section_completion.user
+        user_response = create :user_response, question: question, section_completion: section_completion2
 
         test_progress = TestProgress.new(user: user_response.section_completion.user, practice_test: question.section.practice_test)
 
