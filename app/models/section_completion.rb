@@ -23,12 +23,8 @@ class SectionCompletion < ActiveRecord::Base
     SectionCompletion.where(section: section, user: user).first || NullSectionCompletion.new
   end
 
-  def progress!
+  def in_progress!
     update_attributes status: "In-Progress"
-  end
-
-  def started?
-    status == "In-Progress"
   end
 
   def complete!

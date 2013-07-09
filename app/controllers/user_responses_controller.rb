@@ -22,7 +22,7 @@ class UserResponsesController < ApplicationController
   end
 
   def mark_section_in_progress
-    @section_completion.progress! unless @section_completion.started?
+    @section_completion.in_progress! unless @section_completion.in_progress?
   end
 
   def user_response
