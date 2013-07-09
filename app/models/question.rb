@@ -36,6 +36,10 @@ class Question < ActiveRecord::Base
     "Question #{position}"
   end
 
+  def accepted_response
+    answers.map(&:answer).join(', ')
+  end
+
   private
 
   def answer_class_name
