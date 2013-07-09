@@ -3,7 +3,7 @@ class NullSectionCompletion
     "Not Started"
   end
 
-  def started?
+  def in_progress?
     false
   end
 

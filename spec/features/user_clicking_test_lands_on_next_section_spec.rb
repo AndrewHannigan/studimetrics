@@ -2,12 +2,12 @@ require 'spec_helper'
 
 feature 'user visits practice page' do
 
-  scenario 'sees list of tests' do
+  scenario 'clicking test leads to last activity' do
     user = create :user
     section = create :section
     section2 = create :section, practice_test: section.practice_test
 
-    section_completion = create :section_completion, user: user, section: section2
+    section_completion = create :section_completion, :in_progress, user: user, section: section2
     visit root_path as: user.id
 
     click_on 'Practice'

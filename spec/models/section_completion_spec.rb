@@ -36,16 +36,21 @@ describe SectionCompletion do
     end
   end
 
-  describe '#started?' do
-    it 'returns true if the completion is not in-progress' do
+  describe '#in_progress?' do
+    it 'returns true if the completion is in-progress' do
+      completion = create :section_completion, :in_progress
+      completion.should be_in_progress
+    end
+
+    it 'returns false if completion is not in-progress' do
       completion = create :section_completion
-      completion.should be_started
+      completion.should_not be_in_progress
     end
   end
 
   describe '#complete!' do
     it 'changes the completion status to complete' do
-      completion = create :section_completion
+      completion = create :section_completion, :in_progress
       expect {
         completion.complete!
       }.to change{completion.status}.from('In-Progress').to('Completed')

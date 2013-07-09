@@ -10,7 +10,7 @@ feature 'user answers free response' do
     user = create :user
     visit practice_tests_path as: user.id
 
-    section_on_page(@question.section).click
+    section_link_on_page(@question.section).click
 
     click_link 'Click here to begin'
 
@@ -31,7 +31,7 @@ feature 'user answers free response' do
     user = create :user
     visit practice_tests_path as: user.id
 
-    section_on_page(@question.section).click
+    section_link_on_page(@question.section).click
 
     click_link 'Click here to begin'
 
@@ -39,14 +39,20 @@ feature 'user answers free response' do
 
     click_link('studimetrics')
     click_link('Practice')
-    section_on_page(@question.section).click
+    section_link_on_page(@question.section).click
 
     expect(question_on_page(@question).find('input.string').value).to eq('10')
+    expect(section_on_page(@question.section).find(:css, "span.section-status").text).to eq("In-Progress")
+
   end
 end
 
 def section_on_page(section)
   find("[data-id='section-#{section.id}']")
+end
+
+def section_link_on_page(section)
+  section_on_page(section).find("a")
 end
 
 def question_on_page(question)

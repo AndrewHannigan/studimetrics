@@ -31,6 +31,8 @@ class TestProgress
     end
 
     def total_completed_questions_for_test
-      UserResponse.where(question_id: question_ids_for_test).count
+      UserResponse.joins(:section_completion)
+        .where(user_responses: {question_id: question_ids_for_test})
+        .where(section_completions: {user_id: user.id}).count
     end
 end
