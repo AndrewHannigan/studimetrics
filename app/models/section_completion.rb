@@ -1,5 +1,5 @@
 class SectionCompletion < ActiveRecord::Base
-  STATUS = ["Completed", "In-Progress"]
+  STATUS = ["Completed", "In-Progress", "Not Started"]
   belongs_to :section
   belongs_to :user
   has_many :user_responses
