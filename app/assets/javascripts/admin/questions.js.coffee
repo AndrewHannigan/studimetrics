@@ -1,5 +1,5 @@
 $ ->
-  $('body').on 'change', '#question_question_type',  reloadQuestionForm
+  $(document).on 'change', '#question_question_type',  reloadQuestionForm
 
 
 reloadQuestionForm = (event) ->
