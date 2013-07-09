@@ -7,6 +7,7 @@ class UserResponsesController < ApplicationController
     new_response.value = user_response_params[:value]
     new_response.add_time user_response_params[:time]
     new_response.save
+    mark_section_in_progress
     respond_with(user_response, location: nil)
   end
 
@@ -17,7 +18,11 @@ class UserResponsesController < ApplicationController
   end
 
   def section_completion
-    @section_completion ||= SectionCompletion.in_progress.where(user_id: current_user.id).where(section_id: question.section_id).first
+    @section_completion ||= SectionCompletion.not_started_or_in_progress.where(user_id: current_user.id).where(section_id: question.section_id).last
+  end
+
+  def mark_section_in_progress
+    @section_completion.progress! unless @section_completion.started?
   end
 
   def user_response

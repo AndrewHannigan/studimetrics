@@ -15,12 +15,20 @@ class SectionCompletion < ActiveRecord::Base
     define_method(:"#{status.downcase.underscore}?") { self.status == status }
   end
 
+  def self.not_started_or_in_progress
+    self.where(status: ["In-Progress", "Not Started"])
+  end
+
   def self.for_section_and_user(section, user)
     SectionCompletion.where(section: section, user: user).first || NullSectionCompletion.new
   end
 
+  def progress!
+    update_attributes status: "In-Progress"
+  end
+
   def started?
-    true
+    status == "In-Progress"
   end
 
   def complete!

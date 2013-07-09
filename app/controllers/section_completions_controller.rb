@@ -10,7 +10,7 @@ class SectionCompletionsController < ApplicationController
       return redirect_to :back
     end
 
-    @section_completion = SectionCompletion.in_progress.where(user_id: current_user.id).where(section_id: section.id).first_or_create
+    @section_completion = find_or_create_section_completion(section)
     question_ids = @section_completion.question_ids
     section.questions.each do |question|
       unless question_ids.include? question.id
@@ -39,5 +39,10 @@ class SectionCompletionsController < ApplicationController
   def find_and_authorize_resource
     @section_completion = SectionCompletion.find params[:id]
     redirect_to profile_path unless @section_completion.user == current_user
+  end
+
+  def find_or_create_section_completion(section)
+    section_completion = SectionCompletion.not_started_or_in_progress.where(user_id: current_user.id).where(section_id: section.id).last
+    section_completion || SectionCompletion.create(user: current_user, section: section)
   end
 end

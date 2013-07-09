@@ -11,8 +11,9 @@ feature "user sees section status" do
   end
 
   scenario "when the section is in-progress" do
-    user_response = create :user_response
-    user = user_response.section_completion.user
+    section_completion = create :section_completion, :in_progress
+    user_response = create :user_response, section_completion: section_completion
+    user = section_completion.user
 
     visit practice_tests_path(as: user.id)
 
