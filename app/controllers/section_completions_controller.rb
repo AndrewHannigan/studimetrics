@@ -1,5 +1,7 @@
 class SectionCompletionsController < ApplicationController
   before_filter :authorize
+  before_filter :find_and_authorize_resource, only: [:update, :show]
+  respond_to :html
 
   def new
     section = Section.where(id: params[:section_id]).includes(:practice_test).first
@@ -18,22 +20,24 @@ class SectionCompletionsController < ApplicationController
   end
 
   def update
-    @section_completion = SectionCompletion.find params[:id]
+    @section_completion.complete!
 
-    if @section_completion.save
-      redirect_to review_section_completion_path(@section_completion)
-    else
-      render :new
-    end
+    # TODO: if last one in test, make test completion
+
+    respond_with @section_completion
   end
 
-  def review
-
+  def show
   end
 
   private
 
   def section_completion_params
     params.require(:section_completion).permit(:section_id)
+  end
+
+  def find_and_authorize_resource
+    @section_completion = SectionCompletion.find params[:id]
+    redirect_to profile_path unless @section_completion.user == current_user
   end
 end
