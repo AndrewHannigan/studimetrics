@@ -8,11 +8,7 @@ Studimetrics::Application.routes.draw do
   end
 
   resources :sections, only: [:show]
-  resources :section_completions, only: [:new, :create, :update] do
-    member do
-      get :review
-    end
-  end
+  resources :section_completions, only: [:new, :create, :update, :show]
   resources :user_responses, only: [:create]
 
   # admin routes

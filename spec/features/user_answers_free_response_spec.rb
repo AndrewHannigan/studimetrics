@@ -6,11 +6,13 @@ feature 'user answers free response' do
     @question2 = create :question, :with_answers, section: @question.section, position: 2, question_type: "Free Response"
   end
 
-  scenario 'with no previous answers for that section' do
+  scenario 'with no previous answers for that section', js: true do
     user = create :user
     visit practice_tests_path as: user.id
 
     section_on_page(@question.section).click
+
+    click_link 'Click here to begin'
 
     question1 = question_on_page @question
     question1.find(:css, "input.string").set("11.3")
@@ -19,7 +21,10 @@ feature 'user answers free response' do
 
     click_button 'Submit'
 
-    expect(page).to have_content('review!')
+    question1 = question_on_page @question
+    expect(question1).to have_content('11.3')
+    question2 = question_on_page @question2
+    expect(question2).to have_content('10')
   end
 
   scenario 'saves previous answers for that section', js: true do

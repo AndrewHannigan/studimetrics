@@ -6,20 +6,25 @@ feature 'user answers multiple choice' do
     @question2 = create :question, :with_answers, section: @question.section, position: 2
   end
 
-  scenario 'with no previous answers for that section' do
+  scenario 'with no previous answers for that section', js: true do
     user = create :user
     visit practice_tests_path as: user.id
 
     section_on_page(@question.section).click
 
-    question1 = question_on_page @question
-    question1.choose('A')
-    question2 = question_on_page @question2
-    question2.choose('B')
+    click_link 'Click here to begin'
+
+    make_radios_visible
+    question_on_page(@question).choose('A')
+    question_on_page(@question2).choose('B')
+    make_radios_invisible
 
     click_button 'Submit'
 
-    expect(page).to have_content('review!')
+    question1 = question_on_page @question
+    expect(question1).to have_content('A')
+    question2 = question_on_page @question2
+    expect(question2).to have_content('B')
   end
 
   scenario 'saves previous answers for that section', js: true do
@@ -53,4 +58,9 @@ end
 def make_radios_visible
   # capybara cant select these if they are display: none
   page.execute_script "$('input.radio').show()"
+end
+
+def make_radios_invisible
+  # capybara cant select these if they are display: none
+  page.execute_script "$('input.radio').hide()"
 end
