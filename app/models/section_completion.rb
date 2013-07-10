@@ -21,7 +21,7 @@ class SectionCompletion < ActiveRecord::Base
   end
 
   def self.for_section_and_user(section, user)
-    SectionCompletion.where(section: section, user: user).first || NullSectionCompletion.new
+    SectionCompletion.where(section: section, user: user).first || NullSectionCompletion.new(section)
   end
 
   def in_progress!

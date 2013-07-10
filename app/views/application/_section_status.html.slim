@@ -1,2 +1,5 @@
-span class="section-status #{section_completion.status.downcase.underscore.gsub(" ", "-")}"
-  = section_completion.status
+div class="#{section_completion.status.downcase.underscore.gsub(" ", "-")}"
+  span class="section-name"
+    = section_completion.section_name
+  span class="section-status"
+    = section_completion.status

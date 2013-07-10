@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require jquery-scrolltofixed
 //= require turbolinks
+//= require ss-junior
 
 //= require timer
 //= require disable_children
