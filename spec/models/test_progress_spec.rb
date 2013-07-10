@@ -60,4 +60,20 @@ describe TestProgress do
       end
     end
   end
+
+  describe "#complete?" do
+    it "returns true if percentage_complete is 100" do
+      t = TestProgress.new
+      t.expects(:percentage_complete).returns(100)
+
+      expect(t.complete?).to eq true
+    end
+
+    it "returns false if percentage_complete is < 100" do
+      t = TestProgress.new
+      t.expects(:percentage_complete).returns(75)
+
+      expect(t.complete?).to eq false
+    end
+  end
 end
