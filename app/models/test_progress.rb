@@ -10,6 +10,10 @@ class TestProgress
     @percentage_complete ||= adjusted_percent
   end
 
+  def complete?
+    percentage_complete == 100
+  end
+
   private
 
     def adjusted_percent

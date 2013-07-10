@@ -31,4 +31,18 @@ describe TestCompletion do
     end
   end
 
+  describe "#retake_available?" do
+    it "calls complete on test progress" do
+      user_response = create :user_response
+      user = user_response.section_completion.user
+      practice_test = user_response.section_completion.section.practice_test
+
+      test_completion = TestCompletion.new(user: user, practice_test: practice_test)
+
+      TestProgress.any_instance.expects(:completed?).returns(true)
+
+      expect(test_completion.retake_available?).to eq true
+    end
+  end
+
 end
