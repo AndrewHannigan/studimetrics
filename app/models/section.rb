@@ -12,4 +12,8 @@ class Section < ActiveRecord::Base
   def name
     "Section #{number}"
   end
+
+  def questions_count
+    questions.count
+  end
 end
