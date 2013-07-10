@@ -57,4 +57,79 @@ describe SectionCompletion do
     end
   end
 
+  describe "#total_time" do
+    context "when no questions have been answered" do
+      it "returns 0" do
+        completion = create :section_completion, :in_progress
+        expect(completion.total_time).to eq 0
+      end
+    end
+
+    context "when multiple questions have been answered" do
+      it "returns sum of time for each user response" do
+        completion = create :section_completion, :in_progress
+        section = completion.section
+        question = create :question, section: section
+        question2 = create :question, section: section
+
+        user_response = create :user_response, section_completion: completion, question: question, time: 50
+        user_response2 = create :user_response, section_completion: completion, question: question2, time: 25
+
+        expect(completion.total_time).to eq (user_response.time + user_response2.time)
+      end
+    end
+  end
+
+  describe "#total_correct" do
+    context "when there are no user responses" do
+      it "returns 0" do
+        completion = create :section_completion, :in_progress
+
+        expect(completion.total_correct).to eq 0
+      end
+    end
+
+    context "when there are only correct responses" do
+      it "returns total correct responses" do
+        completion = create :section_completion, :in_progress
+        section = completion.section
+        question = create :question, section: section
+        question2 = create :question, section: section
+
+        UserResponse.any_instance.stubs(:correct?).returns(true)
+
+        user_response = create :user_response, section_completion: completion, question: question, correct: true
+        user_response2 = create :user_response, section_completion: completion, question: question2, correct: true
+
+        expect(completion.total_correct).to eq 2
+      end
+    end
+
+    context "when there are both correct and incorrect responses" do
+      it "returns only correct responses count" do
+        completion = create :section_completion, :in_progress
+        section = completion.section
+        question = create :question, section: section
+        question2 = create :question, section: section
+
+        UserResponse.any_instance.stubs(:correct?).returns(true)
+        user_response = create :user_response, section_completion: completion, question: question, correct: true
+
+        UserResponse.any_instance.stubs(:correct?).returns(false)
+        user_response2 = create :user_response, section_completion: completion, question: question2, correct: false
+
+        expect(completion.total_correct).to eq 1
+      end
+    end
+  end
+
+  describe "section_questions_count" do
+    it "should call section method questions_count" do
+      section_completion = create :section_completion
+      section_completion.section.expects(:questions_count)
+
+      section_completion.section_questions_count
+    end
+  end
+
 end

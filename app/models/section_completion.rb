@@ -8,6 +8,7 @@ class SectionCompletion < ActiveRecord::Base
   accepts_nested_attributes_for :user_responses, reject_if: proc { |attributes| attributes['value'].blank? }
 
   delegate :name, to: :section, prefix: true
+  delegate :questions_count, to: :section, prefix: true
 
   STATUS.each do |status|
     singleton_class.send(:define_method, :"#{status.downcase.underscore}") { where(:status => status) }
@@ -29,5 +30,13 @@ class SectionCompletion < ActiveRecord::Base
 
   def complete!
     update_attributes status: 'Completed'
+  end
+
+  def total_time
+    user_responses.sum(:time)
+  end
+
+  def total_correct
+    user_responses.where(correct: true).count
   end
 end

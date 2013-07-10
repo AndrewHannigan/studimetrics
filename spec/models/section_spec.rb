@@ -9,4 +9,13 @@ describe Section do
      }.to raise_error
     end
   end
+
+  describe "#questions_count" do
+    it "should equal number of questions for section" do
+      question = create :question
+      section = question.section
+
+      expect(section.questions_count).to eq section.questions.count
+    end
+  end
 end
