@@ -21,7 +21,4 @@
               ul
                 li.section-item
                   - section_completion = SectionCompletion.for_section_and_user(section, current_user)
-                  = link_to_if section_completion.completed?, section.name, section_completion_path(section_completion), data: { id: "section-#{section.id}" } do
-                    span.name-without-link = section.name
-                  = section_status section_completion
-
+                  = link_to_if section_completion.completed?, section_status(section_completion), section_completion_path(section_completion), data: { id: "section-#{section.id}" }, class: 'section-link'

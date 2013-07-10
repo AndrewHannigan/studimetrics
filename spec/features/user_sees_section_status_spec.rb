@@ -7,7 +7,7 @@ feature "user sees section status" do
 
     visit practice_tests_path(as: user.id)
 
-    expect(page).to have_css "span.section-status.not-started", text: "Not Started"
+    expect(page).to have_css "div.not-started .section-status", text: "Not Started"
   end
 
   scenario "when the section is in-progress" do
@@ -17,7 +17,7 @@ feature "user sees section status" do
 
     visit practice_tests_path(as: user.id)
 
-    expect(page).to have_css "span.section-status.in_progress", text: "In-Progress"
+    expect(page).to have_css "div.in_progress .section-status", text: "In-Progress"
   end
 
   scenario "when the section is completed" do
@@ -27,6 +27,6 @@ feature "user sees section status" do
 
     visit practice_tests_path(as: user.id)
 
-    expect(page).to have_css "span.section-status.completed", text: "Completed"
+    expect(page).to have_css "div.completed .section-status", text: "Completed"
   end
 end

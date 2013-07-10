@@ -22,6 +22,11 @@
           td = user_response.question.position
           td = user_response.value
           td = user_response.question.accepted_response
-          td = user_response.correct
-          td = user_response.time
+          td.correct-icon
+            - if user_response.correct?
+              i class="ss-icon correct" &#x2713;
+            - else
+              i class="ss-icon incorrect" &#x2421;
+
+          td = TimeConversions.seconds_to_minutes_and_seconds user_response.time
           td ?

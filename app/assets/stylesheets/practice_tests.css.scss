@@ -3,7 +3,7 @@
   min-height: 700px;
   padding: 20px 10px;
 
-  a, .name-without-link {
+  .icon, span {
     display: inline-block;
     vertical-align: middle;
   }
@@ -35,7 +35,6 @@
     @include transition(height 0.3s ease-in-out);
     @include no-select;
     overflow: hidden;
-    cursor: pointer;
 
     &.collapsed {
       height: 0;
@@ -47,17 +46,27 @@
   }
 
   .section-item {
-    a, .name-without-link {
+    span { 
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .section-name {
       width: 100px;
     }
-  }
-  span.section-status {
-    vertical-align: middle;
-    color: $dark-gray;
 
-    &.completed {
-      color: $light-green;
+    .completed {
+      color: $dark-green;
     }
+
+    .in-progress, .in_progress {
+      color: $dark-gray;
+    }
+
+    .not-started {
+      color: darken($light-gray, 20%);
+    }
+
   }
 }
 

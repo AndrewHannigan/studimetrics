@@ -19,8 +19,6 @@
                 span = subject_name
             li
               ul
-                li.section-item data-id= "section-#{section.id}"
-                  = link_to section.name, new_section_completion_path(section_id: section.id)
+                li.section-item data-id="section-#{section.id}"
                   - section_completion = SectionCompletion.for_section_and_user(section, current_user)
-                  = section_status section_completion
-
+                  = section_completion_link section_completion
