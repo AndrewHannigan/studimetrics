@@ -150,3 +150,16 @@
     }
   }
 }
+
+#section-completion-table {
+  font-size: 18px;
+  margin: 14px;
+
+  .correct {
+    color: $dark-green;
+  }
+
+  .incorrect {
+    color: $light-red;
+  }
+}
