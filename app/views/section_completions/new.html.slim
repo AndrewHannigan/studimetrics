@@ -9,6 +9,10 @@
           h3 = @section_completion.section.practice_test_name
           h4 = @section_completion.section_name
 
+    - if @section_completion.retake?
+      .test-notice
+        .small = t 'section_completion.retake_notice'
+
     #question-list data-disabled=""
       - if f.object.user_responses.blank?
         p There are no questions in this test.

@@ -12,22 +12,20 @@ feature 'user views review page' do
     expect(time).to have_content "01:12"
   end
 
-  scenario 'sees options to retake or move to the next test if the test is completed', js: true do
-    pending 'what should we actually expect here since we arent reseting ?'
-
+  scenario 'retakes test', js: true do
     question1 = create :question, :with_answers
     section2 = create :section, practice_test: question1.section.practice_test
     create :question, :with_answers, section: section2
     user = create :user
 
     visit_and_complete_section(question1.section, user)
-    expect(page).to_not have_content('Test Complete!')
+    expect(page).to_not have_content(I18n.t 'review.test_complete_title')
 
     visit_and_complete_section(section2, user)
-    expect(page).to have_content('Test Complete!')
+    expect(page).to have_content(I18n.t 'review.test_complete_title')
     find('a.retake-test').click
 
-    expect(page.find("span.percentage-complete")).to_not have_content '100%'
+    expect(page).to have_content(I18n.t 'section_completion.retake_notice')
   end
 end
 
