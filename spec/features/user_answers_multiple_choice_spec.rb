@@ -14,10 +14,10 @@ feature 'user answers multiple choice' do
 
     click_link 'Click here to begin'
 
-    make_radios_visible
-    question_on_page(@question).choose('A')
-    question_on_page(@question2).choose('B')
-    make_radios_invisible
+    make_radios_visible do
+      question_on_page(@question).choose('A')
+      question_on_page(@question2).choose('B')
+    end
 
     click_button 'Submit'
 
@@ -35,37 +35,17 @@ feature 'user answers multiple choice' do
 
     click_link 'Click here to begin'
 
-    make_radios_visible
-    question_on_page(@question).choose('A')
+    make_radios_visible do
+      question_on_page(@question).choose('A')
+    end
 
     click_link('studimetrics')
     click_link('Practice')
     section_link_on_page(@question.section).click
 
-    make_radios_visible
-    expect(question_on_page(@question).find('input[checked=checked]').value).to eq('A')
+    make_radios_visible do
+      expect(question_on_page(@question).find('input[checked=checked]').value).to eq('A')
+    end
   end
-end
-
-def section_on_page(section)
-  find("[data-id='section-#{section.id}']")
-end
-
-def question_on_page(question)
-  find("[data-id='question-#{question.id}']")
-end
-
-def make_radios_visible
-  # capybara cant select these if they are display: none
-  page.execute_script "$('input.radio').show()"
-end
-
-def make_radios_invisible
-  # capybara cant select these if they are display: none
-  page.execute_script "$('input.radio').hide()"
-end
-
-def section_link_on_page(section)
-  section_on_page(section).find("a")
 end
 

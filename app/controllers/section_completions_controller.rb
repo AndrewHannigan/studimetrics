@@ -21,9 +21,6 @@ class SectionCompletionsController < ApplicationController
 
   def update
     @section_completion.complete!
-
-    # TODO: if last one in test, make test completion
-
     respond_with @section_completion
   end
 

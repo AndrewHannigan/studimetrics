@@ -14,6 +14,44 @@
   }
 }
 
+.test-notice {
+  @include linear-gradient(tint($dark-gray, 30%), $dark-gray);
+  @include pad(14px 0);
+  @include clearfix;
+  color: $almost-white;
+  text-align: center;
+
+  h3 {
+    margin: 0;
+  }
+
+  & > h5 {
+    margin-bottom: 20px;
+  }
+
+  .retake-test {
+    @include span-columns(2 of 9);
+    @include shift(2);
+  }
+
+  .next-test {
+    @include span-columns(2 of 9);
+    @include shift(1);
+  }
+
+  .ss-icon {
+    font-size: 200%;
+  }
+
+  a {
+    color: $almost-white;
+
+    &:hover {
+      color: $light-gray;
+    }
+  }
+}
+
 #question-list {
   @include span-columns(5 of 9);
   @include pad;
