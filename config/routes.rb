@@ -5,6 +5,9 @@ Studimetrics::Application.routes.draw do
 
   resources :practice_tests, only: [:index] do
     resource :next_section_for_test, only: [:new]
+    member do
+      get :next
+    end
   end
 
   resources :sections, only: [:show]

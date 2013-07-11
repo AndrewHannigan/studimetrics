@@ -1,4 +1,5 @@
-- test_progress = TestProgress.new user: current_user, practice_test: section_completion.section.practice_test
+- practice_test = section_completion.section.practice_test
+- test_progress = TestProgress.new user: current_user, practice_test: practice_test
 
 - if test_progress.complete?
   .test-notice
@@ -9,6 +10,6 @@
       i class="ss-icon" &#x21BA;
       h5 Retake this test
 
-    = link_to '', class: 'next-test' do
+    = link_to next_practice_test_path(practice_test), class: 'next-test' do
       i class="ss-icon" &#x23E9;
       h5 Take next test
