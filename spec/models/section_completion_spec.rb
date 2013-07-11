@@ -145,4 +145,21 @@ describe SectionCompletion do
     end
   end
 
+  describe "#set_scoreable!" do
+    it "sets scoreable to true if first section/user combination" do
+      section_completion = create :section_completion
+      section_completion.set_scoreable!
+
+      expect(section_completion.scoreable?).to eq true
+    end
+
+    it "sets scoreable to false unless first section/user/combination" do
+      section_completion = create :section_completion
+      section_completion2 = create :section_completion, section: section_completion.section, user: section_completion.user
+
+      section_completion2.set_scoreable!
+
+      expect(section_completion2.scoreable?).to eq false
+    end
+  end
 end

@@ -43,4 +43,8 @@ class SectionCompletion < ActiveRecord::Base
   def retake?
     SectionCompletion.where(section: section, user: user).count > 1
   end
+
+  def set_scoreable!
+    self.update_attributes(scoreable: true) unless retake?
+  end
 end
