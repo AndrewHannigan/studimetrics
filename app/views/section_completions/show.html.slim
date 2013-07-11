@@ -6,6 +6,10 @@
       .test-info
         h3 = @section_completion.section.practice_test_name
         h4 = @section_completion.section_name
+      .section-completion-accuracy
+        = section_completion_accuracy(@section_completion)
+      .section-completion-total-time
+        = section_completion_total_time(@section_completion)
 
   = render 'complete_header', section_completion: @section_completion
 

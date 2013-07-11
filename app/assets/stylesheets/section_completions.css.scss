@@ -4,13 +4,34 @@
   border-bottom: 1px solid darken(#eee, 10%);
 
   .wrapper {
+    @include clearfix;
     margin: 18px;
   }
 }
 
 .test-info {
+  @include span-columns(3 of 9);
   h3, h4 {
     margin: 0;
+  }
+}
+
+.section-completion-accuracy {
+  text-align: center;
+  margin-top: 10px;
+  @include span-columns(3 of 9);
+  span {
+    color: $dark-gray;
+  }
+}
+
+.section-completion-total-time {
+  text-align: right;
+  margin-top: 10px;
+  @include span-columns(3 of 9);
+
+  span {
+    color: $dark-gray;
   }
 }
 
