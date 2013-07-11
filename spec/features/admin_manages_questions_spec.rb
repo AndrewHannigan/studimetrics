@@ -4,6 +4,7 @@ feature 'Admin manages questions and answers' do
   scenario 'adds a range question by default' do
     admin = FactoryGirl.create :admin
     section = FactoryGirl.create :section
+    topic = create :topic
 
     visit admin_practice_test_section_path(section.practice_test, section, as: admin.id)
     click_link 'Edit Questions'
@@ -12,6 +13,7 @@ feature 'Admin manages questions and answers' do
     fill_in 'Position', with: '1'
     select section.name, from: 'Section'
     select "Range", from: "Question type"
+    select topic.name, from: "Concept"
 
     fill_in 'Minimum Value', with: '1'
     fill_in 'Maximum Value', with: '23'
@@ -24,11 +26,13 @@ feature 'Admin manages questions and answers' do
   scenario 'adds a free response question' do
     admin = create :admin
     section = create :section
+    topic = create :topic
 
     visit new_admin_section_question_path(section, question_type: 'Free Response', as: admin.id)
 
     fill_in 'Position', with: '2'
     select section.name, from: 'Section'
+    select topic.name, from: "Concept"
     fill_in 'Value', with: '1'
     click_button 'Create Question'
 
@@ -38,11 +42,13 @@ feature 'Admin manages questions and answers' do
   scenario 'adds a multiple choice question' do
     admin = create :admin
     section = create :section
+    topic = create :topic
 
     visit new_admin_section_question_path(section, question_type: 'Multiple Choice', as: admin.id)
 
     fill_in 'Position', with: '3'
     select section.name, from: 'Section'
+    select topic.name, from: "Concept"
     select 'A', from: 'Value'
     click_button 'Create Question'
 
@@ -52,11 +58,13 @@ feature 'Admin manages questions and answers' do
   scenario 'edits question', js: true do
     admin = FactoryGirl.create :admin
     question = FactoryGirl.create :question, question_type: 'Range'
+    topic = create :topic
 
     visit admin_section_questions_path(question.section, as: admin.id)
     click_link 'Edit'
 
     fill_in 'Position', with: '1'
+    select topic.name, from: "Concept"
     select question.section.name, from: 'Section'
 
     click_link 'add answer'
@@ -72,10 +80,12 @@ feature 'Admin manages questions and answers' do
   scenario 'switches question type after the page loads', js: true do
     admin = FactoryGirl.create :admin
     section = FactoryGirl.create :section
+    topic = create :topic
 
     visit new_admin_section_question_path(section, question_type: 'Multiple Choice', as: admin.id)
 
     select 'Range', from: 'Question type'
+    select topic.name, from: "Concept"
 
     sleep 0.5
     fill_in 'Position', with: '1'
