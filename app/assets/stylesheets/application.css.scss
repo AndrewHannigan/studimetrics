@@ -1,11 +1,13 @@
 @import 'normalize';
 @import 'bourbon';
+// $visual-grid: true;
 @import 'neat';
 @import 'bitters/base';
 
 @import 'buttons';
 @import 'fonts';
 @import 'mixins';
+@import 'ss-symbolicons-block';
 @import 'ss-junior';
 
 @import 'global';
