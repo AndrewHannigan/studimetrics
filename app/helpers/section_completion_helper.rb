@@ -17,4 +17,12 @@ module SectionCompletionHelper
     render "section_status", section_completion: section_completion
   end
 
+  def section_completion_accuracy(section_completion)
+    render "section_completion_accuracy", section_completion: section_completion
+  end
+
+  def section_completion_total_time(section_completion)
+    render "section_completion_total_time", section_completion: section_completion
+  end
+
 end
