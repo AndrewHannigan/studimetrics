@@ -132,4 +132,17 @@ describe SectionCompletion do
     end
   end
 
+  describe '#retake?' do
+    it 'returns true if there is another section completion for the same section and user' do
+      section_completion = create :section_completion
+      section_completion2 = create :section_completion, user: section_completion.user, section: section_completion.section
+      expect(section_completion2).to be_retake
+    end
+
+    it 'returns false otherwise' do
+      section_completion = build_stubbed :section_completion
+      expect(section_completion).to_not be_retake
+    end
+  end
+
 end
