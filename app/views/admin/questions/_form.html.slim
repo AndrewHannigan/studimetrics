@@ -3,6 +3,7 @@
   .admin-block
     = f.association :section, collection: Section.where(practice_test_id: parent.practice_test_id), include_blank: false
     = f.input :question_type, collection: Question::QUESTION_TYPES, include_blank: false, disabled: disabled_question_type_input, hint: "Question type cannot be updated once created"
+    = f.association :topic, colelction: Topic.all, include_blank: false, label: "Concept"
     = f.input :position, hint: 'defaults to the end of the section'
 
   .admin-block
