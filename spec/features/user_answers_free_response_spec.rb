@@ -46,15 +46,3 @@ feature 'user answers free response' do
 
   end
 end
-
-def section_on_page(section)
-  find("[data-id='section-#{section.id}']")
-end
-
-def section_link_on_page(section)
-  section_on_page(section).find("a")
-end
-
-def question_on_page(question)
-  find("[data-id='question-#{question.id}']")
-end
