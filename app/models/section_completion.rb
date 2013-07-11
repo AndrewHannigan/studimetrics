@@ -39,4 +39,8 @@ class SectionCompletion < ActiveRecord::Base
   def total_correct
     user_responses.where(correct: true).count
   end
+
+  def retake?
+    SectionCompletion.where(section: section, user: user).count > 1
+  end
 end
