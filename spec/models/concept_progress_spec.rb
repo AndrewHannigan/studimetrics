@@ -51,6 +51,64 @@ describe ConceptProgress do
       concept_progress = ConceptProgress.new(user: user, topic: question.topic)
       expect(concept_progress.percentage_complete).to eq 50
     end
-
   end
+
+  describe "#average_time_for_responses" do
+    it "returns average of time for responses in seconds" do
+      question = create :question, :with_answers
+      question2 = create :question, :with_answers, topic: question.topic
+      user = create :user
+
+      section_completion = create :section_completion, section: question.section, user: user, scoreable: true
+      user_response = create :user_response, question: question, section_completion: section_completion, time: 60
+
+      section_completion2 = create :section_completion, section: question2.section, user: user, scoreable: true
+      user_response2 = create :user_response, question: question2, section_completion: section_completion2, time: 30
+
+      concept_progress = ConceptProgress.new(user: user, topic: question.topic)
+      expect(concept_progress.average_time_for_responses).to eq 45
+    end
+
+    it "returns 0 when you have no responses for a given topic" do
+      question = create :question, :with_answers
+      user = create :user
+
+      concept_progress = ConceptProgress.new(user: user, topic: question.topic)
+
+      expect(concept_progress.average_time_for_responses).to eq 0
+    end
+  end
+
+  describe "#frequency" do
+    it "returns total questions for that topic across all tests" do
+      question = create :question
+      question2 = create :question, topic: question.topic
+
+      concept_progress = ConceptProgress.new(topic: question.topic)
+
+      expect(concept_progress.frequency).to eq 2
+    end
+  end
+
+
+  describe "#accuracy" do
+    it "returns percentage of questions answered correctly" do
+      question = create :question, :with_answers
+      question2 = create :question, :with_answers, topic: question.topic
+      user = create :user
+
+      section_completion = create :section_completion, section: question.section, user: user, scoreable: true
+      user_response = create :user_response, question: question, section_completion: section_completion
+
+      section_completion2 = create :section_completion, section: question2.section, user: user, scoreable: true
+      user_response2 = create :user_response, question: question2, value: "B", section_completion: section_completion2
+
+      concept_progress = ConceptProgress.new(user: user, topic: question.topic)
+
+      expect(user_response.correct?).to eq true
+      expect(user_response2.correct?).to eq false
+      expect(concept_progress.accuracy).to eq 50
+    end
+  end
+
 end
