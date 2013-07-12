@@ -1,0 +1,15 @@
+tr.concept-progress
+  td
+    = concept_progress.topic.name
+  td
+    = concept_progress.topic.subject
+  td
+    | ?
+  td
+    = number_to_percentage(concept_progress.accuracy, precision: 0)
+  td
+    = concept_progress.frequency
+  td
+    = TimeConversions.seconds_to_minutes_and_seconds concept_progress.average_time_for_responses
+  td
+    = number_to_percentage(concept_progress.percentage_complete, precision: 0)
