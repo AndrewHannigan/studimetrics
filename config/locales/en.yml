@@ -6,3 +6,12 @@ en:
     take_next_test: 'Take next test'
   section_completion:
     retake_notice: 'You are retaking a test. Answers will not count towards your projected score.'
+  profile:
+    concept_progress:
+      title: "concepts"
+      subject: "Subject"
+      accuracy: "Accuracy"
+      frequency: "Frequency"
+      average_time: "Average Time"
+      progress: "Progress"
+      focus_rank: "Focusrank"
