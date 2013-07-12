@@ -1,6 +1,20 @@
 require 'spec_helper'
 
 describe ConceptProgress do
+
+  describe "ConceptProgress#generate_concept_progresses_for_user" do
+    it "creates concept progresses for all concepts for the user" do
+      user = create :user
+      topic = create :topic
+      topic2 = create :topic
+      concept_progresses = ConceptProgress.generate_for_user(user)
+
+      expect(concept_progresses.length).to eq 2
+      expect(concept_progresses.map(&:user)).to eq [user, user]
+      expect(concept_progresses.map(&:topic).sort).to eq [topic, topic2].sort
+    end
+  end
+
   describe "#percentage_complete" do
     it "returns 0 when no questions have been answered for a given concept" do
       question = create :question, :with_answers

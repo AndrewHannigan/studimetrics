@@ -1,9 +1,17 @@
 class ConceptProgress
+  extend ActiveModel::Naming
+
   attr_accessor :user, :topic, :total_questions_for_topic, :responses_for_topic, :total_responses_for_topic
 
   def initialize(options ={})
     @user = options[:user]
     @topic = options[:topic]
+  end
+
+  def self.generate_for_user(user)
+    Topic.all.collect do |topic|
+      ConceptProgress.new(user: user, topic: topic)
+    end
   end
 
   def percentage_complete
@@ -20,6 +28,10 @@ class ConceptProgress
 
   def accuracy
     (total_correct_responses_for_topic.to_f/total_questions_for_topic).round(2) * 100
+  end
+
+  def to_partial_path
+    "/concept_progresses/concept_progress"
   end
 
   private
