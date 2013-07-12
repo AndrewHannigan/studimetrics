@@ -40,6 +40,9 @@ class SectionCompletionsController < ApplicationController
 
   def find_or_create_section_completion(section)
     section_completion = SectionCompletion.not_started_or_in_progress.where(user_id: current_user.id).where(section_id: section.id).last
-    section_completion || SectionCompletion.create(user: current_user, section: section)
+    section_completion = section_completion || SectionCompletion.create(user: current_user, section: section)
+    section_completion.set_scoreable!
+    section_completion
   end
+
 end
