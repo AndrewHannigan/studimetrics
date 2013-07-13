@@ -13,8 +13,7 @@ class @Timer
 
   start: =>
     @startTime = new Date().getTime()
-    @previouslyElapsedTime = parseFloat(localStorage.getItem('currentTime') || 0)
-
+    @previouslyElapsedTime = @timeFromStorage()
     @resume()
     @triggerEvent('start')
 
@@ -26,23 +25,17 @@ class @Timer
     @updateTimerUI()
     @triggerEvent('resume')
 
-  tick: =>
-    time = new Date().getTime() - @startTime
-    @elapsedTime = Math.floor(time / 10) / 100
-    @updateTimerContent()
-    @triggerEvent('tick')
-
   reset: =>
     @elapsedTime = 0
     @previouslyElapsedTime = 0
-    localStorage.removeItem('currentTime')
+    @removeTimeFromStorage()
     @clearIntervalAndUpdateUI()
-    @triggerEvent('tick')
+    @triggerEvent('reset')
 
   pause: =>
-    localStorage.setItem('currentTime', @currentTime())
+    @saveTimeToStorage()
     @clearIntervalAndUpdateUI()
-    @triggerEvent('tick')
+    @triggerEvent('pause')
 
   toggle: (event) =>
     event.preventDefault()
@@ -59,6 +52,16 @@ class @Timer
 
   currentTime: =>
     @elapsedTime + @previouslyElapsedTime
+
+
+
+  #### private ####
+
+  tick: =>
+    time = new Date().getTime() - @startTime
+    @elapsedTime = Math.floor(time / 10) / 100
+    @updateTimerContent()
+    @triggerEvent('tick')
 
   updateTimerUI: =>
     @updateTimerContent()
@@ -101,6 +104,23 @@ class @Timer
     if @domElement
       @domElement.trigger "timer:#{type}"
 
-$.fn.timer = ->
+  timeFromStorage: =>
+    parseFloat(localStorage.getItem(@localStorageString()) || 0)
+
+  saveTimeToStorage: =>
+    localStorage.setItem(@localStorageString(), @currentTime())
+
+  removeTimeFromStorage: =>
+    localStorage.removeItem(@localStorageString())
+
+  localStorageString: =>
+    if @domElement
+      "#{@domElement.attr('id')}-currentTime"
+    else
+      "timer-currentTime"
+
+
+
+$.fn.timer = (options) ->
   @each ->
     new Timer(this)

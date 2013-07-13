@@ -61,7 +61,7 @@
   }
 }
 
-#test-timer {
+#test-timers {
   float: left;
   width: 320px;
   margin-top:24px;
@@ -90,13 +90,17 @@
   }
 }
 
-#timer-content {
+.timer-content {
   span {
     display: block;
     margin-top: 10px;
     font-size: 40px;
     font-weight: bold;
   }
+}
+
+.question-timer {
+  display: none;
 }
 
 .question {
