@@ -26,7 +26,7 @@ class UserResponse < ActiveRecord::Base
   private
 
   def score_response
-    unless skipped?
+    unless skipped? || value.nil?
       update_column 'correct', correct?
     end
   end
