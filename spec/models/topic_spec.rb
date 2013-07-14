@@ -3,11 +3,10 @@ require 'spec_helper'
 describe Topic do
   describe "#subject_name" do
     it "returns the subject name" do
-      topic = create :topic
+      subject = Subject.new name: 'Math'
+      topic = Topic.new subject: subject
 
-      Subject.any_instance.expects(:name).twice
-
-      expect(topic.subject_name).to eq topic.subject.name
+      expect(topic.subject_name).to eq 'Math'
     end
   end
 end
