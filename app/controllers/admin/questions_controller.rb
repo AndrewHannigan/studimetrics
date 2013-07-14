@@ -5,9 +5,9 @@ class Admin::QuestionsController < AdminController
 
   def new
     question_type = params[:question_type] || 'Range'
-    @question = Question.new question_type: question_type
+    @question = Question.new question_type: question_type, section: parent
     @question.send(:"#{@question.answer_association_name}").build
-   new!
+    new!
   end
 
   private
