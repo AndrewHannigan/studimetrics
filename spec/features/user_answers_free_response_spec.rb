@@ -3,7 +3,6 @@ require 'spec_helper'
 feature 'user answers free response' do
   background do
     @question = create :question, :with_answers, position: 1, question_type: "Free Response"
-    @question2 = create :question, :with_answers, section: @question.section, position: 2, question_type: "Free Response"
   end
 
   scenario 'with no previous answers for that section', js: true do
@@ -16,15 +15,12 @@ feature 'user answers free response' do
 
     question1 = question_on_page @question
     question1.find(:css, "input.string").set("11.3")
-    question2 = question_on_page @question2
-    question2.find(:css, "input.string").set("10")
+    wait_for_user_response_keyup
 
     click_button 'Submit'
 
     question1 = question_on_page @question
     expect(question1).to have_content('11.3')
-    question2 = question_on_page @question2
-    expect(question2).to have_content('10')
   end
 
   scenario 'saves previous answers for that section', js: true do
@@ -36,6 +32,7 @@ feature 'user answers free response' do
     click_link 'Click here to begin'
 
     question_on_page(@question).find(:css, "input.string").set("10")
+    wait_for_user_response_keyup
 
     click_link('studimetrics')
     click_link('Practice')
@@ -45,4 +42,8 @@ feature 'user answers free response' do
     expect(section_on_page(@question.section).find(:css, "span.section-status").text).to eq("In-Progress")
 
   end
+end
+
+def wait_for_user_response_keyup
+  sleep(0.1)
 end

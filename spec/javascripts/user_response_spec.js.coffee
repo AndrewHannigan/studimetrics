@@ -1,7 +1,14 @@
 #= require jquery
 #= require user_responses
+#= require sinon-timers
 
 describe 'User Response', ->
+  beforeEach ->
+    this.clock = sinon.useFakeTimers()
+
+  afterEach ->
+    this.clock.restore()
+
   it 'sets the questionId based on the data-id of the domElement', ->
     response = new UserResponse($("<div data-id='question-1' />"))
     expect(response.questionId).toBe(1)
@@ -41,6 +48,34 @@ describe 'User Response', ->
       response.updateResponse(fakeEvent)
 
       expect(response.value).toBe('wee')
+
+  describe '#updateResponseWithKeyup', ->
+    it 'calls updateResponse after a delay', ->
+      response = new UserResponse()
+      spyOn response, 'updateResponse'
+
+      fakeEvent = $.Event('keyup')
+      fakeEvent.which = 50
+      this.clock.tick(50)
+      response.updateResponseWithKeyup fakeEvent
+      this.clock.tick(50)
+      response.updateResponseWithKeyup fakeEvent
+      this.clock.tick(50)
+      response.updateResponseWithKeyup fakeEvent
+      this.clock.tick(100)
+
+      expect(response.updateResponse.calls.length).toBe(1)
+
+  describe '#delay', ->
+    it 'calls a function after a delay', ->
+      response = new UserResponse()
+      x = 0
+      wee = ->
+        x = 1
+      response.delay wee, 50
+      this.clock.tick(51)
+
+      expect(x).toBe(1)
 
   describe '#manualResponse', ->
     it 'sets the value manually', ->
