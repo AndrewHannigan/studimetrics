@@ -4,6 +4,6 @@ ul.action-links
   li
     = link_to "Delete #{resource_class.name.titleize}", resource_path(resource), method: 'delete', data: { confirm: 'Are you sure?' }
 
-h3 = "Editing #{resource_class.name.titleize} ##{resource.id}"
+h3 = "Editing #{resource.try(:name) || "#{resource_class.name.titleize} ##{resource.id}"}"
 
 = render 'form'
