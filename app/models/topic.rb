@@ -1,8 +1,7 @@
 class Topic < ActiveRecord::Base
   has_many :questions
   validates :name, uniqueness: true, presence: true
+  belongs_to :subject
 
-  def subject
-    "M"
-  end
+  delegate :name, to: :subject, prefix: true
 end

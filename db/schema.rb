@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130711222800) do
+ActiveRecord::Schema.define(version: 20130714021336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(version: 20130711222800) do
     t.integer  "critical_reading", null: false
     t.integer  "math",             null: false
     t.integer  "writing",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "concepts", force: true do |t|
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,6 +65,16 @@ ActiveRecord::Schema.define(version: 20130711222800) do
   end
 
   add_index "practice_tests", ["book_id"], name: "index_practice_tests_on_book_id", using: :btree
+
+  create_table "question_concepts", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "concept_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "question_concepts", ["concept_id"], name: "index_question_concepts_on_concept_id", using: :btree
+  add_index "question_concepts", ["question_id"], name: "index_question_concepts_on_question_id", using: :btree
 
   create_table "questions", force: true do |t|
     t.string   "question_type"
@@ -116,6 +132,7 @@ ActiveRecord::Schema.define(version: 20130711222800) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "subject_id"
   end
 
   create_table "user_responses", force: true do |t|
