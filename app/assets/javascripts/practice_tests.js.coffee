@@ -10,12 +10,11 @@ $ ->
 
 pageLoaded = ->
   $('#question-list').disableChildren()
-  $('#test-timer').timer()
-  questionTimer = $('#test-timer').data('timer')
+  $('#test-timers .timer').timer()
+  questionTimer = $('#question-timer').data('timer')
   $('[data-behavior~="submit-user-response-click"]').userResponse(timer: questionTimer)
   $('[data-behavior~="submit-user-response-blur"]').userResponse(timer: questionTimer)
-  $('#test-timer').scrollToFixed { marginTop: 143, dontSetWidth: true }
-  # $('.test-header').scrollToFixed()
+  $('#test-timers').scrollToFixed { marginTop: 143, dontSetWidth: true }
 
 setupSkipButtons = ->
   $(document).on 'click', '.skip-button', setSkipButton
@@ -32,9 +31,10 @@ clearSkipButton = (event) ->
   $(this).next('.skip-button').removeClass 'selected'
 
 pauseTimer = ->
-  timer = $('#test-timer').data('timer')
-  if timer
-    timer.pause()
+  timers = $('.timer')
+  for timer in timers
+    do (timer) ->
+      $(timer).data('timer').pause()
 
 toggleTestSubMenu = (event) ->
   unless $(event.target).hasClass('test-link')
