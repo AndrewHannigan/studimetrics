@@ -14,7 +14,7 @@ feature 'user visits practice page' do
 
     expect(page).to have_css "div#last-activity span.title", text: "Last Activity"
     expect(page).to have_css "div#last-activity span.test", text: user_response.section_completion.section.practice_test_name
-    expect(page).to have_css "div#last-activity span.section", text: user_response.section_completion.section.name
+    expect(page).to have_css "div#last-activity span.section", text: user_response.section_completion.section_name
   end
 
 end

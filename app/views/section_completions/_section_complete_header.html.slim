@@ -1,0 +1,11 @@
+.test-notice
+  h3 = t 'review.section_complete_title'
+  h5 = t 'review.section_complete_subtitle'
+
+  = link_to new_section_completion_path(section_id: section_completion.section_id), class: 'retake-section' do
+    i class="ss-icon" &#x21BA;
+    h5 = t 'review.retake_section'
+
+  = link_to new_practice_test_next_section_for_test_path(section_completion.practice_test, current_section: section_completion.section_id), class: 'next-section' do
+    i class="ss-icon" &#x23E9;
+    h5 = t 'review.take_next_section'
