@@ -33,6 +33,7 @@ class @Timer
     @triggerEvent('reset')
 
   pause: =>
+    return unless @interval
     @saveTimeToStorage()
     @clearIntervalAndUpdateUI()
     @triggerEvent('pause')
