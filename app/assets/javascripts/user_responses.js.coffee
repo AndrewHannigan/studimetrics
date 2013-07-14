@@ -3,6 +3,7 @@ class @UserResponse
   value: null
   time: 0
   resourcePath: '/user_responses'
+  keyupTimeout: null
 
   constructor: (@domElement=null, @settings={}) ->
     if @domElement
@@ -22,9 +23,30 @@ class @UserResponse
     @value = $(event.target).val()
     @updateTimeAndSave()
 
+  updateResponseWithKeyup: (event) =>
+    delayedResponse = =>
+      @updateResponse event
+
+    @delay delayedResponse, 100
+
+  delay: (callback, ms) =>
+    clearTimeout @keyupTimeout
+    @keyupTimeout = setTimeout callback, ms
+
   manualResponse: (value) =>
     @value =  value
     @updateTimeAndSave()
+
+  setupListeners: =>
+    if @domElement.data('behavior') == 'submit-user-response-click'
+      @domElement.on 'click', 'input', @updateResponse
+    else if @domElement.data('behavior') == 'submit-user-response-keyup'
+      @domElement.on 'keyup', 'input', @updateResponseWithKeyup
+    else
+      @domElement.on 'blur', 'input', @updateResponse
+
+
+  ## private ##
 
   updateTimeAndSave: =>
     @time = @timer.currentTime()
@@ -33,11 +55,6 @@ class @UserResponse
     @save()
 
 
-  setupListeners: =>
-    if @domElement.data('behavior') == 'submit-user-response-click'
-      @domElement.on 'click', 'input', @updateResponse
-    else
-      @domElement.on 'blur', 'input', @updateResponse
 
 $.fn.userResponse = (options) ->
   @each ->
