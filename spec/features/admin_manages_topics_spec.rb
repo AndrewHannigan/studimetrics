@@ -3,13 +3,14 @@ require 'spec_helper'
 feature 'Admin manages topics' do
   scenario 'adds topic' do
     admin = FactoryGirl.create :admin
-    FactoryGirl.create :topic
+    subj = create  :subject
 
     visit admin_topics_path as: admin.id
 
     click_link 'New Topic'
 
     fill_in 'Name', with: 'Cool Topic'
+    select subj.name, from: 'Subject'
 
     click_button 'Create Topic'
 
