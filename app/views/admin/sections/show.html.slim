@@ -1,7 +1,7 @@
 = breadcrumbs 'Admin' => admin_path, 'Practice Tests' => collection_path, 'Sections' => collection_path
 = action_links "Edit Section" => edit_resource_path, 'Edit Questions' => admin_section_questions_path(resource)
 
-h3 = "#{resource_class.name.titleize} ##{resource.id}"
+h3 = "#{resource.name}"
 
 .admin-block
   table
