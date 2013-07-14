@@ -9,7 +9,7 @@ feature 'Admin manages topics' do
 
     click_link 'New Topic'
 
-    fill_in 'Name', with: 'Cool Topic'
+    fill_in 'Name', with: 'Cool Concept'
     select subj.name, from: 'Subject'
 
     click_button 'Create Topic'
@@ -24,7 +24,7 @@ feature 'Admin manages topics' do
     visit admin_topic_path(topic, as: admin.id)
     click_link 'Edit Topic'
 
-    fill_in 'Name', with: 'Cooler Topic'
+    fill_in 'Name', with: 'Cooler Concept'
 
     click_button 'Update Topic'
 

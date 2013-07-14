@@ -4,7 +4,6 @@ FactoryGirl.define do
   factory :question do
     question_type "Multiple Choice"
     section
-    topic
     position nil
 
     trait :with_answers do

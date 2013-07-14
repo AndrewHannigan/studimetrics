@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20130714014719) do
     t.datetime "updated_at"
   end
 
+  create_table "concepts", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "subject_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "free_response_answers", force: true do |t|
     t.string   "value"
     t.integer  "question_id"

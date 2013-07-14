@@ -20,6 +20,7 @@ feature 'user answers multiple choice' do
     end
 
     click_button 'Submit'
+    save_and_open_page
 
     question1 = question_on_page @question
     expect(question1).to have_content('A')
