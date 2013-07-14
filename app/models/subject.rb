@@ -1,4 +1,4 @@
 class Subject < ActiveRecord::Base
   has_many :sections
-  has_many :topics
+  has_many :concepts
 end
