@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-feature 'user answers free response' do
+feature 'user answers range response' do
   background do
-    @question = create :free_response_question, position: 1
+    @question = create :range_question, position: 1, min_value: 5, max_value: 6
   end
 
   scenario 'with no previous answers for that section', js: true do
@@ -16,6 +16,7 @@ feature 'user answers free response' do
     question1.find(:css, "input.string").set("11.3")
     wait_for_user_response_keyup
 
+    page.save_screenshot '/Users/cball/Desktop/blah.png'
     click_button 'Submit'
 
     question1 = question_on_page @question

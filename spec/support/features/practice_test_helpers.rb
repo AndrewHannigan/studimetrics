@@ -39,5 +39,9 @@ module Features
 
       click_button 'Submit'
     end
+
+    def start_test
+      click_link 'Click here to begin'
+    end
   end
 end

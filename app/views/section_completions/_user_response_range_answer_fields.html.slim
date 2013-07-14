@@ -4,6 +4,6 @@
   .inputs.range-answer
     = f.input :question_id, as: :hidden
     = f.input :value, label: false do
-      = f.input_field :value, value: f.object.value_or_skip
+      = f.input_field :value, value: f.object.value_or_skip, maxlength: 4
       button class="skip-button #{f.object.skipped? ? 'selected' : ''}" Skip
 

@@ -30,6 +30,9 @@ describe RangeAnswer do
       answer = build :range_answer, min_value: 5, max_value: 6
 
       expect(answer.valid_answer?('5.23')).to eq true
+      expect(answer.valid_answer?('17/3')).to eq true
+      expect(answer.valid_answer?('2/3')).to eq false
+      expect(answer.valid_answer?('asdf')).to eq false
     end
 
   end
