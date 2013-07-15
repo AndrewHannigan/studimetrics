@@ -1,33 +1,33 @@
 class ConceptProgress
   extend ActiveModel::Naming
 
-  attr_accessor :user, :topic, :total_questions_for_topic, :responses_for_topic, :total_responses_for_topic
+  attr_accessor :user, :concept, :total_questions_for_concept, :responses_for_concept, :total_responses_for_concept
 
   def initialize(options ={})
     @user = options[:user]
-    @topic = options[:topic]
+    @concept = options[:concept]
   end
 
   def self.generate_for_user(user)
-    Topic.all.collect do |topic|
-      ConceptProgress.new(user: user, topic: topic)
+    Concept.all.collect do |concept|
+      ConceptProgress.new(user: user, concept: concept)
     end
   end
 
   def percentage_complete
-    (total_responses_for_topic.to_f/total_questions_for_topic).round(2) * 100
+    (total_responses_for_concept.to_f/total_questions_for_concept).round(2) * 100
   end
 
   def average_time_for_responses
-    responses_for_topic.average(:time) || 0
+    responses_for_concept.average(:time) || 0
   end
 
   def frequency
-    total_questions_for_topic
+    total_questions_for_concept
   end
 
   def accuracy
-    (total_correct_responses_for_topic.to_f/total_questions_for_topic).round(2) * 100
+    (total_correct_responses_for_concept.to_f/total_questions_for_concept).round(2) * 100
   end
 
   def to_partial_path
@@ -35,21 +35,21 @@ class ConceptProgress
   end
 
   private
-    def total_questions_for_topic
-      @total_questions_for_topic ||= Question.where(topic: topic).count
+    def total_questions_for_concept
+      @total_questions_for_concept ||= Question.joins(question_concepts: :concept).where(concepts: {id: concept.id}).count
     end
 
-    def total_correct_responses_for_topic
-      responses_for_topic.where(user_responses: {correct: true}).count
+    def total_correct_responses_for_concept
+      responses_for_concept.where(user_responses: {correct: true}).count
     end
 
-    def total_responses_for_topic
-      @total_response_for_topic ||= responses_for_topic.count
+    def total_responses_for_concept
+      @total_response_for_concept ||= responses_for_concept.count
     end
 
-    def responses_for_topic
-      @responses_for_topic ||= UserResponse.joins(:section_completion, :question)
+    def responses_for_concept
+      @responses_for_concept ||= UserResponse.joins(:section_completion, {question: {question_concepts: :concept}})
         .where(section_completions: {user_id: user.id, scoreable: true})
-        .where(questions: {topic_id: topic.id})
+        .where(concepts: {id: concept.id})
     end
 end

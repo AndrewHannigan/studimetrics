@@ -16,6 +16,7 @@ Studimetrics::Application.routes.draw do
 
   # admin routes
   namespace 'admin' do
+    resources :concepts
     resources :colleges
     resources :books
     resources :users
@@ -26,7 +27,6 @@ Studimetrics::Application.routes.draw do
       resources :questions
     end
     resources :subjects
-    resources :topics
     resources :questions do
       resources :answers
     end
