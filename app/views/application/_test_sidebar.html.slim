@@ -2,23 +2,5 @@
 
 #test-sidebar
   ul.test-list
-    - Book.first.practice_tests.all.each do |practice_test|
-      - collapsed_class = practice_test == current_test ? '' : 'collapsed'
+    = render partial: "/test_sidebar/practice_test", collection: Book.first.practice_tests, as: :practice_test, locals: {current_test: current_test}
 
-      li.test-item
-        = link_to practice_test.name, new_practice_test_next_section_for_test_path(practice_test_id: practice_test), class: 'test-link'
-        = link_to '', '', class: "icon plus #{collapsed_class}"
-        = display_test_percentage_complete(practice_test)
-      li class="#{collapsed_class}"
-        ul.section-list
-          - subject_name = nil
-          - practice_test.sections_by_subject.each do |section|
-            - if section.subject_name != subject_name
-              - subject_name = section.subject_name
-              li.subject-name
-                span = subject_name
-            li
-              ul
-                li.section-item data-id="section-#{section.id}"
-                  - section_completion = SectionCompletion.for_section_and_user(section, current_user)
-                  = section_completion_link section_completion
