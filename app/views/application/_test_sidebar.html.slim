@@ -2,7 +2,7 @@
 
 #test-sidebar
   ul.test-list
-    - PracticeTest.all.each do |practice_test|
+    - Book.first.practice_tests.all.each do |practice_test|
       - collapsed_class = practice_test == current_test ? '' : 'collapsed'
 
       li.test-item
