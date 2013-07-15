@@ -11,7 +11,7 @@ $ ->
 pageLoaded = ->
   $('#question-list').disableChildren()
   $('#test-timers .timer').timer()
-  questionTimer = $('#question-timer').data('timer')
+  questionTimer = $('.question-timer').data('timer')
   $('[data-behavior~="submit-user-response-click"]').userResponse(timer: questionTimer)
   $('[data-behavior~="submit-user-response-keyup"]').userResponse(timer: questionTimer)
   $('#test-timers').scrollToFixed { marginTop: 143, dontSetWidth: true }
