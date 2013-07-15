@@ -15,6 +15,8 @@ feature 'user answers multiple choice' do
     click_link 'Click here to begin'
 
     make_radios_visible do
+      # TODO: timecop
+      sleep(1)
       question_on_page(@question).choose('A')
       question_on_page(@question2).choose('B')
     end
@@ -23,6 +25,7 @@ feature 'user answers multiple choice' do
 
     question1 = question_on_page @question
     expect(question1).to have_content('A')
+    expect(question1).to_not have_content('00:00')
     question2 = question_on_page @question2
     expect(question2).to have_content('B')
   end
