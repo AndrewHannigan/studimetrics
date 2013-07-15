@@ -2,10 +2,11 @@ require 'spec_helper'
 
 feature "User visits profile page" do
   scenario "sees concept progress across all tests" do
-    topics = [create(:topic, name: "Geometry"), create(:topic, name: "Calculus")]
+    concepts = [create(:concept, name: "Geometry"), create(:concept, name: "Calculus")]
     user = create :user
-    topics.each do |topic|
-      question = create :question, topic: topic
+    concepts.each do |concept|
+      question_concept = create :question_concept, concept: concept
+      question = question_concept.question
       section_completion = create :section_completion, user: user, section: question.section, scoreable: true
       user_response = create :user_response, question: question, section_completion: section_completion
     end

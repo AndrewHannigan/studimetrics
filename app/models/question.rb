@@ -3,7 +3,9 @@ class Question < ActiveRecord::Base
   SKIP_VALUE = 'Skip'
 
   belongs_to :section
-  belongs_to :topic
+  has_many :question_concepts
+  has_many :concepts, through: :question_concepts
+
   has_many :range_answers, dependent: :destroy
   accepts_nested_attributes_for :range_answers, allow_destroy: true
   has_many :multiple_choice_answers, dependent: :destroy
@@ -14,7 +16,7 @@ class Question < ActiveRecord::Base
   validates :question_type, presence: true, inclusion: { in: QUESTION_TYPES, message: "Valid question types are: #{QUESTION_TYPES.to_sentence}"}
 
   delegate :name, to: :section, prefix: true
-  delegate :name, to: :topic, prefix: true
+  delegate :name, to: :concept, prefix: true
 
   acts_as_list scope: :section
 
@@ -32,6 +34,10 @@ class Question < ActiveRecord::Base
 
   def valid_answer?(response)
     answers.any?{|answer| answer.valid_answer?(response)}
+  end
+
+  def concept_names
+    self.concepts.collect(&:name)
   end
 
   def name
