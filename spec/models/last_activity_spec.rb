@@ -17,7 +17,7 @@ describe LastActivity do
         user_response = create :user_response
         section_completion = user_response.section_completion
         section_completion.in_progress!
-        last_activity = LastActivity.new(user: user_response.section_completion.user, practice_test: user_response.section_completion.section.practice_test)
+        last_activity = LastActivity.new(user: user_response.section_completion.user, practice_test: user_response.section_completion.practice_test)
 
         expect(last_activity.section).to eq user_response.section_completion.section
       end
@@ -28,7 +28,7 @@ describe LastActivity do
         user_response = create :user_response
         section_completion = user_response.section_completion
         section_completion.update_attributes!(status: "Completed")
-        last_activity = LastActivity.new(user: user_response.section_completion.user, practice_test: section_completion.section.practice_test)
+        last_activity = LastActivity.new(user: user_response.section_completion.user, practice_test: section_completion.practice_test)
 
         expect(last_activity.section).to eq nil
       end
@@ -40,7 +40,7 @@ describe LastActivity do
         section_completion = user_response.section_completion
         section_completion.in_progress!
         user = section_completion.user
-        practice_test = section_completion.section.practice_test
+        practice_test = section_completion.practice_test
 
         section = create :section, practice_test: practice_test
         section_completion2 = create :section_completion, section_id: section.id, user: user

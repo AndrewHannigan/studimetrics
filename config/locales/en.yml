@@ -4,8 +4,12 @@ en:
     test_complete_subtitle: 'What would you like to do next?'
     retake_test: 'Retake this test'
     take_next_test: 'Take next test'
+    section_complete_title: 'Section Complete!'
+    section_complete_subtitle: 'What would you like to do next?'
+    retake_section: 'Retake this section'
+    take_next_section: 'Take next section'
   section_completion:
-    retake_notice: 'You are retaking a test. Answers will not count towards your projected score.'
+    retake_notice: 'You are retaking a section. Answers will not count towards your projected score.'
   profile:
     concept_progress:
       title: "concepts"

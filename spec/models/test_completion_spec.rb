@@ -6,7 +6,7 @@ describe TestCompletion do
       it "returns section completions for the user and test" do
         user_response = create :user_response
         user = user_response.section_completion.user
-        practice_test = user_response.section_completion.section.practice_test
+        practice_test = user_response.section_completion.practice_test
 
         test_completion = TestCompletion.new(user: user, practice_test: practice_test)
 
@@ -20,7 +20,7 @@ describe TestCompletion do
 
         section_completion = user_response.section_completion
         user = section_completion.user
-        practice_test = section_completion.section.practice_test
+        practice_test = section_completion.practice_test
 
         section_completion2 = create :section_completion, section_id: section_completion.section_id, user: user
 
@@ -35,7 +35,7 @@ describe TestCompletion do
     it "calls complete on test progress" do
       user_response = create :user_response
       user = user_response.section_completion.user
-      practice_test = user_response.section_completion.section.practice_test
+      practice_test = user_response.section_completion.practice_test
 
       test_completion = TestCompletion.new(user: user, practice_test: practice_test)
 

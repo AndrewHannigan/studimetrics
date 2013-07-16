@@ -28,6 +28,20 @@ feature 'user views review page' do
     expect(page).to have_content(I18n.t 'section_completion.retake_notice')
   end
 
+  scenario 'completes section and clicks next section', js: true do
+    question1 = create :question, :with_answers
+    section2 = create :section, practice_test: question1.section.practice_test
+    create :question, :with_answers, section: section2
+    user = create :user
+
+    visit_and_complete_section(question1.section, user)
+    expect(page).to have_content(I18n.t 'review.section_complete_title')
+
+    find('a.next-section').click
+    uri = URI.parse(current_url)
+    expect("#{uri.path}?#{uri.query}").to eq(new_section_completion_path(section_id: section2.id))
+  end
+
   scenario 'sees stats related to the completion of the test', js: true do
     setup_user_and_questions
     visit_and_complete_section(@question.section, @user)

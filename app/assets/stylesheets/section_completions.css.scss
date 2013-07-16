@@ -51,12 +51,12 @@
     margin-bottom: 20px;
   }
 
-  .retake-test {
+  .retake-test, .retake-section {
     @include span-columns(2 of 9);
     @include shift(2);
   }
 
-  .next-test {
+  .next-test, .next-section {
     @include span-columns(2 of 9);
     @include shift(1);
   }
