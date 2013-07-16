@@ -11,7 +11,13 @@
       .section-completion-total-time
         = section_completion_total_time(@section_completion)
 
-  = render 'complete_header', section_completion: @section_completion
+  - practice_test = @section_completion.practice_test
+  - test_progress = TestProgress.new user: current_user, practice_test: practice_test
+
+  - if test_progress.complete?
+    = render 'test_complete_header', section_completion: @section_completion
+  - else
+    = render 'section_complete_header', section_completion: @section_completion
 
   #section-completion-table
     table
