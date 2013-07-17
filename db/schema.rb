@@ -49,10 +49,11 @@ ActiveRecord::Schema.define(version: 20130801194711) do
   add_index "composite_scores", ["user_id"], name: "index_composite_scores_on_user_id", using: :btree
 
   create_table "concepts", force: true do |t|
-    t.string   "name",       null: false
-    t.integer  "subject_id", null: false
+    t.string   "name",        null: false
+    t.integer  "subject_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "focus_ranks", force: true do |t|
