@@ -38,10 +38,17 @@ class SectionCompletionsController < ApplicationController
     redirect_to profile_path unless @section_completion.user == current_user
   end
 
+  def link_to_test_completion(section_completion)
+    return if section_completion.retake?
+    test_completion = TestCompletion.where(user: current_user, practice_test_id: section_completion.section.practice_test_id).first_or_create
+    section_completion.link_to_test_completion!(test_completion)
+  end
+
   def find_or_create_section_completion(section)
     section_completion = SectionCompletion.not_started_or_in_progress.where(user_id: current_user.id).where(section_id: section.id).last
     section_completion = section_completion || SectionCompletion.create(user: current_user, section: section)
     section_completion.set_scoreable!
+    link_to_test_completion(section_completion)
     section_completion
   end
 

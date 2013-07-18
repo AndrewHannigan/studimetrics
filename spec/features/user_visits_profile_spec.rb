@@ -14,4 +14,11 @@ feature "User visits profile page" do
     visit profile_path as: user.id
     expect(page).to have_css "tr.concept-progress", count: 2
   end
+
+  scenario "sees test progress with scores" do
+    test_completion = create :test_completion
+    visit profile_path as: test_completion.user_id
+
+    expect(page).to have_css "tr.test-completion", count: 1
+  end
 end

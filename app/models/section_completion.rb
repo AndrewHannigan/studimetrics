@@ -5,6 +5,7 @@ class SectionCompletion < ActiveRecord::Base
   has_many :user_responses
   has_many :questions, -> { order 'position asc' }, through: :user_responses
   has_one :practice_test, through: :section
+  belongs_to :test_completion
 
   accepts_nested_attributes_for :user_responses, reject_if: proc { |attributes| attributes['value'].blank? }
 
@@ -31,6 +32,7 @@ class SectionCompletion < ActiveRecord::Base
 
   def complete!
     update_attributes status: 'Completed'
+    test_completion.try(:update!)
   end
 
   def total_time
@@ -43,6 +45,10 @@ class SectionCompletion < ActiveRecord::Base
 
   def retake?
     SectionCompletion.where(section: section, user: user).count > 1
+  end
+
+  def link_to_test_completion!(test_completion)
+    self.update_attributes!(test_completion: test_completion)
   end
 
   def set_scoreable!

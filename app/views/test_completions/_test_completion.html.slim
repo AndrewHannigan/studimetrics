@@ -1,0 +1,14 @@
+- spacer = test_completion.completed? ? nil : "---"
+tr.test-completion
+  td
+    = test_completion.practice_test.name
+  td
+    = spacer || test_completion.critical_reading_score
+  td
+    = spacer || test_completion.math_score
+  td
+    = spacer || test_completion.writing_score
+  td
+    = spacer || test_completion.total
+  td
+    = number_to_percentage(test_completion.percentage_complete, precision: 0)

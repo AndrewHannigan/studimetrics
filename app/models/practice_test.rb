@@ -25,4 +25,19 @@ class PracticeTest < ActiveRecord::Base
       .order('subject_id asc, number asc')
   end
 
+  def question_count_by_subject(subj)
+    questions_by_subject(subj).count
+  end
+
+  private
+
+  def sections_for_subject(subj)
+    sections.where(subject_id: subj.id)
+  end
+
+  def questions_by_subject(subj)
+    section_ids = sections_for_subject(subj).pluck(:id)
+    Question.where(section_id: section_ids)
+  end
+
 end
