@@ -5,6 +5,7 @@ describe TestCompletion do
     context "user has not retaken the test" do
       it "returns section completions for the user and test" do
         user_response = create :user_response
+        user_response.section_completion.set_scoreable!
         user = user_response.section_completion.user
         practice_test = user_response.section_completion.practice_test
 
@@ -19,6 +20,7 @@ describe TestCompletion do
         user_response = create :user_response
 
         section_completion = user_response.section_completion
+        section_completion.set_scoreable!
         user = section_completion.user
         practice_test = section_completion.practice_test
 
