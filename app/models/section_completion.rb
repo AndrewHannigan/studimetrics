@@ -47,10 +47,6 @@ class SectionCompletion < ActiveRecord::Base
     SectionCompletion.where(section: section, user: user).count > 1
   end
 
-  def link_to_test_completion!(test_completion)
-    self.update_attributes!(test_completion: test_completion)
-  end
-
   def set_scoreable!
     self.update_attributes(scoreable: true) unless retake?
   end

@@ -135,9 +135,9 @@ ActiveRecord::Schema.define(version: 20130717230527) do
   create_table "test_completions", force: true do |t|
     t.integer "user_id"
     t.integer "practice_test_id"
-    t.integer "raw_math_score"
-    t.integer "raw_critical_reading_score"
-    t.integer "raw_writing_score"
+    t.decimal "raw_math_score"
+    t.decimal "raw_critical_reading_score"
+    t.decimal "raw_writing_score"
     t.integer "percentage_complete",        default: 0, null: false
   end
 

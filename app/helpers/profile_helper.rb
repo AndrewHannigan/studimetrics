@@ -5,7 +5,7 @@ module ProfileHelper
   end
 
   def display_test_completions
-    test_completions = TestCompletion.where(user: current_user).joins(:practice_test)
+    test_completions = TestCompletion.where(user: current_user).includes(:practice_test)
     render "test_completions/table", test_completions: test_completions
   end
 end

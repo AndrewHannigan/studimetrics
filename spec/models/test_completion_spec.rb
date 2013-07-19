@@ -8,7 +8,7 @@ describe TestCompletion do
       expect(test_completion.retake_available?).to eq true
     end
 
-    it "returns true if percentage is less than 100" do
+    it "returns false if percentage is less than 100" do
       test_completion = TestCompletion.new(percentage_complete: 99)
 
       expect(test_completion.retake_available?).to eq false
@@ -17,7 +17,7 @@ describe TestCompletion do
 
   describe "#math_score" do
     it "returns the score post conversion" do
-      test_completion = TestCompletion.new(raw_math_score: 5)
+      test_completion = TestCompletion.new(raw_math_score: 5, percentage_complete: 100)
       ConversionTable.expects(:converted_score).with("M", 5).returns(200)
 
       expect(test_completion.math_score).to eq 200
@@ -26,7 +26,7 @@ describe TestCompletion do
 
   describe "#critical_reading_score" do
     it "returns the score post conversion" do
-      test_completion = TestCompletion.new(raw_critical_reading_score: 5)
+      test_completion = TestCompletion.new(raw_critical_reading_score: 5, percentage_complete: 100)
       ConversionTable.expects(:converted_score).with("CR", 5).returns(200)
 
       expect(test_completion.critical_reading_score).to eq 200
@@ -35,7 +35,7 @@ describe TestCompletion do
 
   describe "#writing_score" do
     it "returns the score post conversion" do
-      test_completion = TestCompletion.new(raw_writing_score: 5)
+      test_completion = TestCompletion.new(raw_writing_score: 5, percentage_complete: 100)
       ConversionTable.expects(:converted_score).with("W", 5).returns(200)
 
       expect(test_completion.writing_score).to eq 200
