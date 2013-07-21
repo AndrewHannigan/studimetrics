@@ -37,4 +37,15 @@ describe PracticeTest do
       expect(test.name).to eq('Test 2')
     end
   end
+
+  describe "#question_count_by_subject" do
+    it "returns the total number of questions for the practice test" do
+      subj = create :subject, name: "Math"
+      section = create :section, subject: subj
+      question = create :question, section: section
+      practice_test = question.section.practice_test
+
+      expect(practice_test.question_count_by_subject(subj)).to eq 1
+    end
+  end
 end

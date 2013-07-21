@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130714021336) do
+ActiveRecord::Schema.define(version: 20130717230527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,10 +34,11 @@ ActiveRecord::Schema.define(version: 20130714021336) do
   end
 
   create_table "concepts", force: true do |t|
-    t.string   "name",       null: false
-    t.integer  "subject_id", null: false
+    t.string   "name",        null: false
+    t.integer  "subject_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "free_response_answers", force: true do |t|
@@ -101,15 +102,17 @@ ActiveRecord::Schema.define(version: 20130714021336) do
 
   create_table "section_completions", force: true do |t|
     t.integer  "section_id"
-    t.string   "status",     default: "Not Started", null: false
+    t.string   "status",             default: "Not Started", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id",                            null: false
-    t.boolean  "scoreable",  default: false,         null: false
+    t.integer  "user_id",                                    null: false
+    t.boolean  "scoreable",          default: false,         null: false
+    t.integer  "test_completion_id"
   end
 
   add_index "section_completions", ["scoreable"], name: "index_section_completions_on_scoreable", using: :btree
   add_index "section_completions", ["section_id"], name: "index_section_completions_on_section_id", using: :btree
+  add_index "section_completions", ["test_completion_id"], name: "index_section_completions_on_test_completion_id", using: :btree
   add_index "section_completions", ["user_id"], name: "index_section_completions_on_user_id", using: :btree
 
   create_table "sections", force: true do |t|
@@ -128,6 +131,18 @@ ActiveRecord::Schema.define(version: 20130714021336) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "test_completions", force: true do |t|
+    t.integer "user_id"
+    t.integer "practice_test_id"
+    t.decimal "raw_math_score"
+    t.decimal "raw_critical_reading_score"
+    t.decimal "raw_writing_score"
+    t.integer "percentage_complete",        default: 0, null: false
+  end
+
+  add_index "test_completions", ["practice_test_id"], name: "index_test_completions_on_practice_test_id", using: :btree
+  add_index "test_completions", ["user_id"], name: "index_test_completions_on_user_id", using: :btree
 
   create_table "topics", force: true do |t|
     t.string   "name"

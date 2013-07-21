@@ -1,7 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :subject do
-    name "Math"
+  factory :test_completion do
+    user
+    practice_test
   end
 end
