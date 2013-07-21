@@ -11,12 +11,15 @@ class RawScoreCalculator
 
   private
     def update_subject_score(subj)
+     test_completion.send("#{raw_score_field_for_subject(subj)}=", raw_score(subj))
+      test_completion.save!
+    end
+
+    def raw_score(subj)
       total_correct = total_correct_for_subject(subj)
       total_incorrect = total_incorrect_excluding_free_response_for_subject(subj)
 
-      raw_score = total_correct - (total_incorrect * 0.25)
-      test_completion.send("#{raw_score_field_for_subject(subj)}=", raw_score)
-      test_completion.save!
+      total_correct - (total_incorrect * 0.25)
     end
 
     def total_correct_for_subject(subj)
