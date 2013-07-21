@@ -32,7 +32,7 @@ class SectionCompletion < ActiveRecord::Base
 
   def complete!
     update_attributes status: 'Completed'
-    test_completion.try(:update!)
+    test_completion.delay.update! if test_completion
   end
 
   def total_time

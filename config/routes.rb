@@ -1,4 +1,7 @@
+require 'sidekiq/web'
 Studimetrics::Application.routes.draw do
+
+  mount Sidekiq::Web => '/sidekiq'
 
   resources :users, only: [:create]
   resource :profile
