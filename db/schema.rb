@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130717230527) do
+ActiveRecord::Schema.define(version: 20130721181822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "books", force: true do |t|
     t.string   "name"
@@ -32,6 +33,16 @@ ActiveRecord::Schema.define(version: 20130717230527) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "composite_scores", force: true do |t|
+    t.integer "user_id"
+    t.integer "subject_id"
+    t.hstore  "concepts",        default: "", null: false
+    t.decimal "composite_score"
+  end
+
+  add_index "composite_scores", ["subject_id"], name: "index_composite_scores_on_subject_id", using: :btree
+  add_index "composite_scores", ["user_id"], name: "index_composite_scores_on_user_id", using: :btree
 
   create_table "concepts", force: true do |t|
     t.string   "name",        null: false

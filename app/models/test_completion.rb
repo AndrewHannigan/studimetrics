@@ -64,8 +64,8 @@ class TestCompletion < ActiveRecord::Base
       user_responses.count
     end
 
-    def raw_score_field_for_subject(subj)
-      "raw_#{subj.split(" ").join("").underscore}_score"
+    def raw_score_field_for_subject(subject_name)
+      "raw_#{subject_name.split(" ").join("").underscore}_score"
     end
 
 end
