@@ -1,47 +1,76 @@
 require 'spec_helper'
 
 describe TestCompletion do
-  describe '#section_completions' do
-    context "user has not retaken the test" do
-      it "returns section completions for the user and test" do
-        user_response = create :user_response
-        user = user_response.section_completion.user
-        practice_test = user_response.section_completion.practice_test
+  describe "#retake_available?" do
+    it "returns true if percentage is 100" do
+      test_completion = TestCompletion.new(percentage_complete: 100)
 
-        test_completion = TestCompletion.new(user: user, practice_test: practice_test)
-
-        expect(test_completion.section_completions).to eq [user_response.section_completion]
-      end
+      expect(test_completion.retake_available?).to eq true
     end
 
-    context "user is retaking the test" do
-      it "returns only the first section completion for the user and test" do
-        user_response = create :user_response
+    it "returns false if percentage is less than 100" do
+      test_completion = TestCompletion.new(percentage_complete: 99)
 
-        section_completion = user_response.section_completion
-        user = section_completion.user
-        practice_test = section_completion.practice_test
-
-        section_completion2 = create :section_completion, section_id: section_completion.section_id, user: user
-
-        test_completion = TestCompletion.new(user: user, practice_test: practice_test)
-
-        expect(test_completion.section_completions).to eq [user_response.section_completion]
-      end
+      expect(test_completion.retake_available?).to eq false
     end
   end
 
-  describe "#retake_available?" do
-    it "calls complete on test progress" do
-      user_response = create :user_response
-      user = user_response.section_completion.user
-      practice_test = user_response.section_completion.practice_test
+  describe "#math_score" do
+    it "returns the score post conversion" do
+      test_completion = TestCompletion.new(raw_math_score: 5, percentage_complete: 100)
+      ConversionTable.expects(:converted_score).with("M", 5).returns(200)
 
-      test_completion = TestCompletion.new(user: user, practice_test: practice_test)
+      expect(test_completion.math_score).to eq 200
+    end
+  end
 
-      TestProgress.any_instance.expects(:completed?).returns(true)
+  describe "#critical_reading_score" do
+    it "returns the score post conversion" do
+      test_completion = TestCompletion.new(raw_critical_reading_score: 5, percentage_complete: 100)
+      ConversionTable.expects(:converted_score).with("CR", 5).returns(200)
 
-      expect(test_completion.retake_available?).to eq true
+      expect(test_completion.critical_reading_score).to eq 200
+    end
+  end
+
+  describe "#writing_score" do
+    it "returns the score post conversion" do
+      test_completion = TestCompletion.new(raw_writing_score: 5, percentage_complete: 100)
+      ConversionTable.expects(:converted_score).with("W", 5).returns(200)
+
+      expect(test_completion.writing_score).to eq 200
+    end
+  end
+
+  describe "#update!" do
+    it "fills in raw scores if the test is complete" do
+      test_completion = create :test_completion
+
+      test_completion.stubs(:percentage_complete).returns(100)
+      test_completion.expects(:total_questions).returns(100)
+      test_completion.expects(:update_raw_scores)
+
+      test_completion.update!
+    end
+
+    it "does not fill in raw scores if test is incomplete" do
+      test_completion = create :test_completion
+
+      test_completion.stubs(:percentage_complete).returns(50)
+      test_completion.expects(:total_questions).returns(50)
+      test_completion.expects(:update_raw_scores).never
+
+      test_completion.update!
+    end
+
+    it "calls update_percentage_complete" do
+      test_completion = create :test_completion
+
+      test_completion.expects(:total_questions).returns(100)
+      test_completion.expects(:total_responses).returns(50)
+
+      test_completion.update!
+      expect(test_completion.percentage_complete).to eq 50.0
     end
   end
 

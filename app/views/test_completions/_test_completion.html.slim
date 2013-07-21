@@ -1,0 +1,14 @@
+- spacer = "---"
+tr.test-completion
+  td
+    = test_completion.practice_test.name
+  td
+    = test_completion.critical_reading_score || spacer
+  td
+    = test_completion.math_score || spacer
+  td
+    = test_completion.writing_score || spacer
+  td
+    = test_completion.total || spacer
+  td
+    = number_to_percentage(test_completion.percentage_complete, precision: 0)
