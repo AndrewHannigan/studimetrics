@@ -48,7 +48,7 @@ describe TestCompletion do
 
       test_completion.stubs(:percentage_complete).returns(100)
       test_completion.expects(:total_questions).returns(100)
-      test_completion.expects(:update_raw_scores)
+      test_completion.expects(:collect_and_update_raw_scores)
 
       test_completion.update!
     end
@@ -58,7 +58,7 @@ describe TestCompletion do
 
       test_completion.stubs(:percentage_complete).returns(50)
       test_completion.expects(:total_questions).returns(50)
-      test_completion.expects(:update_raw_scores).never
+      test_completion.expects(:collect_and_update_raw_scores).never
 
       test_completion.update!
     end

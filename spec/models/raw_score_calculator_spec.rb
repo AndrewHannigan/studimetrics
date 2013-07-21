@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe RawScoreCalculator do
-  describe "#update_scores" do
-    context "calculates the raw score for each subject" do
+  describe "#collect_scores" do
+    context "returns raw score for each subject" do
       it "returns 0.75 for 1 out of 2 non-free response questions correct" do
         setup_questions
 
@@ -11,9 +11,8 @@ describe RawScoreCalculator do
         test_completion = create :test_completion, practice_test: @question.section.practice_test, user: user_response.section_completion.user
 
         raw_score_calculator = RawScoreCalculator.new(test_completion)
-        raw_score_calculator.update_scores!
+        expect(raw_score_calculator.collect_scores["Math"]).to eq 0.75
 
-        expect(raw_score_calculator.test_completion.raw_math_score.to_f).to eq 0.75
       end
 
       it "returns 2 for 2 out of 2 non-free response questions correct" do
@@ -23,9 +22,8 @@ describe RawScoreCalculator do
         test_completion = create :test_completion, practice_test: @question.section.practice_test, user: user_response.section_completion.user
 
         raw_score_calculator = RawScoreCalculator.new(test_completion)
-        raw_score_calculator.update_scores!
 
-        expect(raw_score_calculator.test_completion.raw_math_score.to_f).to eq 2.00
+        expect(raw_score_calculator.collect_scores["Math"]).to eq 2.00
 
       end
 
@@ -40,9 +38,8 @@ describe RawScoreCalculator do
         test_completion = create :test_completion, practice_test: question.section.practice_test, user: user_response.section_completion.user
 
         raw_score_calculator = RawScoreCalculator.new(test_completion)
-        raw_score_calculator.update_scores!
 
-        expect(raw_score_calculator.test_completion.raw_math_score.to_f).to eq 0.00
+        expect(raw_score_calculator.collect_scores["Math"]).to eq 0.00
       end
     end
   end
