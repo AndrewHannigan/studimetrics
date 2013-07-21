@@ -41,6 +41,7 @@ class TestCompletion < ActiveRecord::Base
   private
     def update_percentage_complete
       self.percentage_complete = (total_responses.to_f/total_questions) * 100
+      self.save
     end
 
     def update_raw_scores
