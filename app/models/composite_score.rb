@@ -10,14 +10,13 @@ class CompositeScore < ActiveRecord::Base
   def update!(concepts=nil)
     concepts ||= subject_concepts
     concepts.each {|concept| update_concept(concept)}
-    #set_composite_score
+    self.composite_score = calculated_composite_score
     self.save!
   end
 
-  # def set_composite_score
-  #   composite = pre_correction_score - (0.25 * (1 - (pre_correction_score/AVERAGE_QUESTIONS_FOR_SUBJET[subject_name])))
-  #   self.composite_score = composite
-  # end
+  def calculated_composite_score
+    pre_correction_score - subtracted_value_from_precorrection_value
+  end
 
   def update_concept(concept)
     self.concepts["concept_#{concept.id}"] = {
@@ -29,9 +28,12 @@ class CompositeScore < ActiveRecord::Base
   private
 
     def pre_correction_score
-      raw_precorrection_score = (total_correct_excluding_incorrect_free_respones.to_f/total_frequency_excluding_incorrect_free_responses)
+      raw_precorrection_score = (total_correct_excluding_incorrect_free_responses.to_f/total_frequency_excluding_incorrect_free_responses)
       precorrection_score = raw_precorrection_score * AVERAGE_QUESTIONS_FOR_SUBJECT[subject_name]
+    end
 
+    def subtracted_value_from_precorrection_value
+      0.25 * (1 - (pre_correction_score/AVERAGE_QUESTIONS_FOR_SUBJECT[subject_name]))
     end
 
     def total_correct_excluding_incorrect_free_responses

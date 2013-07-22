@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe CompositeScore do
+
+  describe "#calculated_composite_score" do
+    it "returns score according to formula" do
+      subj = create :subject, name: "Math"
+      concepts = {"concept_1" => {correct: 2, incorrect: 3}, "concept_2" => {correct: 4, incorrect: 2}, "concept_3" => {correct: 5, incorrect: 0}}
+      composite_score = CompositeScore.new(subject: subj, concepts: concepts)
+
+      expect(composite_score.calculated_composite_score).to eq 34.296875
+    end
+  end
+
   describe "#update_concept" do
     context "2 correct answers for non free response questions" do
       it "should have 2 correct, 0 incorrect" do
