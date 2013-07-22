@@ -15,6 +15,7 @@ class CompositeScore < ActiveRecord::Base
   end
 
   def calculated_composite_score
+    return 0 unless total_frequency_excluding_incorrect_free_responses > 0
     pre_correction_score - subtracted_value_from_precorrection_value
   end
 

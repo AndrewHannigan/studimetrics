@@ -58,7 +58,6 @@ describe CompositeScore do
 
     context "1 correct answer for free response and 1 incorrect free response" do
       it "should have 1 correct, 0 incorrect" do
-        pending "Free response answers aren't handled properly"
         question = create :free_response_question, value: 2.0
         concept = create :concept, name: "Geometry"
         create :question_concept, question: question, concept: concept
@@ -72,7 +71,6 @@ describe CompositeScore do
         composite_score = CompositeScore.new(user: user, subject: concept.subject)
 
         composite_score.update_concept(concept)
-        binding.pry
 
         expect(composite_score.concepts["concept_#{concept.id}"][:correct]).to eq 1
         expect(composite_score.concepts["concept_#{concept.id}"][:incorrect]).to eq 0
