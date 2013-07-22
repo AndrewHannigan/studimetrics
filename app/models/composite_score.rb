@@ -19,9 +19,11 @@ class CompositeScore < ActiveRecord::Base
   end
 
   def update_concept(concept)
+    total_correct = total_correct_user_responses_for_concept(concept)
+    total_incorrect = total_incorrect_user_responses_for_concept_excluding_free_responses(concept)
     self.concepts["concept_#{concept.id}"] = {
-      correct: total_correct_user_responses_for_concept(concept),
-      incorrect: total_incorrect_user_responses_for_concept_excluding_free_responses(concept)
+      correct: total_correct,
+      incorrect: total_incorrect
     }
   end
 

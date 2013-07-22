@@ -1,13 +1,15 @@
 class StatRunner
+  include Sidekiq::Worker
+
   attr_accessor :section_completion, :user, :test_completion
 
-  def initialize(section_completion)
-    @section_completion = section_completion
+  def initialize(section_completion_id)
+    @section_completion = SectionCompletion.find(section_completion_id)
   end
 
   def perform!
-    test_completion.delay(:update!) if test_completion
-    #composite_score.delay(:update!) if composite_score
+    test_completion.try(:update!)
+    composite_score.try(:update!)
   end
 
   private
@@ -26,8 +28,8 @@ class StatRunner
     end
 
 
-    # def composite_score
-    #   @composite_score ||= CompositeScore.where(subject: subject).where(user: user).first_or_create section_completion.scoreable?
-    # end
+    def composite_score
+      @composite_score ||= CompositeScore.where(subject: subject, user: user).first_or_create if section_completion.scoreable?
+    end
 
 end

@@ -41,8 +41,13 @@ class TestCompletion < ActiveRecord::Base
 
   private
     def update_percentage_complete
+      return unless test_has_questions?
       self.percentage_complete = (total_responses.to_f/total_questions) * 100
       self.save
+    end
+
+    def test_has_questions?
+      total_questions > 0
     end
 
     def collect_and_update_raw_scores
