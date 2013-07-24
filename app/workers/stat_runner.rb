@@ -9,7 +9,8 @@ class StatRunner
 
   def perform!
     test_completion.try(:update!)
-    composite_score.try(:update!)
+    composite_score.try(:update!, section_completion.concepts)
+    FocusRank.update_scores_for_concepts_and_user(section_completion.concepts, section_completion.user)
   end
 
   private

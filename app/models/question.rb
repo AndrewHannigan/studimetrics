@@ -5,6 +5,7 @@ class Question < ActiveRecord::Base
   belongs_to :section
   has_many :question_concepts
   has_many :concepts, through: :question_concepts
+  has_many :user_responses
 
   has_many :range_answers, dependent: :destroy
   accepts_nested_attributes_for :range_answers, allow_destroy: true

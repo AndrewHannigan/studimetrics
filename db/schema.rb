@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130721181822) do
+ActiveRecord::Schema.define(version: 20130723020023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20130721181822) do
   create_table "composite_scores", force: true do |t|
     t.integer "user_id"
     t.integer "subject_id"
-    t.hstore  "concepts",        default: "", null: false
+    t.hstore  "concepts",        default: {}, null: false
     t.decimal "composite_score"
   end
 
@@ -51,6 +51,20 @@ ActiveRecord::Schema.define(version: 20130721181822) do
     t.datetime "updated_at"
     t.text     "description"
   end
+
+  create_table "focus_ranks", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "concept_id"
+    t.integer  "correct",      default: 0,   null: false
+    t.integer  "incorrect",    default: 0,   null: false
+    t.decimal  "average_time", default: 0.0, null: false
+    t.decimal  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "focus_ranks", ["concept_id"], name: "index_focus_ranks_on_concept_id", using: :btree
+  add_index "focus_ranks", ["user_id"], name: "index_focus_ranks_on_user_id", using: :btree
 
   create_table "free_response_answers", force: true do |t|
     t.string   "value"
