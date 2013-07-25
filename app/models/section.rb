@@ -2,6 +2,7 @@ class Section < ActiveRecord::Base
   belongs_to :practice_test
   belongs_to :subject
   has_many :questions, -> { order 'position asc' }
+  has_many :section_completions
 
   validates :subject, :practice_test, presence: true
   validates :number, presence: true, uniqueness: { scope: :practice_test_id }

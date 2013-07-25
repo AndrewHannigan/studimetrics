@@ -35,17 +35,30 @@ class TestCompletion < ActiveRecord::Base
 
   def update!
     update_percentage_complete
-    update_raw_scores if completed?
+    collect_and_update_raw_scores if completed?
+    self.save
   end
 
   private
     def update_percentage_complete
+      return unless test_has_questions?
       self.percentage_complete = (total_responses.to_f/total_questions) * 100
       self.save
     end
 
-    def update_raw_scores
-      RawScoreCalculator.new(self).update_scores!
+    def test_has_questions?
+      total_questions > 0
+    end
+
+    def collect_and_update_raw_scores
+      raw_scores.each do |subj, value|
+        self.send("#{raw_score_field_for_subject(subj)}=", value)
+      end
+      self.save
+    end
+
+    def raw_scores
+      RawScoreCalculator.new(self).collect_scores
     end
 
     def total_questions
@@ -54,6 +67,10 @@ class TestCompletion < ActiveRecord::Base
 
     def total_responses
       user_responses.count
+    end
+
+    def raw_score_field_for_subject(subject_name)
+      "raw_#{subject_name.split(" ").join("").underscore}_score"
     end
 
 end
