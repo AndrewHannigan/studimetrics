@@ -5,16 +5,13 @@ class RawScoreCalculator
     self.test_completion = test_completion
   end
 
-  def update_scores!
-    Subject.all.each {|subj| update_subject_score(subj)}
+  def collect_scores
+    raw_scores = {}
+    Subject.all.each {|subj| raw_scores["#{subj.name}"] = raw_score(subj)}
+    raw_scores
   end
 
   private
-    def update_subject_score(subj)
-     test_completion.send("#{raw_score_field_for_subject(subj)}=", raw_score(subj))
-      test_completion.save!
-    end
-
     def raw_score(subj)
       total_correct = total_correct_for_subject(subj)
       total_incorrect = total_incorrect_excluding_free_response_for_subject(subj)
@@ -39,7 +36,4 @@ class RawScoreCalculator
 
     end
 
-    def raw_score_field_for_subject(subj)
-      "raw_#{subj.name.split(" ").join("").underscore}_score"
-    end
 end

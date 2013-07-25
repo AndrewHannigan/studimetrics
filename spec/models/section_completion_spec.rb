@@ -55,6 +55,24 @@ describe SectionCompletion do
         completion.complete!
       }.to change{completion.status}.from('In-Progress').to('Completed')
     end
+
+    it "creates a StatRunner and calls perform if scoreable" do
+      completion = create :section_completion, :in_progress
+      completion.expects(:scoreable?).returns(true)
+      StatRunner.any_instance.expects(:perform!)
+
+      completion.complete!
+    end
+
+    it "does not create a StatRunner if not scoreable" do
+      completion = create :section_completion, :in_progress
+      completion.expects(:scoreable?).returns(false)
+      StatRunner.any_instance.expects(:perform!).never
+
+      completion.complete!
+    end
+
+
   end
 
   describe "#total_time" do
