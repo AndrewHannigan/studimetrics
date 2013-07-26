@@ -1,12 +1,17 @@
 class FocusRank < ActiveRecord::Base
+  attr_accessor :position, :accuracy
+
   belongs_to :user
   belongs_to :concept
+  default_scope {order("focus_ranks.score desc")}
 
   def self.update_scores_for_concepts_and_user(concepts, user)
+    old_stats = self.current_stats_for_user(user)
     concepts.each do |concept|
-      focus_rank = FocusRank.where(concept: concept).where(user: user).first_or_create
+      focus_rank = self.where(concept: concept).where(user: user).first_or_create
       focus_rank.update!
     end
+    self.update_deltas_for_user(user, old_stats)
   end
 
   def update!
@@ -17,7 +22,33 @@ class FocusRank < ActiveRecord::Base
     self.save
   end
 
+  def self.current_stats_for_user(user)
+    ranks = FocusRank.where(user: user)
+    ranks.each_with_index do |r, i|
+      r.position = i + 1
+    end
+    ranks
+  end
+
+  def accuracy
+    (correct.to_f/(correct + incorrect)) * 100
+  end
+
+  def self.update_deltas_for_user(user, old_stats)
+    new_stats = self.current_stats_for_user(user)
+
+    new_stats.each do |new_stat|
+      previous_stat = old_stats.detect {|s| s.id == new_stat.id}
+      if previous_stat
+        position_delta = new_stat.position - previous_stat.position
+        accuracy_delta = (new_stat.accuracy - previous_stat.accuracy).ceil
+        new_stat.update_attributes!(position_delta: position_delta, accuracy_delta: accuracy_delta)
+      end
+    end
+  end
+
   private
+
 
     def calculated_score
       big_parens = 1 + ((average_response_time_for_user - average_response_time_for_site_without_user)/average_response_time_for_site_without_user)

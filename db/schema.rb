@@ -55,9 +55,11 @@ ActiveRecord::Schema.define(version: 20130723020023) do
   create_table "focus_ranks", force: true do |t|
     t.integer  "user_id"
     t.integer  "concept_id"
-    t.integer  "correct",      default: 0,   null: false
-    t.integer  "incorrect",    default: 0,   null: false
-    t.decimal  "average_time", default: 0.0, null: false
+    t.integer  "correct",        default: 0,   null: false
+    t.integer  "incorrect",      default: 0,   null: false
+    t.decimal  "average_time",   default: 0.0, null: false
+    t.integer  "position_delta"
+    t.integer  "accuracy_delta"
     t.decimal  "score"
     t.datetime "created_at"
     t.datetime "updated_at"

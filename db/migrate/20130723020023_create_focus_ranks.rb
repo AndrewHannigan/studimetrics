@@ -6,6 +6,8 @@ class CreateFocusRanks < ActiveRecord::Migration
       t.integer :correct, default: 0, null: false
       t.integer :incorrect, default: 0, null: false
       t.decimal :average_time, default: 0, null: false
+      t.integer :position_delta
+      t.integer :accuracy_delta
       t.decimal :score
       t.timestamps
     end
