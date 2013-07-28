@@ -33,7 +33,7 @@ class SectionCompletion < ActiveRecord::Base
 
   def complete!
     update_attributes status: 'Completed'
-    StatRunner.new(self).perform! if scoreable?
+    StatRunner.perform_async(self.id) if scoreable?
   end
 
   def total_time
