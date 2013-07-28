@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include Clearance::User
-  has_one :focus_rank
+  has_many :focus_ranks
   has_many :section_completions
   has_many :user_responses, through: :section_completions
 
