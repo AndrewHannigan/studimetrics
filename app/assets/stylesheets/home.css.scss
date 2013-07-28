@@ -1,4 +1,6 @@
 #feature {
+  width: 80%;
+  margin: 0 auto;
   padding: 20px 0;
   border-bottom: 4px solid $red;
   @include clearfix;

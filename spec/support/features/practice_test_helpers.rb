@@ -18,9 +18,9 @@ module Features
 
     def make_radios_visible
       # capybara cant select these if they are display: none
-      page.execute_script "$('input.radio').show()"
+      page.execute_script "$('input.radio_buttons').show()"
       yield
-      page.execute_script "$('input.radio').hide()"
+      page.execute_script "$('input.radio_buttons').hide()"
     end
 
     def visit_and_complete_section(section, user)

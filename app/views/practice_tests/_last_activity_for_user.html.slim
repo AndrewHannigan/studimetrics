@@ -1,0 +1,8 @@
+- last_activity = LastActivity.new(user: user)
+- section = last_activity.section
+- if section
+  #last-activity
+    h5 Last Activity
+    span.test = section.practice_test_name
+    span.separator |
+    span.section = section.name

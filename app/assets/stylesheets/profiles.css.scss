@@ -1,0 +1,184 @@
+h4 {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.profile-row {
+  @include clearfix;
+  border-bottom: 1px solid #cdd1d3;
+}
+
+.profile-block {
+  @include pad;
+  @include clearfix;
+
+  &.left {
+    width: 50%;
+    float: left;
+    border-right: 1px solid #cdd1d3;
+  }
+
+  &.right {
+    width: 50%;
+    float: left;
+  }
+}
+
+.college-comparison {
+  table {
+   margin: 2px 0 0 0;
+   width: auto;
+
+   td {
+    padding: 0 4px;
+    border: none;
+   }
+  }
+
+  img {
+    float: left;
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 20px;
+  }
+
+  .info {
+    @include clearfix;
+    float: left;
+  }
+
+  .college-name {
+    width: 230px;
+    font-size: 20px;
+
+    a {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 13px;
+    }
+  }
+
+  .average-sat-score {
+    float: left;
+    width: 75px;
+    margin-right: 10px;
+    text-align: center;
+    color: $gray;
+    font-size: 14px;
+    line-height: 16px;
+
+    .number {
+      color: $red;
+      font-size: 30px;
+      line-height: 34px;
+      margin-bottom: 2px;
+    }
+  }
+
+  .average-breakdown-score {
+    float: left;
+  }
+
+  .profile-note {
+    float: left;
+  }
+}
+
+.percentile {
+  font-size: 14px;
+
+  .percentile-bar {
+    margin-bottom: 14px;
+
+    &.writing {
+      margin-bottom: 18px;
+    }
+  }
+
+  .bar {
+    position: relative;
+    width: 254px;
+    border: 1px solid $gray;
+    display: inline-block;
+    vertical-align: middle;
+    height: 18px;
+    @include linear-gradient(left, $red 0%, $light-gray 25%, $light-gray 75%, $dark-green 100%);
+    @include box-shadow(inset 0px 1px 3px rgba(255,255,255,0.8), inset 0px -1px 1px rgba(255,255,255,0.4));
+  }
+
+  .indicator {
+    position: absolute;
+    font-size: 14px;
+    padding-top: 4px;
+    margin-top: -6px;
+    border-radius: 2px;
+    font-weight: bold;
+    background: $dark-gray;
+    color: $almost-white;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+  }
+
+  .subject {
+    display: inline-block;
+    margin-left: 10px;
+  }
+}
+
+.profile-note {
+  clear: left;
+  margin-top: 12px;
+  color: $gray;
+  font-size: 11px;
+}
+
+table.concept-progress {
+  font-size: 14px;
+  text-align: center;
+  width: 80%;
+  margin: 20px auto;
+
+  th.title {
+    text-align: left;
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  td.title {
+    text-align: left;
+  }
+
+  .ss-icon {
+    margin-left: 4px;
+    vertical-align: middle;
+
+    &.up {
+      color: $dark-green;
+    }
+
+    &.down {
+      color: $red;
+    }
+  }
+}
+
+#test-graph {
+  display: block;
+  margin: 12px auto;
+}
+
+.test-graph-wrapper {
+  position: relative;
+}
+
+#graph-tooltip {
+  position: absolute;
+  background: $dark-gray;
+  opacity: 0.8;
+  color: $almost-white;
+  border-radius: 4px;
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+}

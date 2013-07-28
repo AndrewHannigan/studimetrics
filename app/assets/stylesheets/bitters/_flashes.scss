@@ -10,31 +10,41 @@ div.error, div.notice, div.success, #flash_failure, #flash_success, #flash_notic
   margin-bottom: .75rem;
   padding: .75em;
   padding: .75rem;
+  border-radius: 2px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 div.error, #flash_failure {
   background: $error-color;
   color: darken($error-color, 60%);
+  border: 1px solid darken($error-color, 10%);
 }
 
 div.error a, #flash_failure a {
   color: darken($error-color, 60%);
+  font-weight: bold;
 }
 
 div.notice, #flash_notice {
   background: $notice-color;
   color: darken($notice-color, 60%);
+  border: 1px solid darken($notice-color, 10%);
 }
 
 div.notice a, #flash_notice a {
   color: darken($notice-color, 60%);
+  font-weight: bold;
 }
 
 div.success, #flash_success {
   background: $success-color;
   color: darken($success-color, 50%);
+  border: 1px solid darken($success-color, 10%);
 }
 
 div.success a, #flash_success a {
   color: darken($success-color, 50%);
+  font-weight: bold;
 }

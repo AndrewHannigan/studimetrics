@@ -1,0 +1,23 @@
+.college-comparison.profile-block.left
+  h4 College Comparison
+  = image_tag 'http://placehold.it/100x100', class: 'college-logo'
+  .info
+    .college-name
+      | Dartmouth College
+      = link_to 'change', '', class: 'change-college-logo'
+    .average-sat-score
+      .number 2050
+      | Average SAT Score
+    .average-breakdown-score
+      table
+       tr
+        td Critical Reading
+        td 600
+       tr
+        td Math
+        td 700
+       tr
+        td Writing
+        td 600
+
+  .profile-note = t 'profile.average_scores_disclaimer'

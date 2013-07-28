@@ -1,23 +1,13 @@
 header
-  .container
-    #logo
-      = link_to 'studimetrics', signed_in? ? profile_path  : root_path
-    #main-menu
-      ul
-        - if current_user.admin?
+  .bar
+    .container
+      #logo
+        = link_to 'studimetrics', signed_in? ? profile_path  : root_path
+      #main-menu
+        ul
+          - if current_user.admin?
+            li
+              = link_to 'admin', admin_path
           li
-            = link_to 'admin', admin_path
-        li
-          = link_to 'about', ''
-        li
+            = link_to 'about', ''
           = render 'user_session'
-
-  - if signed_in?
-    #user-info-and-test-info
-      #user-info
-        span.name = current_user.full_name
-        span.messages = 'E'
-        span.subject = 'CR'
-        span.subject = 'M'
-        span.subject = 'W'
-      = last_activity_and_suggested_display(current_user)

@@ -8,27 +8,30 @@
 // Colors
 ///////////////////////////////////////////////////////////////////////////////
 
-$blue: #2063fd;
-$dark-gray: #333;
-$light-gray: #e8e8e8;
-$almost-white: #f6f6f6;
-$light-red: #B90504;
-$light-yellow: #FFF6BF;
-$light-green: #E6EFC2;
+$blue: #749D90;
+$dark-gray: #303438;
+$gray: #8E99A4;
+$light-gray: #eee;
+$almost-white: #F4F4F4;
+$red: #a80005;
+$light-red: #BB0000;
+// $light-red: #B90504;
+$light-yellow: #ECDDA0;
+$light-green: #B0B07D;
 $dark-green: #308000;
-$red: #990100;
+$yellow: #f8c206;
 
 //  Font Colors
 $base-font-color: $dark-gray;
 
 //  Text Link Colors
-$base-link-color: $blue;
+$base-link-color: $gray;
 $hover-link-color: darken($blue, 15%);
 
 // Border color
 $base-border-color: $light-gray;
 
 // Flash Colors
-$error-color: $light-red;
-$notice-color: $light-yellow;
-$success-color: $light-green;
+$error-color: tint($light-red, 70%);
+$notice-color: tint($light-yellow, 20%);
+$success-color: tint($blue, 70%);

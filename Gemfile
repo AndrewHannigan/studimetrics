@@ -24,7 +24,7 @@ gem 'normalize-rails'
 gem 'rack-timeout'
 gem 'redis'
 gem 'sidekiq'
-gem 'simple_form'
+gem "simple_form", "~> 3.0.0.rc"
 gem 'slim'
 gem 'unicorn'
 gem 'jquery-rails'
@@ -34,6 +34,7 @@ gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'cocoon', github: 'nathanvda/cocoon'
 gem 'acts_as_list', github: 'philippfranke/acts_as_list', ref: 'd178bb314246cdc93d5ddb8e4d1aedd22ee31858'
 gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'underscore-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
