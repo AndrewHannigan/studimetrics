@@ -29,17 +29,16 @@ html
                 .math-score
                   i class="ss-icon" calculator
                   | Math
-                  .number 856
-
+                  .number = projected_score_for_subject(math)
                 .reading-score
                   i class="ss-icon" books
                   | Reading
-                  .number 856
+                  .number = projected_score_for_subject(reading)
 
                 .writing-score
                   i class="ss-icon" notebook
                   | Writing
-                  .number 856
+                  .number = projected_score_for_subject(writing)
 
             ul#main-nav
               li
@@ -70,9 +69,7 @@ html
                 = link_to sign_out_path, method: :delete do
                   = t('layouts.application.sign_out').capitalize
                   i class="ss-icon ss-symbolicons-block" power
-
           = last_activity_for_user current_user
-
       #main-content
         = yield
 

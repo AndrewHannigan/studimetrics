@@ -4,5 +4,5 @@ module ApplicationHelper
     composite_score = CompositeScore.where(subject: subject, user: current_user).first
     composite_score.try(:projected_score) || "N/A"
   end
-end
 
+end
