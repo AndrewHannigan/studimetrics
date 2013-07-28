@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   include Clearance::User
+  has_many :focus_ranks
+  has_many :section_completions
+  has_many :user_responses, through: :section_completions
 
   validates :first_name, :last_name, :grade, :state, presence: true
   GRADES = %w(9th 10th 11th 12th)

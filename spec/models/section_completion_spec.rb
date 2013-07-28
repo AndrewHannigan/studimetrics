@@ -59,9 +59,8 @@ describe SectionCompletion do
     it "creates a StatRunner and calls perform if scoreable" do
       completion = create :section_completion, :in_progress
       completion.expects(:scoreable?).returns(true)
-      StatRunner.any_instance.expects(:perform!)
 
-      completion.complete!
+      expect {completion.complete!}.to change{StatRunner.jobs.size}.by(1)
     end
 
     it "does not create a StatRunner if not scoreable" do
