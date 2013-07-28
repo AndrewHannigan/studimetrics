@@ -1,4 +1,5 @@
 class FocusRank < ActiveRecord::Base
+  AVERAGE_RESPONSE_TIME = {"Math" => 20, "Critical Reading" => 30, "Writing" => 25}
   attr_accessor :position, :accuracy
 
   belongs_to :user
@@ -78,7 +79,15 @@ class FocusRank < ActiveRecord::Base
     end
 
     def average_response_time_for_site_without_user
-      total_site_time_without_user/frequency_for_site_without_user
+      if frequency_for_site_without_user > 0
+        total_site_time_without_user/frequency_for_site_without_user
+      else
+        default_average_time_for_subject
+      end
+    end
+
+    def default_average_time_for_subject
+      AVERAGE_RESPONSE_TIME[self.concept.subject_name]
     end
 
     def total_correct
@@ -86,7 +95,7 @@ class FocusRank < ActiveRecord::Base
     end
 
     def total_incorrect
-      responses_for_user.where(user_responses: {correct: false}).uniq.count
+      responses_for_user.where("user_responses.correct != true").uniq.count
     end
 
     def frequency_for_user
