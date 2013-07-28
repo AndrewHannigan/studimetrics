@@ -4,6 +4,7 @@ class SectionCompletion < ActiveRecord::Base
   belongs_to :user
   has_many :user_responses
   has_many :questions, -> { order 'position asc' }, through: :user_responses
+  has_many :concepts, through: :questions
   has_one :practice_test, through: :section
   belongs_to :test_completion
 
@@ -32,7 +33,7 @@ class SectionCompletion < ActiveRecord::Base
 
   def complete!
     update_attributes status: 'Completed'
-    StatRunner.new(self).perform! if scoreable?
+    StatRunner.perform_async(self.id) if scoreable?
   end
 
   def total_time
