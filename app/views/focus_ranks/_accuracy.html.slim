@@ -1,0 +1,6 @@
+span = number_to_percentage(focus_rank.accuracy, precision: 0)
+- if focus_rank.accuracy_delta > 0
+ == '<i class="ss-icon up">up</i>'
+- elsif focus_rank.accuracy_delta < 0
+  == '<i class="ss-icon down">down</i>'
+
