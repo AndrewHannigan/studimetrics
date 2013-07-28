@@ -36,7 +36,6 @@ books << Book.create(
             publish_date: "2013-02-24")
 
 
-math_subject = Subject.create(name: "Math")
 
 concepts = []
 math_concept = {concepts: []}
