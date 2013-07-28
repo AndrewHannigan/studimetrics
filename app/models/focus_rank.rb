@@ -5,6 +5,7 @@ class FocusRank < ActiveRecord::Base
   belongs_to :user
   belongs_to :concept
   default_scope {order("focus_ranks.score desc")}
+  delegate :name, to: :concept, prefix: true
 
   def self.update_scores_for_concepts_and_user(concepts, user)
     old_stats = self.current_stats_for_user(user)
@@ -21,6 +22,10 @@ class FocusRank < ActiveRecord::Base
     self.score = calculated_score
     self.average_time = average_response_time_for_user
     self.save
+  end
+
+  def percentage_complete
+    concept_progress.percentage_complete
   end
 
   def self.current_stats_for_user(user)
@@ -41,15 +46,25 @@ class FocusRank < ActiveRecord::Base
     new_stats.each do |new_stat|
       previous_stat = old_stats.detect {|s| s.id == new_stat.id}
       if previous_stat
-        position_delta = new_stat.position - previous_stat.position
+        position_delta = previous_stat.position - new_stat.position
         accuracy_delta = (new_stat.accuracy - previous_stat.accuracy).ceil
-        new_stat.update_attributes!(position_delta: position_delta, accuracy_delta: accuracy_delta)
+      else
+        position_delta = 0
+        accuracy_delta = 0
       end
+      new_stat.update_attributes!(position_delta: position_delta, accuracy_delta: accuracy_delta)
     end
+  end
+
+  def frequency_for_user
+    responses_for_user.count
   end
 
   private
 
+    def concept_progress
+      @concept_progress ||= ConceptProgress.new(user: user, concept: concept)
+    end
 
     def calculated_score
       big_parens = 1 + ((average_response_time_for_user - average_response_time_for_site_without_user)/average_response_time_for_site_without_user)
@@ -96,10 +111,6 @@ class FocusRank < ActiveRecord::Base
 
     def total_incorrect
       responses_for_user.where("user_responses.correct != true").uniq.count
-    end
-
-    def frequency_for_user
-      responses_for_user.count
     end
 
     def frequency_for_site_without_user
