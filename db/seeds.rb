@@ -93,3 +93,4 @@ books.each do |book|
   end
 end
 
+College.create(name: "Dartmouth College", math: 600, critical_reading: 650, writing: 700)
