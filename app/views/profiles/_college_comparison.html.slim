@@ -1,4 +1,4 @@
-- college = current_user.college || College.first
+- college = current_user.college || College.first || NullCollege.new
 .college-comparison.profile-block.left
   h4 College Comparison
   = image_tag 'http://placehold.it/100x100', class: 'college-logo'
