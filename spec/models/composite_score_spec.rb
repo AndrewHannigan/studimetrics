@@ -8,7 +8,7 @@ describe CompositeScore do
       concepts = {"concept_1" => {correct: 2, incorrect: 3}, "concept_2" => {correct: 4, incorrect: 2}, "concept_3" => {correct: 5, incorrect: 0}}
       composite_score = CompositeScore.new(subject: subj, concepts: concepts)
 
-      expect(composite_score.calculated_composite_score).to eq 34.296875
+      expect(composite_score.calculated_composite_score).to eq 37.046875
     end
   end
 
@@ -95,8 +95,17 @@ describe CompositeScore do
 
         expect(composite_score.concepts["concept_#{concept.id}"][:correct]).to eq 0
         expect(composite_score.concepts["concept_#{concept.id}"][:incorrect]).to eq 0
-
       end
     end
+  end
+
+  describe "#projected_score" do
+    it "calls to retrieve projected score based on rounded score" do
+      composite_score = create :composite_score
+      ConversionTable.expects(:converted_score).with(composite_score.subject.acronym, composite_score.send(:rounded_score))
+
+      composite_score.projected_score
+    end
+
   end
 end

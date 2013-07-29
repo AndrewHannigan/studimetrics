@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130723020023) do
+ActiveRecord::Schema.define(version: 20130729003725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,12 +160,14 @@ ActiveRecord::Schema.define(version: 20130723020023) do
   end
 
   create_table "test_completions", force: true do |t|
-    t.integer "user_id"
-    t.integer "practice_test_id"
-    t.decimal "raw_math_score"
-    t.decimal "raw_critical_reading_score"
-    t.decimal "raw_writing_score"
-    t.integer "percentage_complete",        default: 0, null: false
+    t.integer  "user_id"
+    t.integer  "practice_test_id"
+    t.decimal  "raw_math_score"
+    t.decimal  "raw_critical_reading_score"
+    t.decimal  "raw_writing_score"
+    t.integer  "percentage_complete",        default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "test_completions", ["practice_test_id"], name: "index_test_completions_on_practice_test_id", using: :btree
@@ -204,6 +206,7 @@ ActiveRecord::Schema.define(version: 20130723020023) do
     t.string   "city"
     t.string   "state"
     t.string   "grade"
+    t.integer  "college_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

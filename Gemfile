@@ -32,7 +32,7 @@ gem 'turbolinks'
 gem 'honeybadger'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'cocoon', github: 'nathanvda/cocoon'
-gem 'acts_as_list', github: 'philippfranke/acts_as_list', ref: 'd178bb314246cdc93d5ddb8e4d1aedd22ee31858'
+gem 'acts_as_list'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'underscore-rails'
 

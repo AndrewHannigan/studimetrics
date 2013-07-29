@@ -52,8 +52,26 @@ describe FocusRank do
     end
   end
 
+  describe "#accuracy" do
+    it "returns total correct divided by total incorrect as a percentage" do
+      focus_rank = FocusRank.new(correct: 5, incorrect: 15)
+
+      expect(focus_rank.accuracy).to eq 25
+    end
+  end
+
+  describe "#percentage_complete" do
+    it "call percentage complete on a concept progress instance" do
+      focus = create :focus_rank
+
+      ConceptProgress.any_instance.expects(:percentage_complete)
+
+      focus.percentage_complete
+    end
+  end
+
   describe "FocusRank#update_deltas_for_user" do
-    it "should set position and accuracy delta" do
+    it "sets position and accuracy delta" do
       setup_original_stats
       old_stats = FocusRank.current_stats_for_user(@user)
       swap_stat_positions
@@ -61,12 +79,27 @@ describe FocusRank do
       FocusRank.update_deltas_for_user(@user,old_stats)
       ranks = FocusRank.current_stats_for_user(@user)
 
-      expect(ranks.first.position_delta).to eq -1
-      expect(ranks.last.position_delta).to eq 1
+      expect(ranks.first.position_delta).to eq 1
+      expect(ranks.last.position_delta).to eq -1
       expect(ranks.first.accuracy_delta).to eq 17
       expect(ranks.last.accuracy_delta).to eq -13
       expect(ranks.first.score).to eq 2
       expect(ranks.last.score).to eq 1
+    end
+
+  end
+
+  describe "#frequency_for_user" do
+    it "counts number of user responses for the given concept" do
+      user = create :user
+      concept = create :concept
+      focus_rank = create :focus_rank, user: user, concept: concept
+      section_completion = create :section_completion, user: user
+      5.times {create :user_response, section_completion: section_completion}
+
+      focus_rank.expects(:responses_for_user).returns(user.user_responses)
+
+      expect(focus_rank.frequency_for_user).to eq 5
     end
 
   end
