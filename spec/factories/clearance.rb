@@ -16,5 +16,9 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+
+    trait :with_college do
+      college
+    end
   end
 end

@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
   include Clearance::User
   has_many :focus_ranks
+  belongs_to :college
   has_many :section_completions
   has_many :user_responses, through: :section_completions
+
+  delegate :name, to: :college, prefix: true
 
   validates :first_name, :last_name, :grade, :state, presence: true
   GRADES = %w(9th 10th 11th 12th)
