@@ -2,6 +2,30 @@ require 'spec_helper'
 
 describe CompositeScore do
 
+  describe "CompositeScore#projected_total_score_for_user" do
+    it "returns nil if any subject doesn't have a composite score for user" do
+      user = create :user
+      subj = create :subject
+      subject_without_composite_score = create :subject
+
+      composite_score = create :composite_score, user: user, subject: subj
+
+      expect(CompositeScore.projected_total_score_for_user(user)).to eq nil
+    end
+
+    it "returns the sum of the composite scores" do
+      user = create :user
+      subj = create :subject
+      subj2 = create :subject
+
+      composite_score = create :composite_score, user: user, subject: subj
+      composite_score2 = create :composite_score, user:user, subject: subj2
+
+      CompositeScore.any_instance.stubs(:projected_score).returns(500)
+      expect(CompositeScore.projected_total_score_for_user(user)).to eq (composite_score.projected_score + composite_score2.projected_score)
+    end
+  end
+
   describe "#calculated_composite_score" do
     it "returns score according to formula" do
       subj = create :subject, name: "Math"
