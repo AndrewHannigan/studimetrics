@@ -1,11 +1,20 @@
+- content_for :sidebar do
+  = render 'test_sidebar'
+
 #test-content
  .inner
   = simple_form_for @section_completion do |f|
     = f.input :section_id, as: :hidden
     .test-header
       .test-info
-        h3 = @section_completion.section.practice_test_name
-        h4 = section_name_with_subject(@section_completion.section)
+        .wrapper
+          h3 data-behavior="dropdown"
+            = @section_completion.section.practice_test_name
+            span.down-arrow
+        .wrapper
+          h4 data-behavior="dropdown"
+            = section_name_with_subject(@section_completion.section)
+            span.down-arrow
       #test-timers
         h5
           i class="ss-icon ss-symbolicons-block" timer

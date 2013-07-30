@@ -58,6 +58,7 @@ header {
   @include span-columns(9);
   background: #fff;
   margin-bottom: 20px;
+  border: 1px solid tint($gray, 60%);
 }
 
 .high_voltage-pages, .clearance-users {
@@ -170,4 +171,8 @@ header {
   color: $almost-white;
   min-height: 160px;
   margin-top: 60px;
+}
+
+[data-behavior~="dropdown"] {
+  cursor: pointer;
 }
