@@ -12,7 +12,7 @@ feature 'user answers multiple choice' do
 
     section_link_on_page(@question.section).click
 
-    click_link 'Click here to begin'
+    click_link 'play'
 
     make_radios_visible do
       # TODO: timecop
@@ -36,7 +36,7 @@ feature 'user answers multiple choice' do
 
     section_link_on_page(@question.section).click
 
-    click_link 'Click here to begin'
+    click_link 'play'
 
     make_radios_visible do
       question_on_page(@question).choose('A')

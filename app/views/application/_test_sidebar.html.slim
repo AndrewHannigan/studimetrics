@@ -5,7 +5,8 @@
   span Home
 
 #test-sidebar
-  h5 #{current_test.name} Progress #{display_test_percentage_complete(current_test)}
+  = link_to new_practice_test_next_section_for_test_path(practice_test_id: current_test), class: 'test-link' do
+    h5 #{current_test.name} Progress #{display_test_percentage_complete(current_test)}
   ul.test-list
     = render "test_sidebar/practice_test", practice_test: current_test,  current_test: current_test
 

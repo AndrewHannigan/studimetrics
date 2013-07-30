@@ -8,9 +8,7 @@ feature 'user visits practice page' do
     section_completion.in_progress!
     user = user_response.section_completion.user
 
-    visit root_path as: user.id
-
-    click_on 'Practice'
+    visit profile_path as: user.id
 
     within '#last-activity' do
       expect(page).to have_content "Last Activity"

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'user signs in' do
   scenario 'starts on profile page' do
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, first_name: "The", last_name: "Dude"
 
     visit root_path
     click_link 'sign in'
@@ -12,13 +12,6 @@ feature 'user signs in' do
     click_on 'Sign in'
 
     expect(current_path).to eq(profile_path)
-  end
-
-  scenario 'should see name in header' do
-    user = FactoryGirl.create :user, first_name: 'The', last_name: 'Dude'
-
-    visit root_path as: user.id
-
     expect(page).to have_content('The Dude')
   end
 end

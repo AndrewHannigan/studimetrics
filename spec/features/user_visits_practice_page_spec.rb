@@ -8,12 +8,9 @@ feature 'user visits practice page' do
 
   scenario 'sees list of tests' do
     user = FactoryGirl.create :user
-    visit root_path as: user.id
+    visit practice_tests_path as: user.id
 
-    click_on 'Practice'
-
-    expect(page).to have_content(@practice_test.name)
-    expect(page).to have_content(@practice_test2.name)
+    expect(page).to have_content("#{@practice_test.name} Progress")
   end
 
 end

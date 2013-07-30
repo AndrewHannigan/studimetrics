@@ -92,14 +92,6 @@ describe "Timer", ->
 
       expect($('[data-timer-content]:first').text()).toBe('00:45')
 
-    it 'disables the toggle link after clicking', ->
-      loadFixtures 'timer_fixture'
-      $('[data-timer]').timer()
-      link = $('[data-timer-toggle]')
-      link.click()
-
-      expect(link.attr('data-disabled')).toBeTruthy()
-
   describe 'events', ->
     it 'fires a start event', ->
       loadFixtures 'timer_fixture'

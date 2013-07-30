@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'user logs in' do
+feature 'sees projected scores' do
 
   scenario 'sees projected scores' do
     user = create :user
@@ -17,11 +17,20 @@ feature 'user logs in' do
     ConversionTable.expects(:converted_score).with("W", 0).returns(600)
     ConversionTable.expects(:converted_score).with("CR", 0).returns(700)
 
+    visit profile_path as: user.id
+
+    expect(page).to have_css ".math-score .number", text: "500"
+    expect(page).to have_css ".writing-score .number", text: "600"
+    expect(page).to have_css ".reading-score .number", text: "700"
+  end
+
+  scenario 'doesnt see project scores on landing pages' do
+    user = create :user
     visit root_path as: user.id
 
-    expect(page).to have_css "div.math-score div.number", text: "500"
-    expect(page).to have_css "div.writing-score div.number", text: "600"
-    expect(page).to have_css "div.reading-score div.number", text: "700"
+    expect(page).to_not have_css ".math-score .number", text: "500"
+    expect(page).to_not have_css ".writing-score .number", text: "600"
+    expect(page).to_not have_css ".reading-score .number", text: "700"
   end
 
 end
