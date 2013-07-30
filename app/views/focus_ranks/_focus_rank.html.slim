@@ -1,0 +1,13 @@
+tr.concept-progress data-id="focus_rank-#{focus_rank.id}"
+  td.title
+    = focus_rank.concept_name
+  td.subject
+    = focus_rank.concept.subject_name.first
+  td.position
+    = display_focus_rank_position(focus_rank)
+  td.accuracy
+    = display_focus_rank_accuracy(focus_rank)
+  td.frequency
+    = focus_rank.frequency_for_user
+  td.percent_complete
+    = number_to_percentage(focus_rank.percentage_complete, precision: 0)

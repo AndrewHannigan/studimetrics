@@ -1,11 +1,19 @@
 class CompositeScore < ActiveRecord::Base
   RECENT_QUESTIONS = 15
-  AVERAGE_QUESTIONS_FOR_SUBJECT = {"Math" => 50, "Critical Reading" => 50, "Writing" => 50}
+  AVERAGE_QUESTIONS_FOR_SUBJECT = {"Math" => 54, "Critical Reading" => 67, "Writing" => 49}
 
   belongs_to :user
   belongs_to :subject
   delegate :name, to: :subject, prefix: true
   delegate :concepts, to: :subject, prefix: true
+
+  def self.projected_total_score_for_user(user)
+    scores = Subject.all.collect do |subj|
+      CompositeScore.where(user: user, subject: subj).first.try(:projected_score)
+    end
+    return nil if scores.include?(nil)
+    scores.inject(:+)
+  end
 
   def update!(concepts=nil)
     concepts ||= subject_concepts
@@ -13,6 +21,11 @@ class CompositeScore < ActiveRecord::Base
     self.composite_score = calculated_composite_score
     self.save!
   end
+
+  def projected_score
+    ConversionTable.converted_score(subject.acronym, rounded_score)
+  end
+
 
   def calculated_composite_score
     return 0 unless total_frequency_excluding_incorrect_free_responses > 0
@@ -29,6 +42,10 @@ class CompositeScore < ActiveRecord::Base
   end
 
   private
+
+    def rounded_score
+      composite_score.to_f.round(0)
+    end
 
     def pre_correction_score
       raw_precorrection_score = (total_correct_excluding_incorrect_free_responses.to_f/total_frequency_excluding_incorrect_free_responses)

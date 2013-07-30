@@ -1,6 +1,7 @@
 - current_test = @section_completion.present? ? @section_completion.practice_test : current_user.current_test
 
 #test-sidebar
+  h4 Practice Tests
   ul.test-list
     = render partial: "/test_sidebar/practice_test", collection: Book.first.practice_tests, as: :practice_test, locals: {current_test: current_test}
 

@@ -1,6 +1,7 @@
 = render 'test_sidebar'
 
 #test-content
+ .inner
   = simple_form_for @section_completion do |f|
     = f.input :section_id, as: :hidden
     .test-header
@@ -13,14 +14,18 @@
       .test-notice
         .small = t 'section_completion.retake_notice'
 
-    #question-list data-disabled=""
-      - if f.object.user_responses.blank?
-        p There are no questions in this test.
-      - else
-        = f.simple_fields_for :user_responses, @section_completion.user_responses.sort_by{|r| r.question.position} do |user_response_form|
-          = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
+    - if f.object.user_responses.blank?
+      p There are no questions in this test.
+    - else
+      - responses = @section_completion.user_responses_sorted_by_question_position
+      - responses.in_groups_of @section_completion.section.question_count_per_column, false do |question_list|
+        .question-list data-disabled=""
+            = f.simple_fields_for :user_responses, question_list do |user_response_form|
+              = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
 
       = f.button :submit, 'Submit'
+
+    .filler &nbsp;
 
     #test-timers
       h5 Section Timer

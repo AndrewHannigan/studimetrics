@@ -12,12 +12,67 @@ html
   body class="#{body_class}"
     = render 'header'
 
-    #main-container
-      = render 'flashes'
+    = render 'flashes'
 
+    .container#main-wrapper
       - if signed_in?
-        = render 'submenu'
+        #user-sidebar
+          .sidebar-block
+            .sidebar-header
+              .user-info
+                .photo
+                  = image_tag 'http://www.gravatar.com/avatar/d3cc1542f7fb242f0e73fd70810c0ac5.png'
+                .name-and-score
+                  .name = current_user.full_name
+                  .score = projected_total_score 
+              .scores
+                .math-score
+                  i class="ss-icon" calculator
+                  | Math
+                  .number = projected_score_for_subject(math)
+                .reading-score
+                  i class="ss-icon" books
+                  | Reading
+                  .number = projected_score_for_subject(reading)
 
-      = yield
+                .writing-score
+                  i class="ss-icon" notebook
+                  | Writing
+                  .number = projected_score_for_subject(writing)
+
+            ul#main-nav
+              li
+                = link_to '' do
+                  | Notifications
+                  i class="ss-icon ss-symbolicons-block" bell
+              li class="active"
+                = link_to profile_path do
+                  | Profile
+                  i class="ss-icon ss-symbolicons-block" users
+              li
+                = link_to practice_tests_path do
+                  | Practice Tests
+                  i class="ss-icon ss-symbolicons-block" blocks
+              li
+                = link_to '' do
+                  | Review
+                  i class="ss-icon ss-symbolicons-block" searchfile
+              li
+                = link_to '' do
+                  | Concepts
+                  i class="ss-icon ss-symbolicons-block" flipvertically
+              li
+                = link_to '' do
+                  | Settings
+                  i class="ss-icon ss-symbolicons-block" settings
+              li
+                = link_to sign_out_path, method: :delete do
+                  = t('layouts.application.sign_out').capitalize
+                  i class="ss-icon ss-symbolicons-block" power
+          = last_activity_for_user current_user
+      #main-content
+        = yield
+
+    #footer
 
     = render 'javascript'
