@@ -15,7 +15,7 @@ html
     = render 'flashes'
 
     .container#main-wrapper
-      - if signed_in?
+      - if signed_in? && !high_voltage_page?
         #user-sidebar
           .sidebar-block
             .sidebar-header

@@ -5,4 +5,7 @@ module ApplicationHelper
     composite_score.try(:projected_score) || "N/A"
   end
 
+  def high_voltage_page?
+    controller.controller_name == 'pages'
+  end
 end

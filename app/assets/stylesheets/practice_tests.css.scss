@@ -1,10 +1,10 @@
 #test-sidebar {
-  // @include span-columns(3);
   width: 20%;
   float: left;
   min-height: 700px;
   font-size: 15px;
   border-radius: 4px 0 0 0;
+  display: none;
 
   .icon, span {
     display: inline-block;
@@ -112,27 +112,7 @@
 }
 
 #test-content {
-  // @include span-columns(9);
-  background: $almost-white;
-  width: 80%;
-  float: left;
-  border-left: 1px solid tint($gray, 30%);
-  border-right: 2px solid $red;
-  border-top: 1px solid tint($gray, 30%);
-  border-bottom: 1px solid tint($gray, 30%);
   min-height: 700px;
-
-  .inner {
-    border-right: 2px solid tint($red, 30%);
-  }
-
-  .inner-gray {
-    border-right: 1px solid $gray;
-  }
-
-  .inner-white {
-    border-right: 1px solid $almost-white;
-  }
 }
 
 #practice-test-welcome-message {
@@ -147,5 +127,244 @@
     font-size: 28px;
     text-align: center;
     margin: 0 0 20px 0;
+  }
+}
+
+.test-header {
+  @include clearfix;
+  background: $almost-white;
+  border-bottom: 1px solid darken(#eee, 10%);
+
+  .wrapper {
+    @include clearfix;
+    margin: 18px;
+  }
+}
+
+.test-info {
+  @include span-columns(3 of 9);
+  h3, h4 {
+    margin: 0;
+  }
+}
+
+.section-completion-accuracy {
+  text-align: center;
+  margin-top: 10px;
+  @include span-columns(3 of 9);
+  span {
+    color: $dark-gray;
+  }
+}
+
+.section-completion-total-time {
+  text-align: right;
+  margin-top: 10px;
+  @include span-columns(3 of 9);
+
+  span {
+    color: $dark-gray;
+  }
+}
+
+.test-notice {
+  @include linear-gradient(tint($dark-gray, 30%), $dark-gray);
+  @include pad(14px 0);
+  @include clearfix;
+  color: $almost-white;
+  text-align: center;
+  font-weight: bold;
+
+  h3 {
+    margin: 0;
+  }
+
+  & > h5 {
+    margin-bottom: 20px;
+  }
+
+  .retake-test, .retake-section {
+    @include span-columns(2 of 9);
+    @include shift(2);
+  }
+
+  .next-test, .next-section {
+    @include span-columns(2 of 9);
+    @include shift(1);
+  }
+
+  .ss-icon {
+    font-size: 200%;
+  }
+
+  a {
+    color: $almost-white;
+
+    &:hover {
+      color: $light-gray;
+    }
+  }
+}
+
+.question-list {
+  width: 49%;
+  float: left;
+  color: #666;
+
+  &[data-disabled] {
+    opacity: 0.5
+  }
+}
+
+#test-timers {
+  display: none;
+  float: left;
+  width: 320px;
+  margin-top:24px;
+  text-align: center;
+
+  &.scroll-to-fixed-fixed {
+    margin-top: 0;
+  }
+
+  .wrapper {
+    padding: 14px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  h5 {
+    border: 1px solid darken(#aaa, 10%);
+    @include linear-gradient(#aaa, darken(#aaa, 30%));
+    padding: 10px;
+    color: #fff;
+  }
+
+  .button {
+    margin-top: 18px;
+  }
+}
+
+.timer-content {
+  span {
+    display: block;
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: bold;
+  }
+}
+
+.question-timer {
+  display: none;
+}
+
+.question {
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 25px;
+  @include no-select;
+
+  .question-number, .inputs {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .question-number {
+    width: 21px;
+    margin-right: 10px;
+  }
+
+  .skip-button {
+    width: 56px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #666;
+    font-size: 14px;
+    padding: 1px 4px 4px 4px;
+    margin-left: 7px;
+    font-weight: 500;
+
+    &.selected {
+      background: #555;
+      color: $almost-white;
+    }
+  }
+
+  .string {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  input.string {
+    width: 190px;
+    padding: 6px;
+    margin-bottom: 0;
+  }
+
+  .radio_buttons {
+    label {
+      font-size: 14px;
+      cursor: pointer;
+      margin-bottom: 0;
+
+      &:before {
+        border-radius: 16px;
+        content: "";
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        z-index: -1;
+        left: -11px;
+        bottom: -4px;
+        border: 1px solid #ddd;
+      }
+
+    }
+
+    span {
+      position: relative;
+      margin-right: 30px;
+      vertical-align: middle;
+      display: inline-block;
+      z-index:1;
+
+      &:last-child label:before {
+        width: 56px;
+        border-radius: 6px;
+      }
+    }
+
+  }
+
+  input[type=radio] {
+    display: none;
+
+    &:checked + label:before {
+      background: #555;
+    }
+    
+    &:checked + label {
+      color: #777;
+    }
+  }
+}
+
+.multiple-choice-answer {
+  margin-left: 10px;
+}
+
+#section-completion-table {
+  font-size: 18px;
+  margin: 14px;
+
+  .correct {
+    color: $dark-green;
+  }
+
+  .incorrect {
+    color: $light-red;
   }
 }
