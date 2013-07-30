@@ -1,11 +1,14 @@
 module ProfileHelper
-  def display_concept_progress
-    concept_progresses = ConceptProgress.generate_for_user(current_user)
-    render "concept_progresses/table", concept_progresses: concept_progresses
+  def focus_ranks_table
+    focus_ranks = FocusRank.current_stats_for_user(current_user)
+    render "focus_ranks/table", focus_ranks: focus_ranks
   end
 
-  def display_test_completions
-    test_completions = TestCompletion.where(user: current_user).includes(:practice_test)
-    render "test_completions/table", test_completions: test_completions
+  def display_focus_rank_position(focus_rank)
+    render "focus_ranks/position", focus_rank: focus_rank
+  end
+
+  def display_focus_rank_accuracy(focus_rank)
+    render "focus_ranks/accuracy", focus_rank: focus_rank
   end
 end

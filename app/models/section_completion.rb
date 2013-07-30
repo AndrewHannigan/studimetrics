@@ -51,4 +51,8 @@ class SectionCompletion < ActiveRecord::Base
   def set_scoreable!
     self.update_attributes(scoreable: true) unless retake?
   end
+
+  def user_responses_sorted_by_question_position
+    user_responses.sort_by{|r| r.question.position}
+  end
 end

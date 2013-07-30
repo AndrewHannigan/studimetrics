@@ -1,15 +1,79 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background: $light-gray;
+
+  &.high_voltage-pages {
+    background: #fff;
+  }
+}
+
 a:link, a:visited {
   text-decoration: none;
 }
 
 header {
-  border-bottom: 1px solid #ccc;
-  @include clearfix;
-  padding: 10px;
+  .bar {
+    @include clearfix;
+    padding: 10px;
+    background: $red;
+    border-bottom: 1px solid $gray;
+
+    a {
+      color: $almost-white;
+      font-weight: bold;
+
+      &:hover {
+        color: shade($almost-white, 10%);
+      }
+    }
+  }
+
+  .or {
+    color: tint($red, 40%);
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .sign-up {
+    background: tint($red, 24%);
+    border-radius: 4px;
+    display: inline-block;
+    padding: 2px 6px;
+  }
 }
 
 #main-container, .container {
   @include outer-container;
+}
+
+#main-wrapper {
+  margin-top: 20px;
+  min-height: 80%;
+}
+
+#main-content {
+  @include span-columns(9);
+  background: #fff;
+  margin-bottom: 20px;
+  border: 1px solid tint($gray, 60%);
+}
+
+.high_voltage-pages, .clearance-users {
+  #main-content {
+    float: none;
+    margin: 20px auto;
+    width: auto;
+    background: none;
+    border: none;
+  }
+}
+
+#main-container {
+  margin: 0 auto 60px auto;
+  background: $almost-white;
 }
 
 #logo {
@@ -18,7 +82,7 @@ header {
   font-weight: normal;
 
   a {
-    color: $red;
+    font-weight: normal;
     text-decoration: none;
   }
 }
@@ -40,10 +104,11 @@ header {
 
 #user-info-and-test-info {
   @include outer-container;
+  margin-bottom: 18px;
+  padding-top: 36px;
 
   #user-info {
     @include span-columns(9);
-    margin-top: 10px;
 
     span {
       display: inline-block;
@@ -85,6 +150,7 @@ header {
   margin-top: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  display: none;
 
   a {
     text-decoration: none;
@@ -99,4 +165,15 @@ header {
       border-bottom: 2px solid #960102;
     }
   }
+}
+
+#footer {
+  background: $dark-gray;
+  color: $almost-white;
+  min-height: 160px;
+  margin-top: 60px;
+}
+
+[data-behavior~="dropdown"] {
+  cursor: pointer;
 }
