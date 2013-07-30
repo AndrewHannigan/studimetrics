@@ -19,6 +19,30 @@
     border-bottom: 1px solid shade($gray, 15%);
   }
 
+  .subnav-back {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+    span, i {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  .sidebar-content {
+    overflow-x: hidden;
+    position: relative;
+    height: 467px;
+    margin-top: 22px;
+    @include transition(height, 0.4s);
+    @include transition-delay(0.4s);
+  }
+
   .user-info {
     @include clearfix;
   }
@@ -90,10 +114,31 @@
   }
 }
 
+$menuWidth: 251px;
+
+#additional-sidebar-content {
+  position: absolute;
+  left: $menuWidth + 15;
+  top: 12px;
+  width: $menuWidth;
+  @include transition(left, 0.8s);
+
+  &.in {
+    left: 15px;
+  }
+}
+
 #main-nav {
-  margin-top: 30px;
   list-style: none;
   padding: 0;
+  position: absolute;
+  width: $menuWidth;
+  left: 0;
+  @include transition(left, 0.8s);
+
+  &.out {
+    left: -$menuWidth;
+  }
 
   li {
     padding: 10px 20px;

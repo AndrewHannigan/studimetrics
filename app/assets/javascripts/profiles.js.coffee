@@ -1,5 +1,10 @@
 $ ->
   $(document).on 'page:load', pageLoaded
+  $(document).on 'click', '[data-behavior~="subnav-back"]', (event) ->
+    event.preventDefault()
+    $('#additional-sidebar-content').toggleClass 'in'
+    $('#main-nav').toggleClass('out')
+
   pageLoaded()
 
 pageLoaded = ->

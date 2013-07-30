@@ -1,5 +1,9 @@
 - current_test = @section_completion.present? ? @section_completion.practice_test : current_user.current_test
 
+= link_to '', data: { behavior: 'subnav-back'}, class: 'subnav-back' do
+  i class="ss-icon ss-symbolicons-block" home
+  span Home
+
 #test-sidebar
   h5 #{current_test.name} Progress #{display_test_percentage_complete(current_test)}
   ul.test-list
