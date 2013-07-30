@@ -1,0 +1,22 @@
+.percentile.profile-block.right
+  h4 Your Percentile
+  .percentile-bar.reading
+    span.bar data-behavior="reading-bar"
+      span.indicator 520
+    span.subject Critical Reading
+  .percentile-bar.math
+    span.bar data-behavior="math-bar"
+      span.indicator 440
+    span.subject Math
+  .percentile-bar.writing
+    span.bar data-behavior="writing-bar"
+      span.indicator 622
+    span.subject Writing
+
+  .profile-note = t 'profile.percentile_disclaimer'
+
+javascript:
+  var selectedCollege = new College()
+  selectedCollege.readingPercentileScores = { low: 510, high: 620, average: 610 }
+  selectedCollege.mathPercentileScores = { low: 540, high: 660, average: 580 }
+  selectedCollege.writingPercentileScores = { low: 510, high: 610, average: 570 }

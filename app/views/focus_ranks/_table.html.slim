@@ -1,6 +1,6 @@
 table.concept-progress
-  th
-    h5 = t "profile.concept_progress.title"
+  th.title
+    = t "profile.concept_progress.title"
   th
     = t "profile.concept_progress.subject"
   th
@@ -10,7 +10,6 @@ table.concept-progress
   th
     = t "profile.concept_progress.frequency"
   th
-    = t "profile.concept_progress.average_time"
-  th
     = t "profile.concept_progress.progress"
-  = render concept_progresses
+
+  = render focus_ranks

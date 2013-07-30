@@ -18,4 +18,22 @@ describe Section do
       expect(section.questions_count).to eq section.questions.count
     end
   end
+
+  describe "#question_count_per_column" do
+    it 'returns the number of questions to be used in each column' do
+      section = create :section
+      create_list :question, 2, section: section
+
+      expect(section.question_count_per_column).to eq(1)
+      create :question, section: section
+      expect(section.question_count_per_column).to eq(1)
+      create :question, section: section
+      expect(section.question_count_per_column).to eq(2)
+    end
+
+    it 'returns 1 if only 1 question' do
+      question = create :question
+      expect(question.section.question_count_per_column).to eq(1)
+    end
+  end
 end

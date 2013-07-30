@@ -1,6 +1,12 @@
 - current_test = @section_completion.present? ? @section_completion.practice_test : current_user.current_test
 
+= link_to '', data: { behavior: 'subnav-back'}, class: 'subnav-back' do
+  i class="ss-icon ss-symbolicons-block" home
+  span Home
+
 #test-sidebar
+  = link_to new_practice_test_next_section_for_test_path(practice_test_id: current_test), class: 'test-link' do
+    h5 #{current_test.name} Progress #{display_test_percentage_complete(current_test)}
   ul.test-list
-    = render partial: "/test_sidebar/practice_test", collection: Book.first.practice_tests, as: :practice_test, locals: {current_test: current_test}
+    = render "test_sidebar/practice_test", practice_test: current_test,  current_test: current_test
 

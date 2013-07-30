@@ -2,15 +2,17 @@ en:
   review:
     test_complete_title: 'Test Complete!'
     test_complete_subtitle: 'What would you like to do next?'
-    retake_test: 'Retake this test'
-    take_next_test: 'Take next test'
+    retake_test: 'Retake test'
+    take_next_test: 'Take test'
     section_complete_title: 'Section Complete!'
     section_complete_subtitle: 'What would you like to do next?'
-    retake_section: 'Retake this section'
-    take_next_section: 'Take next section'
+    retake_section: 'Retake section'
+    take_next_section: 'Next section'
   section_completion:
     retake_notice: 'You are retaking a section. Answers will not count towards your projected score.'
   profile:
+    average_scores_disclaimer: 'Average scores are compiled from publicly available data.'
+    percentile_disclaimer: 'Color indicates above/below selected college average'
     concept_progress:
       title: "concepts"
       subject: "Subject"

@@ -1,9 +1,9 @@
 #clearance {
   margin: 100px auto;
   border: 1px solid #ddd;
-  // box-shadow: 0 0 6px #ddd;
   width: 40%;
   border-radius: 4px;
+  background: #fff;
 
   h2 {
     background: $blue;
@@ -36,3 +36,13 @@
   font-size: 12px;
   margin-left: 2px;
 }
+
+.clearance-sessions {
+  #main-content {
+    background: none;
+    margin: auto;
+    float: none;
+    width: auto;
+  }
+}
+

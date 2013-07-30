@@ -1,0 +1,24 @@
+- college = current_user.college || College.first || NullCollege.new
+.college-comparison.profile-block.left
+  h4 College Comparison
+  = image_tag 'http://placehold.it/100x100', class: 'college-logo'
+  .info
+    .college-name
+      = college.name
+      = link_to 'change', '', class: 'change-college-logo'
+    .average-sat-score
+      .number = college.average_score
+      | Average SAT Score
+    .average-breakdown-score
+      table
+       tr.reading
+        td Critical Reading
+        td.average = college.critical_reading
+       tr.math
+        td Math
+        td.average = college.math
+       tr.writing
+        td Writing
+        td.average = college.writing
+
+  .profile-note = t 'profile.average_scores_disclaimer'

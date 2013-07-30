@@ -17,4 +17,8 @@ class Section < ActiveRecord::Base
   def questions_count
     questions.count
   end
+
+  def question_count_per_column
+    [1, (questions.count/2).ceil].max
+  end
 end

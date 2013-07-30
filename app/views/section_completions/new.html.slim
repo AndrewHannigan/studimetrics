@@ -1,36 +1,47 @@
-= render 'test_sidebar'
+- content_for :sidebar do
+  = render 'test_sidebar'
 
 #test-content
+ .inner
   = simple_form_for @section_completion do |f|
     = f.input :section_id, as: :hidden
     .test-header
-      .wrapper
-        .test-info
-          h3 = @section_completion.section.practice_test_name
-          h4 = @section_completion.section_name
+      .test-info
+        .wrapper
+          h3 data-behavior="dropdown"
+            = @section_completion.section.practice_test_name
+            span.down-arrow
+        .wrapper
+          h4 data-behavior="dropdown"
+            = section_name_with_subject(@section_completion.section)
+            span.down-arrow
+      #test-timers
+        h5
+          i class="ss-icon ss-symbolicons-block" timer
+          | Test Timer
+        div id="section-timer-#{@section_completion.section_id}" class="timer section-timer" data-timer="true"
+          .wrapper
+            a href="" class="ss-icon ss-symbolicons-block" data-timer-toggle="true" play
+            .timer-content data-timer-content="true" 00:00
+            .timer-labels
+              span min
+              span sec
+        div id="question-timer-#{@section_completion.section_id}" class="timer question-timer" data-timer="true"
+          .wrapper
+            .timer-content data-timer-content="true"
 
     - if @section_completion.retake?
       .test-notice
         .small = t 'section_completion.retake_notice'
 
-    #question-list data-disabled=""
-      - if f.object.user_responses.blank?
-        p There are no questions in this test.
-      - else
-        = f.simple_fields_for :user_responses, @section_completion.user_responses.sort_by{|r| r.question.position} do |user_response_form|
-          = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
+    - if f.object.user_responses.blank?
+      p There are no questions in this test.
+    - else
+      .questions
+        - responses = @section_completion.user_responses_sorted_by_question_position
+        - responses.in_groups_of @section_completion.section.question_count_per_column, false do |question_list|
+          .question-list data-disabled=""
+              = f.simple_fields_for :user_responses, question_list do |user_response_form|
+                = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
 
-      = f.button :submit, 'Submit'
-
-    #test-timers
-      h5 Section Timer
-      div id="section-timer-#{@section_completion.section_id}" class="timer section-timer" data-timer="true"
-        .wrapper
-          .timer-content data-timer-content="true"
-            p We'll keep track of how long you spend on each section to help you focus.
-            p Over time, we'll help you better manage something.
-          a href="" class="button" data-timer-toggle="true" Click here to begin
-
-      div id="question-timer-#{@section_completion.section_id}" class="timer question-timer" data-timer="true"
-        .wrapper
-          .timer-content data-timer-content="true"
+        = f.button :submit, 'Submit Answers', id: 'submit-answers-button'
