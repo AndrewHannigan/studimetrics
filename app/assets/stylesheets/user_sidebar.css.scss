@@ -1,6 +1,13 @@
 #user-sidebar {
   @include span-columns(3);
 
+  h5 {
+    color: tint($gray, 20%);
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+
+
   .sidebar-block {
     background: #fff;
   }
@@ -68,18 +75,13 @@
 
 #last-activity {
   margin-top: 20px;
+  margin-bottom: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
   border-top: 1px dashed tint($gray, 50%);
   border-bottom: 1px dashed tint($gray, 50%);
   color: tint($gray, 25%);
   font-size: 14px;
-
-  h5 {
-    color: tint($gray, 20%);
-    text-transform: uppercase;
-    font-size: 13px;
-  }
 
   .separator {
     display: inline-block;

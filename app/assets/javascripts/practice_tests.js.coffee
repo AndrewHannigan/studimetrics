@@ -1,10 +1,7 @@
 $ ->
   $(document).on 'click', '.test-item', toggleTestSubMenu
   $(document).on 'page:load', pageLoaded
-  $(window).unload pauseTimer
-  $(document).on 'page:fetch', pauseTimer
-  $(document).on 'timer:start', ->
-    $('#question-list').removeAttr('data-disabled').enableChildren()
+  setupTimers()
   pageLoaded()
   setupSkipButtons()
 
@@ -14,7 +11,18 @@ pageLoaded = ->
   questionTimer = $('.question-timer').data('timer')
   $('[data-behavior~="submit-user-response-click"]').userResponse(timer: questionTimer)
   $('[data-behavior~="submit-user-response-keyup"]').userResponse(timer: questionTimer)
-  $('#test-timers').scrollToFixed { marginTop: 143, dontSetWidth: true }
+
+setupTimers = ->
+  $(window).unload pauseTimer
+  $(document).on 'page:fetch', pauseTimer
+  $(document).on 'timer:start', ->
+    $('.question-list').removeAttr('data-disabled').find('input').removeAttr('disabled')
+  $(document).on 'timer:resume', ->
+    $(this).find('[data-timer-toggle]').text('pause')
+    $('.question-list').removeAttr('data-disabled').find('input').removeAttr('disabled')
+  $(document).on 'timer:pause', ->
+    $(this).find('[data-timer-toggle]').text('play')
+    $('.question-list').attr('data-disabled', true).find('input').attr('disabled', true)
 
 setupSkipButtons = ->
   $(document).on 'click', '.skip-button', setSkipButton

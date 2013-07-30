@@ -3,4 +3,4 @@
     = "#{f.object.question.position}."
   .inputs.multiple-choice-answer
     = f.input :question_id, as: :hidden
-    = f.input :value, as: :radio_buttons, collection: MultipleChoiceAnswer::INPUT_CHOICES, label: false
+    = f.input :value, as: :radio_buttons, collection: MultipleChoiceAnswer::INPUT_CHOICES, label: false, disabled: true

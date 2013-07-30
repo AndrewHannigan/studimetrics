@@ -10,6 +10,8 @@ class @Timer
       @domElement = $(domElement)
       $(domElement).data('timer', this)
       @setupListeners()
+      @previouslyElapsedTime = @timeFromStorage() || 0
+      @updateTimerContent()
 
   start: =>
     @startTime = new Date().getTime()
@@ -43,7 +45,9 @@ class @Timer
     toggleLink = @domElement.find('[data-timer-toggle]')
     return if toggleLink.attr('data-disabed')
 
-    if @startTime > 0
+    if @interval
+      @pause()
+    else if @startTime > 0
       @resume()
     else
       @start()
@@ -82,7 +86,6 @@ class @Timer
   updateTimerToggleText: =>
     if @domElement
       toggleLink = @domElement.find('[data-timer-toggle]')
-      toggleLink.attr('data-disabled', true)
 
   minutesWithPadding: =>
     @leadingZero Math.floor(@currentTime()/60)

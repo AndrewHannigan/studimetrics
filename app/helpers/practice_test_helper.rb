@@ -9,4 +9,8 @@ module PracticeTestHelper
     render "test_percentage_complete", test_progress: test_progress
   end
 
+  def section_name_with_subject(section)
+    "#{section.name} - #{section.subject_name}"
+  end
+
 end

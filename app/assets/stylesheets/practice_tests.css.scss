@@ -1,35 +1,15 @@
 #test-sidebar {
-  width: 20%;
-  float: left;
-  min-height: 700px;
   font-size: 15px;
-  border-radius: 4px 0 0 0;
-  display: none;
 
-  .icon, span {
+  span {
     display: inline-block;
     vertical-align: middle;
   }
 
-  .icon {
-    width: 24px;
-    height: 24px;
-    margin-left: 4px;
-    background: image-url('minus.png') center center no-repeat;
-
-    &.collapsed {
-      background-image: image-url('plus.png');
-    }
-  }
-
-  h4 {
-    @include linear-gradient(tint($gray, 15%), $gray);
-    color: $almost-white;
-    text-shadow: 1px 1px 0 tint($gray, 10%);
-    margin-top: 0;
-    margin-bottom: 10px;
-    padding: 4px 8px;
-    font-size: 16px;
+  .percentage-complete {
+    vertical-align: top;
+    font-size: 15px;
+    margin-left: 9px;
   }
 
   ul {
@@ -52,14 +32,21 @@
     }
 
     &.subject-name {
-      margin: 8px 0 4px 10px;
+      margin: 8px 0 4px 0;
     }
   }
 
 
   .section-item {
+    padding: 4px 4px 4px 10px;
+
+    &.active {
+      background: #fff;
+      border: 2px solid $red;
+    }
+
     div {
-      padding: 2px 10px;
+      padding: 2px 0;
     }
 
     span { 
@@ -111,10 +98,6 @@
   vertical-align: middle;
 }
 
-#test-content {
-  min-height: 700px;
-}
-
 #practice-test-welcome-message {
   text-align: center;
   h1 {
@@ -131,19 +114,33 @@
 }
 
 .test-header {
+  text-align: left;
   @include clearfix;
-  background: $almost-white;
-  border-bottom: 1px solid darken(#eee, 10%);
+  background: $dark-gray;
+  border-bottom: 1px solid darken($dark-gray, 10%);
+  color: $almost-white;
 
-  .wrapper {
-    @include clearfix;
-    margin: 18px;
+  .ss-icon {
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
   }
 }
 
 .test-info {
-  @include span-columns(3 of 9);
-  h3, h4 {
+  float: left;
+  width: 80%;
+  border-right: 1px solid #383c3f;
+
+  h4 {
+    margin: 0;
+    padding: 10px;
+    margin: 0;
+  }
+
+  h3 {
+    border-bottom: 1px solid #383c3f;
+    padding: 10px;
     margin: 0;
   }
 }
@@ -206,6 +203,15 @@
   }
 }
 
+#test-content {
+  text-align: center;
+}
+
+.questions {
+  margin: 4% 1%;
+  @include clearfix;
+}
+
 .question-list {
   width: 49%;
   float: left;
@@ -216,43 +222,56 @@
   }
 }
 
-#test-timers {
-  display: none;
-  float: left;
-  width: 320px;
-  margin-top:24px;
-  text-align: center;
-
-  &.scroll-to-fixed-fixed {
-    margin-top: 0;
-  }
-
-  .wrapper {
-    padding: 14px;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  h5 {
-    border: 1px solid darken(#aaa, 10%);
-    @include linear-gradient(#aaa, darken(#aaa, 30%));
-    padding: 10px;
-    color: #fff;
-  }
-
-  .button {
-    margin-top: 18px;
-  }
+#submit-answers-button {
+  margin-top: 24px;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 1em 2em;
 }
 
-.timer-content {
-  span {
-    display: block;
-    margin-top: 10px;
-    font-size: 40px;
-    font-weight: bold;
+#test-timers {
+  float: left;
+  width: 20%;
+  text-align: center;
+  margin-top: 18px;
+  color: $almost-white;
+
+  h5 {
+    font-weight: normal;
   }
+
+  a[data-timer-toggle] {
+    color: $almost-white;
+    font-size: 30px;
+    float: left;
+    margin-left: 31px;
+
+    &:active {
+      color: shade($almost-white, 15%);
+    }
+  }
+
+  .timer-content {
+    text-align: left;
+    font-size: 22px;
+    margin-top: 3px;
+    padding-top: 2px;
+  }
+
+  .timer-labels {
+    text-align: left;
+    font-size: 11px;
+    line-height: normal;
+    margin-top: -1px;
+
+    span:first-child {
+      display: inline-block;
+      margin-right: 12px;
+      margin-left: 4px;
+    }
+
+  }
+
 }
 
 .question-timer {

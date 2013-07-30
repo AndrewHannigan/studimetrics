@@ -1,7 +1,7 @@
 - current_test = @section_completion.present? ? @section_completion.practice_test : current_user.current_test
 
 #test-sidebar
-  h4 Practice Tests
+  h5 #{current_test.name} Progress #{display_test_percentage_complete(current_test)}
   ul.test-list
-    = render partial: "/test_sidebar/practice_test", collection: Book.first.practice_tests, as: :practice_test, locals: {current_test: current_test}
+    = render "test_sidebar/practice_test", practice_test: current_test,  current_test: current_test
 
