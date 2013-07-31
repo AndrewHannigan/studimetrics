@@ -48,4 +48,27 @@ describe PracticeTest do
       expect(practice_test.question_count_by_subject(subj)).to eq 1
     end
   end
+
+  describe '#first_section' do
+    it 'returns the lowest numbered section in the test' do
+      section1 = create :section, number: 2
+      section2 = create :section, number: 1, practice_test: section1.practice_test, subject: section1.subject
+
+      expect(section1.practice_test.first_section).to eq(section2)
+    end
+  end
+
+  describe '#diagnostic?' do
+    it 'returns true if the test is the lowest numbered test' do
+      practice_test = create :practice_test
+      expect(practice_test).to be_diagnostic
+    end
+
+    it 'returns false otherwise' do
+      create :practice_test, number: 1
+      practice_test2 = create :practice_test, number: 2
+
+      expect(practice_test2).to_not be_diagnostic
+    end
+  end
 end

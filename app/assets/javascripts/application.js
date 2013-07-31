@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-scrolltofixed
+//= require jquery.reveal
 //= require underscore
 //= require turbolinks
 //= require ss-junior
