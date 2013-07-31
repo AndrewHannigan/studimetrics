@@ -13,9 +13,9 @@ feature 'sees projected scores' do
     writing_composite_score = create :composite_score, subject: critical_reading, user: user
     reading_composite_score = create :composite_score, subject: writing, user: user
 
-    ConversionTable.expects(:converted_score).with("M", 0).returns(500)
-    ConversionTable.expects(:converted_score).with("W", 0).returns(600)
-    ConversionTable.expects(:converted_score).with("CR", 0).returns(700)
+    ConversionTable.stubs(:converted_score).with("M", 0).returns(500)
+    ConversionTable.stubs(:converted_score).with("W", 0).returns(600)
+    ConversionTable.stubs(:converted_score).with("CR", 0).returns(700)
 
     visit profile_path as: user.id
 
@@ -28,9 +28,9 @@ feature 'sees projected scores' do
     user = create :user
     visit root_path as: user.id
 
-    expect(page).to_not have_css ".math-score .number", text: "500"
-    expect(page).to_not have_css ".writing-score .number", text: "600"
-    expect(page).to_not have_css ".reading-score .number", text: "700"
+    expect(page).to_not have_css ".math-score .number"
+    expect(page).to_not have_css ".writing-score .number"
+    expect(page).to_not have_css ".reading-score .number"
   end
 
 end
