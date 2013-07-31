@@ -70,7 +70,7 @@ books.each do |book|
     practice_test = PracticeTest.create!(book: book, number: i+1)
     8.times do |j|
       concept = concepts.sample[:concepts].sample
-      subject = concept.subject rescue binding.pry
+      subject = concept.subject
       section = Section.create!(number: j+1, practice_test: practice_test, subject: subject)
       20.times do |k|
         question_type = question_types.sample
