@@ -2,15 +2,15 @@
   h4 Your Percentile
   .percentile-bar.reading
     span.bar data-behavior="reading-bar"
-      span.indicator 520
+      span.indicator = projected_score_for_subject(reading)
     span.subject Critical Reading
   .percentile-bar.math
     span.bar data-behavior="math-bar"
-      span.indicator 440
+      span.indicator = projected_score_for_subject(math)
     span.subject Math
   .percentile-bar.writing
     span.bar data-behavior="writing-bar"
-      span.indicator 622
+      span.indicator = projected_score_for_subject(writing)
     span.subject Writing
 
   .profile-note = t 'profile.percentile_disclaimer'
