@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'user answers range response' do
   background do
     @question = create :range_question, position: 1, min_value: 5, max_value: 6
+    User.any_instance.stubs(:has_responses?).returns(:true)
   end
 
   scenario 'with no previous answers for that section', js: true do

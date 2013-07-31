@@ -4,6 +4,7 @@ feature 'user answers multiple choice' do
   background do
     @question = create :question, :with_answers, position: 1
     @question2 = create :question, :with_answers, section: @question.section, position: 2
+    User.any_instance.stubs(:has_responses?).returns(true)
   end
 
   scenario 'with no previous answers for that section', js: true do

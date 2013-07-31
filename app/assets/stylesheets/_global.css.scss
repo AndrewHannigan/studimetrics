@@ -61,7 +61,7 @@ header {
   border: 1px solid tint($gray, 60%);
 }
 
-.high_voltage-pages, .clearance-users {
+.high_voltage-pages, .clearance-users, .clearance-sessions {
   #main-content {
     float: none;
     margin: 20px auto;
@@ -176,4 +176,21 @@ header {
 
 [data-behavior~="dropdown"] {
   cursor: pointer;
+}
+
+#modal {
+  .title {
+    margin-bottom:12px;
+  }
+
+  img {
+    float: left;
+    margin: 0 10px 10px 0;
+  }
+}
+
+.modal-button {
+  clear: left;
+  display: inline-block;
+  margin: 0 auto;
 }

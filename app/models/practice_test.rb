@@ -29,6 +29,14 @@ class PracticeTest < ActiveRecord::Base
     questions_by_subject(subj).count
   end
 
+  def first_section
+    sections.order('number asc').first
+  end
+
+  def diagnostic?
+    PracticeTest.minimum('number') == number
+  end
+
   private
 
   def sections_for_subject(subj)

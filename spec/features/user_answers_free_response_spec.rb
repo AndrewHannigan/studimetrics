@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'user answers free response' do
   background do
     @question = create :free_response_question, position: 1
+    User.any_instance.stubs(:has_responses?).returns(:true)
   end
 
   scenario 'with no previous answers for that section', js: true do

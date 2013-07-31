@@ -41,7 +41,13 @@ module Features
     end
 
     def start_test
+      dismiss_modal
       click_link 'play'
+    end
+
+    def dismiss_modal
+      page.execute_script "$('.reveal-modal-bg').detach()"
+      page.execute_script "$('.reveal-modal').detach()"
     end
   end
 end
