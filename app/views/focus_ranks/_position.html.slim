@@ -1,5 +1,5 @@
 span = focus_rank.position
-- if focus_rank.position_delta > 0
+- if focus_rank.position_delta.to_i > 0
   == '<i class="ss-icon up">up</i>'
-- elsif focus_rank.position_delta < 0
+- elsif focus_rank.position_delta.to_i < 0
   == '<i class="ss-icon down">down</i>'
