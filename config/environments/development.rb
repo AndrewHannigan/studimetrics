@@ -31,4 +31,13 @@ Studimetrics::Application.configure do
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
   config.action_mailer.default_url_options = { :host => ENV['HOST']}
   config.cache_store = :dalli_store
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV['S3_BUCKET'],
+      access_key_id: ENV['S3_KEY'],
+      secret_access_key: ENV['S3_SECRET']
+    }
+  }
 end

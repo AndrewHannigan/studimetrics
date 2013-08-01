@@ -29,7 +29,7 @@ $base-link-color: $gray;
 $hover-link-color: darken($blue, 15%);
 
 // Border color
-$base-border-color: $light-gray;
+$base-border-color: darken($light-gray, 10%);
 
 // Flash Colors
 $error-color: tint($light-red, 70%);

@@ -13,6 +13,6 @@ feature 'User signs up' do
     select "10th", from: "Grade"
     click_on "Sign up"
 
-    page.should have_content I18n.t('layouts.application.sign_out')
+    expect(page).to have_content I18n.t('layouts.application.sign_out')
   end
 end

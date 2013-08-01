@@ -58,6 +58,7 @@
       border:3px solid $almost-white;
       drop-shadow: 2px 2px 0 $gray;
       max-height: 70px;
+      background: shade($almost-white, 2%);
     }
   }
 

@@ -18,11 +18,11 @@ feature 'Visitor resets password' do
   private
 
   def reset_notification_should_be_sent_to(user)
-    user.confirmation_token.should_not be_blank
+    expect(user.confirmation_token).to_not be_blank
     mailer_should_have_delivery user.email, 'password', user.confirmation_token
   end
 
   def page_should_display_change_password_message
-    page.should have_content I18n.t('passwords.create.description')
+    expect(page).to have_content I18n.t('passwords.create.description')
   end
 end

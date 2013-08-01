@@ -82,22 +82,32 @@ Studimetrics::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => ENV['HOST']}
+
   if ENV['MAILTRAP_HOST'].present?
     config.action_mailer.smtp_settings = {
-      :user_name => ENV['MAILTRAP_USER_NAME'],
-      :password => ENV['MAILTRAP_PASSWORD'],
-      :address => ENV['MAILTRAP_HOST'],
-      :port => ENV['MAILTRAP_PORT'],
-      :authentication => :plain
+      user_name: ENV['MAILTRAP_USER_NAME'],
+      password: ENV['MAILTRAP_PASSWORD'],
+      address: ENV['MAILTRAP_HOST'],
+      port: ENV['MAILTRAP_PORT'],
+      authentication: :plain
     }
   else
     config.action_mailer.smtp_settings = {
-      :address              => ENV['EMAIL_SERVER'],
-      :port                 => 587,
-      :user_name            => ENV['MANDRILL_USERNAME'],
-      :password             => ENV['MANDRILL_APIKEY'],
-      :authentication       => 'plain',
-      :enable_starttls_auto => true
+      address: ENV['EMAIL_SERVER'],
+      port: 587,
+      user_name: ENV['MANDRILL_USERNAME'],
+      password: ENV['MANDRILL_APIKEY'],
+      authentication: 'plain',
+      enable_starttls_auto: true
     }
   end
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV['S3_BUCKET'],
+      access_key_id: ENV['S3_KEY'],
+      secret_access_key: ENV['S3_SECRET']
+    }
+  }
 end

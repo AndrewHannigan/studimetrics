@@ -17,3 +17,5 @@
 /tmp
 .ruby-version
 .rvmrc
+.rbenv-vars
+.env

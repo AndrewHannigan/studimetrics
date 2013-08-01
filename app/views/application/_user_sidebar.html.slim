@@ -4,10 +4,13 @@
       .sidebar-header
         .user-info
           .photo
-            = image_tag 'http://www.gravatar.com/avatar/d3cc1542f7fb242f0e73fd70810c0ac5.png'
+            = link_to profile_path do
+              = image_tag current_user.profile_image.url(:thumb), width: 70, height: 70
+
           .name-and-score
             .name = current_user.full_name
             .score = projected_total_score
+
         .scores
           .math-score
             i class="ss-icon" calculator
@@ -46,7 +49,7 @@
               | Concepts
               i class="ss-icon ss-symbolicons-block" flipvertically
           li class="#{controller_name == 'settings' ? 'active' : ''}"
-            = link_to '' do
+            = link_to settings_path do
               | Settings
               i class="ss-icon ss-symbolicons-block" settings
           li
