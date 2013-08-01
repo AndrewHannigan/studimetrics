@@ -1,3 +1,15 @@
+- if !current_user.has_responses?
+  /TODO: = modal class: 'blah' do
+  - content_for :modal_class, 'diagnostic-welcome'
+  - content_for :modal do
+    .title
+      h5 = t('practice_tests.diagnostic_welcome_title')
+    .body
+      = image_tag 'http://placehold.it/150x150'
+      = t('practice_tests.diagnostic_welcome_message_html')
+      = link_to 'Get started', '', class: 'button modal-button'
+
+
 - content_for :sidebar do
   = render 'test_sidebar'
 

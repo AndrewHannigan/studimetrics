@@ -1,11 +1,15 @@
 $ ->
   $(document).on 'click', '.test-item', toggleTestSubMenu
+  $(document).on 'click', '.modal-button', (event) ->
+    event.preventDefault()
+    $('#modal').trigger('reveal:close')
   $(document).on 'page:load', pageLoaded
   setupTimers()
   pageLoaded()
   setupSkipButtons()
 
 pageLoaded = ->
+  $('#modal.diagnostic-welcome').reveal(animation: 'fade')
   $('#question-list').disableChildren()
   $('#test-timers .timer').timer()
   questionTimer = $('.question-timer').data('timer')

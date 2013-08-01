@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
   def current_test
     PracticeTest.first
   end
+
+  def has_responses?
+    user_responses.count > 0
+  end
 end
