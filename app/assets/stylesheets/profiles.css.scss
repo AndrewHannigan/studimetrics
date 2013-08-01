@@ -103,7 +103,7 @@ h4 {
     vertical-align: middle;
     height: 18px;
     @include linear-gradient(left, $red 0%, $light-gray 25%, $light-gray 75%, $dark-green 100%);
-    @include box-shadow(inset 0px 1px 3px rgba(255,255,255,0.8), inset 0px -1px 1px rgba(255,255,255,0.4));
+    box-shadow: inset 0px 1px 3px rgba(255,255,255,0.8), inset 0px -1px 1px rgba(255,255,255,0.4);
   }
 
   .indicator {
