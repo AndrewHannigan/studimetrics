@@ -1,7 +1,7 @@
 module Features
   module ActionMailerHelpers
     def mailer_should_have_delivery(recipient, subject, body)
-      ActionMailer::Base.deliveries.should_not be_empty
+      expect(ActionMailer::Base.deliveries).to_not be_empty
 
       message = ActionMailer::Base.deliveries.any? do |email|
         email.to == [recipient] &&
@@ -9,11 +9,11 @@ module Features
           email.body =~ /#{body}/
       end
 
-      message.should be
+      expect(message).to be
     end
 
     def mailer_should_have_no_deliveries
-      ActionMailer::Base.deliveries.should be_empty
+      expect(ActionMailer::Base.deliveries).to be_empty
     end
   end
 end

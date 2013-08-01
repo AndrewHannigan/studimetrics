@@ -35,6 +35,8 @@ gem 'cocoon', github: 'nathanvda/cocoon'
 gem 'acts_as_list'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'underscore-rails'
+gem 'paperclip'
+gem 'aws-sdk', '~> 1.5.7'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -67,6 +69,7 @@ group :test do
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'timecop'
+  gem 'webmock'
 end
 
 group :staging, :production do

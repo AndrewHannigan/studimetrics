@@ -24,3 +24,6 @@ en:
       average_time: "Average Time"
       progress: "Progress"
       focus_rank: "Focusrank"
+  settings:
+    saved_message: 'Settings saved.'
+    save_failed_message: 'Settings couldnt be saved.'
