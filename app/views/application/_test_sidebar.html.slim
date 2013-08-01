@@ -1,8 +1,6 @@
 - current_test = @section_completion.present? ? @section_completion.practice_test : current_user.current_test
 
-= link_to '', data: { behavior: 'subnav-back'}, class: 'subnav-back' do
-  i class="ss-icon ss-symbolicons-block" home
-  span Home
+= sidebar_home_link
 
 #test-sidebar
   = link_to new_practice_test_next_section_for_test_path(practice_test_id: current_test), class: 'test-link' do

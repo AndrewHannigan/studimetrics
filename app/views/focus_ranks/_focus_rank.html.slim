@@ -1,6 +1,7 @@
 tr.concept-progress data-id="focus_rank-#{focus_rank.id}"
   td.title
-    = focus_rank.concept_name
+    = concept_image focus_rank.concept
+    span.concept_name = focus_rank.concept_name
   td.subject
     = focus_rank.concept.subject_name.first
   td.position

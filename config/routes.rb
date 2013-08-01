@@ -16,6 +16,7 @@ Studimetrics::Application.routes.draw do
   resources :sections, only: [:show]
   resources :section_completions, only: [:new, :create, :update, :show]
   resources :user_responses, only: [:create]
+  resources :concepts, only: [:index]
 
   # admin routes
   namespace 'admin' do
