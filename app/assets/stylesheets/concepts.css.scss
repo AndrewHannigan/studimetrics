@@ -1,0 +1,54 @@
+.concept-image {
+  margin-right: 10px;
+  max-height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.concept-name {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#concept-videos {
+  @include pad;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+  }
+
+  h6 {
+    margin-bottom: 10px;
+    color: tint($dark-gray, 15%);
+
+    .concept-image {
+      max-height: 18px;
+    }
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .videos {
+    @include clearfix;
+  }
+
+  .video {
+    @include span-columns(3 of 9);
+    @include omega(3n);
+    background: $light-gray;
+    height: 150px;
+    margin-bottom: $gutter;
+  }
+}
+
+#concepts {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}

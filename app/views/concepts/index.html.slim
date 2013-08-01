@@ -1,0 +1,11 @@
+- content_for :sidebar do
+  = sidebar_home_link
+
+  #concepts
+    ul.concepts
+      = render @concepts
+
+#concept-videos
+  h3 Concept Videos - Learn by Example
+
+  = render partial: 'concept_videos', collection: @concepts, as: 'concept'

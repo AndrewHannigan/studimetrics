@@ -15,4 +15,13 @@ module ApplicationHelper
     return "N/A" unless projected_total
     "#{projected_total} / 2400"
   end
+
+  def sidebar_home_link
+    link_to '', data: { behavior: 'subnav-back'}, class: 'subnav-back' do
+      %Q[
+        <i class="ss-icon ss-symbolicons-block">home</i>
+        <span>Home</span>
+      ].html_safe
+    end
+  end
 end
