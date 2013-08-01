@@ -5,7 +5,7 @@ class Admin::CollegesController < AdminController
   private
 
   def permitted_params
-    params.permit(college: [:name, :math, :writing, :critical_reading])
+    params.permit(college: [:name, :math, :writing, :critical_reading, :profile_image])
   end
 
 end

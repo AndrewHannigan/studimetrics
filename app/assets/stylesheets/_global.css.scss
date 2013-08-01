@@ -201,3 +201,13 @@ header {
   display: inline-block;
   margin: 0 auto;
 }
+
+table {
+  img {
+    max-height: 30px;
+
+    &.large {
+      max-height: 80px;
+    }
+  }
+}
