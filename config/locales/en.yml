@@ -17,6 +17,7 @@ en:
     average_scores_disclaimer: 'Average scores are compiled from publicly available data.'
     percentile_disclaimer: 'Color indicates above/below selected college average'
     concept_progress:
+      no_focus_rank_message: "As you complete sections in a %{practice_test_link}, the concepts you need to focus on will appear here."
       title: "concepts"
       subject: "Subject"
       accuracy: "Accuracy"

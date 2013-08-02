@@ -214,3 +214,24 @@ table {
     }
   }
 }
+
+a.learn-more {
+  color: $blue;
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 14px;
+  font-weight: bold;
+
+  .arrow {
+    display: inline-block;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-color: transparent transparent transparent $blue;
+    display: inline-block;
+    margin-left: 6px;
+    vertical-align: middle;
+    opacity: 0.8;
+  }
+}

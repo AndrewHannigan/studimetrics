@@ -12,6 +12,11 @@ h4 {
   @include pad;
   @include clearfix;
 
+  a {
+    color: $blue;
+  }
+
+
   &.left {
     width: 50%;
     float: left;
@@ -83,6 +88,15 @@ h4 {
     float: left;
   }
 }
+
+.focus-rank-table {
+  p {
+    font-size: 15px;
+    line-height: 20px;
+    width: 80%;
+  }
+}
+
 
 .percentile {
   font-size: 14px;
