@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   belongs_to :college
   has_many :section_completions
   has_many :user_responses, through: :section_completions
+  has_many :test_completions, -> { order 'created_at asc' }
 
   delegate :name, to: :college, prefix: true
 
@@ -27,5 +28,9 @@ class User < ActiveRecord::Base
 
   def has_responses?
     user_responses.count > 0
+  end
+
+  def college
+    super || NullCollege.new
   end
 end
