@@ -2,6 +2,13 @@ require 'spec_helper'
 
 feature 'user visits profile' do
 
+  scenario 'with no focus rank' do
+    user = create :user
+    visit profile_path as: user.id
+
+    expect(page).to have_content(I18n.t 'profile.concept_progress.no_focus_rank_message', practice_test_link: 'practice test')
+  end
+
   scenario 'sees focus rank information' do
     user = create :user
 
