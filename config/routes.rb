@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 Studimetrics::Application.routes.draw do
 
+  get "settings/index"
   mount Sidekiq::Web => '/sidekiq'
 
   resources :users, only: [:create]
@@ -17,6 +18,7 @@ Studimetrics::Application.routes.draw do
   resources :section_completions, only: [:new, :create, :update, :show]
   resources :user_responses, only: [:create]
   resources :concepts, only: [:index]
+  resource :settings
 
   # admin routes
   namespace 'admin' do

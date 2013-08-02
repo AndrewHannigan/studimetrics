@@ -1,15 +1,8 @@
-.text-field
-  = form.input :email, type: 'email'
-.password-field
-  = form.input :password
-.text-field
-  = form.input :first_name, label: "First Name"
-.text-field
-  = form.input :last_name, label: "Last Name"
-.text-field
-  = form.input :city
-.select-field
-  = form.input :state, collection: State::US
-.select-field
-  = form.input :grade, collection: User::GRADES
+= form.input :email, type: 'email'
+= form.input :password
+= form.input :first_name, label: "First Name"
+= form.input :last_name, label: "Last Name"
+= form.input :city
+= form.input :state, collection: State::US
+= form.input :grade, collection: User::GRADES
 

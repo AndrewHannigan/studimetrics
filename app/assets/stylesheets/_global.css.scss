@@ -56,9 +56,16 @@ header {
 
 #main-content {
   @include span-columns(9);
+  @include pad;
   background: #fff;
   margin-bottom: 20px;
   border: 1px solid tint($gray, 60%);
+}
+
+.profiles {
+  #main-content {
+    padding: 0;
+  }
 }
 
 .high_voltage-pages, .clearance-users, .clearance-sessions {
