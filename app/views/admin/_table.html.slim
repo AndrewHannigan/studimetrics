@@ -13,7 +13,9 @@ table
   - collection.each do |collection_item|
     tr data-id="#{collection_item.class.name.underscore}-#{collection_item.id}"
       - columns.each do |column|
-        td = collection_item.send(column)
+        - value = collection_item.send(column)
+        - value = image_tag(value.url(:thumb)) if value.kind_of? Paperclip::Attachment
+        td = value
 
       - unless hide_action_links
         td.actions = render 'actions', resource: collection_item

@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   include Clearance::User
+  include ProfileImage
+
   has_many :focus_ranks
   belongs_to :college
   has_many :section_completions
@@ -9,14 +11,6 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :grade, :state, presence: true
 
-  has_attached_file :profile_image,
-    path: "/:hash.:extension",
-    hash_secret: "Uk2tEwMEsZ7gsh.WjzFC4jV6hzEdm!!",
-    default_url: "/assets/:class/:attachment/:style/missing.png",
-    styles: {
-      medium: '300x300>',
-      thumb: '80x80#'
-    }
   GRADES = %w(9th 10th 11th 12th)
 
   def location

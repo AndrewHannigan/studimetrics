@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe User do
+  it_behaves_like "a profile image"
+
   describe "#location" do
     it 'returns comma-separated city and state' do
       user = User.new(city: "New York", state: "NY")
