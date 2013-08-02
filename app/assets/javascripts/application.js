@@ -15,3 +15,4 @@
 //= require test_graph
 //= require college
 //= require percentile_bar
+//= require flashes

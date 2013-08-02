@@ -12,8 +12,12 @@ div.error, div.notice, div.success, #flash_failure, #flash_success, #flash_notic
   padding: .75rem;
   border-radius: 2px;
   width: 50%;
-  margin: 0 auto;
   text-align: center;
+  top: 39px;
+  left: 25%;
+  position: absolute;
+  @include transition(top, 1s);
+  @include transition-timing-function(ease-in-out);
 }
 
 div.error, #flash_failure {
@@ -47,4 +51,8 @@ div.success, #flash_success {
 div.success a, #flash_success a {
   color: darken($success-color, 50%);
   font-weight: bold;
+}
+
+#flash {
+  z-index: 1;
 }
