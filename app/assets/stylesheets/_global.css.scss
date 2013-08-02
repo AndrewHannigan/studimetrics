@@ -15,6 +15,9 @@ a:link, a:visited {
 }
 
 header {
+  position: relative;
+  z-index: 2;
+
   .bar {
     @include clearfix;
     padding: 10px;
