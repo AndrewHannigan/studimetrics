@@ -13,6 +13,9 @@ table
     td Name
     td = resource.name
   tr
+    td Profile Image
+    td = image_tag resource.profile_image.url(:thumb), class: 'large'
+  tr
     td Critical Reading
     td = resource.critical_reading
   tr

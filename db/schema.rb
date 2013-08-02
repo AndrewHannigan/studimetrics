@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130801024816) do
+ActiveRecord::Schema.define(version: 20130801194711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,16 @@ ActiveRecord::Schema.define(version: 20130801024816) do
   end
 
   create_table "colleges", force: true do |t|
-    t.string   "name",             null: false
-    t.integer  "critical_reading", null: false
-    t.integer  "math",             null: false
-    t.integer  "writing",          null: false
+    t.string   "name",                       null: false
+    t.integer  "critical_reading",           null: false
+    t.integer  "math",                       null: false
+    t.integer  "writing",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "profile_image_file_name"
+    t.string   "profile_image_content_type"
+    t.integer  "profile_image_file_size"
+    t.datetime "profile_image_updated_at"
   end
 
   create_table "composite_scores", force: true do |t|

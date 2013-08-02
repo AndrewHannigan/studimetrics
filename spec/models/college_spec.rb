@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe College do
+  it_behaves_like "a profile image"
 
   describe "#average" do
     it "sums the average scores for each subject" do
