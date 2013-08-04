@@ -1,5 +1,6 @@
 = simple_form_for ['admin', resource] do |f|
   = f.input :name
   = f.association :subject, collection: Subject.all, include_blank: false
+  = f.input :description, as: :text
 
   = f.submit
