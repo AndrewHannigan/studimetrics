@@ -34,7 +34,7 @@ describe FocusRank do
       setup_original_stats
       ranks = FocusRank.current_stats_for_user(@user)
 
-      expect(ranks).to eq [@focus_rank2, @focus_rank]
+      expect(ranks).to eq [@focus_rank, @focus_rank2]
       expect(ranks.first.position).to eq 1
       expect(ranks.last.position).to eq 2
     end
@@ -81,10 +81,10 @@ describe FocusRank do
 
       expect(ranks.first.position_delta).to eq 1
       expect(ranks.last.position_delta).to eq -1
-      expect(ranks.first.accuracy_delta).to eq 17
-      expect(ranks.last.accuracy_delta).to eq -13
-      expect(ranks.first.score).to eq 2
-      expect(ranks.last.score).to eq 1
+      expect(ranks.first.accuracy_delta).to eq -13
+      expect(ranks.last.accuracy_delta).to eq 17
+      expect(ranks.first.score).to eq 1
+      expect(ranks.last.score).to eq 2
     end
 
   end

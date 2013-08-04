@@ -4,7 +4,7 @@ class FocusRank < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :concept
-  default_scope {order("focus_ranks.score desc")}
+  default_scope {order("focus_ranks.score asc")}
   delegate :name, to: :concept, prefix: true
 
   def self.update_scores_for_concepts_and_user(concepts, user)
