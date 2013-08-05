@@ -7,9 +7,14 @@ class CompositeScore < ActiveRecord::Base
   delegate :name, to: :subject, prefix: true
   delegate :concepts, to: :subject, prefix: true
 
+  def self.projected_score_for_user_and_subject(user, subject)
+    subj = subject.is_a?(Subject) ? subject : Subject.where(name: subject).first
+    CompositeScore.where(user: user, subject: subj).first.try(:projected_score)
+  end
+
   def self.projected_total_score_for_user(user)
     scores = Subject.all.collect do |subj|
-      CompositeScore.where(user: user, subject: subj).first.try(:projected_score)
+      self.projected_score_for_user_and_subject(user, subj)
     end
     return nil if scores.include?(nil)
     scores.inject(:+)

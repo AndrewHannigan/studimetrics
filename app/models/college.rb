@@ -19,4 +19,8 @@ class College < ActiveRecord::Base
     ((low_percentile_writing + high_percentile_writing)/2).floor
   end
 
+  def range_for_subject(subject)
+    {low: send("low_percentile_#{subject}"), average: send("average_#{subject}"), high: send("high_percentile_#{subject}")}
+  end
+
 end
