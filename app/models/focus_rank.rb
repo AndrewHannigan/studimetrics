@@ -1,5 +1,6 @@
 class FocusRank < ActiveRecord::Base
   AVERAGE_RESPONSE_TIME = {"Math" => 20, "Critical Reading" => 30, "Writing" => 25}
+  THRESHOLD = 0.30
   attr_accessor :position, :accuracy
 
   belongs_to :user
@@ -14,6 +15,18 @@ class FocusRank < ActiveRecord::Base
       focus_rank.update!
     end
     self.update_deltas_for_user(user, old_stats)
+  end
+
+  def self.concept_ids_requiring_focus_for_user(user)
+    focus_ranks = FocusRank.where(user: user)
+    return [] unless focus_ranks.present?
+    limit = (focus_ranks.length * THRESHOLD).round(0)
+    focus_ranks[focus_ranks.length - limit,limit].collect(&:concept_id)
+  end
+
+  def self.concepts_require_focus_by_user?(concept_ids, user)
+    require_focus = concept_ids_requiring_focus_for_user(user)
+    concept_ids.any?{|concept_id| require_focus.include?(concept_id)}
   end
 
   def update!
