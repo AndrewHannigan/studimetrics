@@ -43,7 +43,8 @@
         th Concept(s)
 
       - @section_completion.user_responses.includes(:question).order('questions.position').each do |user_response|
-        tr data-id="question-#{user_response.question.id}"
+        - klass = requires_focus?(user_response.question) ? "focus" : ""
+        tr data-id="question-#{user_response.question.id}" class="#{klass}"
           td = user_response.question.position
           td = user_response.value
           td = user_response.question.accepted_response

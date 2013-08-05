@@ -40,6 +40,36 @@ describe FocusRank do
     end
   end
 
+  describe "FocusRank.concepts_require_focus_by_user?" do
+    it "returns true if concepts requiring focus include concept_ids passed in" do
+      user = build :user
+      FocusRank.expects(:concept_ids_requiring_focus_for_user).returns([1,2])
+
+      expect(FocusRank.concepts_require_focus_by_user?([1],user)).to eq true
+    end
+
+    it "returns false if concepts requiring focus does not contains concept_ids passed in" do
+      user = build :user
+      FocusRank.expects(:concept_ids_requiring_focus_for_user).returns([1,2])
+
+      expect(FocusRank.concepts_require_focus_by_user?([3],user)).to eq false
+    end
+  end
+
+  describe "FocusRank.concept_ids_requiring_focus_for_user" do
+    it "returns an array of concept ids whose focus rank is below threshold" do
+      user = create :user
+      requires_focus = create :focus_rank, user: user, score: 10
+      no_focus = create :focus_rank, user: user, score: 20
+      no_focus2= create :focus_rank, user: user, score: 30
+
+      concept_ids = FocusRank.concept_ids_requiring_focus_for_user(user)
+      expect(concept_ids.include?(requires_focus.concept_id)).to eq true
+      expect(concept_ids.include?(no_focus.concept_id)).to eq false
+      expect(concept_ids.include?(no_focus2.concept_id)).to eq false
+    end
+  end
+
   describe "FocusRank.update_scores_for_concepts_and_user" do
     it "should call update_deltas_for_user" do
       setup_original_stats
