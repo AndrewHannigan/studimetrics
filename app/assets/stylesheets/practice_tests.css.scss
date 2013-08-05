@@ -134,19 +134,17 @@
 
   .wrapper {
     border-bottom: 1px solid #383c3f;
-    padding: 8px;
   }
 
   h4 {
-    margin: 0;
+    margin: 7px;
     padding: 0;
-    margin: 0;
     line-height: normal;
   }
 
   h3 {
     padding:0;
-    margin: 0;
+    margin: 7px;
     display: inline-block;
     border-radius: 4px;
     font-size: 18px;
@@ -287,7 +285,7 @@
 
 }
 
-.question-timer {
+.question-timer, .reading-timer {
   display: none;
 }
 
@@ -296,6 +294,7 @@
   font-size: 14px;
   line-height: 25px;
   @include no-select;
+  @include transition(all, 1s);
 
   .question-number, .inputs {
     display: inline-block;
@@ -405,5 +404,31 @@
 .section_completions {
   #main-content {
     padding: 0;
+  }
+}
+
+.question-action {
+  float: right;
+  font-size: 14px;
+  padding: 7px 0;
+  border-left: 1px solid tint($dark-gray, 10%);
+  text-align: center;
+  width: 108px;
+
+  &.active {
+    background: #222;
+    color: #f4f4f4;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.question.focus {
+  color: $light-yellow;
+
+  .radio_buttons label:before {
+    border: 1px solid $light-yellow;
   }
 }
