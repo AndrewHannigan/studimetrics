@@ -186,6 +186,7 @@ header {
 
 [data-behavior~="dropdown"] {
   cursor: pointer;
+  float: left;
 }
 
 #modal {
@@ -234,4 +235,8 @@ a.learn-more {
     vertical-align: middle;
     opacity: 0.8;
   }
+}
+
+.wrapper {
+  @include clearfix;
 }
