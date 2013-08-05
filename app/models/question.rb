@@ -38,7 +38,7 @@ class Question < ActiveRecord::Base
   end
 
   def concept_names
-    self.concepts.collect(&:name)
+    self.concepts.pluck(:name)
   end
 
   def name
