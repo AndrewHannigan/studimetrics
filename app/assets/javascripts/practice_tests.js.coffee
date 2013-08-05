@@ -1,6 +1,7 @@
 $ ->
   $(document).on 'click', '.test-item', toggleTestSubMenu
   $(document).on 'click', '#focus', window.toggleFocusRank
+  $(document).on 'click', '#critical-reading-timer-button', toggleCriticalReadingTimer
   $(document).on 'click', '.modal-button', (event) ->
     event.preventDefault()
     $('#modal').trigger('reveal:close')
@@ -9,13 +10,6 @@ $ ->
   pageLoaded()
   setupSkipButtons()
 
-window.toggleFocusRank = (event) ->
-  event.preventDefault() if event?
-  if($(".question.focus").length > 0)
-    $(".question.focus").removeClass("focus")
-  else
-    $("[data-requires-focus='true']").addClass("focus")
-    setTimeout window.toggleFocusRank, 2000
 
 pageLoaded = ->
   $('#modal.diagnostic-welcome').reveal(animation: 'fade')
@@ -25,17 +19,44 @@ pageLoaded = ->
   $('[data-behavior~="submit-user-response-click"]').userResponse(timer: questionTimer)
   $('[data-behavior~="submit-user-response-keyup"]').userResponse(timer: questionTimer)
 
+window.toggleFocusRank = (event) ->
+  event.preventDefault() if event?
+  if($(".question.focus").length > 0)
+    $(".question.focus").removeClass("focus")
+  else
+    $("[data-requires-focus='true']").addClass("focus")
+    setTimeout window.toggleFocusRank, 2000
+
+toggleCriticalReadingTimer = (event) ->
+  event.preventDefault()
+  $(this).toggleClass 'active'
+  if $(this).hasClass 'active' then showReadingTimer() else hideReadingTimer()
+
+showReadingTimer = ->
+  $('.reading-timer').show().data('timer').resume()
+  $('.section-timer').hide()
+  $('.timer-title').text 'Reading Timer'
+
+hideReadingTimer = ->
+  $('.reading-timer').hide().data('timer').pause()
+  $('.section-timer').show()
+  $('.timer-title').text 'Section Timer'
+
+
 setupTimers = ->
   $(window).unload pauseTimer
   $(document).on 'page:fetch', pauseTimer
-  $(document).on 'timer:start', ->
-    $('.question-list').removeAttr('data-disabled').find('input').removeAttr('disabled')
-  $(document).on 'timer:resume', ->
-    $(this).find('[data-timer-toggle]').text('pause')
-    $('.question-list').removeAttr('data-disabled').find('input').removeAttr('disabled')
-  $(document).on 'timer:pause', ->
-    $(this).find('[data-timer-toggle]').text('play')
-    $('.question-list').attr('data-disabled', true).find('input').attr('disabled', true)
+  $(document).on 'timer:start', (event) ->
+    unless $(event.target).hasClass('reading-timer')
+      $('.question-list').removeAttr('data-disabled').find('input').removeAttr('disabled')
+  $(document).on 'timer:resume', (event) ->
+    $(event.target).find('[data-timer-toggle]').text('pause')
+    unless $(event.target).hasClass('reading-timer')
+      $('.question-list').removeAttr('data-disabled').find('input').removeAttr('disabled')
+  $(document).on 'timer:pause', (event) ->
+    $(event.target).find('[data-timer-toggle]').text('play')
+    unless $(event.target).hasClass('reading-timer')
+      $('.question-list').attr('data-disabled', true).find('input').attr('disabled', true)
 
 setupSkipButtons = ->
   $(document).on 'click', '.skip-button', setSkipButton
