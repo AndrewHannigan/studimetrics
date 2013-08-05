@@ -23,4 +23,8 @@ class NullCollege
     0
   end
 
+  def range_for_subject(subject)
+    {low: 200, average: 400, high: 600}
+  end
+
 end

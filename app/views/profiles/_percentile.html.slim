@@ -17,6 +17,6 @@
 
 javascript:
   var selectedCollege = new College()
-  selectedCollege.readingPercentileScores = { low: 510, high: 620, average: 610 }
-  selectedCollege.mathPercentileScores = { low: 540, high: 660, average: 580 }
-  selectedCollege.writingPercentileScores = { low: 510, high: 610, average: 570 }
+  selectedCollege.readingPercentileScores = #{{current_user.college.range_for_subject("critical_reading").to_json}}
+  selectedCollege.mathPercentileScores = #{{current_user.college.range_for_subject("math").to_json}}
+  selectedCollege.writingPercentileScores = #{{current_user.college.range_for_subject("writing").to_json}}
