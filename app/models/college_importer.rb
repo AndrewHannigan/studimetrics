@@ -16,7 +16,7 @@ class CollegeImporter
   private
 
   def clean_na_values(value)
-    return nil if value == 'NA'
+    return 0 if value == 'NA'
     value
   end
 
