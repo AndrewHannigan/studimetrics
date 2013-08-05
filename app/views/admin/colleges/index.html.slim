@@ -2,6 +2,6 @@
   = breadcrumbs 'Admin' => admin_path, 'Sections' => nil
 
 = content_for :admin_table do
-  = admin_table collection, columns: [:id, :name, :critical_reading, :math, :writing, :profile_image]
+  = admin_table collection, columns: [:id, :name, :profile_image]
 
 = render 'index_content'
