@@ -19,7 +19,6 @@ setupTestGraph = ->
 
 setupPercentileBars = ->
   if $('[data-behavior~="reading-bar"]').length > 0
-    # TODO: user score should be set on the profile page already as user model
-    new PercentileBar selectedCollege.readingPercentileScores, 520, $('[data-behavior~="reading-bar"]')
-    new PercentileBar selectedCollege.writingPercentileScores, 622, $('[data-behavior~="writing-bar"]')
-    new PercentileBar selectedCollege.mathPercentileScores, 440, $('[data-behavior~="math-bar"]')
+    new PercentileBar selectedCollege.readingPercentileScores, #{{projected_score_for_subject("Critical Reading")}}, $('[data-behavior~="reading-bar"]')
+    new PercentileBar selectedCollege.writingPercentileScores, #{{projected_score_for_subject("Writing")}}, $('[data-behavior~="writing-bar"]')
+    new PercentileBar selectedCollege.mathPercentileScores, #{{projected_score_for_subject("Math")}}, $('[data-behavior~="math-bar"]')

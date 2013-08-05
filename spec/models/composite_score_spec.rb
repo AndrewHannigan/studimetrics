@@ -26,6 +26,20 @@ describe CompositeScore do
     end
   end
 
+  describe "CompositeScore#projected_score_for_user_and_subject" do
+    context "subject is a string" do
+      it "returns project score" do
+        user = create :user
+        subj = create :subject, name: "Math"
+        composite_score = create :composite_score, subject: subj, user: user
+        CompositeScore.any_instance.expects(:projected_score).returns(500)
+
+        expect(CompositeScore.projected_score_for_user_and_subject(user, "Math")).to eq 500
+      end
+    end
+
+  end
+
   describe "#calculated_composite_score" do
     it "returns score according to formula" do
       subj = create :subject, name: "Math"
