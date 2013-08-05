@@ -5,9 +5,9 @@ module ProfileImage
 
   included do
     has_attached_file :profile_image,
-      path: "/:hash.:extension",
-      hash_secret: "Uk2tEwMEsZ7gsh.WjzFC4jV6hzEdm!!",
-      default_url: "/assets/:class/:attachment/:style/missing.png",
+      path: "/:class/:attachment/:hash.:extension",
+      hash_secret: "Uk2tEwMEsZ7gsh.WjzFC4jV26hzEdm!!",
+      default_url: "http://s3.amazonaws.com/studimetrics-production/:class/:attachment/:style/missing.png",
       styles: {
         medium: '300x300>',
         thumb: '80x80#'
