@@ -21,6 +21,9 @@ class Importer
 
       puts "creating questions"
       QuestionImporter.new.import!
+
+      puts "creating colleges"
+      CollegeImporter.new.import!
     end
   end
 

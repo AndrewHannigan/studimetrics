@@ -10,10 +10,7 @@ class QuestionImporter
   def import!
     CSV.foreach csv, headers: true do |row|
       question_type = real_question_type_from_row row
-      if question_type.blank?
-        binding.pry
-      end
-      question = Question.create! position: row['number'], question_type: question_type, section: Section.where(number: row['section_number']).first, difficulty: row['difficulty']
+      question = Question.create! position: row['number'], question_type: question_type, section_id: row['section_id'], difficulty: row['difficulty']
       add_concepts(question, row)
       add_answers(question, row)
     end

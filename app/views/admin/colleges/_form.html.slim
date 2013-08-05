@@ -1,8 +1,11 @@
 = simple_form_for ['admin', resource] do |f|
   = f.input :name, label: "Name"
   = f.input :profile_image
-  = f.input :math
-  = f.input :critical_reading, label: "Critical Reading"
-  = f.input :writing
+  = f.input :low_percentile_math
+  = f.input :high_percentile_math
+  = f.input :low_percentile_critical_reading
+  = f.input :high_percentile_critical_reading
+  = f.input :low_percentile_writing
+  = f.input :high_percentile_writing
 
   = f.submit
