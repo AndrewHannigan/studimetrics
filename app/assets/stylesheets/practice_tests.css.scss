@@ -167,22 +167,8 @@
 }
 
 .section-completion-accuracy {
-  text-align: center;
-  margin-top: 10px;
-  @include span-columns(3 of 9);
-  span {
-    color: $dark-gray;
-  }
-}
-
-.section-completion-total-time {
-  text-align: right;
-  margin-top: 10px;
-  @include span-columns(3 of 9);
-
-  span {
-    color: $dark-gray;
-  }
+  font-weight: bold;
+  font-size: 21px;
 }
 
 .test-notice {
@@ -291,7 +277,12 @@
       margin-right: 12px;
       margin-left: 4px;
     }
+  }
 
+  .no-play-button {
+    .timer-content, .timer-labels {
+      text-align: center;
+    }
   }
 
 }
@@ -400,6 +391,7 @@
 #section-completion-table {
   font-size: 18px;
   margin: 14px;
+  text-align: left;
 
   .correct {
     color: $dark-green;
@@ -407,5 +399,11 @@
 
   .incorrect {
     color: $light-red;
+  }
+}
+
+.section_completions {
+  #main-content {
+    padding: 0;
   }
 }
