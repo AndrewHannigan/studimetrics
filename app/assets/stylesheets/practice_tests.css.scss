@@ -296,6 +296,7 @@
   font-size: 14px;
   line-height: 25px;
   @include no-select;
+  @include transition(all, 1s);
 
   .question-number, .inputs {
     display: inline-block;
@@ -405,5 +406,22 @@
 .section_completions {
   #main-content {
     padding: 0;
+  }
+}
+
+.question-action {
+  float: right;
+  font-size: 14px;
+  padding: 0 8px;
+  border-left: 1px solid tint($dark-gray, 10%);
+  text-align: center;
+  width: 108px;
+}
+
+.question.focus {
+  color: $light-yellow;
+
+  .radio_buttons label:before {
+    border: 1px solid $light-yellow;
   }
 }

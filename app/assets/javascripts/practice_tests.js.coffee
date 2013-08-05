@@ -1,6 +1,6 @@
 $ ->
   $(document).on 'click', '.test-item', toggleTestSubMenu
-  $(document).on 'click', '#focus', toggleFocusRank
+  $(document).on 'click', '#focus', window.toggleFocusRank
   $(document).on 'click', '.modal-button', (event) ->
     event.preventDefault()
     $('#modal').trigger('reveal:close')
@@ -9,12 +9,13 @@ $ ->
   pageLoaded()
   setupSkipButtons()
 
-toggleFocusRank = ->
-  event.preventDefault()
+window.toggleFocusRank = (event) ->
+  event.preventDefault() if event?
   if($(".question.focus").length > 0)
     $(".question.focus").removeClass("focus")
   else
     $("[data-requires-focus='true']").addClass("focus")
+    setTimeout window.toggleFocusRank, 2000
 
 pageLoaded = ->
   $('#modal.diagnostic-welcome').reveal(animation: 'fade')
