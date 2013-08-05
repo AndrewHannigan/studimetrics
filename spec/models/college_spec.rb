@@ -37,4 +37,14 @@ describe College do
       expect(college.average_writing).to eq 300
     end
   end
+
+  describe "#range_for_subject" do
+    it "returns a hash containing high, low, and average" do
+      college = College.new(low_percentile_writing: 200, high_percentile_writing: 400)
+      expected_result = {low: 200, high: 400, average: 300}
+
+
+      expect(college.range_for_subject("writing")).to eq expected_result
+    end
+  end
 end
