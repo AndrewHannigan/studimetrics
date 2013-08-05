@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130801194711) do
+ActiveRecord::Schema.define(version: 20130805023518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,16 +26,20 @@ ActiveRecord::Schema.define(version: 20130801194711) do
   end
 
   create_table "colleges", force: true do |t|
-    t.string   "name",                       null: false
-    t.integer  "critical_reading",           null: false
-    t.integer  "math",                       null: false
-    t.integer  "writing",                    null: false
+    t.string   "name",                                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "profile_image_file_name"
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"
     t.datetime "profile_image_updated_at"
+    t.integer  "low_percentile_critical_reading",  default: 0, null: false
+    t.integer  "low_percentile_math",              default: 0, null: false
+    t.integer  "low_percentile_writing",           default: 0, null: false
+    t.integer  "high_percentile_critical_reading", default: 0, null: false
+    t.integer  "high_percentile_math",             default: 0, null: false
+    t.integer  "high_percentile_writing",          default: 0, null: false
+    t.string   "state"
   end
 
   create_table "composite_scores", force: true do |t|
@@ -116,6 +120,7 @@ ActiveRecord::Schema.define(version: 20130801194711) do
     t.datetime "updated_at"
     t.integer  "position"
     t.integer  "topic_id"
+    t.integer  "difficulty",    default: 1, null: false
   end
 
   add_index "questions", ["section_id"], name: "index_questions_on_section_id", using: :btree

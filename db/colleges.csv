@@ -1,0 +1,703 @@
+College,Reading-25%,Reading-75%,Math-25%,Math-25%,Writing-25%,Writing-75%,State
+Alabama A&M University,370,454,370,460,NA,NA,Alabama
+Alabama State University,370,460,360,480,NA,NA,Alabama
+Auburn University,530,630,550,650,520,610,Alabama
+Birmingham-Southern College,500,610,510,610,490,580,Alabama
+Faulkner University,NA,NA,NA,NA,NA,NA,Alabama
+Huntingdon College,428,500,408,513,NA,NA,Alabama
+Jacksonville State University,430,540,430,540,NA,NA,Alabama
+Oakwood University,410,515,380,500,NA,NA,Alabama
+Samford University,520,630,510,630,510,620,Alabama
+Spring Hill College,480,620,483,600,480,593,Alabama
+Troy University,NA,NA,NA,NA,NA,NA,Alabama
+Tuskegee University,400,490,390,510,400,510,Alabama
+University of Alabama at Birmingham,500,630,500,640,NA,NA,Alabama
+University of Alabama in Huntsville,500,640,510,640,NA,NA,Alabama
+University of Alabama Main Campus,500,620,500,640,490,610,Alabama
+University of Mobile,437,608,470,690,NA,NA,Alabama
+University of Montevallo,NA,NA,485,605,NA,NA,Alabama
+University of North Alabama,435,550,440,535,NA,NA,Alabama
+University of South Alabama,445,570,440,580,440,555,Alabama
+University of West Alabama,NA,NA,NA,NA,NA,NA,Alabama
+Alaska Bible College,NA,NA,NA,NA,NA,NA,Alaska
+Alaska Pacific University,458,580,404,500,415,550,Alaska
+University of Alaska Anchorage,NA,NA,NA,NA,NA,NA,Alaska
+University of Alaska Fairbanks,NA,NA,NA,NA,NA,NA,Alaska
+University of Alaska Southeast,NA,NA,NA,NA,NA,NA,Alaska
+Arizona Christian University,450,580,450,578,NA,NA,Arizona
+Arizona State,480,610,490,630,NA,NA,Arizona
+Dine College,NA,NA,NA,NA,NA,NA,Arizona
+Embry-Riddle,498,600,518,630,NA,NA,Arizona
+Northern Arizona University,470,580,470,590,460,560,Arizona
+Prescott College,500,630,460,590,440,640,Arizona
+University of Arizona,480,600,490,620,480,600,Arizona
+Arkansas Baptist College,NA,NA,NA,NA,NA,NA,Arkansas
+Arkansas State University,435,505,460,555,400,480,Arkansas
+Arkansas Tech,440,570,450,580,NA,NA,Arkansas
+Central Baptist College,410,480,400,490,360,530,Arkansas
+Ecclesia College,NA,NA,NA,NA,NA,NA,Arkansas
+Harding University,560,650,440,570,NA,NA,Arkansas
+Henderston State University,430,520,430,530,NA,NA,Arkansas
+Hendrix College,550,680,540,670,NA,NA,Arkansas
+John Brown University,500,630,520,620,500,560,Arkansas
+Lyon College,490,650,510,610,NA,NA,Arkansas
+Ouachita Baptist University,470,590,460,570,NA,NA,Arkansas
+Philander Smith College,NA,NA,NA,NA,NA,NA,Arkansas
+Southern Arkansas University,390,520,440,550,NA,NA,Arkansas
+University of Arkansas,500,610,520,630,NA,NA,Arkansas
+University of Arkansas at Little Rock,410,505,455,590,410,505,Arkansas
+University of Arkansas at Monticello,NA,NA,NA,NA,NA,NA,Arkansas
+University of Arkansas at Pine Bluff,345,440,355,470,345,440,Arkansas
+University of Arkansas at Fort Smith,460,620,460,580,460,570,Arkansas
+University of Central Arkansas,NA,NA,NA,NA,NA,NA,Arkansas
+University of the Ozarks,458,573,475,553,NA,NA,Arkansas
+Williams Baptist College,NA,NA,NA,NA,NA,NA,Arkansas
+Berkeley,600,720,650,770,620,740,California
+Caltech,700,790,760,800,700,790,California
+Claremont McKenna,650,750,660,760,660,740,California
+Harvey Mudd,690,770,740,800,680,760,California
+Occidental,600,700,600,700,610,700,California
+Pepperdine,550,660,570,680,560,670,California
+Pomona,680,770,680,760,680,780,California
+Scripps,640,730,620,700,650,730,California
+Stanford,680,780,700,790,700,780,California
+UCLA,560,690,610,740,590,710,California
+UCSD,520,650,590,710,550,670,California
+USC,620,720,650,760,640,740,California
+Adams State College,410,530,435,550,403,500,Colorado
+U.S. Air Force Academy,600,690,630,720,NA,NA,Colorado
+Colorado College,630,720,610,710,620,720,Colorado
+Colorado Mesa University,420,540,420,540,NA,NA,Colorado
+Colorado School of Mines,570,675,630,710,530,640,Colorado
+Colorado State University,500,620,520,640,NA,NA,Colorado
+CSU Pueblo,420,530,430,540,NA,NA,Colorado
+Fort Lewis College,428,643,433,618,430,610,Colorado
+Johnson & Wales University,NA,NA,NA,NA,NA,NA,Colorado
+Metro State College,450,560,440,540,NA,NA,Colorado
+Naropa University,NA,NA,NA,NA,NA,NA,Colorado
+Regis University,490,600,470,600,NA,NA,Colorado
+University of Colorado at Boulder,530,630,540,650,NA,NA,Colorado
+University of Colorado at Colorado Springs,485,590,490,600,460,570,Colorado
+University of Colorado Denver,480,590,490,620,NA,NA,Colorado
+University of Denver,550,640,560,660,530,640,Colorado
+University of Northern Colorado,470,580,470,570,NA,NA,Colorado
+Western State College,460,560,460,550,NA,NA,Colorado
+Albertus Magnus College,380,480,430,470,410,500,Connecticut
+Central Connecticut State,450,550,460,560,450,550,Connecticut
+Coast Guard Academy,550,640,610,680,530,640,Connecticut
+Connecticut College,NA,NA,NA,NA,NA,NA,Connecticut
+Eastern Connecticut State,460,550,460,560,NA,NA,Connecticut
+Fairfield University,NA,NA,NA,NA,NA,NA,Connecticut
+Quinnipiac University,490,580,500,600,500,590,Connecticut
+Sacred Heart University,NA,NA,NA,NA,NA,NA,Connecticut
+Southern Connecticut State,420,520,410,520,420,530,Connecticut
+Trinity College,590,690,600,700,600,700,Connecticut
+University of Bridgeport,410,490,410,500,410,490,Connecticut
+University of Connecticut,550,650,580,680,NA,NA,Connecticut
+University of Hartford,470,610,480,620,NA,NA,Connecticut
+University of New Haven,470,570,480,580,470,570,Connecticut
+Wesleyan University,640,740,660,740,660,750,Connecticut
+Western Connecticut State,450,540,430,540,NA,NA,Connecticut
+Yale University,700,790,700,800,710,790,Connecticut
+Delaware State University,400,470,400,470,380,460,Delaware
+Goldey-Beacom College,NA,NA,NA,NA,NA,NA,Delaware
+University of Delaware,530,640,540,660,530,640,Delaware
+Wesley College,360,470,360,475,360,455,Delaware
+Widener University-Delaware Campus,NA,NA,NA,NA,NA,NA,Delaware
+Wilmington University,NA,NA,NA,NA,NA,NA,Delaware
+American University,590,690,570,670,580,680,DC
+Catholic University of America,510,610,500,610,NA,NA,DC
+Corcoran College of Art and Design,NA,NA,NA,NA,NA,NA,DC
+Gallaudet University,350,530,350,530,NA,NA,DC
+George Washington University,600,690,610,690,620,710,DC
+Georgetown University,640,740,650,750,NA,NA,DC
+Howard University,490,580,480,580,470,570,DC
+Trinity Washington University,NA,NA,NA,NA,NA,NA,DC
+University of the District of Columbia,NA,NA,NA,NA,NA,NA,DC
+Eckerd,510,620,500,610,NA,NA,Florida
+Flagler,540,600,520,580,520,580,Florida
+Florida Tech,500,610,540,640,NA,NA,Florida
+Florida International,530,610,530,610,520,600,Florida
+Florida State,560,640,560,640,NA,NA,Florida
+New College,620,740,570,670,590,690,Florida
+Rollins,550,640,540,640,540,640,Florida
+Stetson,530,630,525,630,510,610,Florida
+UCF,530,630,550,650,510,610,Florida
+University of Florida,580,670,590,690,570,670,Florida
+University of Miami,600,700,630,720,590,690,Florida
+USF,530,630,540,640,510,600,Florida
+Agnes Scott College,NA,NA,NA,NA,NA,NA,Georgia
+Berry College,520,630,520,620,510,620,Georgia
+Covenant College,550,660,520,630,520,630,Georgia
+Emory University,620,710,660,760,640,730,Georgia
+Georgia Tech,600,690,660,760,600,700,Georgia
+Mercer University,530,630,540,640,NA,NA,Georgia
+Morehouse College,450,570,460,570,440,550,Georgia
+Oglethorpe University,530,620,510,610,500,600,Georgia
+SCAD,480,600,460,580,460,590,Georgia
+Spelman College,480,570,465,560,NA,NA,Georgia
+University of Georgia,560,650,560,660,560,650,Georgia
+Wesleyan College,450,575,420,540,NA,NA,Georgia
+Brigham Young University-Hawaii,465,570,470,585,NA,NA,Hawaii
+Chaminade University of Honolulu,430,510,450,540,NA,NA,Hawaii
+Hawaii Pacific University,430,530,440,540,420,520,Hawaii
+University of Hawaii at Hilo,420,530,430,540,410,510,Hawaii
+University of Hawaii at Manoa,480,580,500,600,470,560,Hawaii
+University of Hawaii Maui College,NA,NA,NA,NA,NA,NA,Hawaii
+University of Hawaii-West Oahu,390,470,400,510,380,480,Hawaii
+Boise Bible College,460,570,410,560,420,560,Idaho
+Boise State University,470,580,480,600,450,560,Idaho
+BYU-Idaho,460,570,460,560,NA,NA,Idaho
+The College of Idaho,473,630,483,618,463,600,Idaho
+Idaho State University,NA,NA,NA,NA,NA,NA,Idaho
+Lewis-Clark State College,440,530,440,540,NA,NA,Idaho
+New Saint Andrews College,590,710,470,660,NA,NA,Idaho
+Northwest Nazarene University,470,600,470,620,470,570,Idaho
+University of Idaho,480,600,490,610,460,570,Idaho
+Augustana College,NA,NA,NA,NA,NA,NA,Illinois
+DePaul University,520,640,500,627,NA,NA,Illinois
+Illinois College,NA,NA,NA,NA,NA,NA,Illinois
+IIT,513,630,610,710,520,640,Illinois
+Illinois Wesleyan,540,650,570,700,NA,NA,Illinois
+Knox College,NA,NA,NA,NA,NA,NA,Illinois
+Lake Forest,NA,NA,NA,NA,NA,NA,Illinois
+Loyola University,550,650,540,650,540,630,Illinois
+Northwestern University,680,760,700,780,680,770,Illinois
+University of Chicago,700,780,700,790,NA,NA,Illinois
+UIUC,550,680,680,790,570,680,Illinois
+Wheaton College,600,720,610,700,600,710,Illinois
+Butler University,530,620,540,640,520,620,Indiana
+DePauw University,530,650,550,680,530,640,Indiana
+Earlham College,NA,NA,NA,NA,NA,NA,Indiana
+Goshen College,460,620,500,640,NA,NA,Indiana
+Hanover College,500,620,490,600,470,580,Indiana
+Indiana University,510,620,540,660,510,610,Indiana
+Indiana Wesleyan,480,590,480,590,460,580,Indiana
+Notre Dame,660,750,680,770,NA,NA,Indiana
+Purdue University,510,620,550,680,510,620,Indiana
+Rose-Hulman,560,670,630,730,NA,NA,Indiana
+Saint Mary's College,510,623,500,610,510,610,Indiana
+Taylor University,510,660,510,650,490,640,Indiana
+University of Evansville,500,630,510,620,490,610,Indiana
+Valparaiso University,500,600,510,620,480,580,Indiana
+Wabash College,510,620,530,655,480,590,Indiana
+Briar Cliff University,NA,NA,NA,NA,NA,NA,Iowa
+Central College,460,550,470,570,NA,NA,Iowa
+Clarke University,NA,NA,NA,NA,NA,NA,Iowa
+Coe College,480,610,470,650,473,610,Iowa
+Cornell College,530,690,540,690,520,660,Iowa
+Dordt College,470,590,480,580,440,570,Iowa
+Drake University,510,640,550,660,NA,NA,Iowa
+Graceland University,380,520,410,540,NA,NA,Iowa
+Grand View University,380,500,410,520,520,580,Iowa
+Grinnell College,630,750,650,750,NA,NA,Iowa
+Iowa State,480,630,520,660,NA,NA,Iowa
+Loras College,NA,NA,463,575,NA,NA,Iowa
+Luther College,450,605,500,620,450,595,Iowa
+Morningside College,NA,NA,NA,NA,NA,NA,Iowa
+Mount Mercy University,NA,NA,NA,NA,NA,NA,Iowa
+Northwestern College,425,605,445,630,395,565,Iowa
+St. Ambrose University,NA,NA,NA,NA,NA,NA,Iowa
+Simpson College,NA,NA,NA,NA,NA,NA,Iowa
+University of Dubuque,390,510,390,530,NA,NA,Iowa
+University of Iowa,470,630,550,690,490,610,Iowa
+University of Northern Iowa,NA,NA,460,520,NA,NA,Iowa
+Upper Iowa University,NA,NA,NA,NA,NA,NA,Iowa
+Wartburg College,420,543,470,595,418,540,Iowa
+Baker University,420,525,420,570,NA,NA,Kansas
+Benedictine College,500,653,480,630,NA,NA,Kansas
+Bethany College,400,510,440,590,410,470,Kansas
+Bethel College,460,620,440,640,400,530,Kansas
+Emporia State University,445,636,453,568,NA,NA,Kansas
+Fort Hays State University,NA,NA,NA,NA,NA,NA,Kansas
+Friends University,390,515,400,510,NA,NA,Kansas
+Haskell Indian Nations University,NA,NA,NA,NA,NA,NA,Kansas
+Kansas State University,NA,NA,NA,NA,NA,NA,Kansas
+Kansas Wesleyan University,440,540,460,570,NA,NA,Kansas
+McPherson College,440,555,445,560,NA,NA,Kansas
+MidAmerica Nazarene University,423,500,453,575,NA,NA,Kansas
+Newman University,450,570,450,610,410,570,Kansas
+Ottawa University,NA,NA,NA,NA,NA,NA,Kansas
+Pittsburg State University,NA,NA,NA,NA,NA,NA,Kansas
+Southwestern College,380,500,430,550,NA,NA,Kansas
+Sterling College,420,530,410,520,430,490,Kansas
+Tabor College,410,520,440,550,NA,NA,Kansas
+University of Kansas,NA,NA,NA,NA,NA,NA,Kansas
+University of Saint Mary,440,500,430,550,NA,NA,Kansas
+Washburn University,NA,NA,NA,NA,NA,NA,Kansas
+Wichita State University,430,570,455,590,NA,NA,Kansas
+Asbury University,510,630,490,600,NA,NA,Kentucky
+Bellarmine University,500,600,490,600,NA,NA,Kentucky
+Berea College,540,660,525,625,500,610,Kentucky
+Centre College,560,690,580,700,560,670,Kentucky
+Eastern Kentucky University,430,555,430,550,410,520,Kentucky
+Georgetown College,410,610,460,560,NA,NA,Kentucky
+Kentucky Wesleyan College,388,548,435,578,395,503,Kentucky
+Morehead State University,430,550,460,570,NA,NA,Kentucky
+Murray State University,395,548,440,573,NA,NA,Kentucky
+Transylvania University,510,630,510,640,NA,NA,Kentucky
+University of Kentucky,490,610,500,630,470,600,Kentucky
+University of Louisville,490,620,500,630,NA,NA,Kentucky
+Western Kentucky University,440,580,430,590,NA,NA,Kentucky
+Centenary College,490,620,500,620,NA,NA,Louisiana
+Grambling State,340,460,330,460,NA,NA,Louisiana
+LSU,500,610,530,630,NA,NA,Louisiana
+Louisiana Tech,450,570,500,650,NA,NA,Louisiana
+Loyola University New Orleans,530,650,510,620,NA,NA,Louisiana
+McNeese State,470,570,500,610,NA,NA,Louisiana
+Nicholls State,440,530,420,520,428,515,Louisiana
+Northwestern State,430,558,440,538,NA,NA,Louisiana
+Southern University,NA,NA,400,490,NA,NA,Louisiana
+Southeastern Louisiana University,NA,NA,NA,NA,NA,NA,Louisiana
+Tulane University,630,720,620,710,640,720,Louisiana
+UL Lafayette,460,580,460,590,NA,NA,Louisiana
+UL Monroe,425,540,440,570,420,545,Louisiana
+University of New Orleans,480,648,482,610,NA,NA,Louisiana
+Xavier University of Louisiana,430,560,440,550,420,520,Louisiana
+Bates College,NA,NA,NA,NA,NA,NA,Maine
+Bowdoin College,670,760,670,760,670,760,Maine
+Colby College,610,710,630,720,610,710,Maine
+College of the Atlantic,NA,NA,NA,NA,NA,NA,Maine
+Husson University,410,510,430,530,400,510,Maine
+Maine Maritime Academy,460,560,490,590,440,540,Maine
+New England School of Communications,NA,NA,NA,NA,NA,NA,Maine
+Saint Joseph’s College of Maine,420,510,420,510,432,536,Maine
+Thomas College,390,510,400,510,380,480,Maine
+Unity College,NA,NA,NA,NA,NA,NA,Maine
+University of Maine at Augusta,NA,NA,NA,NA,NA,NA,Maine
+University of Maine at Farmington,NA,NA,NA,NA,NA,NA,Maine
+University of Maine at Machias,400,510,390,510,380,510,Maine
+University of Maine at Orono,470,590,470,600,460,580,Maine
+University of New England,470,570,490,590,NA,NA,Maine
+University of Southern Maine,440,570,440,560,NA,NA,Maine
+Annapolis,560,670,600,700,NA,NA,Maryland
+Goucher College,NA,NA,NA,NA,NA,NA,Maryland
+Hood College,470,610,470,590,470,590,Maryland
+Johns Hopkins University,640,740,660,770,650,750,Maryland
+Loyola University Maryland,540,630,540,630,NA,NA,Maryland
+McDaniel College,490,610,500,610,NA,NA,Maryland
+Maryland Institute College of Art,530,680,510,620,530,660,Maryland
+Mount St. Mary's University,510,600,500,600,NA,NA,Maryland
+St. John's College,NA,NA,NA,NA,NA,NA,Maryland
+St. Mary's College of Maryland,560,680,540,650,550,670,Maryland
+Salisbury University,530,610,540,620,530,600,Maryland
+Towson University,490,580,500,600,500,590,Maryland
+University of Maryland Baltimore County,550,650,580,640,530,640,Maryland
+University of Maryland,580,690,610,720,NA,NA,Maryland
+Washington College,540,630,530,620,NA,NA,Maryland
+Amherst,660,760,660,770,670,770,Massachusetts
+Babson,550,640,610,710,580,663,Massachusetts
+Boston College,620,710,640,740,640,730,Massachusetts
+Brandeis,610,710,620,740,620,710,Massachusetts
+Harvard,700,800,710,790,710,800,Massachusetts
+Holy Cross,NA,NA,NA,NA,NA,NA,Massachusetts
+MIT,670,770,740,800,680,780,Massachusetts
+Olin College,700,775,725,790,680,760,Massachusetts
+Smith,NA,NA,NA,NA,NA,NA,Massachusetts
+Tufts,670,760,680,760,680,760,Massachusetts
+Wellesley,650,740,640,740,650,750,Massachusetts
+Williams,660,770,650,760,NA,NA,Massachusetts
+Albion College,460,620,480,640,490,580,Michigan
+Alma College,460,630,450,620,470,590,Michigan
+Andrews University,470,590,440,590,470,570,Michigan
+Calvin College,520,670,540,690,NA,NA,Michigan
+Grand Valley State,480,615,510,620,460,590,Michigan
+Hope College,510,660,520,670,NA,NA,Michigan
+Kalamazoo College,540,670,520,660,530,650,Michigan
+Kettering University,520,650,600,690,NA,NA,Michigan
+Michigan State,430,580,540,680,460,580,Michigan
+Michigan Tech,550,680,580,690,520,620,Michigan
+University of Detroit Mercy,480,610,500,640,480,610,Michigan
+University of Michigan,610,700,650,760,620,720,Michigan
+University of Michigan Dearborn,510,680,508,598,NA,NA,Michigan
+Bethel University,513,658,493,648,NA,NA,Minnesota
+Carleton College,670,760,670,760,660,750,Minnesota
+College of Saint Benedict,480,640,480,610,490,640,Minnesota
+College of St. Scholastica,430,660,500,640,420,640,Minnesota
+Concordia College at Moorhead,490,620,490,640,NA,NA,Minnesota
+Gustavus Adolphus College,570,700,570,670,NA,NA,Minnesota
+Hamline University,510,640,510,650,490,605,Minnesota
+Macalester College,630,740,640,730,630,720,Minnesota
+Saint John's University,460,590,470,610,460,570,Minnesota
+St. Olaf College,580,700,580,700,570,690,Minnesota
+University of Minnesota Twin Cities,540,690,620,740,560,670,Minnesota
+University of Minnesota Morris,510,650,540,670,560,620,Minnesota
+University of St. Thomas,530,660,530,650,NA,NA,Minnesota
+Alcorn State University,390,470,400,500,NA,NA,Mississippi
+Belhaven University,440,590,470,560,NA,NA,Mississippi
+Blue Mountain College,NA,NA,NA,NA,NA,NA,Mississippi
+Delta State University,440,540,420,500,NA,NA,Mississippi
+Jackson State University,NA,NA,NA,NA,NA,NA,Mississippi
+Millsaps College,490,610,520,610,NA,NA,Mississippi
+Mississippi College,460,610,470,580,NA,NA,Mississippi
+Mississippi State University,470,610,490,620,NA,NA,Mississippi
+Mississippi University for Women,430,460,480,630,NA,NA,Mississippi
+Mississippi Valley State University,NA,NA,NA,NA,NA,NA,Mississippi
+Rust College,NA,NA,NA,NA,NA,NA,Mississippi
+Tougaloo College,405,445,390,435,NA,NA,Mississippi
+University of Mississippi,480,600,480,600,NA,NA,Mississippi
+University of Southern Mississippi,453,580,460,570,NA,NA,Mississippi
+William Carey University,400,470,480,600,NA,NA,Mississippi
+College of the Ozarks,510,610,440,560,430,530,Missouri
+Maryville University,470,590,470,630,NA,NA,Missouri
+Missouri University of Science and Technology,520,660,610,700,NA,NA,Missouri
+Rockhurst University,490,590,510,640,NA,NA,Missouri
+Saint Louis University,530,660,550,670,NA,NA,Missouri
+Stephens College,480,590,440,540,450,560,Missouri
+Truman State University,550,710,550,650,NA,NA,Missouri
+University of Missouri,510,640,530,650,NA,NA,Missouri
+Washington University,700,770,720,790,NA,NA,Missouri
+Webster University,500,650,490,600,470,590,Missouri
+Westminster College,390,550,470,610,420,530,Missouri
+William Jewell College,510,610,510,610,NA,NA,Missouri
+Carroll College,500,600,500,610,490,590,Montana
+Montana State University,500,630,500,640,470,600,Montana
+Montana State University-Billings,NA,NA,NA,NA,NA,NA,Montana
+Montana State University-Northern,413,498,423,520,360,485,Montana
+Montana Tech,480,590,500,630,450,580,Montana
+Rocky Mountain College,440,540,450,550,NA,NA,Montana
+Salish Kootenai College,NA,NA,NA,NA,NA,NA,Montana
+University of Montana,480,600,470,600,460,580,Montana
+University of Montana-Western,NA,NA,NA,NA,NA,NA,Montana
+University of Great Falls,NA,NA,NA,NA,NA,NA,Montana
+Bellevue University,NA,NA,NA,NA,NA,NA,Nebraska
+Bryan College of Health Sciences,NA,NA,NA,NA,NA,NA,Nebraska
+Chadron State College,NA,NA,NA,NA,NA,NA,Nebraska
+Clarkson College,NA,NA,NA,NA,NA,NA,Nebraska
+College of Saint Mary,NA,NA,NA,NA,NA,NA,Nebraska
+Concordia University-Seward,460,570,490,610,NA,NA,Nebraska
+Creighton University,530,630,540,660,520,630,Nebraska
+Doane College-Crete,NA,NA,NA,NA,NA,NA,Nebraska
+Grace University,500,620,430,560,NA,NA,Nebraska
+Hastings College,440,580,490,590,NA,NA,Nebraska
+Midland University,NA,NA,NA,NA,NA,NA,Nebraska
+Nebraska Methodist College of Nursing,460,461,530,531,520,521,Nebraska
+Nebraska Wesleyan University,NA,NA,NA,NA,NA,NA,Nebraska
+Peru State College,NA,NA,NA,NA,NA,NA,Nebraska
+Union College,430,590,420,550,NA,NA,Nebraska
+University of Nebraska at Kearney,470,580,510,610,NA,NA,Nebraska
+University of Nebraska at Lincoln,510,660,540,680,NA,NA,Nebraska
+University of Nebraska at Omaha,NA,NA,NA,NA,NA,NA,Nebraska
+Wayne State College,NA,NA,NA,NA,NA,NA,Nebraska
+York College,420,520,380,470,NA,NA,Nebraska
+College of Southern Nevada,NA,NA,NA,NA,NA,NA,Nevada
+Great Basin College,NA,NA,NA,NA,NA,NA,Nevada
+Nevada State College,NA,NA,NA,NA,NA,NA,Nevada
+Sierra Nevada College,NA,NA,NA,NA,NA,NA,Nevada
+University of Nevada-Las Vegas,440,550,440,560,NA,NA,Nevada
+University of Nevada-Reno,470,580,480,600,450,560,Nevada
+Western Nevada College,NA,NA,NA,NA,NA,NA,Nevada
+Colby-Sawyer College,NA,NA,NA,NA,NA,NA,New Hampshire
+Dartmouth College,670,780,680,780,680,790,New Hampshire
+Franklin Pierce University,440,530,440,550,420,520,New Hampshire
+Granite State College,NA,NA,NA,NA,NA,NA,New Hampshire
+Keene State College,440,540,440,540,440,530,New Hampshire
+New England College,NA,NA,NA,NA,NA,NA,New Hampshire
+Plymouth State University,440,520,440,540,420,520,New Hampshire
+Rivier College,420,500,400,520,420,510,New Hampshire
+Saint Anselm College,510,600,520,610,510,600,New Hampshire
+Southern New Hampshire University,440,540,450,560,440,530,New Hampshire
+UNH Durham,490,590,500,610,NA,NA,New Hampshire
+UNH Manchester,470,570,470,580,440,550,New Hampshire
+Caldwell College,410,500,410,520,410,510,New Jersey
+Centenary College,400,500,400,490,NA,NA,New Jersey
+College of New Jersey,550,650,580,680,560,670,New Jersey
+Drew University,490,620,480,600,490,610,New Jersey
+Fairleigh Dickinson - Florham,450,560,460,570,450,560,New Jersey
+Fairleigh Dickinson - Metropolitan,440,530,460,560,440,640,New Jersey
+Georgian Court University,NA,NA,NA,NA,NA,NA,New Jersey
+Kean University,410,500,430,520,NA,NA,New Jersey
+Monmouth University,470,560,490,580,490,580,New Jersey
+Montclair State University,440,530,460,540,450,540,New Jersey
+NJIT,470,600,550,660,470,590,New Jersey
+Princeton University,700,790,710,800,710,800,New Jersey
+Ramapo College,490,600,510,620,500,600,New Jersey
+Richard Stockton College,470,570,500,600,470,570,New Jersey
+Rider University,420,500,400,520,420,510,New Jersey
+Rowan University,480,590,510,630,480,580,New Jersey
+"Rutgers University, Camden",460,560,470,570,460,560,New Jersey
+"Rutgers University, New Brunswick",520,630,560,680,540,650,New Jersey
+"Rutgers University, Newark",460,550,490,590,470,560,New Jersey
+Saint Peter's College,410,510,410,520,410,510,New Jersey
+Seton Hall University,490,590,510,610,490,600,New Jersey
+Stevens Institute of Technology,570,670,640,720,NA,NA,New Jersey
+William Paterson University,450,550,470,550,NA,NA,New Jersey
+Eastern New Mexico University,390,525,410,530,NA,NA,New Mexico
+Navajo Technical College,NA,NA,NA,NA,NA,NA,New Mexico
+New Mexico Highlands University,NA,NA,NA,NA,NA,NA,New Mexico
+New Mexico State University,420,560,430,560,420,540,New Mexico
+New Mexico Tech,550,670,590,700,NA,NA,New Mexico
+Northern New Mexico College,NA,NA,NA,NA,NA,NA,New Mexico
+St. John's College,NA,NA,NA,NA,NA,NA,New Mexico
+University of New Mexico,470,600,470,590,NA,NA,New Mexico
+University of the Southwest,NA,NA,NA,NA,NA,NA,New Mexico
+Western New Mexico University,NA,NA,NA,NA,NA,NA,New Mexico
+Barnard,630,730,620,710,650,760,New York
+Binghamton,600,680,620,710,580,670,New York
+Colgate,630,730,640,720,NA,NA,New York
+Columbia,700,780,700,790,700,790,New York
+Cooper Union,610,720,650,780,620,730,New York
+Cornell,640,740,670,780,NA,NA,New York
+Hamilton,650,740,650,740,650,740,New York
+NYU,620,710,630,740,640,730,New York
+RPI,610,700,660,760,590,690,New York
+Rochester,600,700,640,740,600,700,New York
+SUNY Geneseo,590,690,600,690,NA,NA,New York
+Vassar,660,750,650,740,650,750,New York
+Appalachian State,520,610,530,620,500,590,North Carolina
+Davidson College,620,720,640,720,620,720,North Carolina
+Duke University,660,750,690,780,670,770,North Carolina
+Elon University,570,660,560,660,570,670,North Carolina
+Guilford College,480,620,490,660,460,600,North Carolina
+High Point University,497,589,507,609,487,589,North Carolina
+Meredith College,450,560,460,560,NA,NA,North Carolina
+NC State,530,620,560,660,510,610,North Carolina
+Salem College,510,620,490,590,NA,NA,North Carolina
+UNC Asheville,540,640,530,620,510,630,North Carolina
+UNC Chapel Hill,590,700,610,700,590,690,North Carolina
+UNC School of the Arts,510,630,470,600,500,600,North Carolina
+UNC Wilmington,540,620,550,630,520,600,North Carolina
+Wake Forest,NA,NA,NA,NA,NA,NA,North Carolina
+Warren Wilson,500,650,480,590,510,620,North Carolina
+Bismarck State College,NA,NA,NA,NA,NA,NA,North Dakota
+Dickinson State University,390,525,400,510,370,460,North Dakota
+Jamestown College,390,510,420,550,NA,NA,North Dakota
+Mayville State University,NA,NA,NA,NA,NA,NA,North Dakota
+Minot State University,440,530,450,563,420,500,North Dakota
+North Dakota State University,480,610,490,620,NA,NA,North Dakota
+Sitting Bull College,NA,NA,NA,NA,NA,NA,North Dakota
+Trinity Bible College,NA,NA,NA,NA,NA,NA,North Dakota
+University of Mary,410,579,479,678,NA,NA,North Dakota
+University of North Dakota,470,585,500,620,460,570,North Dakota
+Valley City State University,400,500,400,520,NA,NA,North Dakota
+Case Western,600,720,660,760,600,700,Ohio
+College of Wooster,540,660,540,660,540,660,Ohio
+Denison,600,720,600,680,NA,NA,Ohio
+Kenyon,630,730,610,680,630,720,Ohio
+Miami University,530,630,550,660,NA,NA,Ohio
+Oberlin,640,740,620,720,630,730,Ohio
+Ohio Northern,510,620,540,660,505,630,Ohio
+Ohio State,540,650,610,710,550,650,Ohio
+University of Dayton,510,620,530,640,NA,NA,Ohio
+Xavier,500,600,500,600,488,600,Ohio
+Bacone College,365,408,460,490,NA,NA,Oklahoma
+Cameron University,NA,NA,NA,NA,NA,NA,Oklahoma
+East Central University,410,480,470,560,NA,NA,Oklahoma
+Langston University,NA,NA,NA,NA,NA,NA,Oklahoma
+Mid-America Christian University,NA,NA,NA,NA,NA,NA,Oklahoma
+Northeastern State University,NA,NA,NA,NA,NA,NA,Oklahoma
+Northwestern Oklahoma State University,440,520,410,520,NA,NA,Oklahoma
+Oklahoma Baptist University,480,610,470,490,NA,NA,Oklahoma
+Oklahoma Christian University,440,620,470,640,470,600,Oklahoma
+Oklahoma City University,490,620,500,620,480,600,Oklahoma
+Oklahoma Panhandle State University,340,450,370,500,NA,NA,Oklahoma
+Oklahoma State University,490,590,510,620,NA,NA,Oklahoma
+Oklahoma State University-Oklahoma City,NA,NA,NA,NA,NA,NA,Oklahoma
+Oklahoma Wesleyan University,370,510,430,560,370,480,Oklahoma
+Oral Roberts University,463,590,450,580,NA,NA,Oklahoma
+Rogers State University,NA,NA,NA,NA,NA,NA,Oklahoma
+Saint Gregorys University,NA,NA,NA,NA,NA,NA,Oklahoma
+Southeastern Oklahoma State University,NA,NA,NA,NA,NA,NA,Oklahoma
+Southern Nazarene University,NA,NA,NA,NA,NA,NA,Oklahoma
+Southwestern Christian University,420,575,440,605,410,570,Oklahoma
+Southwestern Oklahoma State University,NA,NA,NA,NA,NA,NA,Oklahoma
+University of Central Oklahoma,NA,NA,NA,NA,NA,NA,Oklahoma
+University of Oklahoma,510,640,540,660,NA,NA,Oklahoma
+University of Science and Arts of Oklahoma,NA,NA,410,540,430,520,Oklahoma
+University of Tulsa,570,710,590,700,NA,NA,Oklahoma
+Concordia University,450,560,460,580,NA,NA,Oregon
+Corban University,470,600,460,580,450,570,Oregon
+Eastern Oregon University,420,550,410,550,400,520,Oregon
+George Fox University,490,630,500,620,470,600,Oregon
+Lewis & Clark College,NA,NA,NA,NA,NA,NA,Oregon
+Linfield College,480,590,490,600,460,575,Oregon
+Oregon Tech,440,550,460,570,420,510,Oregon
+Oregon State,470,600,490,620,NA,NA,Oregon
+Pacific University,500,600,500,620,NA,NA,Oregon
+Portland State University,460,590,460,580,NA,NA,Oregon
+Reed College,670,770,630,720,650,740,Oregon
+Southern Oregon University,450,590,440,560,430,560,Oregon
+University of Oregon,492,610,501,613,NA,NA,Oregon
+University of Portland,540,650,550,640,NA,NA,Oregon
+Warner Pacific College,450,580,410,540,420,540,Oregon
+Western Oregon University,410,530,410,530,310,520,Oregon
+Willamette University,560,680,560,660,540,650,Oregon
+Allegheny,540,650,560,650,NA,NA,Pennsylvania
+Bryn Mawr,600,710,590,720,610,710,Pennsylvania
+Bucknell,590,690,620,720,600,690,Pennsylvania
+Carnegie Mellon,630,730,690,790,650,740,Pennsylvania
+Dickinson,590,690,600,690,590,690,Pennsylvania
+Franklin and Marshall,NA,NA,NA,NA,NA,NA,Pennsylvania
+Gettysburg,600,690,610,670,NA,NA,Pennsylvania
+Grove City,560,670,560,670,NA,NA,Pennsylvania
+Haverford,650,760,660,760,670,760,Pennsylvania
+Juniata,520,640,540,650,520,610,Pennsylvania
+Lafayette,580,680,610,710,580,680,Pennsylvania
+Lehigh,570,670,630,730,NA,NA,Pennsylvania
+Muhlenberg,560,680,560,680,560,680,Pennsylvania
+Penn,660,760,690,780,680,770,Pennsylvania
+Penn State,530,630,560,670,540,640,Pennsylvania
+Pitt,570,690,600,690,560,660,Pennsylvania
+Swarthmore,680,780,670,770,680,770,Pennsylvania
+Ursinus,540,650,540,660,540,630,Pennsylvania
+Villanova,590,680,610,710,590,690,Pennsylvania
+Brown University,660,760,660,770,670,780,Rhode Island
+Bryant University,500,590,535,630,500,590,Rhode Island
+Johnson & Wales University,NA,NA,NA,NA,NA,NA,Rhode Island
+New England Tech,NA,NA,NA,NA,NA,NA,Rhode Island
+Providence College,520,630,530,640,540,640,Rhode Island
+Rhode Island College,420,520,410,520,420,520,Rhode Island
+Rhode Island School of Design,550,670,570,690,560,680,Rhode Island
+Roger Williams University,NA,NA,NA,NA,NA,NA,Rhode Island
+Salve Regina University,510,590,520,600,510,600,Rhode Island
+University of Rhode Island,470,570,480,590,470,570,Rhode Island
+Anderson University,470,588,470,590,NA,NA,South Carolina
+Charleston Southern University,430,570,430,530,NA,NA,South Carolina
+The Citadel,480,580,500,590,450,560,South Carolina
+Claflin University,380,490,380,490,NA,NA,South Carolina
+Clemson University,550,650,590,680,490,590,South Carolina
+Coastal Carolina University,450,540,460,560,NA,NA,South Carolina
+College of Charleston,540,650,540,630,NA,NA,South Carolina
+Columbia International University,500,620,480,590,480,590,South Carolina
+Converse College,470,600,460,570,NA,NA,South Carolina
+Erskine College,440,565,460,570,NA,NA,South Carolina
+Furman University,560,650,560,670,NA,NA,South Carolina
+North Greenville University,470,680,490,670,470,660,South Carolina
+Presbyterian College,480,590,495,600,470,580,South Carolina
+South Carolina State,370,440,380,450,NA,NA,South Carolina
+USC Aiken,440,540,440,550,NA,NA,South Carolina
+USC Beaufort,420,510,420,520,NA,NA,South Carolina
+USC Columbia,540,640,560,650,NA,NA,South Carolina
+USC Upstate,430,530,450,530,NA,NA,South Carolina
+Winthrop University,460,580,470,570,NA,NA,South Carolina
+Wofford College,540,650,560,670,530,630,South Carolina
+Augustana College,NA,NA,NA,NA,NA,NA,South Dakota
+Black Hills State University,NA,NA,NA,NA,NA,NA,South Dakota
+Dakota State University,420,550,460,560,NA,NA,South Dakota
+Dakota Wesleyan University,420,600,400,600,NA,NA,South Dakota
+Mount Marty College,NA,NA,NA,NA,NA,NA,South Dakota
+Northern State University,430,560,470,550,NA,NA,South Dakota
+Oglala Lakota College,NA,NA,NA,NA,NA,NA,South Dakota
+Presentation College,380,450,350,480,330,430,South Dakota
+Sinte Gleska University,NA,NA,NA,NA,NA,NA,South Dakota
+South Dakota School of Mines,470,610,520,660,NA,NA,South Dakota
+South Dakota State University,430,530,450,580,NA,NA,South Dakota
+University of Sioux Falls,400,490,490,540,NA,NA,South Dakota
+University of South Dakota,460,610,460,620,460,600,South Dakota
+Belmont University,540,640,530,630,NA,NA,Tennessee
+Fisk University,410,540,400,570,400,570,Tennessee
+Lipscomb University,500,630,500,620,NA,NA,Tennessee
+Maryville College,440,580,440,530,420,560,Tennessee
+Milligan College,485,600,460,590,450,590,Tennessee
+Rhodes College,570,690,580,680,560,680,Tennessee
+Sewanee: The University of the South,590,690,580,660,570,660,Tennessee
+Tennessee Tech,470,620,490,630,NA,NA,Tennessee
+Union University,520,670,510,690,NA,NA,Tennessee
+University of Tennessee,530,640,530,650,NA,NA,Tennessee
+Vanderbilt University,690,770,710,790,670,770,Tennessee
+Austin College,560,660,570,670,530,650,Texas
+Baylor,550,660,570,670,530,650,Texas
+Rice,660,750,700,780,660,760,Texas
+St. Edwards,510,620,510,610,490,603,Texas
+Southern Methodist (SMU),590,680,600,690,570,680,Texas
+Southwestern,530,660,550,650,NA,NA,Texas
+Texas A&M,520,640,560,670,500,610,Texas
+Texas Christian,530,630,550,650,550,650,Texas
+Texas Tech,500,590,520,620,470,570,Texas
+Trinity University,570,680,580,670,NA,NA,Texas
+University of Dallas,550,670,530,640,530,660,Texas
+UT Austin,550,670,580,710,540,680,Texas
+UT Dallas,560,680,600,710,NA,NA,Texas
+Brigham Young University,580,690,590,690,NA,NA,Utah
+Dixie State College of Utah,NA,NA,NA,NA,NA,NA,Utah
+Southern Utah University,460,560,460,570,430,540,Utah
+University of Utah,510,620,510,650,490,610,Utah
+Utah State Universtiy,470,620,490,610,NA,NA,Utah
+Utah Valley University,NA,NA,NA,NA,NA,NA,Utah
+Weber State University,NA,NA,NA,NA,NA,NA,Utah
+Western Governers University,NA,NA,NA,NA,NA,NA,Utah
+Westminster College,500,613,500,620,NA,NA,Utah
+Bennington College,NA,NA,NA,NA,NA,NA,Vermont
+Burlington College,NA,NA,NA,NA,NA,NA,Vermont
+Castleton State College,430,530,440,540,420,510,Vermont
+Champlain College,490,610,480,600,480,590,Vermont
+Green Mountain College,490,620,460,570,490,600,Vermont
+Johnson State College,410,560,410,520,400,530,Vermont
+Lyndon State College,410,520,410,520,400,510,Vermont
+Marlboro College,NA,NA,NA,NA,NA,NA,Vermont
+Middlebury College,640,740,650,740,650,760,Vermont
+Norwich University,480,580,500,600,460,570,Vermont
+Saint Michael's College,530,630,520,620,520,620,Vermont
+University of Vermont,540,640,550,640,540,640,Vermont
+Vermont Technical College,400,510,430,540,390,480,Vermont
+Christopher Newport,530,630,540,610,NA,NA,Virginia
+George Mason,520,620,530,630,NA,NA,Virginia
+Hampden-Sydney,490,620,510,615,470,580,Virginia
+Hollins,500,650,460,590,NA,NA,Virginia
+James Madison,520,620,530,620,520,610,Virginia
+Longwood,470,560,470,550,NA,NA,Virginia
+Mary Washington,520,630,510,600,510,610,Virginia
+Randolph,480,610,490,610,460,590,Virginia
+Randolph-Macon,500,590,490,600,480,580,Virginia
+Richmond,580,700,620,720,590,690,Virginia
+Roanoke,490,600,480,600,480,590,Virginia
+Sweet Briar,490,610,450,570,460,590,Virginia
+Virginia,620,720,640,740,630,730,Virginia
+Virginia Military Institute,520,620,540,620,490,590,Virginia
+Virginia Tech,540,640,570,680,540,640,Virginia
+Washington and Lee,650,740,650,740,650,730,Virginia
+William and Mary,630,740,620,720,620,720,Virginia
+Evergreen State College,510,640,460,590,470,600,Washington
+Gonzaga University,550,700,560,690,NA,NA,Washington
+Pacific Lutheran University,480,610,490,610,470,610,Washington
+Seattle Pacific University,500,620,500,610,500,600,Washington
+Seattle University,530,640,540,640,530,630,Washington
+University of Puget Sound,570,688,580,660,NA,NA,Washington
+University of Washington,510,650,570,700,520,640,Washington
+Washington State University,460,570,470,600,450,550,Washington
+Western Washington University,510,620,510,610,480,600,Washington
+Whitman College,610,730,610,700,620,720,Washington
+Whitworth University,NA,NA,NA,NA,NA,NA,Washington
+Alderson Broaddus College,420,510,440,520,390,480,West Virginia
+Appalachian Bible College,500,630,415,550,NA,NA,West Virginia
+Bethany College,380,480,390,510,360,470,West Virginia
+Bluefield State College,405,595,405,515,NA,NA,West Virginia
+Concord University,410,530,410,530,390,510,West Virginia
+Davis & Elkins College,400,520,410,550,340,500,West Virginia
+Fairmont State University,410,510,420,520,NA,NA,West Virginia
+Glenville State College,350,450,370,460,NA,NA,West Virginia
+Marshall University,450,550,440,560,430,550,West Virginia
+Mountain State University,NA,NA,NA,NA,NA,NA,West Virginia
+Ohio Valley University,420,530,480,570,420,510,West Virginia
+Shepherd University,450,560,450,550,NA,NA,West Virginia
+University of Charleston,430,530,440,540,NA,NA,West Virginia
+West Liberty University,400,490,400,490,360,450,West Virginia
+West Virginia State University,363,470,400,485,370,510,West Virginia
+West Virginia University,470,570,480,590,NA,NA,West Virginia
+West Virginia University at Parkersburg,NA,NA,NA,NA,NA,NA,West Virginia
+West Virginia University Institute of Technology,410,530,440,560,NA,NA,West Virginia
+West Virginia Wesleyan College,420,540,420,550,400,530,West Virginia
+Wheeling Jesuit University,450,540,460,580,450,550,West Virginia
+Beloit College,550,700,560,670,NA,NA,Wisconsin
+Carroll University,NA,NA,NA,NA,NA,NA,Wisconsin
+Lawrence University,NA,NA,NA,NA,NA,NA,Wisconsin
+Marquette University,520,630,550,650,530,630,Wisconsin
+Milwaukee School of Engineering,510,610,570,680,NA,NA,Wisconsin
+Northland College,475,665,465,585,430,615,Wisconsin
+Ripon College,500,610,530,630,NA,NA,Wisconsin
+St. Norbert College,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-Eau Claire,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-Green Bay,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-La Crosse,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-Madison,550,670,620,740,590,680,Wisconsin
+UW-Milwaukee,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-Oshkosh,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-Parkside,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-Platteville,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-River Falls,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-Stevens Point,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-Stout,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-Superior,NA,NA,NA,NA,NA,NA,Wisconsin
+UW-Whitewater,440,560,490,550,410,570,Wisconsin
+Wisconsin Lutheran College,508,655,495,630,NA,NA,Wisconsin
+University of Wyoming,490,600,490,630,NA,NA,Wyoming

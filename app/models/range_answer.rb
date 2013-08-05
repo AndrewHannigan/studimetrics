@@ -4,12 +4,6 @@ class RangeAnswer < ActiveRecord::Base
 
   validate :min_must_be_less_than_max
 
-  validates :min_value, :length => { :maximum => 4,
-            :too_long => "%{count} characters is the maximum allowed" }
-
-  validates :max_value, :length => { :maximum => 4,
-            :too_long => "%{count} characters is the maximum allowed" }
-
   def valid_answer?(response)
     response_as_float = MathConversions.number_to_float response
     response_as_float >= min_value && response_as_float <= max_value

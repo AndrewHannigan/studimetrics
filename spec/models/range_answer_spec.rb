@@ -45,13 +45,4 @@ describe RangeAnswer do
     end
   end
 
-  describe "validations" do
-    it "returns error if the value is > 4 characters" do
-      answer = FactoryGirl.build :range_answer, min_value: "12345", max_value:"12345"
-      answer.valid?
-
-      expect(answer.errors[:min_value]).to eq ["4 characters is the maximum allowed"]
-      expect(answer.errors[:max_value]).to eq ["4 characters is the maximum allowed"]
-    end
-  end
 end

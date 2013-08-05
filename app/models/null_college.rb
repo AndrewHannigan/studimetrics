@@ -1,25 +1,26 @@
 class NullCollege
   def name
-    "Dartmouth College"
+    "No College"
   end
 
   def profile_image
     Paperclip::Attachment.new 'fake', self, default_url: '/assets/colleges/profile_images/thumb/missing.png'
   end
 
-  def math
-    600
-  end
-
-  def writing
-    600
-  end
-
-  def critical_reading
-    600
-  end
-
   def average_score
-    1800
+    0
   end
+
+  def average_math
+    0
+  end
+
+  def average_writing
+    0
+  end
+
+  def average_critical_reading
+    0
+  end
+
 end
