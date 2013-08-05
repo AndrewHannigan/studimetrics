@@ -3,14 +3,26 @@
 
 #test-content
   .test-header
-    .wrapper
-      .test-info
-        h3 = @section_completion.section.practice_test_name
-        h4 = @section_completion.section_name
-      .section-completion-accuracy
-        = section_completion_accuracy(@section_completion)
-      .section-completion-total-time
-        = section_completion_total_time(@section_completion)
+    .test-info
+      .wrapper
+        h3 data-behavior="dropdown"
+          = @section_completion.section.practice_test_name
+          span.down-arrow
+      .wrapper
+        h4 data-behavior="dropdown"
+          = section_name_with_subject(@section_completion.section)
+          span.down-arrow
+
+    #test-timers
+      h5
+        i class="ss-icon ss-symbolicons-block" timer
+        | Section Time
+      div id="section-timer-#{@section_completion.section_id}" class="timer section-timer no-play-button"
+        .wrapper
+          div class="timer-content total-time" data-timer-content="true" = section_completion_total_time @section_completion
+          .timer-labels
+            span min
+            span sec
 
   - practice_test = @section_completion.practice_test
   - test_progress = TestProgress.new user: current_user, practice_test: practice_test
@@ -28,7 +40,7 @@
         th Correct Answer
         th = ''
         th Time
-        th Concept
+        th Concept(s)
 
       - @section_completion.user_responses.includes(:question).order('questions.position').each do |user_response|
         tr data-id="question-#{user_response.question.id}"
@@ -42,4 +54,6 @@
               i class="ss-icon incorrect" &#x2421;
 
           td.time = TimeConversions.seconds_to_minutes_and_seconds user_response.time
-          td.concept = user_response.question.concept_names.to_sentence
+          td.concept
+            - user_response.question.concepts.each do |concept|
+              = concept_image concept

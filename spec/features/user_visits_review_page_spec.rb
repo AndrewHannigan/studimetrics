@@ -43,25 +43,20 @@ feature 'user views review page' do
   end
 
   scenario 'sees stats related to the completion of the test', js: true do
-    setup_user_and_questions
-    visit_and_complete_section(@question.section, @user)
-    section_completion = SectionCompletion.where(section: @question.section, user: @user).first
+    section_completion = create :section_completion
+    visit section_completion_path(section_completion, as: section_completion.user.id)
 
-    within("div.test-header div.wrapper") do
-      expect(page).to have_css "div.section-completion-accuracy h4 span", text: "#{section_completion.total_correct}/#{section_completion.section_questions_count}"
-      expect(page).to have_css "div.section-completion-total-time h4 span", text: TimeConversions.seconds_to_minutes_and_seconds(section_completion.total_time)
-    end
+    expect(page).to have_css "h4.section-completion-accuracy", text: "#{section_completion.total_correct}/#{section_completion.section_questions_count}"
+    expect(page).to have_css ".total-time", text: TimeConversions.seconds_to_minutes_and_seconds(section_completion.total_time)
   end
 
   scenario "sees concepts for each question", js: true do
-    setup_user_and_questions
-    visit_and_complete_section(@question.section, @user)
-    section_completion = SectionCompletion.where(section: @question.section, user: @user).first
+    section_completion = create :section_completion
+    response = create :user_response, section_completion: section_completion
+    create :question_concept, question: response.question
+    visit section_completion_path(section_completion, as: section_completion.user.id)
 
-    within("div.test-header div.wrapper") do
-      expect(page).to have_css "div.section-completion-accuracy h4 span", text: "#{section_completion.total_correct}/#{section_completion.section_questions_count}"
-      expect(page).to have_css "div.section-completion-total-time h4 span", text: TimeConversions.seconds_to_minutes_and_seconds(section_completion.total_time)
-    end
+    expect(page).to have_css('.concept-image')
   end
 end
 

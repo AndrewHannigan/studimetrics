@@ -2,6 +2,8 @@
   h3 = t 'review.test_complete_title'
   h5 = t 'review.test_complete_subtitle'
 
+  = section_completion_accuracy section_completion
+
   = link_to new_section_completion_path(section_id: section_completion.section_id), class: 'retake-test' do
     i class="ss-icon" &#x21BA;
     h5 = t 'review.retake_section'
