@@ -18,10 +18,9 @@ class FocusRank < ActiveRecord::Base
   end
 
   def self.concept_ids_requiring_focus_for_user(user)
-    focus_ranks = FocusRank.where(user: user)
-    return [] unless focus_ranks.present?
-    limit = (focus_ranks.length * THRESHOLD).round(0)
-    focus_ranks[focus_ranks.length - limit,limit].collect(&:concept_id)
+    return [] unless user.focus_ranks.present?
+    limit = (user.focus_ranks.count * THRESHOLD).round
+    user.focus_ranks.limit(limit).pluck(:concept_id)
   end
 
   def self.concepts_require_focus_by_user?(concept_ids, user)

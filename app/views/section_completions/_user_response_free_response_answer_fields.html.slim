@@ -1,4 +1,5 @@
-.question data-id="question-#{f.object.question.id}" data-behavior="submit-user-response-keyup"
+- requires_focus = requires_focus?(f.object.question)
+.question data-id="question-#{f.object.question.id}" data-requires-focus="#{requires_focus}" data-behavior="submit-user-response-keyup"
   .question-number
     = "#{f.object.question.position}."
   .inputs.free-response-answer

@@ -13,4 +13,8 @@ module PracticeTestHelper
     "#{section.name} - #{section.subject_name}"
   end
 
+  def requires_focus?(question)
+    FocusRank.concepts_require_focus_by_user?(question.concept_ids, current_user)
+  end
+
 end
