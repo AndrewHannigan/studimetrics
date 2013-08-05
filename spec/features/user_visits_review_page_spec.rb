@@ -38,8 +38,7 @@ feature 'user views review page' do
     expect(page).to have_content(I18n.t 'review.section_complete_title')
 
     find('a.next-section').click
-    uri = URI.parse(current_url)
-    expect("#{uri.path}?#{uri.query}").to eq(new_section_completion_path(section_id: section2.id))
+    expect(path_with_query_string current_url).to eq(new_section_completion_path(section_id: section2.id))
   end
 
   scenario 'sees stats related to the completion of the test', js: true do

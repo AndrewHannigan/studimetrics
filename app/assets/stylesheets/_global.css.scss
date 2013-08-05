@@ -187,6 +187,11 @@ header {
 [data-behavior~="dropdown"] {
   cursor: pointer;
   float: left;
+  padding: 4px;
+
+  &:hover {
+    background: tint($dark-gray, 8%);
+  }
 }
 
 #modal {
@@ -239,4 +244,36 @@ a.learn-more {
 
 .wrapper {
   @include clearfix;
+  position: relative;
+}
+
+.dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  width: 216px;
+  color: $dark-gray;
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 2px;
+  border-radius: 4px;
+  display: none;
+  position: absolute;
+  top: 1.9em;
+  z-index: 999;
+  border: 1px solid shade($almost-white, 10%);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+  li {
+    padding: 2px;
+
+    &.active {
+      background: $gray;
+
+      a {
+        color: $almost-white;
+      }
+    }
+  }
 }
