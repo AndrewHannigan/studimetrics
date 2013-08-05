@@ -8,9 +8,12 @@ feature 'Admin manages colleges' do
     click_link 'New College'
 
     fill_in 'Name', with: 'Indiana University'
-    fill_in 'Math', with: '600'
-    fill_in 'Critical Reading', with: '650'
-    fill_in 'Writing', with: '700'
+    fill_in 'Low percentile math', with: '600'
+    fill_in 'High percentile math', with: '650'
+    fill_in 'Low percentile critical reading', with: '600'
+    fill_in 'High percentile critical reading', with: '650'
+    fill_in 'Low percentile writing', with: '600'
+    fill_in 'High percentile writing', with: '650'
 
     click_button 'Create College'
 

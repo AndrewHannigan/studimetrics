@@ -16,14 +16,23 @@ table
     td Profile Image
     td = image_tag resource.profile_image.url(:thumb), class: 'large'
   tr
-    td Critical Reading
-    td = resource.critical_reading
+    td Low Percentile Math
+    td = resource.low_percentile_math
   tr
-    td Math
-    td = resource.math
+    td High Percentile Math
+    td = resource.high_percentile_math
   tr
-    td Writing
-    td = resource.writing
+    td Low Percentile Critical Reading
+    td = resource.low_percentile_critical_reading
+  tr
+    td High Percentile Critical Reading
+    td = resource.high_percentile_critical_reading
+  tr
+    td Low Percentile Writing
+    td = resource.low_percentile_writing
+  tr
+    td High Percentile Writing
+    td = resource.high_percentile_writing
   tr
     td Created At
     td = resource.created_at
