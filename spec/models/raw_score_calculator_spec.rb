@@ -6,7 +6,7 @@ describe RawScoreCalculator do
       it "returns 0.75 for 1 out of 2 non-free response questions correct" do
         setup_questions
 
-        user_response = create :user_response, question: @question, value:"2.5"
+        user_response = create :user_response, question: @question, value:"2.6"
         create :user_response, question: @question2, value: "1.75", section_completion: user_response.section_completion
         test_completion = create :test_completion, practice_test: @question.section.practice_test, user: user_response.section_completion.user
 
@@ -17,7 +17,7 @@ describe RawScoreCalculator do
 
       it "returns 2 for 2 out of 2 non-free response questions correct" do
         setup_questions
-        user_response = create :user_response, question: @question, value:"2.5"
+        user_response = create :user_response, question: @question, value:"2.6"
         create :user_response, question: @question2, value: "2.5", section_completion: user_response.section_completion
         test_completion = create :test_completion, practice_test: @question.section.practice_test, user: user_response.section_completion.user
 
