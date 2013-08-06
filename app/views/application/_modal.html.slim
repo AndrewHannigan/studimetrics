@@ -1,4 +1,11 @@
-#modal class="reveal-modal #{content_for :modal_class}"
-  = link_to 'x', '', class:'close-reveal-modal'
-  = content_for :modal
+- title ||= nil
+- body ||= nil
+- id ||= 'modal'
+- klass ||= 'modal'
 
+div id="#{id}" class="reveal-modal #{klass}"
+  = link_to 'x', '', class:'close-reveal-modal'
+
+  .title
+    h5 = title
+  .body == body

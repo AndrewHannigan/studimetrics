@@ -2,6 +2,8 @@ en:
   practice_tests:
     diagnostic_welcome_title: 'Welcome to Practice Tests!'
     diagnostic_welcome_message_html: '<p>This short diagnostic test will help you get familiar with Stuidmetrics so you can get the best score possible.</p> <p>We will explain how things work and other short things here.</p>'
+    unanswered_questions_modal_title: 'Are you sure?'
+    unanswered_questions_modal_body_html: 'All unanswered questions will be marked as "Skip"'
   review:
     test_complete_title: 'Test Complete!'
     test_complete_subtitle: 'What would you like to do next?'

@@ -1,16 +1,18 @@
+# TODO: make this an object to set all these states!
+
 $ ->
   $(document).on 'click', '.test-item', toggleTestSubMenu
   $(document).on 'click', '#focus', window.toggleFocusRank
   $(document).on 'click', '[data-behavior~=dropdown]', toggleDropdown
   $(document).on 'click', '#critical-reading-timer-button', toggleCriticalReadingTimer
-  $(document).on 'click', '.modal-button', (event) ->
+  $(document).on 'click', '[data-behavior="modal:cancel"]', (event) ->
     event.preventDefault()
-    $('#modal').trigger('reveal:close')
+    $(event.target).closest('.reveal-modal').trigger('reveal:close')
   $(document).on 'page:load', pageLoaded
   setupTimers()
   pageLoaded()
   setupSkipButtons()
-
+  setupSubmitAnswerChecks()
 
 pageLoaded = ->
   $('#modal.diagnostic-welcome').reveal(animation: 'fade')
@@ -26,6 +28,26 @@ toggleDropdown = (event) ->
   trigger.siblings('.dropdown-menu').toggle()
   $(document).one 'click', (event) ->
     $('.dropdown-menu').hide()
+
+setupSubmitAnswerChecks = ->
+  $(document).on 'submit', 'form.edit_section_completion', (event) ->
+    form = event.target
+    if $(form).data('perform-unanswered-check') && unansweredQuestions()
+      event.preventDefault()
+      $('#unanswered-questions-modal').reveal(animation: 'fade')
+      $('#unanswered-questions-modal').one 'click', 'a[data-behavior="modal:continue"]', (event) ->
+        $('.reveal-modal').trigger('reveal:close')
+        setTimeout ->
+          $(form).removeData('perform-unanswered-check').removeAttr('data-perform-unanswered-check').submit()
+        , 500
+
+unansweredQuestions = ->
+  _.some $('.question'), (question, index) ->
+    if $(question).find('.inputs').hasClass('multiple-choice-answer')
+      $("input[name=\"section_completion[user_responses_attributes][#{index}][value]\"]:checked").length == 0
+    else
+      blankValue = $("input[name=\"section_completion[user_responses_attributes][#{index}][value]\"]").val() == ''
+      blankValue && $(question).find('button.selected').length == 0
 
 window.toggleFocusRank = (event) ->
   event.preventDefault() if event?
