@@ -26,6 +26,18 @@ describe RangeAnswer do
       expect(answer.valid_answer?(5)).to eq true
     end
 
+    it "returns false if the response is at the start of the range" do
+      answer = FactoryGirl.create(:range_answer, min_value: 1, max_value: 10)
+
+      expect(answer.valid_answer?(1)).to eq false
+    end
+
+    it "returns false if the response is at the end of the range" do
+      answer = FactoryGirl.create(:range_answer, min_value: 1, max_value: 10)
+
+      expect(answer.valid_answer?(10)).to eq false
+    end
+
     it 'converts the response to a float for comparison' do
       answer = build :range_answer, min_value: 5, max_value: 6
 

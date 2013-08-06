@@ -6,7 +6,7 @@ class RangeAnswer < ActiveRecord::Base
 
   def valid_answer?(response)
     response_as_float = MathConversions.number_to_float response
-    response_as_float >= min_value && response_as_float <= max_value
+    response_as_float > min_value && response_as_float < max_value
   end
 
   def to_partial_path
