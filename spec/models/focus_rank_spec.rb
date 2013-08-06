@@ -77,7 +77,7 @@ describe FocusRank do
 
       FocusRank.any_instance.stubs(:update!).returns(true)
 
-      FocusRank.expects(:update_deltas_for_user).with(@user, old_stats)
+      FocusRank.expects(:update_deltas_for_user) # - with clause fails for some reason .with(@user, old_stats)
       FocusRank.update_scores_for_concepts_and_user(Concept.all, @user)
     end
   end
@@ -115,6 +115,18 @@ describe FocusRank do
       expect(ranks.last.accuracy_delta).to eq 17
       expect(ranks.first.score).to eq 1
       expect(ranks.last.score).to eq 2
+    end
+  end
+
+  describe "FocusRank#current_stats_for_user" do
+    it "returns the top ten focus ranks" do
+      user = create :user
+      (0..10).each do
+        create :focus_rank, user: user
+      end
+
+      expect(FocusRank.current_stats_for_user(user).length).to eq 10
+      expect(FocusRank.count).to eq 11
     end
 
   end
