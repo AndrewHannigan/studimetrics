@@ -76,4 +76,4 @@
               = f.simple_fields_for :user_responses, question_list do |user_response_form|
                 = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
 
-        = f.button :submit, 'Submit Answers', id: 'submit-answers-button'
+        = f.button :submit, 'Submit Answers', id: 'submit-answers-button', disabled: true

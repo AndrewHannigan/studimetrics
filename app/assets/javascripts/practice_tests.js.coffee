@@ -54,17 +54,21 @@ hideReadingTimer = ->
 setupTimers = ->
   $(window).unload pauseTimer
   $(document).on 'page:fetch', pauseTimer
-  $(document).on 'timer:start', (event) ->
-    unless $(event.target).hasClass('reading-timer')
-      $('.question-list').removeAttr('data-disabled').find('input').removeAttr('disabled')
-  $(document).on 'timer:resume', (event) ->
-    $(event.target).find('[data-timer-toggle]').text('pause')
-    unless $(event.target).hasClass('reading-timer')
-      $('.question-list').removeAttr('data-disabled').find('input').removeAttr('disabled')
-  $(document).on 'timer:pause', (event) ->
-    $(event.target).find('[data-timer-toggle]').text('play')
-    unless $(event.target).hasClass('reading-timer')
-      $('.question-list').attr('data-disabled', true).find('input').attr('disabled', true)
+  $(document).on 'timer:start', enableQuestionsAndShowPause
+  $(document).on 'timer:resume', enableQuestionsAndShowPause
+  $(document).on 'timer:pause', disableQuestionsAndShowPlay
+
+enableQuestionsAndShowPause = (event) ->
+  $(event.target).find('[data-timer-toggle]').text('pause')
+  unless $(event.target).hasClass('reading-timer')
+    $('.question-list').removeAttr('data-disabled')
+    $('.question-list input, #submit-answers-button').prop('disabled', false)
+
+disableQuestionsAndShowPlay = (event) ->
+  $(event.target).find('[data-timer-toggle]').text('play')
+  unless $(event.target).hasClass('reading-timer')
+    $('.question-list').attr('data-disabled', true)
+    $('.questions input, #submit-answers-button').prop('disabled', true)
 
 setupSkipButtons = ->
   $(document).on 'click', '.skip-button', setSkipButton

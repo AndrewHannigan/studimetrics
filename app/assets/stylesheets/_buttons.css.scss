@@ -16,7 +16,7 @@ button, a.button, input[type="submit"] {
     color: lighten($blue, 38%);
   }
 
-  &[data-disabled] {
+  &[data-disabled], &[disabled] {
     cursor: normal;
     color: #eee;
     background: #ddd;
