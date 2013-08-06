@@ -49,5 +49,10 @@ module Features
       page.execute_script "$('.reveal-modal-bg').detach()"
       page.execute_script "$('.reveal-modal').detach()"
     end
+
+    def path_with_query_string(url)
+      uri = URI.parse(url)
+      "#{uri.path}?#{uri.query}"
+    end
   end
 end
