@@ -5,7 +5,7 @@ class FocusRank < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :concept
-  default_scope {order("focus_ranks.score asc")}
+  default_scope {order("focus_ranks.score desc")}
   delegate :name, to: :concept, prefix: true
 
   def self.update_scores_for_concepts_and_user(concepts, user)
@@ -80,7 +80,7 @@ class FocusRank < ActiveRecord::Base
 
     def calculated_score
       big_parens = 1 + ((average_response_time_for_user - average_response_time_for_site_without_user)/average_response_time_for_site_without_user)
-      big_parens * total_correct
+      big_parens * total_incorrect
     end
 
     def total_site_time_without_user
