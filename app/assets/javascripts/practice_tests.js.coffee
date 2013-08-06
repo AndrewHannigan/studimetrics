@@ -1,6 +1,7 @@
 $ ->
   $(document).on 'click', '.test-item', toggleTestSubMenu
   $(document).on 'click', '#focus', window.toggleFocusRank
+  $(document).on 'click', '[data-behavior~=dropdown]', toggleDropdown
   $(document).on 'click', '#critical-reading-timer-button', toggleCriticalReadingTimer
   $(document).on 'click', '.modal-button', (event) ->
     event.preventDefault()
@@ -18,6 +19,13 @@ pageLoaded = ->
   questionTimer = $('.question-timer').data('timer')
   $('[data-behavior~="submit-user-response-click"]').userResponse(timer: questionTimer)
   $('[data-behavior~="submit-user-response-keyup"]').userResponse(timer: questionTimer)
+
+toggleDropdown = (event) ->
+  event.stopPropagation()
+  trigger = $(event.target)
+  trigger.siblings('.dropdown-menu').toggle()
+  $(document).one 'click', (event) ->
+    $('.dropdown-menu').hide()
 
 window.toggleFocusRank = (event) ->
   event.preventDefault() if event?
