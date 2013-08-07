@@ -1,3 +1,4 @@
 li.concept data-id="#{concept.id}"
-  = concept_image concept
-  span.concept-name = concept.name
+  = link_to concept_path(concept) do
+    = concept_image concept
+    span.concept-name = truncate(concept.name, length: 25)

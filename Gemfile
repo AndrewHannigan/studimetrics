@@ -38,6 +38,7 @@ gem 'underscore-rails'
 gem 'paperclip'
 gem 'aws-sdk', '~> 1.5.7'
 gem 'active_model_serializers'
+gem 'vimeo'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

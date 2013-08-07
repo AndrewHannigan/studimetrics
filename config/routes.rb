@@ -16,11 +16,12 @@ Studimetrics::Application.routes.draw do
   resources :sections, only: [:show]
   resources :section_completions, only: [:new, :create, :update, :show]
   resources :user_responses, only: [:create]
-  resources :concepts, only: [:index]
+  resources :concepts, only: [:index, :show]
   resource :settings
 
   # admin routes
   namespace 'admin' do
+    resources :concept_videos
     resources :concepts
     resources :colleges
     resources :books

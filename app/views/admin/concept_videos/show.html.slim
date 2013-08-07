@@ -1,0 +1,25 @@
+= breadcrumbs 'Admin' => admin_path, resource_class.name.pluralize.titleize => collection_path
+= action_links "Edit #{resource_class.name.titleize}" => edit_resource_path
+
+h3 = "#{resource_class.name.titleize} ##{resource.id}"
+
+table
+  tr
+    th colspan="2" Basic Information
+  tr
+    td ID
+    td = resource.id
+  tr
+    td Caption
+    td = resource.caption
+  tr
+    td Video ID
+    td
+      div = image_tag resource.large_thumbnail
+      div = link_to "http://vimeo.com/#{resource.video_link}", "http://vimeo.com/#{resource.video_link}", target: 'blank'
+  tr
+    td Concept
+    td = resource.concept_name
+  tr
+    td Created At
+    td = resource.created_at
