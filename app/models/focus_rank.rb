@@ -1,6 +1,7 @@
 class FocusRank < ActiveRecord::Base
   AVERAGE_RESPONSE_TIME = {"Math" => 20, "Critical Reading" => 30, "Writing" => 25}
   THRESHOLD = 0.30
+  DISPLAY_LIMIT = 10
   attr_accessor :position, :accuracy
 
   belongs_to :user
@@ -9,7 +10,7 @@ class FocusRank < ActiveRecord::Base
   delegate :name, to: :concept, prefix: true
 
   def self.update_scores_for_concepts_and_user(concepts, user)
-    old_stats = self.current_stats_for_user(user)
+    old_stats = self.current_stats_for_user(user, nil)
     concepts.each do |concept|
       focus_rank = self.where(concept: concept).where(user: user).first_or_create
       focus_rank.update!
@@ -40,8 +41,9 @@ class FocusRank < ActiveRecord::Base
     concept_progress.percentage_complete
   end
 
-  def self.current_stats_for_user(user)
+  def self.current_stats_for_user(user, limit=DISPLAY_LIMIT)
     ranks = FocusRank.where(user: user)
+    ranks = ranks.limit(limit) if limit
     ranks.each_with_index do |r, i|
       r.position = i + 1
     end
@@ -53,7 +55,7 @@ class FocusRank < ActiveRecord::Base
   end
 
   def self.update_deltas_for_user(user, old_stats)
-    new_stats = self.current_stats_for_user(user)
+    new_stats = self.current_stats_for_user(user, nil)
 
     new_stats.each do |new_stat|
       previous_stat = old_stats.detect {|s| s.id == new_stat.id}

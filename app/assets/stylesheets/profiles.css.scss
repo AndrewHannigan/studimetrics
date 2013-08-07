@@ -168,11 +168,11 @@ table.concept-progress {
     vertical-align: middle;
 
     &.up {
-      color: $dark-green;
+      color: $red;
     }
 
     &.down {
-      color: $red;
+      color: $dark-green;
     }
   }
 }
