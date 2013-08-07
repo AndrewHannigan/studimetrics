@@ -1,0 +1,9 @@
+- downcased_subject = subject.name.downcase
+- if downcased_subject =~ /math/
+  - icon_word = 'calculator'
+- elsif downcased_subject =~ /reading/
+  - icon_word = 'books'
+- elsif downcased_subject =~ /writing/
+  - icon_word = 'notebook'
+
+i class="ss-icon subject-icon" = icon_word
