@@ -263,7 +263,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
-    safe_yaml (0.9.4)
+    safe_yaml (0.9.5)
     sass (3.2.9)
     sass-rails (4.0.0.rc2)
       railties (>= 4.0.0.beta, < 5.0)
@@ -386,6 +386,7 @@ DEPENDENCIES
   rails_on_heroku
   redis
   rspec-rails
+  safe_yaml (~> 0.9.5)
   sass-rails (~> 4.0.0.rc2)
   sdoc
   sidekiq

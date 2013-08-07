@@ -32,6 +32,7 @@ gem 'turbolinks'
 gem 'honeybadger'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'cocoon', github: 'nathanvda/cocoon'
+gem "safe_yaml", "~> 0.9.5" # remove when cocoon is updated
 gem 'acts_as_list'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'underscore-rails'
