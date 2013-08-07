@@ -13,16 +13,16 @@
 
         .scores
           .math-score
-            i class="ss-icon" calculator
+            = subject_icon math
             | Math
             .number = projected_score_for_subject(math)
           .reading-score
-            i class="ss-icon" books
+            = subject_icon reading
             | Reading
             .number = projected_score_for_subject(reading)
 
           .writing-score
-            i class="ss-icon" notebook
+            = subject_icon writing
             | Writing
             .number = projected_score_for_subject(writing)
 
