@@ -21,6 +21,11 @@ pageLoaded = ->
   questionTimer = $('.question-timer').data('timer')
   $('[data-behavior~="submit-user-response-click"]').userResponse(timer: questionTimer)
   $('[data-behavior~="submit-user-response-keyup"]').userResponse(timer: questionTimer)
+  if $('body').hasClass('section_completions-show')
+    clearLocalStorage()
+
+clearLocalStorage = ->
+  $('.section-timer').data('timer').removeTimeFromStorage()
 
 toggleDropdown = (event) ->
   event.stopPropagation()
