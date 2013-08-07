@@ -34,7 +34,7 @@ describe FocusRank do
       setup_original_stats
       ranks = FocusRank.current_stats_for_user(@user)
 
-      expect(ranks).to eq [@focus_rank, @focus_rank2]
+      expect(ranks).to eq [@focus_rank2, @focus_rank]
       expect(ranks.first.position).to eq 1
       expect(ranks.last.position).to eq 2
     end
@@ -59,9 +59,9 @@ describe FocusRank do
   describe "FocusRank.concept_ids_requiring_focus_for_user" do
     it "returns an array of concept ids whose focus rank is below threshold" do
       user = create :user
-      requires_focus = create :focus_rank, user: user, score: 10
+      requires_focus = create :focus_rank, user: user, score: 30
       no_focus = create :focus_rank, user: user, score: 20
-      no_focus2= create :focus_rank, user: user, score: 30
+      no_focus2= create :focus_rank, user: user, score: 10
 
       concept_ids = FocusRank.concept_ids_requiring_focus_for_user(user)
       expect(concept_ids.include?(requires_focus.concept_id)).to eq true
@@ -111,10 +111,10 @@ describe FocusRank do
 
       expect(ranks.first.position_delta).to eq 1
       expect(ranks.last.position_delta).to eq -1
-      expect(ranks.first.accuracy_delta).to eq -13
-      expect(ranks.last.accuracy_delta).to eq 17
-      expect(ranks.first.score).to eq 1
-      expect(ranks.last.score).to eq 2
+      expect(ranks.first.accuracy_delta).to eq 17
+      expect(ranks.last.accuracy_delta).to eq -13
+      expect(ranks.first.score).to eq 2
+      expect(ranks.last.score).to eq 1
     end
 
   end
