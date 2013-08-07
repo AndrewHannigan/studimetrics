@@ -16,3 +16,4 @@
 //= require college
 //= require percentile_bar
 //= require flashes
+//= require concept_videos

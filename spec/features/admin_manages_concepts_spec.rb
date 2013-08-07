@@ -17,7 +17,7 @@ feature 'Admin manages concepts' do
     expect(page).to have_content("Concept was successfully created.")
   end
 
-  scenario 'edits topic' do
+  scenario 'edits concept' do
     admin = create :admin
     concept = create :concept
 

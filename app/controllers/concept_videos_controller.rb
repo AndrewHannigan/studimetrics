@@ -1,0 +1,2 @@
+class ConceptVideosController < ApplicationController
+end
