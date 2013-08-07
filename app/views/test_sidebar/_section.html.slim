@@ -1,10 +1,9 @@
 - section_completion = SectionCompletion.for_section_and_user(section, current_user)
-- cache section_completion do
-  - if section.subject_name != @subject_name
-    - @subject_name = section.subject_name
-    li.subject-name
-      span = @subject_name
-  li
-    ul
-      li.section-item data-id="section-#{section.id}"
-        = section_completion_link section_completion
+- if section.subject_name != @subject_name
+  - @subject_name = section.subject_name
+  li.subject-name
+    span = @subject_name
+li
+  ul
+    li.section-item data-id="section-#{section.id}"
+      = section_completion_link section_completion
