@@ -1,16 +1,18 @@
+# TODO: make this an object to set all these states!
+
 $ ->
   $(document).on 'click', '.test-item', toggleTestSubMenu
   $(document).on 'click', '#focus', window.toggleFocusRank
   $(document).on 'click', '[data-behavior~=dropdown]', toggleDropdown
   $(document).on 'click', '#critical-reading-timer-button', toggleCriticalReadingTimer
-  $(document).on 'click', '.modal-button', (event) ->
+  $(document).on 'click', '[data-behavior="modal:cancel"]', (event) ->
     event.preventDefault()
-    $('#modal').trigger('reveal:close')
+    $(event.target).closest('.reveal-modal').trigger('reveal:close')
   $(document).on 'page:load', pageLoaded
   setupTimers()
   pageLoaded()
   setupSkipButtons()
-
+  setupSubmitAnswerChecks()
 
 pageLoaded = ->
   $('#modal.diagnostic-welcome').reveal(animation: 'fade')
@@ -26,6 +28,26 @@ toggleDropdown = (event) ->
   trigger.siblings('.dropdown-menu').toggle()
   $(document).one 'click', (event) ->
     $('.dropdown-menu').hide()
+
+setupSubmitAnswerChecks = ->
+  $(document).on 'submit', 'form.edit_section_completion', (event) ->
+    form = event.target
+    if $(form).data('perform-unanswered-check') && unansweredQuestions()
+      event.preventDefault()
+      $('#unanswered-questions-modal').reveal(animation: 'fade')
+      $('#unanswered-questions-modal').one 'click', 'a[data-behavior="modal:continue"]', (event) ->
+        $('.reveal-modal').trigger('reveal:close')
+        setTimeout ->
+          $(form).removeData('perform-unanswered-check').removeAttr('data-perform-unanswered-check').submit()
+        , 500
+
+unansweredQuestions = ->
+  _.some $('.question'), (question, index) ->
+    if $(question).find('.inputs').hasClass('multiple-choice-answer')
+      $("input[name=\"section_completion[user_responses_attributes][#{index}][value]\"]:checked").length == 0
+    else
+      blankValue = $("input[name=\"section_completion[user_responses_attributes][#{index}][value]\"]").val() == ''
+      blankValue && $(question).find('button.selected').length == 0
 
 window.toggleFocusRank = (event) ->
   event.preventDefault() if event?
@@ -54,17 +76,21 @@ hideReadingTimer = ->
 setupTimers = ->
   $(window).unload pauseTimer
   $(document).on 'page:fetch', pauseTimer
-  $(document).on 'timer:start', (event) ->
-    unless $(event.target).hasClass('reading-timer')
-      $('.question-list').removeAttr('data-disabled').find('input').removeAttr('disabled')
-  $(document).on 'timer:resume', (event) ->
-    $(event.target).find('[data-timer-toggle]').text('pause')
-    unless $(event.target).hasClass('reading-timer')
-      $('.question-list').removeAttr('data-disabled').find('input').removeAttr('disabled')
-  $(document).on 'timer:pause', (event) ->
-    $(event.target).find('[data-timer-toggle]').text('play')
-    unless $(event.target).hasClass('reading-timer')
-      $('.question-list').attr('data-disabled', true).find('input').attr('disabled', true)
+  $(document).on 'timer:start', enableQuestionsAndShowPause
+  $(document).on 'timer:resume', enableQuestionsAndShowPause
+  $(document).on 'timer:pause', disableQuestionsAndShowPlay
+
+enableQuestionsAndShowPause = (event) ->
+  $(event.target).find('[data-timer-toggle]').text('pause')
+  unless $(event.target).hasClass('reading-timer')
+    $('.question-list').removeAttr('data-disabled')
+    $('.question-list input, #submit-answers-button').prop('disabled', false)
+
+disableQuestionsAndShowPlay = (event) ->
+  $(event.target).find('[data-timer-toggle]').text('play')
+  unless $(event.target).hasClass('reading-timer')
+    $('.question-list').attr('data-disabled', true)
+    $('.questions input, #submit-answers-button').prop('disabled', true)
 
 setupSkipButtons = ->
   $(document).on 'click', '.skip-button', setSkipButton

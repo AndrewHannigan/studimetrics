@@ -1,6 +1,7 @@
 button, a.button, input[type="submit"] {
   background: $blue;
-  border: 1px darken($blue, 10%);
+  border: none;
+  border-bottom: 3px solid darken($blue, 10%);
   color: #fff;
   padding: 12px;
   font-size: 1.2em;
@@ -16,9 +17,10 @@ button, a.button, input[type="submit"] {
     color: lighten($blue, 38%);
   }
 
-  &[data-disabled] {
+  &[data-disabled], &[disabled] {
     cursor: normal;
     color: #eee;
     background: #ddd;
+    border-bottom: 3px solid #ccc;
   }
 }

@@ -51,5 +51,37 @@ feature 'user answers multiple choice' do
       expect(question_on_page(@question).find('input[checked=checked]').value).to eq('A')
     end
   end
+
+  scenario 'shows message if unanswered questions', js: true do
+    user = create :user
+    visit practice_tests_path as: user.id
+
+    section_link_on_page(@question.section).click
+
+    click_link 'play'
+    click_button 'Submit Answers'
+
+    expect(page).to have_content(I18n.t 'practice_tests.unanswered_questions_modal_body_html')
+    expect(page).to_not have_content(I18n.t 'review.test_complete_title')
+
+    dismiss_modal
+
+    make_radios_visible do
+      question_on_page(@question).choose('A')
+      question_on_page(@question2).choose('B')
+    end
+
+    click_button 'Submit Answers'
+
+    expect(page).to have_content(I18n.t 'review.test_complete_title')
+  end
+end
+
+def modal_cancel_button_on_page
+  page.find('.reveal-modal a[data-behavior="modal:cancel"]')
+end
+
+def modal_continue_button_on_page
+  page.find('.reveal-modal a[data-behavior="modal:continue"]')
 end
 

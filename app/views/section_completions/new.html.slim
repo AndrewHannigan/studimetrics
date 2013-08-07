@@ -1,20 +1,15 @@
 - if !current_user.has_responses?
-  /TODO: = modal class: 'blah' do
-  - content_for :modal_class, 'diagnostic-welcome'
-  - content_for :modal do
-    .title
-      h5 = t('practice_tests.diagnostic_welcome_title')
-    .body
-      = image_tag 'http://placehold.it/150x150'
-      = t('practice_tests.diagnostic_welcome_message_html')
-      = link_to 'Get started', '', class: 'button modal-button'
+  = modal class: 'diagnostic-welcome', title: t('practice_tests.diagnostic_welcome_title') do
+    = image_tag 'http://placehold.it/150x150'
+    = t('practice_tests.diagnostic_welcome_message_html')
+    = link_to 'Get started', '', class: 'button modal-button'
 
 
 - content_for :sidebar do
   = render 'test_sidebar'
 
 #test-content
-  = simple_form_for @section_completion do |f|
+  = simple_form_for @section_completion, data: {'perform-unanswered-check' => true} do |f|
     = f.input :section_id, as: :hidden
     .test-header
       .test-info
@@ -76,4 +71,11 @@
               = f.simple_fields_for :user_responses, question_list do |user_response_form|
                 = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
 
-        = f.button :submit, 'Submit Answers', id: 'submit-answers-button'
+        = f.button :submit, 'Submit Answers', id: 'submit-answers-button', disabled: true
+
+        = modal id: 'unanswered-questions-modal', title: t('practice_tests.unanswered_questions_modal_title') do
+          = t('practice_tests.unanswered_questions_modal_body_html')
+
+          .modal-buttons
+            = link_to 'Cancel', '', class: 'button modal-button', data: {behavior: 'modal:cancel'}
+            = link_to 'Continue', '', class: 'button modal-button', data: {behavior: 'modal:continue'}
