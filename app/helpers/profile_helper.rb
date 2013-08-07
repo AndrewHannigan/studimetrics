@@ -11,4 +11,8 @@ module ProfileHelper
   def focus_rank_accuracy(focus_rank)
     render "focus_ranks/accuracy", focus_rank: focus_rank
   end
+
+  def pie_chart(percentage)
+    render "profiles/pie_chart", percentage: percentage
+  end
 end

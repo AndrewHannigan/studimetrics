@@ -9,4 +9,4 @@ tr.concept-progress data-id="focus_rank-#{focus_rank.id}"
   td.accuracy
     = focus_rank_accuracy(focus_rank)
   td.percent_complete
-    = number_to_percentage(focus_rank.percentage_complete, precision: 0)
+    = pie_chart number_to_percentage(focus_rank.percentage_complete, precision: 0)
