@@ -1,8 +1,11 @@
 .concept-image {
   margin-right: 10px;
-  max-height: 16px;
   display: inline-block;
   vertical-align: middle;
+
+  img {
+    max-height: 16px;
+  }
 }
 
 .concept-name {

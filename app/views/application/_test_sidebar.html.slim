@@ -3,7 +3,7 @@
 = sidebar_home_link
 
 #test-sidebar
-  = link_to new_practice_test_next_section_for_test_path(practice_test_id: current_test), class: 'test-link' do
+  = link_to new_practice_test_next_section_for_test_path(practice_test_id: current_test), class: 'test-link hint--top hint--rounded', data: { hint: t('practice_tests.test_sidebar_link_tooltip') } do
     h5 #{current_test.name} Progress #{display_test_percentage_complete(current_test)}
   ul.test-list
     = render "test_sidebar/practice_test", practice_test: current_test,  current_test: current_test

@@ -5,6 +5,9 @@ module ConceptHelper
     if !Rails.application.assets.find_asset image_name
       image_name = "#{folder}/default.png"
     end
-    image_tag image_name, class: 'concept-image'
+
+    content_tag :span, class: 'concept-image hint--top hint--rounded', data: { hint: concept.name } do
+      image_tag image_name
+    end
   end
 end
