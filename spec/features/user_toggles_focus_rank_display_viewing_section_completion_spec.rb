@@ -4,9 +4,9 @@ feature "User takes practice tests and during review toggles display of focus ra
   scenario "highlights questions whose concepts require focus" do
     user = create :user
 
-    requires_focus = create :focus_rank, user: user, score: 10
+    requires_focus = create :focus_rank, user: user, score: 30
     no_focus = create :focus_rank, user: user, score: 20
-    no_focus2 = create :focus_rank, user: user, score: 30
+    no_focus2 = create :focus_rank, user: user, score: 10
 
     requires_focus_question = create(:question_concept, concept: requires_focus.concept).question
 
