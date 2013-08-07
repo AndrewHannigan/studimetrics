@@ -4,7 +4,10 @@ class TestCompletion < ActiveRecord::Base
   has_many :sections, through: :section_completions
   belongs_to :user
   belongs_to :practice_test
+
   delegate :name, to: :practice_test, prefix: true
+
+  scope :completed, -> { where(percentage_complete: 100) }
 
   def completed?
     percentage_complete == 100

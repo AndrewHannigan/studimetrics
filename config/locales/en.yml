@@ -19,6 +19,7 @@ en:
   profile:
     average_scores_disclaimer: 'Average scores are compiled from publicly available data.'
     percentile_disclaimer: 'Compare your score against the averages for your selected college'
+    graph_demo_text: 'A graph of your past practice tests will show as soon as you complete one.'
     concept_progress:
       no_focus_rank_message: "As you complete sections in a %{practice_test_link}, the concepts you need to focus on will appear here."
       title: "concepts"
