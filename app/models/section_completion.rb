@@ -31,6 +31,10 @@ class SectionCompletion < ActiveRecord::Base
     update_attributes status: "In-Progress"
   end
 
+  def all_questions_answered?
+    user_responses.count == section.questions_count
+  end
+
   def complete!
     update_attributes status: 'Completed'
     StatRunner.perform_async(self.id) if scoreable?

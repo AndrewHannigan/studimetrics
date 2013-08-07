@@ -36,6 +36,26 @@ describe SectionCompletion do
     end
   end
 
+  describe "#all_questions_answered?" do
+    it "returns false if the user responses count != questions for section count" do
+      section_completion = create :section_completion
+
+      section_completion.expects(:user_responses).returns([1,2,3,4,5])
+      section_completion.section.expects(:questions_count).returns(6)
+
+      expect(section_completion.all_questions_answered?).to eq false
+    end
+
+    it "returns true if the user responses count == questions for section count" do
+      section_completion = create :section_completion
+
+      section_completion.expects(:user_responses).returns([1,2,3,4,5])
+      section_completion.section.expects(:questions_count).returns(5)
+
+      expect(section_completion.all_questions_answered?).to eq true
+    end
+  end
+
   describe '#in_progress?' do
     it 'returns true if the completion is in-progress' do
       completion = create :section_completion, :in_progress
