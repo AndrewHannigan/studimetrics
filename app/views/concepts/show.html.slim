@@ -1,0 +1,15 @@
+- content_for :sidebar do
+  = sidebar_home_link
+
+  #concepts
+    ul.concepts
+      = render Concept.all
+
+#concept-videos
+  .back-link = link_to '&laquo; All Concepts'.html_safe, concepts_path
+  
+  h3 Concept Videos - #{@concept.name}
+
+  = render @concept.concept_videos
+
+= modal id: 'concept-video-modal', class: 'xlarge'

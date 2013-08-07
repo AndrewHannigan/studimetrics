@@ -45,12 +45,22 @@ ActiveRecord::Schema.define(version: 20130807075545) do
   create_table "composite_scores", force: true do |t|
     t.integer "user_id"
     t.integer "subject_id"
-    t.hstore  "concepts",        default: {}, null: false
+    t.hstore  "concepts",        default: "", null: false
     t.decimal "composite_score"
   end
 
   add_index "composite_scores", ["subject_id"], name: "index_composite_scores_on_subject_id", using: :btree
   add_index "composite_scores", ["user_id"], name: "index_composite_scores_on_user_id", using: :btree
+
+  create_table "concept_videos", force: true do |t|
+    t.string   "caption"
+    t.string   "video_link"
+    t.integer  "concept_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "concept_videos", ["concept_id"], name: "index_concept_videos_on_concept_id", using: :btree
 
   create_table "concepts", force: true do |t|
     t.string   "name",        null: false
@@ -190,15 +200,6 @@ ActiveRecord::Schema.define(version: 20130807075545) do
     t.integer  "subject_id"
   end
 
-  create_table "user_colleges", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "college_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_colleges", ["user_id"], name: "index_user_colleges_on_user_id", using: :btree
-
   create_table "user_responses", force: true do |t|
     t.integer  "question_id"
     t.integer  "section_completion_id"
@@ -226,7 +227,6 @@ ActiveRecord::Schema.define(version: 20130807075545) do
     t.string   "state"
     t.string   "grade"
     t.integer  "college_id"
-    t.string   "profile_image"
     t.string   "profile_image_file_name"
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"

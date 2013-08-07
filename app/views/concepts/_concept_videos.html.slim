@@ -1,6 +1,5 @@
 h6
   = concept_image concept
-  span = "#{concept.name} - Level: Advanced"
+  span = concept.name
 .videos
-  - 3.times do
-    .video
+  = render(concept.concept_videos) || 'No videos yet.'
