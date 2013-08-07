@@ -19,6 +19,6 @@ setupTestGraph = ->
 
 setupPercentileBars = ->
   if $('[data-behavior~="reading-bar"]').length > 0
-    new PercentileBar selectedCollege.readingPercentileScores, 200, $('[data-behavior~="reading-bar"]')
-    new PercentileBar selectedCollege.writingPercentileScores, 200, $('[data-behavior~="writing-bar"]')
-    new PercentileBar selectedCollege.mathPercentileScores, 200, $('[data-behavior~="math-bar"]')
+    new PercentileBar selectedCollege.readingPercentileScores, userScores.reading, $('[data-behavior~="reading-bar"]')
+    new PercentileBar selectedCollege.writingPercentileScores, userScores.writing, $('[data-behavior~="writing-bar"]')
+    new PercentileBar selectedCollege.mathPercentileScores, userScores.math, $('[data-behavior~="math-bar"]')

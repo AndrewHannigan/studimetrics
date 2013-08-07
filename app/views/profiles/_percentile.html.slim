@@ -16,6 +16,7 @@
   .profile-note = t 'profile.percentile_disclaimer'
 
 javascript:
+  var userScores = {reading: #{{projected_score_for_subject(reading).to_json}}, writing: #{{projected_score_for_subject(writing).to_json}}, math: #{{projected_score_for_subject(math).to_json}}}
   var selectedCollege = new College()
   selectedCollege.readingPercentileScores = #{{current_user.college.range_for_subject("critical_reading").to_json}}
   selectedCollege.mathPercentileScores = #{{current_user.college.range_for_subject("math").to_json}}
