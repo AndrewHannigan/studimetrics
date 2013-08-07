@@ -1,7 +1,18 @@
-#clearance.sign-up
-  h2 Sign up
+.signup-left
   = simple_form_for @user do |form|
     = render partial: '/users/form', object: form
     .submit-field
       = form.submit
+
+    .login-link
+      = link_to 'Already have an account?', sign_in_path
+
+.signup-right
+  h3 Improve your score on the SAT
+  p Practice makes perfect, and we'll show you just how perfect you can be.
+
+  ul.signup-bullets
+    li FocusRank will show you the concepts you need to work on
+    li Compare your projected score against colleges you're interested in
+    li Some other good point.
 

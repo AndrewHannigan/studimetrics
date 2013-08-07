@@ -46,3 +46,26 @@
   }
 }
 
+.signup-left {
+  @include span-columns(6);
+
+  .submit-field {
+    margin-top: 10px;
+  }
+}
+
+.signup-right {
+  @include span-columns(6);
+}
+
+.signup-bullets {
+  margin: 0;
+
+  li {
+    line-height: 1.7em;
+  }
+}
+
+.login-link {
+  margin-top: 20px;
+}

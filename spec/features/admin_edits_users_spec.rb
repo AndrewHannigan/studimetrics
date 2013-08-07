@@ -15,7 +15,7 @@ feature 'admin manages users' do
     select "New York", from: "State"
     select "10th", from: "Grade"
 
-    click_button 'Sign up'
+    click_button 'Save'
 
     expect(page).to have_content("User was successfully created.")
   end
@@ -35,7 +35,7 @@ feature 'admin manages users' do
     select "New York", from: "State"
     select "10th", from: "Grade"
 
-    click_button 'Update User'
+    click_button 'Save'
 
     expect(page).to have_content("User was successfully updated.")
   end
