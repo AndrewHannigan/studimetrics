@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :test_completion do
     user
     practice_test
+    percentage_complete 0
   end
 end

@@ -211,6 +211,18 @@ table.concept-progress {
   position: relative;
 }
 
+.sample {
+  text-align: center;
+
+  em {
+    color: $gray;
+  }
+
+  img {
+    opacity: 0.5;
+  }
+}
+
 #graph-tooltip {
   position: absolute;
   background: $dark-gray;

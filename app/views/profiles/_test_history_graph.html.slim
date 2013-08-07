@@ -1,10 +1,16 @@
-- test_scores = ActiveModel::ArraySerializer.new current_user.test_completions, each_serializer: TestCompletionSerializer
-
 .profile-block
   h4 Practice Test History
   .test-graph-wrapper
-    canvas#test-graph width="750" height="400"
 
-javascript:
-  var testScores = #{{test_scores.to_json}}
-  var averageCollegeSatScore = #{current_user.college.average_score};
+    - if current_user.test_completions.completed.length == 0
+      .sample
+        = image_tag 'graph_demo.png'
+        p
+          em = t 'profile.graph_demo_text'
+    -else
+      - test_scores = ActiveModel::ArraySerializer.new current_user.test_completions.completed, each_serializer: TestCompletionSerializer
+      canvas#test-graph width="750" height="400"
+
+      javascript:
+        var testScores = #{{test_scores.to_json}}
+        var averageCollegeSatScore = #{current_user.college.average_score};
