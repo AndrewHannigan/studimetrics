@@ -23,17 +23,6 @@ describe LastActivity do
       end
     end
 
-    context "when the user has completed one section and not started another" do
-      it "should return nil" do
-        user_response = create :user_response
-        section_completion = user_response.section_completion
-        section_completion.update_attributes!(status: "Completed")
-        last_activity = LastActivity.new(user: user_response.section_completion.user, practice_test: section_completion.practice_test)
-
-        expect(last_activity.section).to eq nil
-      end
-    end
-
     context "when the user starts two sections and then answers a question on the first section started" do
       it "returns the last section that had a question answered" do
         user_response = create :user_response
