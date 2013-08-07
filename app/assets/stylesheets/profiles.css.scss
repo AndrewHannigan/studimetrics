@@ -150,8 +150,28 @@ h4 {
 table.concept-progress {
   font-size: 14px;
   text-align: center;
-  width: 80%;
   margin: 20px auto;
+
+  .subject-icon {
+    font-size: 18px;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  tr:nth-child(even) {
+    background: shade(#fff, 2%);
+  }
+
+  td {
+    border: none;
+  }
+
+  th {
+    text-align: center;
+  }
 
   th.title {
     text-align: left;
@@ -166,6 +186,11 @@ table.concept-progress {
   .ss-icon {
     margin-left: 4px;
     vertical-align: middle;
+    display: inline-block;
+
+    &.blank {
+      width: 15px;
+    }
 
     &.up {
       color: $red;
