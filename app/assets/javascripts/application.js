@@ -6,6 +6,7 @@
 //= require turbolinks
 //= require ss-junior
 //= require Chart
+//= require piechart
 
 //= require timer
 //= require disable_children

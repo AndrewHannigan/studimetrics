@@ -1,0 +1,6 @@
+- percentage ||= 0
+- id = SecureRandom.uuid
+div id="#{id}" class="hint--top hint--rounded" data-hint="#{percentage}"
+
+javascript:
+  document.getElementById("#{id}").appendChild(createPie("percent", "24px", "#eee", 1, ["#{percentage.sub('%', '')}"], ["#8e99a4"]));
