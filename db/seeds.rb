@@ -39,20 +39,20 @@ books << Book.create(
 
 concepts = []
 math_concept = {concepts: []}
-math_subject = Subject.create!(name: "Math")
+math_subject = Subject.create!(name: "Math", ordinal: 1)
 
 math_concept[:concepts] << Concept.create(subject: math_subject, name: "Algebra")
 math_concept[:concepts] << Concept.create(subject: math_subject, name: "Geometry")
 math_concept[:concepts] << Concept.create(subject: math_subject, name: "Angles on a Plane")
 math_concept[:concepts] << Concept.create(subject: math_subject, name: "Properties of Triangles")
 
-writing_subject = Subject.create!(name: "Writing")
+writing_subject = Subject.create!(name: "Writing", ordinal: 3)
 
 writing_concept = {concepts: []}
 writing_concept[:concepts] << Concept.create(subject: writing_subject, name: "Elements of Writing")
 writing_concept[:concepts] << Concept.create(subject: writing_subject, name: "Misplaced Modifiers")
 
-reading_subject = Subject.create!(name: "Critical Reading")
+reading_subject = Subject.create!(name: "Critical Reading", ordinal: 2)
 reading_concept = {concepts: []}
 
 reading_concept[:concepts] << Concept.create(subject: reading_subject, name: "Comprehension")
@@ -93,4 +93,3 @@ books.each do |book|
   end
 end
 
-College.create(name: "Dartmouth College", math: 600, critical_reading: 650, writing: 700)
