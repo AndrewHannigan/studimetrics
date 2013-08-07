@@ -71,7 +71,7 @@ header {
   }
 }
 
-.high_voltage-pages, .clearance-users, .clearance-sessions {
+.high_voltage-pages, .clearance-users, .users, .clearance-sessions {
   #main-content {
     float: none;
     margin: 20px auto;
@@ -280,4 +280,17 @@ a.learn-more {
       }
     }
   }
+}
+
+.field_with_errors {
+  margin-bottom: 12px;
+  
+  input {
+    margin-bottom: 2px;
+  }
+}
+
+.error {
+  font-size: 14px;
+  color: $light-red;
 }
