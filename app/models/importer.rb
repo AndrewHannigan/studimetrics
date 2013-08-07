@@ -9,8 +9,9 @@ class Importer
       self.practice_tests = PracticeTestImporter.new(book).import!
 
       puts "creating subjects"
-      subjects = ["Math", "Writing", "Critical Reading"].map do |subject|
-        Subject.create! name: subject
+      subjects = []
+      ["Math", "Critical Reading", "Writing"].each_with_index do |subject, i|
+        subjects << Subject.create!(name: subject, ordinal: i+1)
       end
 
       puts "creating sections"

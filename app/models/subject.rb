@@ -1,6 +1,7 @@
 class Subject < ActiveRecord::Base
   has_many :sections
   has_many :concepts
+  default_scope {order("ordinal asc")}
 
   def acronym
     words = self.name.split(" ").collect{|word| word.first}
