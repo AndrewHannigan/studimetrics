@@ -30,8 +30,11 @@ class @PercentileBar
 
   redraw: ->
     if @domElement?
-      @domElement.css { backgroundImage: 'none' }
-      @domElement.css { backgroundImage: @cssGradient() }
+      @domElement.css { background: 'none' }
+      if @collegeIgnoresScore()
+        @domElement.css { opacity: 0.2, background: '#ddd' }
+      else
+        @domElement.css { backgroundImage: @cssGradient(), opacity: 1 }
       @positionIndicator()
 
   adjustedPercent: ->
@@ -39,5 +42,18 @@ class @PercentileBar
 
   positionIndicator: ->
     indicator = @domElement.find('.indicator')
+    if @collegeIgnoresScore()
+      label = 'Selected college ignores this score'
+    else if @userScore >= @collegePercentileScores.high
+      label = 'Above selected college average'
+    else if @userScore > @collegePercentileScores.low and @userScore < @collegePercentileScores.high
+      label = 'In range of college average'
+    else
+      label = 'Below selected college average'
+
+    indicator.addClass('hint--top hint--rounded').attr('data-hint', label)
     position = ((@userScore/@maxScore - @adjustedPercent()) * @domElement.outerWidth())  - (indicator.outerWidth()/2)
     indicator.css(left: "#{position}px")
+
+  collegeIgnoresScore: ->
+    @collegePercentileScores.high == @collegePercentileScores.low
