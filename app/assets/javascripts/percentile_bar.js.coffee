@@ -1,7 +1,7 @@
 class @PercentileBar
   minScore: 200
   maxScore: 800
-  cssTemplate: "linear-gradient(to right,#a80005 0%, #a80005 LOW_PERCENT%, #eeeeee LOW_PERCENT%, #eeeeee HIGH_PERCENT%, #308000 HIGH_PERCENT%, #308000 100%)"
+  cssTemplate: "linear-gradient(to right,#a80005 0%, #a80005 LOW_PERCENT%, #333 LOW_PERCENT%, #333 HIGH_PERCENT%, #308000 HIGH_PERCENT%, #308000 100%)"
 
   constructor: (@collegePercentileScores={low: 0, high: 100}, @userScore=0, @domElement=null) ->
     if @domElement
