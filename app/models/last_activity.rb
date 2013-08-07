@@ -13,6 +13,10 @@ class LastActivity
   private
 
     def section_completion
-      @section_completion ||= SectionCompletion.where(user_id: user.id, status: "In-Progress").order("updated_at desc").first
+      @section_completion ||= user_response.try(:section_completion)
+    end
+
+    def user_response
+      @user_response ||= UserResponse.joins(:section_completion).where(section_completions: {user_id: user.id}).order("updated_at desc").first
     end
   end
