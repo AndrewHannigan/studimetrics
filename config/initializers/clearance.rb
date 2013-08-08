@@ -1,5 +1,4 @@
 Clearance.configure do |config|
-  config.mailer_sender = 'reply@example.com'
-  config.password_strategy = Clearance::PasswordStrategies::BCrypt
+  config.mailer_sender = 'info@studimetrics.com'
   config.redirect_url = '/profile'
 end
