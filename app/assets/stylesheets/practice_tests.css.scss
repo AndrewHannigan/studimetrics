@@ -213,8 +213,11 @@
 }
 
 .questions {
-  margin: 4% 1%;
   @include clearfix;
+}
+
+.questions-wrapper {
+  margin: 4% 1%;
 }
 
 .question-list {

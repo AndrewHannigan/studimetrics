@@ -28,7 +28,7 @@
         - if @section_completion.section.subject == reading
           div id="reading-timer-#{@section_completion.section_id}" class="timer reading-timer" data-timer="true"
             .wrapper
-              a href="" id='reading-play-butotn' class="ss-icon ss-symbolicons-block" data-timer-toggle="true" play
+              a href="" id='reading-play-button' class="ss-icon ss-symbolicons-block" data-timer-toggle="true" play
               .timer-content data-timer-content="true" 00:00
               .timer-labels
                 span min
@@ -43,19 +43,22 @@
 
     - if f.object.user_responses.blank?
       p There are no questions in this test.
+
     - else
-      .questions
-        - responses = @section_completion.user_responses_sorted_by_question_position
-        - responses.in_groups_of @section_completion.section.question_count_per_column, false do |question_list|
-          .question-list data-disabled=""
-              = f.simple_fields_for :user_responses, question_list do |user_response_form|
-                = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
+      .questions-wrapper
+        .questions
+          - responses = @section_completion.user_responses_sorted_by_question_position
+
+          - responses.in_groups_of @section_completion.section.question_count_per_column, false do |question_list|
+            .question-list data-disabled=""
+                = f.simple_fields_for :user_responses, question_list do |user_response_form|
+                  = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
 
         = f.button :submit, 'Submit Answers', id: 'submit-answers-button', disabled: true
 
-        = modal id: 'unanswered-questions-modal', title: t('practice_tests.unanswered_questions_modal_title') do
-          = t('practice_tests.unanswered_questions_modal_body_html')
+      = modal id: 'unanswered-questions-modal', title: t('practice_tests.unanswered_questions_modal_title') do
+        = t('practice_tests.unanswered_questions_modal_body_html')
 
-          .modal-buttons
-            = link_to 'Cancel', '', class: 'button modal-button', data: {behavior: 'modal:cancel'}
-            = link_to 'Continue', '', class: 'button modal-button', data: {behavior: 'modal:continue'}
+        .modal-buttons
+          = link_to 'Cancel', '', class: 'button modal-button', data: {behavior: 'modal:cancel'}
+          = link_to 'Continue', '', class: 'button modal-button', data: {behavior: 'modal:continue'}
