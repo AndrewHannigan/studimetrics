@@ -29,6 +29,10 @@ describe StatRunner do
       stat_runner = StatRunner.new
 
       expect{stat_runner.perform(section_completion.id)}.to change{UserResponse.count}.from(0).to(1)
+
+      user_response = section_completion.user_responses.first
+      expect(user_response.question).to eq question
+      expect(user_response.section_completion).to eq section_completion
     end
   end
 end

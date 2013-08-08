@@ -24,7 +24,7 @@ class StatRunner
     def find_or_create_skipped_response(question)
       user_response = UserResponse.where(question: question, section_completion: section_completion).first
       unless user_response
-        UserResponse.create!(section_completion: section_completion, value: Question::SKIP_VALUE)
+        UserResponse.create!(section_completion: section_completion, value: Question::SKIP_VALUE, question: question)
       end
     end
 
