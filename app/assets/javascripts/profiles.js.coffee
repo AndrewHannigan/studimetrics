@@ -4,6 +4,9 @@ $ ->
     event.preventDefault()
     $('#additional-sidebar-content').toggleClass 'in'
     $('#main-nav').toggleClass('out')
+  $(document).on 'click', '#focusrank-learn-link', (event) ->
+    event.preventDefault()
+    $('#focusrank-modal').reveal(animation: 'fade')
 
   pageLoaded()
 

@@ -1,7 +1,7 @@
 en:
   practice_tests:
     diagnostic_welcome_title: 'Welcome to Practice Tests!'
-    diagnostic_welcome_message_html: '<p>This short diagnostic test will help you get familiar with Stuidmetrics so you can get the best score possible.</p> <p>We will explain how things work and other short things here.</p>'
+    diagnostic_welcome_message_html: '<p>Getting started is pretty easy &mdash; just open up your book, choose a section, and start the timer! As soon as you submit your first answers, our analytics engine will go to work and create the most efficient study plan designed specifically around your needs.</p><p>We recommend that you start with Test 1 and work your way up.</p><p><strong>Study fast. Study smart.</strong></p>'
     unanswered_questions_modal_title: 'Are you sure?'
     unanswered_questions_modal_body_html: 'All unanswered questions will be marked as "Skip"'
     test_sidebar_link_tooltip: 'Resume test'
@@ -20,6 +20,8 @@ en:
     average_scores_disclaimer: 'Average scores are compiled from publicly available data.'
     percentile_disclaimer: 'Compare your score against the averages for your selected college'
     graph_demo_text: 'A graph of your past practice tests will show as soon as you complete one.'
+    learn_about_focusrank_title_html: 'Learn about FocusRank&trade;'
+    learn_about_focusrank_body_html: '<p>The FocusRank&trade; feature moves beyond just identifying your strengths and weaknesses. It runs individual performance data points through a dynamic algorithm to rank the importance of each concept.</p><p>In other words, it tells you where you can gain the most points in the shortest amount of time.</p>'
     concept_progress:
       no_focus_rank_message: "As you complete sections in a %{practice_test_link}, the concepts you need to focus on will appear here."
       title: "concepts"
