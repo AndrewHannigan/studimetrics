@@ -40,4 +40,13 @@ describe User do
       expect(user.has_responses?).to be_false
     end
   end
+
+  describe 'projected_total_score' do
+    it 'gets the score from composite score' do
+      CompositeScore.expects(:projected_total_score_for_user).returns(250)
+
+      user = User.new
+      expect(user.projected_total_score).to eq 250
+    end
+  end
 end

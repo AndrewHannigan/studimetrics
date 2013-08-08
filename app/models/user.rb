@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
   def college
     super || NullCollege.new
   end
+
+  def projected_total_score
+    CompositeScore.projected_total_score_for_user(self)
+  end
 end
