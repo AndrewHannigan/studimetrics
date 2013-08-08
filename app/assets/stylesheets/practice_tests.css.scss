@@ -388,9 +388,13 @@
 }
 
 #section-completion-table {
-  font-size: 18px;
-  margin: 14px;
+  font-size: 15px;
+  @include pad;
   text-align: left;
+
+  tr:nth-child(even) {
+    background: shade(#fff, 2%);
+  }
 
   .correct {
     color: $dark-green;
@@ -431,6 +435,10 @@
   .radio_buttons label:before {
     border: 1px solid $light-yellow;
   }
+}
+
+td.focusrank, th.focusrank {
+  text-align: center;
 }
 
 .section-switcher {

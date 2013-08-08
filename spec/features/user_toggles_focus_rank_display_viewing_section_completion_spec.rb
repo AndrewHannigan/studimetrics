@@ -21,8 +21,11 @@ feature "User takes practice tests and during review toggles display of focus ra
 
     section_link_on_page(requires_focus_question.section).click
 
-    expect(page).to have_css("tr.focus [data-id='question-#{requires_focus_question.id}']")
+    expect(focus_row_on_page(requires_focus_question)).to have_content('crosshair')
     expect(page).to have_css("tr.focus", count: 1)
-
   end
+end
+
+def focus_row_on_page(question)
+  page.find "tr.focus [data-id='question-#{question.id}']"
 end
