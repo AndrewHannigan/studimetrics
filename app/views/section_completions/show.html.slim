@@ -3,15 +3,7 @@
 
 #test-content
   .test-header
-    .test-info
-      .wrapper
-        h3 data-behavior="dropdown"
-          = @section_completion.section.practice_test_name
-          span.down-arrow
-      .wrapper
-        h4 data-behavior="dropdown"
-          = section_name_with_subject(@section_completion.section)
-          span.down-arrow
+    = render 'test_header', section_completion: @section_completion
 
     #test-timers
       h5
@@ -40,12 +32,13 @@
         th Correct Answer
         th = ''
         th Time
+        th.focusrank FocusRank?
         th Concept(s)
 
       - @section_completion.user_responses.includes(:question).order('questions.position').each do |user_response|
         - klass = requires_focus?(user_response.question) ? "focus" : ""
         tr data-id="question-#{user_response.question.id}" class="#{klass}"
-          td = user_response.question.position
+          td = "#{user_response.question.position}."
           td = user_response.value
           td = user_response.question.accepted_response
           td.correct-icon
@@ -55,6 +48,9 @@
               i class="ss-icon incorrect" &#x2421;
 
           td.time = TimeConversions.seconds_to_minutes_and_seconds user_response.time
+          td.focusrank
+            - if requires_focus?(user_response.question)
+              i class="ss-icon ss-symbolicons-block hint--top hint--rounded" data-hint="Answer has impacted your focusrank" crosshair
           td.concept
             - user_response.question.concepts.each do |concept|
               = concept_image concept
