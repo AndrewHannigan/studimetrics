@@ -8,4 +8,8 @@ class Concept < ActiveRecord::Base
 
   delegate :name, to: :subject, prefix: true
 
+  def underscored_concept_name
+    name.titleize.gsub(/\//,' ').gsub(/\s+/, '_').underscore
+  end
+
 end
