@@ -10,9 +10,7 @@ module ApplicationHelper
   end
 
   def projected_total_score
-    return "--" unless current_user.is_a?(User)
-    projected_total = CompositeScore.projected_total_score_for_user(current_user)
-    return "--" unless projected_total
+    projected_total = current_user.projected_total_score || '--'
     "#{projected_total} / 2400"
   end
 
