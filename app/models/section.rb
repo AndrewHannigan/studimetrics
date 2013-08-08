@@ -19,6 +19,10 @@ class Section < ActiveRecord::Base
   end
 
   def question_count_per_column
-    [1, (questions.count/2).ceil].max
+    return 1 if questions_count == 1
+
+    lone_question_count = questions_count.odd? ? 1 : 0
+    number_per_column = (questions_count/2).ceil + lone_question_count
+    [1, number_per_column].max
   end
 end
