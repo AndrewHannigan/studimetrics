@@ -36,8 +36,6 @@ feature 'user visits profile' do
     expect(focus_rank_on_page(algebra_focus_rank).find("td.position i.ss-icon").text).to eq "up"
     expect(focus_rank_on_page(themes_focus_rank).find("td.position i.ss-icon").text).to eq "down"
     expect(focus_rank_on_page(themes_focus_rank).find("td.position span").text).to eq "4"
-    expect(focus_rank_on_page(arithmetic_focus_rank).find("td.accuracy i.ss-icon").text).to eq "down"
-
   end
 
   scenario "sees focus rank when the deltas are null" do
