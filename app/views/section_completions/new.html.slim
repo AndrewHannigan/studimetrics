@@ -2,7 +2,7 @@
   = modal class: 'diagnostic-welcome', title: t('practice_tests.diagnostic_welcome_title') do
     = image_tag 'http://placehold.it/150x150'
     = t('practice_tests.diagnostic_welcome_message_html')
-    = link_to 'Get started', '', class: 'button modal-button'
+    = link_to 'Get started', '', class: 'button modal-button', data: { behavior: 'modal:cancel' }
 
 
 - content_for :sidebar do
