@@ -26,7 +26,7 @@ describe Section do
 
       expect(section.question_count_per_column).to eq(1)
       create :question, section: section
-      expect(section.question_count_per_column).to eq(1)
+      expect(section.question_count_per_column).to eq(2)
       create :question, section: section
       expect(section.question_count_per_column).to eq(2)
     end
@@ -34,6 +34,12 @@ describe Section do
     it 'returns 1 if only 1 question' do
       question = create :question
       expect(question.section.question_count_per_column).to eq(1)
+    end
+
+    it 'deals with odd numbers of questions' do
+      section = Section.new
+      section.stubs(:questions_count).returns(19)
+      expect(section.question_count_per_column).to eq(10)
     end
   end
 end
