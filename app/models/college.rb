@@ -8,15 +8,18 @@ class College < ActiveRecord::Base
   end
 
   def average_math
-    ((low_percentile_math + high_percentile_math)/2).floor
+    score = ((low_percentile_math + high_percentile_math)/2).floor
+    (score % 10) + score
   end
 
   def average_critical_reading
-    ((low_percentile_critical_reading + high_percentile_critical_reading)/2).floor
+    score = ((low_percentile_critical_reading + high_percentile_critical_reading)/2).floor
+    (score % 10) + score
   end
 
   def average_writing
-    ((low_percentile_writing + high_percentile_writing)/2).floor
+    score = ((low_percentile_writing + high_percentile_writing)/2).floor
+    (score % 10) + score
   end
 
   def range_for_subject(subject)
