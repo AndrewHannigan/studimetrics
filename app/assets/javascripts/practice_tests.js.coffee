@@ -28,6 +28,7 @@ clearLocalStorage = ->
   $('.section-timer').data('timer').removeTimeFromStorage()
 
 toggleDropdown = (event) ->
+  $('.dropdown-menu').hide()
   event.stopPropagation()
   trigger = $(event.target)
   trigger.siblings('.dropdown-menu').toggle()
