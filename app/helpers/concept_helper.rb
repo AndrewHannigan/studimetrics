@@ -1,7 +1,7 @@
 module ConceptHelper
   def concept_image(concept)
     folder = 'concept_icons'
-    image_name = "#{folder}/#{concept.name.titleize.gsub(/\s+/, '').underscore}.png"
+    image_name = "#{folder}/#{concept.underscored_concept_name}.png"
     if !Rails.application.assets.find_asset image_name
       image_name = "#{folder}/default.png"
     end
@@ -10,4 +10,5 @@ module ConceptHelper
       image_tag image_name
     end
   end
+
 end
