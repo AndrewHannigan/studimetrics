@@ -2,16 +2,7 @@
   h4 Concepts by FocusRank
 
   - if focus_ranks.length == 0
-    p == t 'profile.concept_progress.no_focus_rank_message', practice_test_link: link_to('practice test', practice_tests_path)
-
-    p
-      = link_to practice_tests_path, class: 'learn-more' do
-        span Start practice test
-        span.arrow
-
-      = link_to '', class: 'learn-more' do
-        span Learn about FocusRank
-        span.arrow
+    = render 'focus_ranks/welcome_message'
 
   - else
     table.concept-progress
