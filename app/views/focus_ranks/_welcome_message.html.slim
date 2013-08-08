@@ -1,0 +1,14 @@
+p == t 'profile.concept_progress.no_focus_rank_message', practice_test_link: link_to('practice test', practice_tests_path)
+
+p
+  = link_to practice_tests_path, class: 'learn-more' do
+    span Start practice test
+    span.arrow
+
+  = link_to '', class: 'learn-more', id: 'focusrank-learn-link' do
+    span Learn about FocusRank&trade;
+    span.arrow
+
+= modal title: t('profile.learn_about_focusrank_title_html'), id: 'focusrank-modal' do
+  = t 'profile.learn_about_focusrank_body_html'
+  = link_to 'Dismiss', '', class: 'button modal-button', data: { behavior: 'modal:cancel' }
