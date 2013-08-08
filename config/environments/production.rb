@@ -81,7 +81,7 @@ Studimetrics::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => ENV['HOST']}
+  config.action_mailer.default_url_options = { :host => ENV['HOST_NAME']}
 
   if ENV['MAILTRAP_HOST'].present?
     config.action_mailer.smtp_settings = {

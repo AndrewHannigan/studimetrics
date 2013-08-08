@@ -8,12 +8,14 @@
   h2 {
     background: $blue;
     color: #fff;
-    // @include linear-gradient(#fafafa, #dedede);
-    // text-shadow: 1px 1px 0 #fafafa;
-    // border-bottom: 1px solid #ccc;
     padding: 6px 20px;
     margin: 0;
     font-size: 22px;
+  }
+
+  p {
+    padding: 18px;
+    margin: 0;
   }
 
   form {
@@ -37,7 +39,7 @@
   margin-left: 2px;
 }
 
-.clearance-sessions {
+.clearance-sessions, .clearance-passwords {
   #main-content {
     background: none;
     margin: auto;

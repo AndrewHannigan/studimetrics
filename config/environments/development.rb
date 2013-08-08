@@ -29,7 +29,7 @@ Studimetrics::Application.configure do
   config.assets.debug = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
-  config.action_mailer.default_url_options = { :host => ENV['HOST']}
+  config.action_mailer.default_url_options = { :host => 'localhost'}
   config.cache_store = :dalli_store
 
   config.paperclip_defaults = {
