@@ -26,4 +26,8 @@ class College < ActiveRecord::Base
     {low: send("low_percentile_#{subject}"), average: send("average_#{subject}"), high: send("high_percentile_#{subject}")}
   end
 
+  def active_model_serializer
+    CollegeSerializer
+  end
+
 end

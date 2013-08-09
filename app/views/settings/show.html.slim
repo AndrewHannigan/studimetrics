@@ -14,7 +14,8 @@
     fieldset
       a name="college"
       h5 College Settings
-      = f.association :college, label: 'Selected college'
+      = f.association :college, label: 'Selected college', as: :string, input_html: { value: current_user.college_name }
+      = f.input :college_id, as: :hidden, input_html: { id: 'hidden-college-id' }
 
     = f.button :submit, 'Save'
 
