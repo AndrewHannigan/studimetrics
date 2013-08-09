@@ -4,7 +4,6 @@ $ ->
   $(document).on 'click', '.test-item', toggleTestSubMenu
   $(document).on 'click', '#focus', window.toggleFocusRank
   $(document).on 'click', '[data-behavior~=dropdown]', toggleDropdown
-  $(document).on 'click', '#critical-reading-timer-button', toggleCriticalReadingTimer
   $(document).on 'click', '[data-behavior="modal:cancel"]', (event) ->
     event.preventDefault()
     $(event.target).closest('.reveal-modal').trigger('reveal:close')
@@ -36,16 +35,33 @@ toggleDropdown = (event) ->
     $('.dropdown-menu').hide()
 
 setupSubmitAnswerChecks = ->
-  $(document).on 'submit', 'form.edit_section_completion', (event) ->
-    form = event.target
-    if $(form).data('perform-unanswered-check') && unansweredQuestions()
-      event.preventDefault()
-      $('#unanswered-questions-modal').reveal(animation: 'fade')
-      $('#unanswered-questions-modal').one 'click', 'a[data-behavior="modal:continue"]', (event) ->
-        $('.reveal-modal').trigger('reveal:close')
-        setTimeout ->
-          $(form).removeData('perform-unanswered-check').removeAttr('data-perform-unanswered-check').submit()
-        , 500
+  $(document).on 'submit', 'form.edit_section_completion', checkForUnansweredQuestions
+
+checkForUnansweredQuestions = (event) ->
+  form = event.target
+  if $(form).data('perform-unanswered-check') && unansweredQuestions()
+    event.preventDefault()
+    $('#unanswered-questions-modal').reveal(animation: 'fade')
+    $('#unanswered-questions-modal').one 'click', 'a[data-behavior="modal:continue"]', (event) ->
+      $('.reveal-modal').trigger('reveal:close')
+      $(form).removeData('perform-unanswered-check').removeAttr('data-perform-unanswered-check').submit()
+  else
+    saveCurrentTimerDataToForm()
+    clearTimers()
+
+clearTimers = (event) ->
+  timers = $('.timer')
+  for timer in timers
+    do (timer) ->
+      timerInstance = $(timer).data('timer')
+      timerInstance.pause()
+      timerInstance.reset()
+
+saveCurrentTimerDataToForm = ->
+  sectionTime = $('.section-timer').data('timer').currentTime()
+  readingTime = $('.section-timer').data('timer').currentTime()
+  $('<input type="hidden">').attr({name: 'section_completion[section_time]', value: sectionTime}).appendTo('form')
+  $('<input type="hidden">').attr({name: 'section_completion[reading_time]', value: readingTime}).appendTo('form')
 
 unansweredQuestions = ->
   _.some $('.question'), (question, index) ->
@@ -85,6 +101,7 @@ setupTimers = ->
   $(document).on 'timer:start', enableQuestionsAndShowPause
   $(document).on 'timer:resume', enableQuestionsAndShowPause
   $(document).on 'timer:pause', disableQuestionsAndShowPlay
+  $(document).on 'click', '#critical-reading-timer-button', toggleCriticalReadingTimer
 
 enableQuestionsAndShowPause = (event) ->
   $(event.target).find('[data-timer-toggle]').text('pause')
