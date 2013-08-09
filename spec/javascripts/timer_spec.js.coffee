@@ -92,6 +92,20 @@ describe "Timer", ->
 
       expect($('[data-timer-content]:first').text()).toBe('00:45')
 
+  describe '#isRunning', ->
+    it 'returns true if the timer is running', ->
+      timer = new Timer()
+      timer.start()
+
+      expect(timer.isRunning()).toBeTruthy()
+
+    it 'returns false otherwise', ->
+      timer = new Timer()
+      timer.start()
+      timer.pause()
+
+      expect(timer.isRunning()).toBeFalsy()
+
   describe 'events', ->
     it 'fires a start event', ->
       loadFixtures 'timer_fixture'
