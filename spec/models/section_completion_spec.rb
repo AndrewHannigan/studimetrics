@@ -91,6 +91,14 @@ describe SectionCompletion do
       completion.complete!
     end
 
+    it "creates skipped responses if not all questions are answered" do
+      section_completion = create :section_completion, scoreable: true
+      question = create :question, section: section_completion.section
+
+      expect{section_completion.complete!}.to change{UserResponse.count}.from(0).to(1)
+      user_response = UserResponse.last
+      expect(user_response.question).to eq question
+    end
 
   end
 
