@@ -8,6 +8,6 @@
     i class="ss-icon" &#x21BA;
     h5 = t 'review.retake_section'
 
-  = link_to new_practice_test_next_section_for_test_path(section_completion.practice_test, current_section: section_completion.section_id), class: 'next-section' do
+  = link_to new_practice_test_next_section_for_test_path(section_completion.practice_test, section_completion_id: section_completion.id), class: 'next-section' do
     i class="ss-icon" &#x23E9;
     h5 = t 'review.take_next_section'
