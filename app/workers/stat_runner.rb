@@ -5,28 +5,12 @@ class StatRunner
 
   def perform(section_completion_id)
     @section_completion_id = section_completion_id
-    create_skipped_responses_for_section_completion
     test_completion.try(:update!)
     composite_score.try(:update!, section_completion.concepts)
     FocusRank.update_scores_for_concepts_and_user(section_completion.concepts, section_completion.user)
   end
 
   private
-
-    def create_skipped_responses_for_section_completion
-      return unless section_completion
-      return if section_completion.all_questions_answered?
-      section_completion.section.questions.each do |question|
-        find_or_create_skipped_response(question)
-      end
-    end
-
-    def find_or_create_skipped_response(question)
-      user_response = UserResponse.where(question: question, section_completion: section_completion).first
-      unless user_response
-        UserResponse.create!(section_completion: section_completion, value: Question::SKIP_VALUE, question: question)
-      end
-    end
 
     def section_completion
       @section_completion = SectionCompletion.find(section_completion_id)

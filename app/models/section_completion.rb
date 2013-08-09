@@ -37,6 +37,7 @@ class SectionCompletion < ActiveRecord::Base
 
   def complete!
     update_attributes status: 'Completed'
+    create_skipped_responses_for_section_completion
     StatRunner.perform_async(self.id) if scoreable?
   end
 
@@ -59,4 +60,20 @@ class SectionCompletion < ActiveRecord::Base
   def user_responses_sorted_by_question_position
     user_responses.sort_by{|r| r.question.position}
   end
+
+  private
+    def create_skipped_responses_for_section_completion
+      return if self.all_questions_answered?
+      self.section.questions.each do |question|
+        find_or_create_skipped_response(question)
+      end
+    end
+
+    def find_or_create_skipped_response(question)
+      user_response = UserResponse.where(question: question, section_completion: self).first
+      unless user_response
+        UserResponse.create!(section_completion: self, value: Question::SKIP_VALUE, question: question)
+      end
+    end
+
 end
