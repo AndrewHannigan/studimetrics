@@ -11,7 +11,7 @@
         | Section Time
       div id="section-timer-#{@section_completion.section_id}" class="timer section-timer no-play-button"
         .wrapper
-          div class="timer-content total-time" data-timer-content="true" = section_completion_total_time @section_completion
+          div class="timer-content total-time" = section_completion_total_time @section_completion
           .timer-labels
             span min
             span sec

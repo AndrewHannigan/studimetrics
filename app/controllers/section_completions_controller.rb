@@ -20,6 +20,9 @@ class SectionCompletionsController < ApplicationController
   end
 
   def update
+    @section_completion.section_time = section_completion_params[:section_time].to_f
+    @section_completion.reading_time = section_completion_params[:reading_time].to_f
+    @section_completion.save
     @section_completion.complete!
     respond_with @section_completion
   end
@@ -30,7 +33,7 @@ class SectionCompletionsController < ApplicationController
   private
 
   def section_completion_params
-    params.require(:section_completion).permit(:section_id)
+    params.require(:section_completion).permit(:section_id, :section_time, :reading_time)
   end
 
   def find_and_authorize_resource

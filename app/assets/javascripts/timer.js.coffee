@@ -58,6 +58,8 @@ class @Timer
   currentTime: =>
     @elapsedTime + @previouslyElapsedTime
 
+  isRunning: =>
+    @interval?
 
 
   #### private ####
@@ -102,7 +104,7 @@ class @Timer
 
   setupListeners: =>
     if @domElement
-      $(document).on 'click', '[data-timer-toggle]', @toggle
+      $(document).on 'click', "##{@domElement.attr('id')}", @toggle
 
   triggerEvent: (type) =>
     if @domElement
