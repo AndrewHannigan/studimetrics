@@ -294,3 +294,23 @@ a.learn-more {
   font-size: 14px;
   color: $light-red;
 }
+
+.tt-dropdown-menu {
+  width: 300px;
+  margin-top: -4px;
+  padding: 14px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  
+  .tt-suggestion {
+    padding: 4px;
+  }
+
+  .tt-is-under-cursor {
+    background: $blue;
+    color: $almost-white;
+    font-weight: bold;
+  }
+}

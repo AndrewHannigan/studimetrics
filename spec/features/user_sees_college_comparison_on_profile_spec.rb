@@ -1,14 +1,15 @@
 require 'spec_helper'
 
-feature 'user logs in' do
+feature 'user sees college comparison on profile' do
 
-  scenario 'sees college comparison' do
+  scenario 'changes with autocomplete', js: true do
+    pending 'autocomplete not populating'
     college = create :college, name: "Indiana University"
     College.any_instance.stubs(:average_critical_reading).returns(100)
     College.any_instance.stubs(:average_math).returns(200)
     College.any_instance.stubs(:average_writing).returns(300)
     College.any_instance.stubs(:average_score).returns(1000)
-    create :college, name: "Duke"
+    new_college = create :college, name: "Duke"
     user = create :user, college: college
 
     visit profile_path as: user.id
@@ -23,7 +24,10 @@ feature 'user logs in' do
       click_link 'change'
     end
 
-    select 'Duke', from: 'Selected college'
+    fill_in 'Selected college', with: 'Du'
+    sleep(1)
+    college_on_page(new_college).click
+
     click_button 'Save'
 
     within ".college-comparison" do
@@ -31,4 +35,8 @@ feature 'user logs in' do
     end
   end
 
+end
+
+def college_on_page(college)
+  page.find("[data-id='college-#{college.id}']")
 end

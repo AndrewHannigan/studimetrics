@@ -1,5 +1,6 @@
 $ ->
   $(document).on 'page:load', pageLoaded
+  $(document).on 'typeahead:selected', '#user_college_id', setCollege
   $(document).on 'click', '[data-behavior~="subnav-back"]', (event) ->
     event.preventDefault()
     $('#additional-sidebar-content').toggleClass 'in'
@@ -10,6 +11,20 @@ $ ->
 pageLoaded = ->
   setupTestGraph()
   setupPercentileBars()
+  setupCollegeTypeahead()
+
+setupCollegeTypeahead = ->
+  $('#user_college_id').typeahead
+    name: 'colleges',
+    valueKey: 'name',
+    remote: '/colleges?filter=%QUERY',
+    limit: 10,
+    template: '<span data-id="college-{{id}}">{{name}}',
+    engine: Hogan
+
+setCollege = (event, college) ->
+  $('#hidden-college-id').val college.id
+
 
 setupTestGraph = ->
   if $('#test-graph').length > 0

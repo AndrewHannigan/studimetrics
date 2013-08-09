@@ -13,6 +13,7 @@ Studimetrics::Application.routes.draw do
     end
   end
 
+  resources :colleges, only: [:index]
   resources :sections, only: [:show]
   resources :section_completions, only: [:new, :create, :update, :show]
   resources :user_responses, only: [:create]

@@ -7,6 +7,8 @@
 //= require ss-junior
 //= require Chart
 //= require piechart
+//= require hogan
+//= require typeahead
 
 //= require timer
 //= require disable_children
