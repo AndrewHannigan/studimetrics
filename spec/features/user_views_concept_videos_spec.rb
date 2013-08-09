@@ -13,12 +13,14 @@ feature 'user views concept videos' do
   scenario 'navigates to and views a video', js: true do
     Vimeo::Simple::Video.stubs(:info).returns(OpenStruct.new(parsed_response: ["thumbnail_large" => 'http://fake.png']))
     user = create :user
-    concept = create :concept, name: 'wack'
+    concept = create :concept, name: 'wack', description: "So Wack"
     concept_video = create :concept_video, video_link: '123', concept: concept
 
     visit concepts_path as: user.id
 
     click_link 'wack'
+
+    expect(page).to have_css('h4', text: "So Wack")
 
     video_on_page(concept_video).click
 
