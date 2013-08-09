@@ -22,17 +22,5 @@ describe StatRunner do
       stat_runner.perform(section_completion.id)
     end
 
-    it "creates skipped responses if not all questions are answered" do
-      section_completion = create :section_completion, scoreable: true
-      question = create :question, section: section_completion.section
-
-      stat_runner = StatRunner.new
-
-      expect{stat_runner.perform(section_completion.id)}.to change{UserResponse.count}.from(0).to(1)
-
-      user_response = section_completion.user_responses.first
-      expect(user_response.question).to eq question
-      expect(user_response.section_completion).to eq section_completion
-    end
   end
 end
