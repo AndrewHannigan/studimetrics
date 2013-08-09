@@ -81,16 +81,22 @@ window.toggleFocusRank = (event) ->
 
 toggleCriticalReadingTimer = (event) ->
   event.preventDefault()
-  $(this).toggleClass 'active'
-  if $(this).hasClass 'active' then showReadingTimer() else hideReadingTimer()
+  if sectionTimerIsRunning()
+    $(this).toggleClass 'active'
+    if $(this).hasClass 'active' then showReadingTimer() else hideReadingTimer()
+
+sectionTimerIsRunning = ->
+  $('.section-timer').data('timer').isRunning()
 
 showReadingTimer = ->
   $('.reading-timer').show().data('timer').resume()
+  # $('.reading-timer').show()
   $('.section-timer').hide()
   $('.timer-title').text 'Reading Timer'
 
 hideReadingTimer = ->
   $('.reading-timer').hide().data('timer').pause()
+  # $('.reading-timer').hide()
   $('.section-timer').show()
   $('.timer-title').text 'Section Timer'
 
@@ -98,20 +104,19 @@ hideReadingTimer = ->
 setupTimers = ->
   $(window).unload pauseTimer
   $(document).on 'page:fetch', pauseTimer
-  $(document).on 'timer:start', enableQuestionsAndShowPause
   $(document).on 'timer:resume', enableQuestionsAndShowPause
   $(document).on 'timer:pause', disableQuestionsAndShowPlay
   $(document).on 'click', '#critical-reading-timer-button', toggleCriticalReadingTimer
 
 enableQuestionsAndShowPause = (event) ->
   $(event.target).find('[data-timer-toggle]').text('pause')
-  unless $(event.target).hasClass('reading-timer')
+  if $(event.target).hasClass('section-timer')
     $('.question-list').removeAttr('data-disabled')
     $('.question-list input, #submit-answers-button').prop('disabled', false)
 
 disableQuestionsAndShowPlay = (event) ->
   $(event.target).find('[data-timer-toggle]').text('play')
-  unless $(event.target).hasClass('reading-timer')
+  if $(event.target).hasClass('section-timer')
     $('.question-list').attr('data-disabled', true)
     $('.questions input, #submit-answers-button').prop('disabled', true)
 
