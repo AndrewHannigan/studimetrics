@@ -5,7 +5,7 @@ FactoryGirl.define do
     user
     section
     status "Not Started"
-    test_completion
+    test_completion { create :test_completion, user: user, practice_test: section.practice_test}
     scoreable false
 
     trait :in_progress do
