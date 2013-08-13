@@ -37,4 +37,8 @@ class User < ActiveRecord::Base
   def projected_total_score
     CompositeScore.projected_total_score_for_user(self)
   end
+
+  def total_seconds_studied
+   section_completions.sum(:section_time).to_f
+  end
 end
