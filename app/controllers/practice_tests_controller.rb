@@ -3,7 +3,7 @@ class PracticeTestsController < ApplicationController
 
   def index
     if current_user.has_responses?
-      last_section_completion = SectionCompletion.not_started_or_in_progress.where(user_id: current_user.id).last
+      last_section_completion = SectionCompletion.not_started_or_in_progress.where(user_id: current_user.id).order("updated_at desc").first
 
       if last_section_completion.present?
         return redirect_to new_section_completion_path(section_id: last_section_completion.section_id)
