@@ -20,9 +20,11 @@ class SectionCompletionsController < ApplicationController
   end
 
   def update
-    @section_completion.section_time = section_completion_params[:section_time].to_f
-    @section_completion.reading_time = section_completion_params[:reading_time].to_f
-    @section_completion.save
+    if @section_completion.scoreable?
+      @section_completion.section_time = section_completion_params[:section_time].to_f
+      @section_completion.reading_time = section_completion_params[:reading_time].to_f
+      @section_completion.save
+    end
     @section_completion.complete!
     respond_with @section_completion
   end
@@ -49,6 +51,7 @@ class SectionCompletionsController < ApplicationController
 
   def find_or_create_section_completion(section)
     section_completion = SectionCompletion.not_started_or_in_progress.where(user_id: current_user.id).where(section_id: section.id).last
+    section_completion.touch if section_completion
     section_completion = section_completion || SectionCompletion.create(user: current_user, section: section)
     section_completion.set_scoreable!
     associate_with_test_completion(section_completion)
