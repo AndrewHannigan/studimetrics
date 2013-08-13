@@ -65,7 +65,7 @@ class @TestGraph
     tooltip =  "<div id='graph-tooltip' style='top:#{top}px; left:#{left}px'>"
     tooltip += "<div class='score'>Total: #{score.total_score}</div>"
     tooltip += "<div class='score'>Math: #{score.math_score}</div>"
-    tooltip += "<div class='score'>Reading: #{score.reading_score}</div>"
+    tooltip += "<div class='score'>Reading: #{score.critical_reading_score}</div>"
     tooltip += "<div class='score'>Writing: #{score.writing_score}</div>"
     tooltip += "</div>"
     @domElement.closest('.test-graph-wrapper').append(tooltip)
