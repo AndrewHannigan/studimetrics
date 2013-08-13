@@ -41,12 +41,28 @@ describe User do
     end
   end
 
-  describe 'projected_total_score' do
+  describe '#projected_total_score' do
     it 'gets the score from composite score' do
       CompositeScore.expects(:projected_total_score_for_user).returns(250)
 
       user = User.new
       expect(user.projected_total_score).to eq 250
+    end
+  end
+
+  describe '#total_seconds_studied' do
+    it 'returns 0 if there are no seconds studied' do
+      user = User.new
+      expect(user.total_seconds_studied).to eq 0
+    end
+
+    it 'returns the total seconds studied by summing the section time' do
+      user = create :user
+      user.section_completions << create(:section_completion, section_time: 100)
+      user.section_completions << create(:section_completion, section_time: 100)
+
+      expect(user.total_seconds_studied).to eq 200
+
     end
   end
 end
