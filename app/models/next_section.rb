@@ -25,6 +25,7 @@ class NextSection
         ids_started_or_completed = []
       end
       section_id = (ids_for_test - ids_started_or_completed).sort.first
+      section_id = ids_for_test.first unless section_id
       Section.where(id: section_id).first
     end
   end
