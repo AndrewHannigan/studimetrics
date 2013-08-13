@@ -22,6 +22,7 @@ class RawScoreCalculator
     def total_correct_for_subject(subj)
       UserResponse.joins(section_completion: {section: :practice_test})
         .where(practice_tests: {id: test_completion.practice_test_id})
+        .where(section_completions: {user_id: test_completion.user_id})
         .where(sections: {subject_id: subj.id})
         .where(user_responses: {correct: true}).count
 
@@ -32,6 +33,7 @@ class RawScoreCalculator
         .where(practice_tests: {id: test_completion.practice_test_id})
         .where(sections: {subject_id: subj.id})
         .where(questions: {question_type: ["Multiple Choice", "Range"]})
+        .where(section_completions: {user_id: test_completion.user_id})
         .where(user_responses: {correct: false}).count
 
     end
