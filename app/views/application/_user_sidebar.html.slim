@@ -11,6 +11,10 @@
             .name = current_user.full_name
             .score = projected_total_score
 
+        #total-hours-studied
+          span> Total hours studied:
+          span.hours = TimeConversions.seconds_to_hours_and_minutes current_user.total_seconds_studied
+
         .scores
           .math-score
             = subject_icon math
