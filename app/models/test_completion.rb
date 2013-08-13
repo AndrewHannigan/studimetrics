@@ -19,17 +19,17 @@ class TestCompletion < ActiveRecord::Base
 
   def math_score
     return nil unless completed?
-    ConversionTable.converted_score("M", raw_math_score.to_i)
+    ConversionTable.converted_score("M", raw_math_score.ceil)
   end
 
   def critical_reading_score
     return nil unless completed?
-    ConversionTable.converted_score("CR", raw_critical_reading_score.to_i)
+    ConversionTable.converted_score("CR", raw_critical_reading_score.ceil)
   end
 
   def writing_score
     return nil unless completed?
-    ConversionTable.converted_score("W", raw_writing_score.to_i)
+    ConversionTable.converted_score("W", raw_writing_score.ceil)
   end
 
   def total
