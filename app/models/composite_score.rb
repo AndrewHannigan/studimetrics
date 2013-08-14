@@ -51,7 +51,7 @@ class CompositeScore < ActiveRecord::Base
     end
 
     def accuracy_for_concept(concept_id)
-      (total_correct_user_responses_for_concept(concept_id).to_f)/user_responses_for_concept_excluding_incorrect_free_responses(concept_id)
+      (total_correct_user_responses_for_concept(concept_id).to_f)/user_responses_for_concept_excluding_incorrect_free_responses(concept_id).count
     end
 
     def subtracted_value_from_precorrection_value
