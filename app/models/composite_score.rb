@@ -21,8 +21,6 @@ class CompositeScore < ActiveRecord::Base
   end
 
   def update!(concepts=nil)
-    concepts ||= subject_concepts
-    concepts.each {|concept| update_concept(concept)}
     self.composite_score = calculated_composite_score
     self.save!
   end
@@ -33,17 +31,7 @@ class CompositeScore < ActiveRecord::Base
 
 
   def calculated_composite_score
-    return 0 unless total_frequency_excluding_incorrect_free_responses > 0
     pre_correction_score - subtracted_value_from_precorrection_value
-  end
-
-  def update_concept(concept)
-    total_correct = total_correct_user_responses_for_concept(concept)
-    total_incorrect = total_incorrect_user_responses_for_concept_excluding_free_responses(concept)
-    self.concepts["concept_#{concept.id}"] = {
-      correct: total_correct,
-      incorrect: total_incorrect
-    }
   end
 
   private
@@ -53,51 +41,48 @@ class CompositeScore < ActiveRecord::Base
     end
 
     def pre_correction_score
-      raw_precorrection_score = (total_correct_excluding_incorrect_free_responses.to_f/total_frequency_excluding_incorrect_free_responses)
-      precorrection_score = raw_precorrection_score * AVERAGE_QUESTIONS_FOR_SUBJECT[subject_name]
+      concept_pre_correction_sum = 0
+      concept_ids_with_responses.each do |concept_id|
+        accuracy = accuracy_for_concept(concept_id)
+        concept_frequency = QuestionConcept.percentage_frequency_for_concept(concept_id)
+        concept_pre_correction_sum += accuracy * concept_frequency * AVERAGE_QUESTIONS_FOR_SUBJECT[subject_name]
+      end
+      concept_pre_correction_sum
+    end
+
+    def accuracy_for_concept(concept_id)
+      (total_correct_user_responses_for_concept(concept_id).to_f)/user_responses_for_concept_excluding_incorrect_free_responses(concept_id)
     end
 
     def subtracted_value_from_precorrection_value
-      0.25 * (1 - (pre_correction_score/AVERAGE_QUESTIONS_FOR_SUBJECT[subject_name]))
+      (0.25 * (AVERAGE_QUESTIONS_FOR_SUBJECT[subject_name] - pre_correction_score))
     end
 
-    def total_correct_excluding_incorrect_free_responses
-      result = 0
-      self.concepts.each do |concept_key, value|
-        result+= value[:correct]
-      end
-      result
-    end
-
-    def total_frequency_excluding_incorrect_free_responses
-      result = 0
-      self.concepts.each do |concept_key, value|
-        result+= value[:incorrect] + value[:correct]
-      end
-      result
-    end
-
-    def user_responses_for_concept_excluding_incorrect_free_responses(concept, limit=RECENT_QUESTIONS)
-      UserResponse.joins(question: :concepts)
-      .where(concepts: {id: concept.id}).limit(limit).order("user_responses.created_at desc")
+    def user_responses_for_concept_excluding_incorrect_free_responses(concept_id, limit=RECENT_QUESTIONS)
+      UserResponse.joins(:section_completion, question: :concepts)
+      .where(section_completions: {user_id: user.id})
+      .where(concepts: {id: concept_id}).limit(limit).order("user_responses.created_at desc")
       .where("questions.question_type = 'Free Response' AND user_responses.correct != 'false' OR questions.question_type != 'Free Response'")
       .select("user_responses.id")
     end
 
-    def total_correct_user_responses_for_concept(concept)
-      user_responses_for_concept_excluding_incorrect_free_responses(concept)
+    def total_correct_user_responses_for_concept(concept_id)
+      user_responses_for_concept_excluding_incorrect_free_responses(concept_id)
         .where(user_responses: {correct: true})
         .uniq.count
     end
 
-    def total_incorrect_user_responses_for_concept_excluding_free_responses(concept)
-      user_responses_for_concept_excluding_incorrect_free_responses(concept)
+    def total_incorrect_user_responses_for_concept_excluding_free_responses(concept_id)
+      user_responses_for_concept_excluding_incorrect_free_responses(concept_id)
         .where(user_responses: {correct: false})
         .uniq.count
     end
 
-    def concept_for_key(concept_key)
-      concept_id = concept_key.gsub!("concept_", "").to_i
-      Concept.find(concept_id)
+    def concept_ids_with_responses
+      UserResponse.joins(:section_completion, question: {concepts: :subject})
+        .where(section_completions: {user_id: user.id})
+        .where(subjects: {id: subject.id})
+        .select("concepts.id, user_response.id").pluck(:concept_id).uniq
     end
+
 end
