@@ -1,0 +1,23 @@
+.next-exam.profile-block.left
+  h4
+    span Your Next Exam
+    = link_to 'change', settings_path(anchor: 'sat-date'), class: 'change-link', id: 'change-sat-date'
+
+  .info
+    - if current_user.sat_date.present?
+      - sat_date = current_user.sat_date
+      .date
+        i class="ss-icon ss-symbolicons-block" calendar
+        h3 = sat_date.strftime "%b #{sat_date.day.ordinalize}"
+        div == sat_date.strftime "<span class='year'>%Y</span>"
+      .days-until
+        h3 = days_until_sat_registration sat_date
+        span until registration deadline
+        h3 = days_until_sat sat_date
+        span until exam
+
+    - else
+      h3 No exam set
+      = link_to 'change', '', class: 'change-link'
+
+

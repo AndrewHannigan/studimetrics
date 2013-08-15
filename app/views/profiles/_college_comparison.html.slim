@@ -1,12 +1,13 @@
 - college = current_user.college || College.first || NullCollege.new
 
 .college-comparison.profile-block.left
-  h4 College Comparison
+  h4
+    span College Comparison
+    = link_to 'change', settings_path(anchor: 'college'), class: 'change-college-logo change-link'
   = image_tag college.profile_image.url(:medium), class: 'college-logo'
   .info
     .college-name
       = college.name
-      = link_to 'change', settings_path(anchor: 'college'), class: 'change-college-logo'
     .average-sat-score
       .number = college.average_score
       | Average SAT Score

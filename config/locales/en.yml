@@ -1,4 +1,12 @@
 en:
+  datetime:
+    distance_in_words:
+      about_x_months:
+        one: "~1 month"
+        other: "~%{count} months"
+      about_x_hours:
+        one: "~1 hour"
+        other: "~%{count} hours"
   practice_tests:
     diagnostic_welcome_title: 'Welcome to Practice Tests!'
     diagnostic_welcome_message_html: '<p>Getting started is pretty easy &mdash; just open up your book, choose a section, and start the timer! As soon as you submit your first answers, our analytics engine will go to work and create the most efficient study plan designed specifically around your needs.</p><p>We recommend that you start with Test 1 and work your way up.</p><p><strong>Study fast. Study smart.</strong></p>'

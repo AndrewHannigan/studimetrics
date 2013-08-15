@@ -56,11 +56,6 @@ h4 {
     width: 230px;
     font-size: 20px;
 
-    a {
-      display: inline-block;
-      margin-left: 10px;
-      font-size: 13px;
-    }
   }
 
   .average-sat-score {
@@ -232,4 +227,53 @@ table.concept-progress {
   width: 300px;
   padding: 10px;
   text-align: center;
+}
+
+.next-exam {
+  @include clearfix;
+
+  .info {
+    text-align: center;
+
+    span {
+      font-size: 14px;
+    }
+  }
+
+  .date, .days-until {
+    float: left;
+    width: 50%;
+    color: tint($dark-gray, 25%);
+  }
+
+  h3 {
+    margin-bottom: 0;
+  }
+
+  .days-until {
+    h3:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .date {
+    .ss-icon {
+      font-size: 45px;
+    }
+
+    h3 {
+      font-size: 32px;
+      width: 80%;
+      margin: 0 auto;
+    }
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.change-link {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 13px;
 }
