@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   delegate :name, to: :college, prefix: true
 
   # validates :first_name, :last_name, :grade, :state, presence: true
+  validates :sat_date, inclusion: { in: SatDate.upcoming_dates }, allow_nil: true
 
   GRADES = %w(9th 10th 11th 12th)
 

@@ -12,6 +12,16 @@
       = f.input :grade, collection: User::GRADES
 
     fieldset
+      a name="sat-date"
+      h5 Target Exam Date
+      = f.input :sat_date,
+          label: 'Date',
+          collection: SatDate.upcoming_dates,
+          selected: f.object.sat_date ? f.object.sat_date.strftime("%Y-%m-%d") : nil,
+          include_blank: true,
+          value_method: lambda {|d| d.strftime("%Y-%m-%d")}
+
+    fieldset
       a name="college"
       h5 College Settings
       = f.association :college, label: 'Selected college', as: :string, input_html: { value: current_user.college_name }
