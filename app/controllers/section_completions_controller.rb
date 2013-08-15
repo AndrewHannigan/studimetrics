@@ -40,7 +40,7 @@ class SectionCompletionsController < ApplicationController
 
   def find_and_authorize_resource
     @section_completion = SectionCompletion.find params[:id]
-    redirect_to profile_path unless @section_completion.user == current_user
+    redirect_to root_path unless @section_completion.user == current_user
   end
 
   def associate_with_test_completion(section_completion)
