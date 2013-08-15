@@ -1,6 +1,7 @@
 class CompositeScore < ActiveRecord::Base
   RECENT_QUESTIONS = 15
   AVERAGE_QUESTIONS_FOR_SUBJECT = {"Math" => 54, "Critical Reading" => 67, "Writing" => 49}
+  attr_accessor :pre_correction_score
 
   belongs_to :user
   belongs_to :subject
@@ -41,13 +42,20 @@ class CompositeScore < ActiveRecord::Base
     end
 
     def pre_correction_score
+      return @pre_correction_score if @pre_correction_score
       concept_pre_correction_sum = 0
       concept_ids_with_responses.each do |concept_id|
         accuracy = accuracy_for_concept(concept_id)
         concept_frequency = QuestionConcept.percentage_frequency_for_concept(concept_id)
-        concept_pre_correction_sum += accuracy * concept_frequency * AVERAGE_QUESTIONS_FOR_SUBJECT[subject_name]
+        Rails.logger.info("\n\n\n\n\nconcept #{concept_id} accuracy: #{accuracy} concept_frequency #{concept_frequency} subject question count #{AVERAGE_QUESTIONS_FOR_SUBJECT[subject_name]}")
+        value_to_add = accuracy * concept_frequency * AVERAGE_QUESTIONS_FOR_SUBJECT[subject_name]
+        Rails.logger.info("value to add is #{value_to_add}\n\n\n\n\n")
+        concept_pre_correction_sum += value_to_add
       end
-      concept_pre_correction_sum
+      Rails.logger.info("total is #{concept_pre_correction_sum}\n\n\n\n")
+      @pre_correction_score = concept_pre_correction_sum
+      Rails.logger.info("subtraction is #{subtracted_value_from_precorrection_value}")
+      return concept_pre_correction_sum
     end
 
     def accuracy_for_concept(concept_id)
