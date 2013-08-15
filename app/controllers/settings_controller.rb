@@ -18,6 +18,6 @@ class SettingsController < ApplicationController
   private
 
   def setting_params
-    params.require(:user).permit(:first_name, :last_name, :email, :profile_image, :college_id)
+    params.require(:user).permit(:first_name, :last_name, :email, :profile_image, :college_id, :sat_date)
   end
 end
