@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :focus_ranks
   belongs_to :college
-  has_many :section_completions
+  has_many :section_completions, -> { order 'created_at asc' }
   has_many :user_responses, through: :section_completions
   has_many :test_completions, -> { order 'created_at asc' }
 

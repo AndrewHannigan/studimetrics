@@ -12,5 +12,8 @@ FactoryGirl.define do
       status "In-Progress"
     end
 
+    trait :completed do
+      status "Completed"
+    end
   end
 end

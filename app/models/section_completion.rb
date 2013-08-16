@@ -13,6 +13,10 @@ class SectionCompletion < ActiveRecord::Base
   delegate :name, to: :section, prefix: true
   delegate :questions_count, to: :section, prefix: true
 
+  scope :math, -> { joins(section: :subject).where(subjects: { name: 'Math'}) }
+  scope :reading, -> { joins(section: :subject).where(subjects: { name: 'Critical Reading'}) }
+  scope :writing, -> { joins(section: :subject).where(subjects: { name: 'Writing'}) }
+
   STATUS.each do |status|
     singleton_class.send(:define_method, :"#{status.downcase.underscore}") { where(:status => status) }
 
@@ -47,6 +51,10 @@ class SectionCompletion < ActiveRecord::Base
 
   def total_correct
     user_responses.where(correct: true).count
+  end
+
+  def accuracy
+    total_correct.to_f/section.questions_count.to_f * 100
   end
 
   def retake?
