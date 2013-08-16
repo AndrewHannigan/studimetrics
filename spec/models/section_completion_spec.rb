@@ -168,12 +168,22 @@ describe SectionCompletion do
     end
   end
 
-  describe "section_questions_count" do
+  describe "#section_questions_count" do
     it "should call section method questions_count" do
       section_completion = create :section_completion
       section_completion.section.expects(:questions_count)
 
       section_completion.section_questions_count
+    end
+  end
+
+  describe '#accuracy' do
+    it 'returns the accuracy as a percent' do
+      section_completion = build :section_completion
+      section_completion.stubs(:total_correct).returns(2)
+      section_completion.section.stubs(:questions_count).returns(4)
+
+      expect(section_completion.accuracy).to eq 50
     end
   end
 

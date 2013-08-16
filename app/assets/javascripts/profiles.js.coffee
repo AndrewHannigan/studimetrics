@@ -13,6 +13,7 @@ $ ->
 
 pageLoaded = ->
   setupTestGraph()
+  setupAccuracyGraphs()
   setupPercentileBars()
   setupCollegeTypeahead()
 
@@ -28,6 +29,11 @@ setupCollegeTypeahead = ->
 setCollege = (event, college) ->
   $('#hidden-college-id').val college.id
 
+setupAccuracyGraphs = ->
+  if $('#math-accuracy-graph').length > 0
+    $('#math-accuracy-graph').accuracyGraph accuracies: mathSectionCompletionAccuracies, color: '#a80005'
+    $('#reading-accuracy-graph').accuracyGraph accuracies: readingSectionCompletionAccuracies, color: '#749d90'
+    $('#writing-accuracy-graph').accuracyGraph accuracies: writingSectionCompletionAccuracies, color: '#f8c206'
 
 setupTestGraph = ->
   if $('#test-graph').length > 0

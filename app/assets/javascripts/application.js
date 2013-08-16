@@ -16,6 +16,7 @@
 //= require practice_tests
 //= require profiles
 //= require test_graph
+//= require accuracy_graph
 //= require college
 //= require percentile_bar
 //= require flashes
