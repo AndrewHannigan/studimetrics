@@ -16,6 +16,13 @@ class QuestionImporter
     end
   end
 
+  def fix_positions!
+    CSV.foreach csv, headers: true do |row|
+      question = Question.find row['question_id']
+      question.set_list_position row['number']
+    end
+  end
+
   private
 
   def add_concepts(question, row)
