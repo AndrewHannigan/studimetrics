@@ -25,4 +25,14 @@ module SectionCompletionHelper
     render "section_completion_total_time", section_completion: section_completion
   end
 
+  def user_points_with_indicator(user, subject_scope='math')
+    points = SectionCompletion.points_for_user_and_subject user, subject_scope
+
+    if points >= 0
+      "+#{points}"
+    else
+      points.to_s
+    end
+  end
+
 end

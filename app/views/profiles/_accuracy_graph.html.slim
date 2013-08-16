@@ -10,13 +10,22 @@
     - else
 
       h6 Math
-      canvas#math-accuracy-graph.accuracy-graph width="750" height="130"
+      canvas#math-accuracy-graph.accuracy-graph width="670" height="130"
+      .points
+        .number = user_points_with_indicator current_user, 'math'
+        .points-legend points
 
       h6 Reading
-      canvas#reading-accuracy-graph.accuracy-graph width="750" height="130"
+      canvas#reading-accuracy-graph.accuracy-graph width="670" height="130"
+      .points
+        .number = user_points_with_indicator current_user, 'reading'
+        .points-legend points
 
       h6 Writing
-      canvas#writing-accuracy-graph.accuracy-graph  width="750" height="130"
+      canvas#writing-accuracy-graph.accuracy-graph  width="670" height="130"
+      .points
+        .number = user_points_with_indicator current_user, 'writing'
+        .points-legend points
 
       javascript:
         var mathSectionCompletionAccuracies = #{{current_user.section_completions.math.map(&:accuracy).to_json}};
