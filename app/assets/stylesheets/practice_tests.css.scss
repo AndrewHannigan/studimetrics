@@ -433,10 +433,10 @@
 }
 
 .question.focus {
-  color: $light-yellow;
+  color: $red;
 
   .radio_buttons label:before {
-    border: 1px solid $light-yellow;
+    border: 1px solid $red;
   }
 }
 

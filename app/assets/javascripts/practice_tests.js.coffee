@@ -77,7 +77,7 @@ window.toggleFocusRank = (event) ->
     $(".question.focus").removeClass("focus")
   else
     $("[data-requires-focus='true']").addClass("focus")
-    setTimeout window.toggleFocusRank, 2000
+    setTimeout window.toggleFocusRank, 3000
 
 toggleCriticalReadingTimer = (event) ->
   event.preventDefault()
