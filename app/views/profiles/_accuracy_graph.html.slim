@@ -1,0 +1,24 @@
+.profile-block.question-accuracy
+  h4 Question Accuracy
+  .test-graph-wrapper
+
+    - if current_user.section_completions.completed.length == 0
+      .sample
+        = image_tag 'graph_demo.png'
+        p
+          em = t 'profile.accuracy_graph_demo_text'
+    - else
+
+      h6 Math
+      canvas#math-accuracy-graph.accuracy-graph width="750" height="130"
+
+      h6 Reading
+      canvas#reading-accuracy-graph.accuracy-graph width="750" height="130"
+
+      h6 Writing
+      canvas#writing-accuracy-graph.accuracy-graph  width="750" height="130"
+
+      javascript:
+        var mathSectionCompletionAccuracies = #{{current_user.section_completions.math.map(&:accuracy).to_json}};
+        var readingSectionCompletionAccuracies = #{{current_user.section_completions.reading.map(&:accuracy).to_json}};
+        var writingSectionCompletionAccuracies = #{{current_user.section_completions.writing.map(&:accuracy).to_json}};
