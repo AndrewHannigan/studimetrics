@@ -38,7 +38,12 @@ Studimetrics::Application.routes.draw do
       resources :answers
     end
   end
+
   get '/admin', to: 'admin/dashboard#show', as: 'admin'
+
+  constraints Clearance::Constraints::SignedIn.new do
+    get '/', to: 'profiles#show'
+  end
 
   root :to => 'high_voltage/pages#show', :id => 'home'
 
