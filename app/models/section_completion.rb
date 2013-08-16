@@ -1,5 +1,4 @@
 class SectionCompletion < ActiveRecord::Base
-  STATUS = ["Completed", "In-Progress", "Not Started"]
   belongs_to :section
   belongs_to :user
   has_many :user_responses
@@ -17,6 +16,9 @@ class SectionCompletion < ActiveRecord::Base
   scope :reading, -> { joins(section: :subject).where(subjects: { name: 'Critical Reading'}) }
   scope :writing, -> { joins(section: :subject).where(subjects: { name: 'Writing'}) }
 
+  STATUS = ["Completed", "In-Progress", "Not Started"]
+  ACCURACY_POINTS_BOOST = 10
+
   STATUS.each do |status|
     singleton_class.send(:define_method, :"#{status.downcase.underscore}") { where(:status => status) }
 
@@ -29,6 +31,16 @@ class SectionCompletion < ActiveRecord::Base
 
   def self.for_section_and_user(section, user)
     SectionCompletion.where(section: section, user: user).first || NullSectionCompletion.new(section)
+  end
+
+  def self.points_for_user_and_subject(user, subject_scope='math')
+    first_section_id = SectionCompletion.completed.send(subject_scope).select('section_completions.id').where(user: user).order('section_completions.created_at asc').first
+    first_section_number_correct = UserResponse.where(section_completion_id: first_section_id).where(correct: true).count
+
+    last_section_id = SectionCompletion.completed.send(subject_scope).select('section_completions.id').where(user: user).order('section_completions.created_at desc').first
+    last_section_number_correct = UserResponse.where(section_completion_id:last_section_id).where(correct: true).count
+
+    last_section_number_correct * ACCURACY_POINTS_BOOST - first_section_number_correct * ACCURACY_POINTS_BOOST
   end
 
   def in_progress!

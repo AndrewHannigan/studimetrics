@@ -36,6 +36,21 @@ describe SectionCompletion do
     end
   end
 
+  describe '#points_for_user_and_subject' do
+    it 'returns points based on # of correct answers on first and last section completions' do
+      subject = create :subject, name: 'Math'
+      section = create :section, subject: subject
+      section2 = create :section, subject: subject
+      section_completion1 = create :section_completion, status: 'Completed', section: section
+      section_completion2 = create :section_completion, status: 'Completed', user: section_completion1.user, section: section2
+      create :user_response, section_completion: section_completion1, value: "Q"
+      create :user_response, section_completion: section_completion2
+      create :user_response, section_completion: section_completion2, value: "L"
+
+      expect(SectionCompletion.points_for_user_and_subject(section_completion1.user, 'math')).to eq(1*SectionCompletion::ACCURACY_POINTS_BOOST - 0)
+    end
+  end
+
   describe "#all_questions_answered?" do
     it "returns false if the user responses count != questions for section count" do
       section_completion = create :section_completion
