@@ -9,9 +9,9 @@ feature 'sees projected scores' do
     critical_reading = create :subject, name: "Critical Reading"
     writing = create :subject, name: "Writing"
 
-    math_composite_score = create :composite_score, subject: math, user: user
-    writing_composite_score = create :composite_score, subject: critical_reading, user: user
-    reading_composite_score = create :composite_score, subject: writing, user: user
+    create :composite_score, subject: math, user: user
+    create :composite_score, subject: critical_reading, user: user
+    create :composite_score, subject: writing, user: user
 
     ConversionTable.stubs(:converted_score).with("M", 0).returns(500)
     ConversionTable.stubs(:converted_score).with("W", 0).returns(600)
@@ -25,8 +25,7 @@ feature 'sees projected scores' do
   end
 
   scenario 'doesnt see project scores on landing pages' do
-    user = create :user
-    visit root_path as: user.id
+    visit root_path
 
     expect(page).to_not have_css ".math-score .number"
     expect(page).to_not have_css ".writing-score .number"

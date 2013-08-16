@@ -4,7 +4,7 @@
       .sidebar-header
         .user-info
           .photo
-            = link_to profile_path do
+            = link_to root_path do
               = image_tag current_user.profile_image.url(:thumb), width: 70, height: 70
 
           .name-and-score
@@ -37,7 +37,7 @@
               | Notifications
               i class="ss-icon ss-symbolicons-block" bell
           li class="#{controller_name == 'profiles' ? 'active' : ''}"
-            = link_to profile_path do
+            = link_to root_path do
               | Profile
               i class="ss-icon ss-symbolicons-block" users
           li class="#{controller_name == 'practice_tests' || (controller_name == 'section_completions' && controller.action_name == 'new') ? 'active' : ''}"
