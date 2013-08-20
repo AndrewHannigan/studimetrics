@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130813212429) do
+ActiveRecord::Schema.define(version: 20130819200250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20130813212429) do
     t.decimal  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   add_index "focus_ranks", ["concept_id"], name: "index_focus_ranks_on_concept_id", using: :btree
@@ -229,6 +230,7 @@ ActiveRecord::Schema.define(version: 20130813212429) do
     t.string   "state"
     t.string   "grade"
     t.integer  "college_id"
+    t.string   "profile_image"
     t.string   "profile_image_file_name"
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"

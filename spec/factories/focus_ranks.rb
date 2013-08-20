@@ -7,5 +7,6 @@ FactoryGirl.define do
     correct 0
     incorrect 0
     score "0"
+    position 1
   end
 end

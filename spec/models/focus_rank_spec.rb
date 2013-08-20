@@ -1,6 +1,45 @@
 require 'spec_helper'
 
 describe FocusRank do
+  describe "FocusRank#targeted_concepts_for_user_and_subject" do
+    it "returns the lowest scored items first with a limit according to the constant LIMIT" do
+      user = create :user
+      subj = create :subject, name: "Math"
+
+      list = setup_concepts(subj)
+      list.each_with_index do |concept, i|
+        create :focus_rank, concept: concept, score: i+1, user: user
+      end
+
+      expect(FocusRank.targeted_concepts_for_user_and_subject(user, subj).to_a).to eq FocusRank.limit(5)
+    end
+
+    it "returns the lowest scored items grouped by concept ID order created_at desc" do
+      user = create :user
+      subj = create :subject, name: "Math"
+
+      list= setup_concepts(subj)
+      final_time = nil
+      2.times do |i|
+        final_time = Time.now.utc + i.minutes
+        Timecop.travel(final_time)
+        list.each_with_index do |concept, j|
+          score = j.even? ? j +i : j - i
+          create :focus_rank, concept: concept, score: score, user: user
+        end
+      end
+
+      focus_ranks = FocusRank.targeted_concepts_for_user_and_subject(user, subj).to_a
+      scores = focus_ranks.collect{|r| r.score.to_f}
+      sorted_scores = scores.sort.reverse
+
+      time_for_focus_ranks = focus_ranks.collect(&:created_at).uniq.first.to_time.utc
+
+      expect(scores).to eq sorted_scores
+      expect(time_for_focus_ranks).to eq final_time
+    end
+  end
+
   describe "#calculated_focus_rank" do
     it "returns value according to formula" do
       setup_background
@@ -103,10 +142,9 @@ describe FocusRank do
   describe "FocusRank#update_deltas_for_user" do
     it "sets position and accuracy delta" do
       setup_original_stats
-      old_stats = FocusRank.current_stats_for_user(@user)
       swap_stat_positions
 
-      FocusRank.update_deltas_for_user(@user,old_stats)
+      FocusRank.update_deltas_for_user(@user)
       ranks = FocusRank.current_stats_for_user(@user)
 
       expect(ranks.first.position_delta).to eq 1
@@ -116,19 +154,6 @@ describe FocusRank do
       expect(ranks.first.score).to eq 2
       expect(ranks.last.score).to eq 1
     end
-  end
-
-  describe "FocusRank#current_stats_for_user" do
-    it "returns the top ten focus ranks" do
-      user = create :user
-      (0..10).each do
-        create :focus_rank, user: user
-      end
-
-      expect(FocusRank.current_stats_for_user(user).length).to eq 10
-      expect(FocusRank.count).to eq 11
-    end
-
   end
 
   describe "#frequency_for_user" do
@@ -173,8 +198,11 @@ end
 
 def setup_original_stats
   @user = create :user
-  @focus_rank = create :focus_rank, user: @user
-  @focus_rank2 = create :focus_rank, user: @user
+  @subject = create :subject
+  @concept = create :concept, subject: @subject
+  @concept2 = create :concept, subject: @subject
+  @focus_rank = create :focus_rank, concept: @concept, user: @user, position: 2
+  @focus_rank2 = create :focus_rank, concept: @concept2,  user: @user, position: 1
 
   @focus_rank.expects(:calculated_score).returns(1)
   @focus_rank.expects(:total_correct).returns(3)
@@ -190,6 +218,9 @@ def setup_original_stats
 end
 
 def swap_stat_positions
+  @focus_rank = create :focus_rank, concept: @concept, user: @user
+  @focus_rank2 = create :focus_rank, concept: @concept2,  user: @user
+
   @focus_rank.expects(:calculated_score).returns(2)
   @focus_rank.expects(:total_correct).returns(8)
   @focus_rank.expects(:total_incorrect).returns(4)
@@ -201,4 +232,21 @@ def swap_stat_positions
   @focus_rank2.expects(:total_incorrect).returns(16)
   @focus_rank2.expects(:average_response_time_for_user).returns(30)
   @focus_rank2.update!
+end
+
+def setup_concepts(subj)
+  list = []
+  algebrate_concept = create :concept, name: "Algebra", subject: subj
+  list << algebrate_concept
+  angles_concept = create :concept, name: "Angles", subject: subj
+  list << angles_concept
+  fractions_concept = create :concept, name: "Fractions", subject: subj
+  list << fractions_concept
+  multiplication_concept = create :concept, name: "Multiplication", subject: subj
+  list << multiplication_concept
+  division_concept = create :concept, name: "Division", subject: subj
+  list << division_concept
+  addition_concept = create :concept, name: "Addition", subject: subj
+  list << addition_concept
+  list
 end
