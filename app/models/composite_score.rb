@@ -47,6 +47,7 @@ class CompositeScore < ActiveRecord::Base
       concept_ids_with_responses.each do |concept_id|
         accuracy = accuracy_for_concept(concept_id)
         concept_frequency = QuestionConcept.percentage_frequency_for_concept(concept_id)
+        next if skip_concept?(concept_id)
         Rails.logger.info("\n\n\n\n\nconcept #{concept_id} accuracy: #{accuracy} concept_frequency #{concept_frequency} subject question count #{AVERAGE_QUESTIONS_FOR_SUBJECT[subject_name]}")
         value_to_add = accuracy * concept_frequency * AVERAGE_QUESTIONS_FOR_SUBJECT[subject_name]
         Rails.logger.info("value to add is #{value_to_add}\n\n\n\n\n")
@@ -56,6 +57,10 @@ class CompositeScore < ActiveRecord::Base
       @pre_correction_score = concept_pre_correction_sum
       Rails.logger.info("subtraction is #{subtracted_value_from_precorrection_value}")
       return concept_pre_correction_sum
+    end
+
+    def skip_concept?(concept_id)
+      user_responses_for_concept_excluding_incorrect_free_responses(concept_id).count == 0
     end
 
     def accuracy_for_concept(concept_id)
