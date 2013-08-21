@@ -53,6 +53,7 @@ describe CompositeScore do
       composite_score.stubs(:accuracy_for_concept).with(concept.id).returns(0.50)
       composite_score.stubs(:accuracy_for_concept).with(concept2.id).returns(0.20)
       composite_score.stubs(:concept_ids_with_responses).returns([concept.id, concept2.id])
+      CompositeScore.any_instance.stubs(:skip_concept?).returns(false)
 
       expect(composite_score.calculated_composite_score).to eq 5.062500000000002
     end

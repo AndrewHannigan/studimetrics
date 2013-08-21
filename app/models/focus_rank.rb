@@ -2,20 +2,24 @@ class FocusRank < ActiveRecord::Base
   AVERAGE_RESPONSE_TIME = {"Math" => 20, "Critical Reading" => 30, "Writing" => 25}
   THRESHOLD = 0.30
   DISPLAY_LIMIT = 10
-  attr_accessor :position, :accuracy
+  attr_accessor :accuracy
 
   belongs_to :user
   belongs_to :concept
   default_scope {order("focus_ranks.score desc")}
   delegate :name, to: :concept, prefix: true
 
+  def previous_focus_rank
+    FocusRank.where(concept_id: self.concept_id, user_id: self.user_id)
+      .where("id < #{self.id}").first
+  end
+
   def self.update_scores_for_concepts_and_user(concepts, user)
-    old_stats = self.current_stats_for_user(user, nil)
     concepts.each do |concept|
-      focus_rank = self.where(concept: concept).where(user: user).first_or_create
+      focus_rank = self.where(concept: concept).where(user: user).create
       focus_rank.update!
     end
-    self.update_deltas_for_user(user, old_stats)
+    self.update_deltas_for_user(user)
   end
 
   def self.concept_ids_requiring_focus_for_user(user)
@@ -41,12 +45,42 @@ class FocusRank < ActiveRecord::Base
     concept_progress.percentage_complete
   end
 
-  def self.current_stats_for_user(user, limit=DISPLAY_LIMIT)
-    ranks = FocusRank.where(user: user)
-    ranks = ranks.limit(limit) if limit
-    ranks.each_with_index do |r, i|
+  def self.grouped_current_stats(user, limit=5)
+    list = []
+    Subject.all.each do |subj|
+      list << FocusRank.targeted_concepts_for_user_and_subject(user, subj, limit)
+    end
+    list
+  end
+
+  def self.current_stats_for_user(user, limit=5)
+    list = []
+    Subject.all.each do |subj|
+      list << FocusRank.targeted_concepts_for_user_and_subject(user, subj, limit)
+    end
+
+    list.flatten!
+
+    global_sort = list.sort{|x,y|y.score <=> x.score}
+    global_sort.each_with_index do |r, i|
       r.position = i + 1
     end
+
+    global_sort.each do |gs|
+      item = list.detect{|y| gs == y}
+      item.position = gs.position
+    end
+    list
+  end
+
+  def self.targeted_concepts_for_user_and_subject(user, subject, limit=5)
+    focus_ranks = FocusRank.unscoped.where(user: user)
+      .where(concept_id: subject.concept_ids)
+      .select("distinct on (concept_id) concept_id, *")
+      .order("concept_id, id desc")
+
+    ranks = focus_ranks.sort!{|x,y| y.score <=> x.score}
+    ranks = ranks[0,limit] if limit
     ranks
   end
 
@@ -54,19 +88,19 @@ class FocusRank < ActiveRecord::Base
     (correct.to_f/(correct + incorrect)) * 100
   end
 
-  def self.update_deltas_for_user(user, old_stats)
+  def self.update_deltas_for_user(user)
     new_stats = self.current_stats_for_user(user, nil)
 
     new_stats.each do |new_stat|
-      previous_stat = old_stats.detect {|s| s.id == new_stat.id}
-      if previous_stat
-        position_delta = previous_stat.position - new_stat.position
-        accuracy_delta = (new_stat.accuracy - previous_stat.accuracy).ceil
+      previous_focus_rank = new_stat.previous_focus_rank
+      if previous_focus_rank
+        position_delta = previous_focus_rank.position - new_stat.position
+        accuracy_delta = (new_stat.accuracy - previous_focus_rank.accuracy).ceil
       else
         position_delta = 0
         accuracy_delta = 0
       end
-      new_stat.update_attributes!(position_delta: position_delta, accuracy_delta: accuracy_delta)
+      new_stat.update_attributes!(position: new_stat.position, position_delta: position_delta, accuracy_delta: accuracy_delta)
     end
   end
 

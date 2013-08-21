@@ -21,11 +21,11 @@ feature 'user visits profile' do
     interpretation = create :concept, name: "Interpretation", subject_id: critical_reading.id
     themes = create :concept, name: "Themes", subject_id: critical_reading.id
 
-    algebra_focus_rank = create :focus_rank, user: user, concept: algebra, score: 10, position_delta: 2, accuracy_delta: 20
-    arithmetic_focus_rank = create :focus_rank, user: user, concept: arithmetic, score: 9, position_delta: -1, accuracy_delta: -5
+    algebra_focus_rank = create :focus_rank, user: user, concept: algebra, score: 10, position_delta: 2, accuracy_delta: 20, position: 1
+    arithmetic_focus_rank = create :focus_rank, user: user, concept: arithmetic, score: 9, position_delta: -1, accuracy_delta: -5, position: 2
 
-    interpretation_focus_rank = create :focus_rank, user: user, concept: interpretation, score: 8, position_delta: 1, accuracy_delta: 10
-    themes_focus_rank = create :focus_rank, user: user, concept: themes, position_delta: -1, score: 7, accuracy_delta: -3
+    interpretation_focus_rank = create :focus_rank, user: user, concept: interpretation, score: 8, position_delta: 1, accuracy_delta: 10, position: 3
+    themes_focus_rank = create :focus_rank, user: user, concept: themes, position_delta: -1, score: 7, accuracy_delta: -3, position: 4
 
     FocusRank.any_instance.stubs(:accuracy).returns(55)
     FocusRank.any_instance.stubs(:percentage_complete).returns(40)
@@ -50,11 +50,11 @@ feature 'user visits profile' do
     interpretation = create :concept, name: "Interpretation", subject_id: critical_reading.id
     themes = create :concept, name: "Themes", subject_id: critical_reading.id
 
-    algebra_focus_rank = create :focus_rank, user: user, concept: algebra, score: 10, position_delta: nil, accuracy_delta: nil
-    arithmetic_focus_rank = create :focus_rank, user: user, concept: arithmetic, score: 9, position_delta: nil, accuracy_delta: nil
+    algebra_focus_rank = create :focus_rank, user: user, concept: algebra, score: 10, position_delta: nil, accuracy_delta: nil, position: 1
+    arithmetic_focus_rank = create :focus_rank, user: user, concept: arithmetic, score: 9, position_delta: nil, accuracy_delta: nil, position: 2
 
-    interpretation_focus_rank = create :focus_rank, user: user, concept: interpretation, score: 8, position_delta: nil, accuracy_delta: nil
-    themes_focus_rank = create :focus_rank, user: user, concept: themes, position_delta: nil, score: 7, accuracy_delta: nil
+    interpretation_focus_rank = create :focus_rank, user: user, concept: interpretation, score: 8, position_delta: nil, accuracy_delta: nil, position: 3
+    themes_focus_rank = create :focus_rank, user: user, concept: themes, position_delta: nil, score: 7, accuracy_delta: nil, position: 4
 
     FocusRank.any_instance.stubs(:accuracy).returns(55)
     FocusRank.any_instance.stubs(:percentage_complete).returns(40)
