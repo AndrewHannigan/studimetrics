@@ -65,4 +65,16 @@ describe User do
 
     end
   end
+
+  describe '#has_watched_concept_video?' do
+    it 'calls ConceptVideoTracker' do
+      user = User.new
+      concept_video = ConceptVideo.new
+      ConceptVideoTracker.expects(:user_has_watched_concept_video?)
+
+      user.has_watched_concept_video? concept_video
+
+      expect(ConceptVideoTracker).to have_received(:user_has_watched_concept_video?)
+    end
+  end
 end

@@ -2,4 +2,30 @@
 
 h3 Admin Dashboard
 
-p Nothing here yet.
+.dashboard-blocks
+  .admin-dashboard-block
+    h6 New User Stats
+    table
+      tr
+        th Timeframe
+        th Count
+      tr
+        td Today
+        td = number_with_delimiter User.where(created_at: Date.today.beginning_of_day..Time.now).count
+      tr
+        td This week
+        td = number_with_delimiter User.where(created_at: Date.today.beginning_of_week..Time.now).count
+      tr
+        td This month
+        td = number_with_delimiter User.where(created_at: Date.today.beginning_of_month..Time.now).count
+
+  .admin-dashboard-block
+    h6 Concept Video Views
+    table
+      tr
+        th Video
+        th Count
+      - ConceptVideo.all.each do |concept_video|
+        tr
+          td = link_to concept_video.video_link, admin_concept_video_path(concept_video)
+          td = ConceptVideoTracker.new(concept_video, nil).number_of_users_that_have_watched_concept_video

@@ -28,10 +28,27 @@ feature 'user views concept videos' do
       expect(page).to have_css('iframe')
     end
   end
+
+  scenario 'sees indicator for unwatched', js: true do
+    Vimeo::Simple::Video.stubs(:info).returns(OpenStruct.new(parsed_response: ["thumbnail_large" => 'http://fake.png']))
+    User.any_instance.stubs(:has_watched_concept_video?).returns(false)
+    user = create :user
+    concept_video = create :concept_video, video_link: '123'
+
+    visit concepts_path as: user.id
+
+    the_video = video_on_page concept_video
+    # using page since for some reason returned link doesnt have class...
+    expect(page).to have_css '.unwatched'
+
+    the_video.click
+
+    expect(page).to_not have_css '.unwatched'
+  end
 end
 
 def video_on_page(concept_video)
-  page.find("a[data-video-id='#{concept_video.video_link}']")
+  page.find("a[data-video-link='#{concept_video.video_link}']")
 end
 
 def video_modal_on_page

@@ -5,5 +5,12 @@ $ ->
 
 showVideo = (event) ->
   event.preventDefault()
-  $('#concept-video-modal').html(embedTemplate.replace 'VIDEO_ID', $(this).data('video-id')).reveal().one 'reveal:close', ->
+  markVideoWatched $(this)
+  videoLink = $(this).data('video-link')
+  $('#concept-video-modal').html(embedTemplate.replace 'VIDEO_ID', videoLink).reveal().one 'reveal:close', ->
     $('iframe').detach()
+
+markVideoWatched = (div) ->
+  videoId = div.data('video-id')
+  div.removeClass('unwatched')
+  $.post "/concept_videos/#{videoId}/track"

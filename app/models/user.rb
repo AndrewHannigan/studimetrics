@@ -42,4 +42,8 @@ class User < ActiveRecord::Base
   def total_seconds_studied
    section_completions.sum(:section_time).to_f
   end
+
+  def has_watched_concept_video?(concept_video)
+    ConceptVideoTracker.user_has_watched_concept_video?(self, concept_video)
+  end
 end
