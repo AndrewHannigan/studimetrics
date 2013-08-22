@@ -55,14 +55,14 @@ describe FocusRank do
   end
 
   describe "FocusRank#update_scores_for_concepts_and_user" do
-    it "should find or create a focus rank and update!" do
+    it "should find or create a focus rank and update! never because no questions are answered" do
       user = create :user
 
       concept1 = create :concept
       concept2 = create :concept
 
       concepts = [concept1, concept2]
-      FocusRank.any_instance.expects(:update!).twice
+      FocusRank.any_instance.expects(:update!).never
 
       FocusRank.update_scores_for_concepts_and_user(concepts, user)
     end
