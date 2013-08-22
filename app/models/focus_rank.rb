@@ -16,10 +16,15 @@ class FocusRank < ActiveRecord::Base
 
   def self.update_scores_for_concepts_and_user(concepts, user)
     concepts.each do |concept|
-      focus_rank = self.where(concept: concept).where(user: user).create
+      focus_rank = self.where(concept: concept).where(user: user).new
+      next unless focus_rank.valid_focus_rank?
       focus_rank.update!
     end
     self.update_deltas_for_user(user)
+  end
+
+  def valid_focus_rank?
+    (total_correct + total_incorrect) > 0
   end
 
   def self.concept_ids_requiring_focus_for_user(user)
