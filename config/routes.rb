@@ -18,6 +18,11 @@ Studimetrics::Application.routes.draw do
   resources :section_completions, only: [:new, :create, :update, :show]
   resources :user_responses, only: [:create]
   resources :concepts, only: [:index, :show]
+  resources :concept_videos do
+    member do
+      post :track
+    end
+  end
   resource :settings
 
   # admin routes
