@@ -10,4 +10,8 @@ class NullUser
     nil
   end
 
+  def has_watched_concept_video?(concept_video)
+    false
+  end
+
 end

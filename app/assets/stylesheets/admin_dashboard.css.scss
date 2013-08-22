@@ -1,0 +1,16 @@
+.dashboard-blocks {
+  @include clearfix;
+  margin: $gutter 0;
+
+  table {
+    border: 1px solid gray;
+    tr:nth-child(even) {
+      background: shade(#fff, 2%);
+    }
+  }
+}
+
+.admin-dashboard-block {
+  @include span-columns(3 of 10);
+  @include omega(5n);
+}

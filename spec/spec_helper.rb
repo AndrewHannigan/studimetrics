@@ -12,6 +12,7 @@ require 'sidekiq'
 require 'sidekiq/testing'
 require 'paperclip/matchers'
 require 'webmock/rspec'
+require 'mock_redis'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -27,8 +28,15 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.use_transactional_fixtures = false
   config.order = "random"
+
+  config.after(:each) do
+    REDIS.flushdb
+  end
 end
 
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 WebMock.disable_net_connect!(allow_localhost: true)
+
+Object.__send__(:remove_const, :REDIS)
+Object.const_set(:REDIS, MockRedis.new)
