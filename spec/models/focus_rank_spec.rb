@@ -74,9 +74,9 @@ describe FocusRank do
       score -= 1
 
       concept = create :concept, subject: reading
-      focus_rank = create :focus_rank, concept: concept, user: user, score:score
+      focus_rank = create :focus_rank, concept: concept, user: user, score: 28
 
-      expect(FocusRank.target_subject_for_user(user)).to eq math
+      expect(FocusRank.target_subject_for_user(user)).to eq reading
     end
   end
 

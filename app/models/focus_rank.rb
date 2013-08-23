@@ -29,13 +29,16 @@ class FocusRank < ActiveRecord::Base
   end
 
   def self.target_subject_for_user(user)
-    top_5 = self.sorted_stats_by_user_by_score(user)[0,5]
-    target_subject = nil
+    target = nil
+    max_score = 0
     Subject.all.each do |subj|
-      target_subject = subj if top_5.reject{|focus_rank| !subj.concept_ids.include?(focus_rank.concept_id)}.length >= 2
-      break if target_subject
+      score = self.targeted_concepts_for_user_and_subject(user, subj).collect{|fr| fr.score}.inject(:+)
+      if score > max_score
+        max_score = score
+        target = subj
+      end
     end
-    target_subject
+    target
   end
 
   def self.sorted_stats_by_user_by_score(user)
