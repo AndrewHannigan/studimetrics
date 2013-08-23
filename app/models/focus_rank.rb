@@ -23,6 +23,11 @@ class FocusRank < ActiveRecord::Base
     self.update_deltas_for_user(user)
   end
 
+  def self.target_concepts_for_user(user)
+    subject = self.target_subject_for_user(user)
+    self.targeted_concepts_for_user_and_subject(user, subject)
+  end
+
   def self.target_subject_for_user(user)
     top_5 = self.sorted_stats_by_user_by_score(user)[0,5]
     target_subject = nil
