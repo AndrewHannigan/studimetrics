@@ -23,6 +23,20 @@ class FocusRank < ActiveRecord::Base
     self.update_deltas_for_user(user)
   end
 
+  def self.target_subject_for_user(user)
+    top_5 = self.sorted_stats_by_user_by_score(user)[0,5]
+    target_subject = nil
+    Subject.all.each do |subj|
+      target_subject = subj if top_5.reject{|focus_rank| !subj.concept_ids.include?(focus_rank.concept_id)}.length >= 2
+      break if target_subject
+    end
+    target_subject
+  end
+
+  def self.sorted_stats_by_user_by_score(user)
+    self.current_stats_for_user(user).sort{|x,y| y.score <=> x.score}
+  end
+
   def valid_focus_rank?
     (total_correct + total_incorrect) > 0
   end

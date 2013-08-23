@@ -54,6 +54,32 @@ describe FocusRank do
     end
   end
 
+  describe "FocusRank#target_subject" do
+    it "returns subject with greatest frequency in top 5" do
+      user = create :user
+      math = create :subject, name: "Math"
+      reading = create :subject, name: "Critical Reading"
+      writing = create :subject, name: "Writing"
+
+      score = 10
+
+      3.times do
+        concept = create :concept, subject: math
+        focus_rank = create :focus_rank, concept: concept, user: user, score: score
+        score -= 1
+      end
+
+      concept = create :concept, subject: writing
+      focus_rank = create :focus_rank, concept: concept, user: user, score: score
+      score -= 1
+
+      concept = create :concept, subject: reading
+      focus_rank = create :focus_rank, concept: concept, user: user, score:score
+
+      expect(FocusRank.target_subject_for_user(user)).to eq math
+    end
+  end
+
   describe "FocusRank#update_scores_for_concepts_and_user" do
     it "should find or create a focus rank and update! never because no questions are answered" do
       user = create :user
