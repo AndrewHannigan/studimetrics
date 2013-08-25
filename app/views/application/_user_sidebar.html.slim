@@ -44,10 +44,6 @@
             = link_to practice_tests_path do
               | Practice Tests
               i class="ss-icon ss-symbolicons-block" blocks
-          li class="#{controller_name == 'section_completions' && controller.action_name == 'show' ? 'active' : ''}"
-            = link_to '' do
-              | Review
-              i class="ss-icon ss-symbolicons-block" searchfile
           li class="#{controller_name == 'concepts' ? 'active' : ''}"
             = link_to concepts_path do
               | Concepts
