@@ -15,4 +15,9 @@ module ProfileHelper
   def pie_chart(percentage)
     render "profiles/pie_chart", percentage: percentage
   end
+
+  def display_target_concepts
+    target_concepts = FocusRank.target_concepts_for_user(current_user).collect(&:concept)
+    render "profiles/target_concepts", target_concepts: target_concepts
+  end
 end
