@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require jquery-scrolltofixed
 //= require jquery.reveal
+//= require jquery.externalscript
 //= require underscore
 //= require turbolinks
 //= require ss-junior
@@ -21,3 +22,4 @@
 //= require percentile_bar
 //= require flashes
 //= require concept_videos
+//= require billing

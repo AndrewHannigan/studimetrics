@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130819200250) do
+ActiveRecord::Schema.define(version: 20130823185929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -230,12 +230,13 @@ ActiveRecord::Schema.define(version: 20130819200250) do
     t.string   "state"
     t.string   "grade"
     t.integer  "college_id"
-    t.string   "profile_image"
     t.string   "profile_image_file_name"
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"
     t.datetime "profile_image_updated_at"
     t.date     "sat_date"
+    t.string   "customer_id"
+    t.string   "last_4_digits"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
