@@ -17,7 +17,7 @@ en:
     test_complete_title: 'Test Complete!'
     test_complete_subtitle: 'What would you like to do next?'
     retake_test: 'Retake test'
-    take_next_test: 'Take test'
+    take_next_test: 'Next test'
     section_complete_title: 'Section Complete!'
     section_complete_subtitle: 'What would you like to do next?'
     retake_section: 'Retake section'
