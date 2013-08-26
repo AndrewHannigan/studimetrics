@@ -5,7 +5,7 @@ class Billing
   creditCardFormSubmitted: (event) =>
     $('form .error').detach()
     $('input[type=submit]').prop('disabled', true)
-    if $('#card_number').length && $('input[data-id="stripe_token"]').val() == ''
+    if $('#card_number').length && $('#card_number').is(':visible') && $('input[data-id="stripe_token"]').val() == ''
       @processCard()
       false
     else
