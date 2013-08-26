@@ -56,14 +56,23 @@ class User < ActiveRecord::Base
   private
 
   def create_or_update_stripe_customer
-    return true if from_admin_tool
+    return if from_admin_tool
 
     if stripe_customer = StripeCustomerManager.create_or_update_stripe_customer(self)
       self.customer_id = stripe_customer.id
-      self.last_4_digits = stripe_customer.cards.data.first['last4']
+      self.last_4_digits = last_4_from_stripe_customer stripe_customer
       self.stripe_token = nil
     end
     stripe_customer
+  end
+
+  def last_4_from_stripe_customer(stripe_customer)
+    card = stripe_customer.cards.data.first
+    if card.present?
+      card['last4']
+    else
+      nil
+    end
   end
 
 end

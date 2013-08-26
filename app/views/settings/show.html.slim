@@ -1,4 +1,4 @@
-= simple_form_for current_user, url: settings_path, method: :put do |f|
+= simple_form_for current_user, url: settings_path, method: :put, html: { class: 'credit_card' } do |f|
 
   .settings
     fieldset
@@ -11,6 +11,16 @@
       = f.input :state, collection: State::US
       = f.input :grade, collection: User::GRADES
 
+    fieldset
+      a name="billing"
+      h5 Billing Information
+      #stored_billing
+        p Stored Card: ****#{f.object.last_4_digits}
+
+      #update_credit_card
+        = render 'users/credit_card_fields', form: f
+
+      = link_to 'Change card', '#', class: 'change-card-link'
     fieldset
       a name="sat-date"
       h5 Target Exam Date
