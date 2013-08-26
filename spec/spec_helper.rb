@@ -13,6 +13,7 @@ require 'sidekiq/testing'
 require 'paperclip/matchers'
 require 'webmock/rspec'
 require 'mock_redis'
+require 'stripe_mock'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -29,8 +30,13 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.order = "random"
 
+  config.before(:each) do
+    StripeMock.start
+  end
+
   config.after(:each) do
     REDIS.flushdb
+    StripeMock.stop
   end
 end
 

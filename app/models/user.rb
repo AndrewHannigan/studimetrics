@@ -10,8 +10,14 @@ class User < ActiveRecord::Base
 
   delegate :name, to: :college, prefix: true
 
-  # validates :first_name, :last_name, :grade, :state, presence: true
+  validates :first_name, :last_name, presence: true
   validates :sat_date, inclusion: { in: SatDate.upcoming_dates }, allow_nil: true
+  validates :stripe_token, presence: { message: 'Invalid credit card.' }, on: :create, unless: 'from_admin_tool.present?'
+  validates :customer_id, presence: true, on: :update
+
+  attr_accessor :stripe_token, :coupon, :from_admin_tool
+
+  before_save :create_or_update_stripe_customer
 
   GRADES = %w(9th 10th 11th 12th)
 
@@ -46,4 +52,18 @@ class User < ActiveRecord::Base
   def has_watched_concept_video?(concept_video)
     ConceptVideoTracker.user_has_watched_concept_video?(self, concept_video)
   end
+
+  private
+
+  def create_or_update_stripe_customer
+    return true if from_admin_tool
+
+    if stripe_customer = StripeCustomerManager.create_or_update_stripe_customer(self)
+      self.customer_id = stripe_customer.id
+      self.last_4_digits = stripe_customer.cards.data.first['last4']
+      self.stripe_token = nil
+    end
+    stripe_customer
+  end
+
 end

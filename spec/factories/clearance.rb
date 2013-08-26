@@ -3,6 +3,10 @@ FactoryGirl.define do
     "user#{n}@example.com"
   end
 
+  sequence :customer_id do |n|
+    "stripe-id-#{n}"
+  end
+
   factory :user do
     email
     first_name "Robert"
@@ -12,6 +16,7 @@ FactoryGirl.define do
     state "NY"
     grade "9th"
     admin false
+    stripe_token { StripeMock.generate_card_token(last4: "9191", exp_month: 12, exp_year: Time.now.year+2.years) }
 
     factory :admin do
       admin true
