@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :math, :reading, :writing
 
+  before_filter do
+    Honeybadger.context({
+      user_id: current_user.id,
+      user_email: current_user.email
+    }) if current_user.is_a?(User)
+  end
+
   def current_user
     super || NullUser.new
   end
