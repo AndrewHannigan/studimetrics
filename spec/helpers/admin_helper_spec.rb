@@ -38,4 +38,19 @@ describe AdminHelper do
       expect(helper).to have_received(:render).with('table', columns: [:id, :created_at], collection: collection)
     end
   end
+
+  describe '#stripe_customer_link' do
+    it 'returns a link to stripe' do
+      user = build_stubbed :user, customer_id: 123
+      link = helper.stripe_customer_link user
+
+      expect(link).to eq link_to(user.customer_id, "https://manage.stripe.com/test/customers/#{user.customer_id}", target: :blank)
+    end
+
+    it 'returns None if the user doesnt have a customer id' do
+      user = build_stubbed :user
+      expect(helper.stripe_customer_link user).to eq 'None'
+
+    end
+  end
 end
