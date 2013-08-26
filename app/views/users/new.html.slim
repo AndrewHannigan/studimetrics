@@ -1,6 +1,6 @@
 .signup-left
-  = simple_form_for @user do |form|
-    = render partial: '/users/form', object: form
+  = simple_form_for @user, html: { class: 'credit_card' } do |form|
+    = render partial: 'users/form', object: form
     .submit-field
       = form.submit
 
@@ -8,11 +8,22 @@
       = link_to 'Already have an account?', sign_in_path
 
 .signup-right
-  h3 Improve your score on the SAT
-  p Practice makes perfect, and we'll show you just how perfect you can be.
+  h2 Study fast. Study smart.
+  p We know the stakes are high but preparing for the SAT isn’t rocket science. So pay a price that doesn’t take advantage of how important this is to you.
 
   ul.signup-bullets
-    li FocusRank will show you the concepts you need to work on
+    li Powerful data analytics
     li Compare your projected score against colleges you're interested in
-    li Some other good point.
+    li 1500+ questions
+    li 30 hours of lessons
 
+  h3 All for only $9/month.
+
+  hr
+
+  h3 Satisfaction Guaranteed
+  p We'll know you'll love it, but just in case you dont, just let us know.
+
+  /.callout
+    div Sign up
+    .subtitle Increase your SAT score

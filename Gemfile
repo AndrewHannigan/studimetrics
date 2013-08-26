@@ -40,6 +40,7 @@ gem 'paperclip'
 gem 'aws-sdk', '~> 1.5.7'
 gem 'active_model_serializers'
 gem 'vimeo'
+gem 'stripe'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -74,6 +75,7 @@ group :test do
   gem 'timecop'
   gem 'webmock'
   gem 'mock_redis'
+  gem 'stripe-ruby-mock'
 end
 
 group :staging, :production do
