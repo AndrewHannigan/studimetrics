@@ -99,4 +99,28 @@ describe User do
       expect(ConceptVideoTracker).to have_received(:user_has_watched_concept_video?)
     end
   end
+
+  describe '#stripe_customer' do
+    it 'calls Stripe::Customer.retrieve with the users customer id' do
+      stripe_customer = Stripe::Customer.create email: 'asdf@wee.net'
+      Stripe::Customer.expects(:retrieve)
+      user = User.new customer_id: stripe_customer.id
+
+      user.stripe_customer
+
+      expect(Stripe::Customer).to have_received(:retrieve).with(stripe_customer.id)
+    end
+  end
+
+  describe '#upcoming_stripe_invoice' do
+    it 'calls Stripe::Invoice.upcoming with the customer id' do
+      customer = Stripe::Customer.create
+      Stripe::Invoice.expects(:upcoming)
+      user = User.new customer_id: customer.id
+
+      user.upcoming_stripe_invoice
+
+      expect(Stripe::Invoice).to have_received(:upcoming).with(has_entry :customer, customer.id)
+    end
+  end
 end
