@@ -23,3 +23,4 @@
 //= require flashes
 //= require concept_videos
 //= require billing
+//= require settings

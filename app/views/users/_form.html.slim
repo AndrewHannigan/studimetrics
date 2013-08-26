@@ -5,11 +5,4 @@ fieldset
   = form.input :last_name, label: "Last Name"
 
 fieldset
-  = form.input :stripe_token, as: :hidden, input_html: { data: { id: 'stripe_token' } }
-  = form.input :card_number do
-    = text_field_tag :card_number, nil, name: nil
-  = form.input :card_code, label: 'Card Security Code (CVV)' do
-    = text_field_tag :card_code, nil, name: nil
-  = form.input :card_month, label: 'Expiration' do
-    = select_month nil, { add_month_numbers: true }, { name: nil, id: "card_month" }
-    = select_year nil, { start_year: Date.today.year, end_year: Date.today.year+10 }, { name: nil, id: "card_year" }
+  = render 'users/credit_card_fields', form: form
