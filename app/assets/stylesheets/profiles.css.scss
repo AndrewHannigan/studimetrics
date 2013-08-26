@@ -230,7 +230,7 @@ table.concept-progress {
   text-align: center;
 }
 
-.next-exam {
+.next-exam, .target-subject-and-concepts {
   @include clearfix;
 
   .info {
@@ -238,6 +238,18 @@ table.concept-progress {
 
     span {
       font-size: 14px;
+    }
+
+    &.target-subject {
+      float: left;
+      width: 150px;
+      border-right: 1px solid #CCC
+    }
+
+    &.target-concepts {
+      padding-left: 10px;
+      width: 150px;
+      float: left;
     }
   }
 

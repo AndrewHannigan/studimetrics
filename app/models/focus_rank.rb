@@ -2,6 +2,7 @@ class FocusRank < ActiveRecord::Base
   AVERAGE_RESPONSE_TIME = {"Math" => 20, "Critical Reading" => 30, "Writing" => 25}
   THRESHOLD = 0.30
   DISPLAY_LIMIT = 10
+  TARGET_CONCEPT_LIMIT = 3
   attr_accessor :accuracy
 
   belongs_to :user
@@ -21,6 +22,33 @@ class FocusRank < ActiveRecord::Base
       focus_rank.update!
     end
     self.update_deltas_for_user(user)
+  end
+
+  def self.target_concepts_for_user(user)
+    self.sorted_target_concepts_for_user(user)[0,TARGET_CONCEPT_LIMIT]
+  end
+
+  def self.sorted_target_concepts_for_user(user)
+    list = self.current_stats_for_user(user)
+    list.sort{|x,y,| y.score <=> x.score}
+  end
+
+  def self.target_subject_for_user(user)
+    target = nil
+    max_score = 0
+    Subject.all.each do |subj|
+      score = self.targeted_concepts_for_user_and_subject(user, subj).collect{|fr| fr.score}.inject(:+)
+      next unless score
+      if score > max_score
+        max_score = score
+        target = subj
+      end
+    end
+    target
+  end
+
+  def self.sorted_stats_by_user_by_score(user)
+    self.current_stats_for_user(user).sort{|x,y| y.score <=> x.score}
   end
 
   def valid_focus_rank?
