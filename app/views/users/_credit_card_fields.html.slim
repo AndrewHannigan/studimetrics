@@ -6,3 +6,6 @@
 = form.input :card_month, label: 'Expiration' do
   = select_month nil, { add_month_numbers: true }, { name: nil, id: "card_month" }
   = select_year nil, { start_year: Date.today.year, end_year: Date.today.year+10 }, { name: nil, id: "card_year" }
+
+- unless form.object.persisted?
+  = form.input :coupon, label: "Promo Code (if you have one)"
