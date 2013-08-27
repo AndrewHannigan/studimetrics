@@ -43,3 +43,10 @@
 
     = f.button :submit, 'Save'
 
+= link_to 'Cancel Account', '', data: { modal_confirm_id: 'confirm-modal' }
+= modal id: 'confirm-modal', title: 'Are you sure?', class: 'large confirm'
+  p Your account will be canceled immediately.
+
+  .modal-buttons
+    = link_to 'Keep Account', '', class: 'button modal-button', data: {behavior: 'modal:cancel'}
+    = link_to 'Cancel Account', deactivate_user_path(current_user), method: :put, class: 'button modal-button red', data: {behavior: 'modal:continue'}

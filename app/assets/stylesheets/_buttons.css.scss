@@ -23,4 +23,9 @@ button, a.button, input[type="submit"] {
     background: #ddd;
     border-bottom: 3px solid #ccc;
   }
+ 
+  &.red {
+    background: $red;
+    border-bottom: 3px solid darken($red, 10%);
+  }
 }

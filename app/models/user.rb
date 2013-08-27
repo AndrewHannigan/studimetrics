@@ -61,6 +61,11 @@ class User < ActiveRecord::Base
     @stripe_invoice ||= Stripe::Invoice.upcoming customer: customer_id
   end
 
+  def deactivate!
+    update_attributes(active: false, last_4_digits: nil)
+    SubscriptionCanceler.cancel self
+  end
+
   private
 
   def create_or_update_stripe_customer
@@ -82,5 +87,4 @@ class User < ActiveRecord::Base
       nil
     end
   end
-
 end
