@@ -3,7 +3,11 @@ Studimetrics::Application.routes.draw do
 
   mount Sidekiq::Web => '/sidekiq'
 
-  resources :users, controller: 'users', only: [:create]
+  resources :users, controller: 'users', only: [:create] do
+    member do
+      put :deactivate
+    end
+  end
   resource :profile
 
   resources :practice_tests, only: [:index] do

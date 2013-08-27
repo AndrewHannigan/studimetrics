@@ -123,4 +123,27 @@ describe User do
       expect(Stripe::Invoice).to have_received(:upcoming).with(has_entry :customer, customer.id)
     end
   end
+
+  describe '#deactivate!' do
+    it 'sets active to false' do
+      user = User.new active: true
+      user.deactivate!
+      expect(user).to_not be_active
+    end
+
+    it 'sets last 4 digits to nil' do
+      user = User.new last_4_digits: 'asdf'
+      user.deactivate!
+      expect(user.last_4_digits).to be_nil
+    end
+
+    it 'calls SubscriptionCanceler' do
+      user = User.new
+      SubscriptionCanceler.expects(:cancel)
+      user.deactivate!
+
+      expect(SubscriptionCanceler).to have_received(:cancel).with(user)
+    end
+  end
+
 end

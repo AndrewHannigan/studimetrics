@@ -10,7 +10,7 @@ class SettingsController < ApplicationController
     if @user.update_attributes setting_params
       redirect_to profile_url, notice: t('settings.saved_message')
     else
-      flash[:error] = t('settings.save_failed_message')
+      flash[:notice] = t('settings.save_failed_message')
       render :show
     end
   end

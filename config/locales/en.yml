@@ -43,3 +43,6 @@ en:
   settings:
     saved_message: 'Settings saved.'
     save_failed_message: 'Settings couldnt be saved.'
+  users:
+    deactivate_success: 'Your account has been canceled. Thank you for using Studimetrics!'
+    deactivate_failure: 'There was an error deactivating your account. Please contact support@studimetrics.com for assistance.'
