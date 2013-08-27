@@ -53,6 +53,14 @@ class User < ActiveRecord::Base
     ConceptVideoTracker.user_has_watched_concept_video?(self, concept_video)
   end
 
+  def stripe_customer
+    @stripe_customer ||= Stripe::Customer.retrieve customer_id
+  end
+
+  def upcoming_stripe_invoice
+    @stripe_invoice ||= Stripe::Invoice.upcoming customer: customer_id
+  end
+
   private
 
   def create_or_update_stripe_customer

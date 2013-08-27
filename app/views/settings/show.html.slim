@@ -13,14 +13,18 @@
 
     fieldset
       a name="billing"
-      h5 Billing Information
+      h5
+        span Billing Information
+        = link_to 'Change card', '#', class: 'change-link change-card-link'
       #stored_billing
-        p Stored Card: ****#{f.object.last_4_digits}
+        span Stored Card: ****#{f.object.last_4_digits}
 
       #update_credit_card
         = render 'users/credit_card_fields', form: f
 
-      = link_to 'Change card', '#', class: 'change-card-link'
+      - invoice = f.object.upcoming_stripe_invoice
+      p.next-billing-date Next Charge: #{next_charge_for_stripe_invoice invoice}
+
     fieldset
       a name="sat-date"
       h5 Target Exam Date

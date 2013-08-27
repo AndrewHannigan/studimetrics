@@ -17,6 +17,7 @@ FactoryGirl.define do
     grade "9th"
     admin false
     stripe_token { StripeMock.generate_card_token(last4: "9191", exp_month: 12, exp_year: Time.now.year+2.years) }
+    customer_id nil
 
     factory :admin do
       admin true
