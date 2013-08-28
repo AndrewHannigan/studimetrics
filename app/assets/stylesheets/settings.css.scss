@@ -1,8 +1,26 @@
 #update_credit_card {
+  display: block;
+}
+#stored_billing {
   display: none;
+}
+
+.active-card {
+  #update_credit_card {
+    display: none;
+  }
+  #stored_billing {
+    display: block;
+  }
 }
 
 .next-billing-date {
   font-style: italic;
   font-size: 0.9rem;
+}
+
+#cancel-account-link {
+  display: block;
+  margin-top: 16px;
+  color: $red;
 }

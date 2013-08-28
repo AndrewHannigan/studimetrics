@@ -11,11 +11,12 @@
       = f.input :state, collection: State::US
       = f.input :grade, collection: User::GRADES
 
-    fieldset
+    fieldset class="#{f.object.has_active_credit_card? ? 'active-card' : ''}"
       a name="billing"
       h5
         span Billing Information
-        = link_to 'Change card', '#', class: 'change-link change-card-link'
+        - if f.object.has_active_credit_card?
+          = link_to 'Change card', '#', class: 'change-link change-card-link'
       #stored_billing
         span Stored Card: ****#{f.object.last_4_digits}
 
@@ -43,7 +44,7 @@
 
     = f.button :submit, 'Save'
 
-= link_to 'Cancel Account', '', data: { modal_confirm_id: 'confirm-modal' }
+= link_to 'Cancel Account', '', id: 'cancel-account-link', data: { modal_confirm_id: 'confirm-modal' }
 = modal id: 'confirm-modal', title: 'Are you sure?', class: 'large confirm'
   p Your account will be canceled immediately.
 

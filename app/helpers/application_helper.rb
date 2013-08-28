@@ -22,4 +22,8 @@ module ApplicationHelper
       ].html_safe
     end
   end
+
+  def show_welcome_back_modal?
+    signed_in? && !current_user.active? && params[:controller] != 'settings'
+  end
 end
