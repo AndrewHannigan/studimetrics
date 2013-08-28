@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   delegate :name, to: :college, prefix: true
 
   validates :first_name, :last_name, presence: true
+  validates :email, email: true
   validates :sat_date, inclusion: { in: SatDate.upcoming_dates }, allow_nil: true
   validates :stripe_token, presence: { message: 'Invalid credit card.' }, on: :create, unless: 'from_admin_tool.present?'
   validates :customer_id, presence: true, on: :update
@@ -62,8 +63,12 @@ class User < ActiveRecord::Base
   end
 
   def deactivate!
-    update_attributes(active: false, last_4_digits: nil)
     SubscriptionCanceler.cancel self
+    update_attributes(active: false)
+  end
+
+  def has_active_credit_card?
+    last_4_digits.present?
   end
 
   private
@@ -75,6 +80,7 @@ class User < ActiveRecord::Base
       self.customer_id = stripe_customer.id
       self.last_4_digits = last_4_from_stripe_customer stripe_customer
       self.stripe_token = nil
+      self.active = last_4_digits.present?
     end
     stripe_customer
   end

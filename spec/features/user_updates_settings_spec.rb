@@ -25,13 +25,12 @@ feature 'user updates settings' do
   scenario 'updates credit card' do
     stripe_customer = Stripe::Customer.create
     user = create :user, customer_id: stripe_customer.id
-    card_token = StripeMock.generate_card_token(last4: "9191", exp_month: 99, exp_year: 3005)
 
     visit settings_path as: user.id
 
     click_link 'Change card'
 
-    find('input[data-id="stripe_token"]').set(card_token)
+    fill_in_fake_credit_card
 
     click_button 'Save'
 

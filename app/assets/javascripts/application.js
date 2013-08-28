@@ -24,3 +24,4 @@
 //= require concept_videos
 //= require billing
 //= require settings
+//= require modals

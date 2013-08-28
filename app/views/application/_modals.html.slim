@@ -1,0 +1,8 @@
+- if show_welcome_back_modal?
+  = modal title: 'Welcome Back!', id: 'welcome-back-modal', data: { show_on_load: true } do
+    p = t 'users.reactivate_message'
+
+    .modal-buttons
+      = link_to 'Update card', settings_path(anchor: 'billing'), class: 'button modal-button', data: { behavior: 'modal:continue' }
+
+= content_for :modal
