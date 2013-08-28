@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def upcoming_stripe_invoice
-    @stripe_invoice ||= Stripe::Invoice.upcoming customer: customer_id
+    @stripe_invoice ||= Stripe::Invoice.upcoming customer: customer_id rescue nil
   end
 
   def deactivate!
