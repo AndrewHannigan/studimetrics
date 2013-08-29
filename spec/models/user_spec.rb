@@ -131,12 +131,6 @@ describe User do
       expect(user).to_not be_active
     end
 
-    it 'sets last 4 digits to nil' do
-      user = User.new last_4_digits: 'asdf'
-      user.deactivate!
-      expect(user.last_4_digits).to be_nil
-    end
-
     it 'calls SubscriptionCanceler' do
       user = User.new
       SubscriptionCanceler.expects(:cancel)

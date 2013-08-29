@@ -2,8 +2,9 @@
 - body ||= nil
 - id ||= 'modal'
 - klass ||= 'modal'
+- data ||= {}
 
-div id="#{id}" class="reveal-modal #{klass}"
+= content_tag :div, id: id, class: "reveal-modal #{klass}", data: data
   = link_to 'x', '', class:'close-reveal-modal'
 
   .title

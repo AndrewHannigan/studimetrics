@@ -14,4 +14,8 @@ class NullUser
     false
   end
 
+  def active?
+    false
+  end
+
 end
