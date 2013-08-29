@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130827012113) do
+ActiveRecord::Schema.define(version: 20130829030540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,11 +63,15 @@ ActiveRecord::Schema.define(version: 20130827012113) do
   add_index "concept_videos", ["concept_id"], name: "index_concept_videos_on_concept_id", using: :btree
 
   create_table "concepts", force: true do |t|
-    t.string   "name",        null: false
-    t.integer  "subject_id",  null: false
+    t.string   "name",             null: false
+    t.integer  "subject_id",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.integer  "pdf_file_size"
+    t.datetime "pdf_updated_at"
   end
 
   create_table "focus_ranks", force: true do |t|
@@ -230,6 +234,7 @@ ActiveRecord::Schema.define(version: 20130827012113) do
     t.string   "state"
     t.string   "grade"
     t.integer  "college_id"
+    t.string   "profile_image"
     t.string   "profile_image_file_name"
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"

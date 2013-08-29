@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe Concept do
-  describe '.for_sidebar' do
+  describe '.filtered' do
     it 'gets a list of all concepts to display in the sidebar' do
       reading_subject = create :subject, name: 'Reading'
       concept1 = create :concept
       concept2 = create :concept, subject: reading_subject
       concept3 = create :concept, name: 'Vocabulary'
 
-      sidebar_concepts = Concept.for_sidebar
+      sidebar_concepts = Concept.filtered
       expect(sidebar_concepts).to include(concept1, concept3)
       expect(sidebar_concepts).to_not include(concept2)
     end
@@ -24,6 +24,12 @@ describe Concept do
 
       concept = Concept.new name: 'Neither/Nor & Either/Or'
       expect(concept.underscored_concept_name).to eq 'neither_nor_&_either_or'
+    end
+  end
+
+  describe 'pdf' do
+    it 'has one' do
+      expect(Concept).to have_attached_file(:pdf)
     end
   end
 end

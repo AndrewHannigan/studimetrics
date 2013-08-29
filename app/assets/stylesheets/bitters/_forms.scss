@@ -109,3 +109,7 @@ input[type="submit"]:not(.reset-style) {
   font-size: $form-font-size;
   padding: 0.7em 1.9em;
 }
+
+input[type="file"] {
+  margin-bottom: $base-line-height * .75;
+}
