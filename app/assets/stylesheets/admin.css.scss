@@ -8,6 +8,10 @@
 @import 'global';
 @import 'admin_dashboard';
 
+body, #main-container {
+  background: #fff;
+}
+
 #main-container {
   margin-top: 20px;
 }
