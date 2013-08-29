@@ -10,7 +10,9 @@ class Concept < ActiveRecord::Base
 
   ADDITIONAL_CONCEPTS_FOR_SIDEBAR = ['Vocabulary']
 
-  def self.for_sidebar
+  has_attached_file :pdf, path: "/:class/:attachment/:hash.:extension", hash_secret: "Uk2tEwMEsZ7gsh.WjzFC4jV26hzEdm!!"
+
+  def self.filtered
     concept = arel_table
     not_reading_subject_ids = Subject.not_reading.pluck(:id)
     where(concept[:subject_id].in(not_reading_subject_ids).or(concept[:name].in(ADDITIONAL_CONCEPTS_FOR_SIDEBAR))).order(:name)

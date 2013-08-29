@@ -15,4 +15,14 @@ describe ConceptHelper do
       expect(helper.concept_image(concept)).to include(helper.image_tag('concept_icons/default.png'))
     end
   end
+
+  describe '#concept_image_link' do
+    it 'returns a concept image wrapped in a link' do
+      helper.expects(:concept_image)
+      concept =  build_stubbed :concept
+
+      expect(helper.concept_image_link(concept)).to include('a href')
+      expect(helper).to have_received(:concept_image).with(concept)
+    end
+  end
 end
