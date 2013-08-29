@@ -1,5 +1,5 @@
 = simple_form_for ['admin', resource] do |f|
-  = f.association :concept, collection: Concept.all.to_a, include_blank: false
+  = f.association :concept, collection: Concept.order(:name), include_blank: false
   = f.input :video_link, label: 'Video ID'
   = f.input :caption
 

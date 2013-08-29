@@ -3,3 +3,5 @@ h6
   span = concept.name
 .videos
   = render(concept.concept_videos) || 'No videos yet.'
+- if concept.pdf.present?
+  = link_to 'View Passage', concept.pdf.url, target: :blank

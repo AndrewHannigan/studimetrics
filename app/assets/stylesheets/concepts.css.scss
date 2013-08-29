@@ -46,6 +46,7 @@
   }
 
   .video {
+    text-align: center;
 
     img {
       max-width: 100%;
@@ -91,4 +92,8 @@
     margin: 0;
     padding: 0;
   }
+}
+
+.view-passage-link {
+  text-align: center;
 }

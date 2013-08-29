@@ -3,7 +3,7 @@
 
   #concepts
     ul.concepts
-      = render Concept.all
+      = render Concept.filtered
 
 #concept-videos
   .back-link = link_to '&laquo; All Concepts'.html_safe, concepts_path
@@ -12,6 +12,10 @@
   - if @concept.description
     h4 = @concept.description
 
-  = render @concept.concept_videos
+  = render(@concept.concept_videos) || 'No videos yet.'
+
+  - if @concept.pdf.present?
+    .view-passage-link
+      = link_to 'View Passage', @concept.pdf.url, target: :blank
 
 = modal id: 'concept-video-modal', class: 'xlarge'
