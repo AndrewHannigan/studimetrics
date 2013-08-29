@@ -1,6 +1,6 @@
 class ConceptsController < ApplicationController
   def index
-    @concepts = Concept.all
+    @concepts = Concept.for_sidebar
   end
 
   def show
