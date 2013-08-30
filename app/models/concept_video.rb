@@ -1,5 +1,5 @@
 class ConceptVideo < ActiveRecord::Base
-  belongs_to :concept
+  belongs_to :concept, touch: true
   validates :video_link, presence: true
 
   delegate :name, to: :concept, prefix: true, allow_nil: true
