@@ -1,4 +1,5 @@
-- downcased_subject = subject.name.downcase
+- subject_name = subject.is_a?(String) ? subject : subject.name
+- downcased_subject = subject_name.downcase
 - if downcased_subject =~ /math/
   - icon_word = 'calculator'
 - elsif downcased_subject =~ /reading/
@@ -6,4 +7,4 @@
 - elsif downcased_subject =~ /writing/
   - icon_word = 'pencil'
 
-i class="ss-icon ss-symbolicons-block subject-icon hint--top hint--rounded" data-hint="#{subject.name}" = icon_word
+i class="ss-icon ss-symbolicons-block subject-icon hint--top hint--rounded" data-hint="#{subject_name}" = icon_word

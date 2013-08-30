@@ -40,4 +40,9 @@ Studimetrics::Application.configure do
       secret_access_key: ENV['S3_SECRET']
     }
   }
+
+  config.after_initialize do
+    Bullet.enable = false
+    Bullet.rails_logger = true
+  end
 end

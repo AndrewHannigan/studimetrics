@@ -15,6 +15,10 @@ class FocusRank < ActiveRecord::Base
       .where("id < #{self.id}").first
   end
 
+  def subject
+    Subject.joins(:concepts).where(concepts: {id: self.concept_id}).first
+  end
+
   def self.update_scores_for_concepts_and_user(concepts, user)
     concepts.each do |concept|
       focus_rank = self.where(concept: concept).where(user: user).new
@@ -109,8 +113,9 @@ class FocusRank < ActiveRecord::Base
   def self.targeted_concepts_for_user_and_subject(user, subject, limit=5)
     focus_ranks = FocusRank.unscoped.where(user: user)
       .where(concept_id: subject.concept_ids)
-      .select("distinct on (concept_id) concept_id, *")
-      .order("concept_id, id desc")
+      .joins(concept: :subject)
+      .select("distinct on (focus_ranks.concept_id) focus_ranks.concept_id, focus_ranks.*, subjects.name AS subject_name, concepts.name AS concept_name")
+      .order("concept_id, focus_ranks.id desc")
 
     ranks = focus_ranks.sort!{|x,y| y.score <=> x.score}
     ranks = ranks[0,limit] if limit
