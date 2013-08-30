@@ -1,7 +1,9 @@
-h6
-  = concept_image concept
-  span = concept.name
-.videos
-  = render(concept.concept_videos) || 'No videos yet.'
-- if concept.pdf.present?
-  = link_to 'View Passage', concept.pdf.url, target: :blank
+- cache concept.cache_key do
+  h6
+    = concept_image concept
+    span = concept.name
+  .videos
+    = render(concept.concept_videos) || 'No videos yet.'
+  - if concept.pdf.present?
+    = link_to 'View Passage', concept.pdf.url, target: :blank
+

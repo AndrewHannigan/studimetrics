@@ -5,6 +5,7 @@ class Concept < ActiveRecord::Base
   has_many :concept_videos
 
   validates :name, uniqueness: true, presence: true
+  scope :last_updated, ->{order("updated_at desc").first}
 
   delegate :name, to: :subject, prefix: true
 
