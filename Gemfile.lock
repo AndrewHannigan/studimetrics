@@ -80,6 +80,8 @@ GEM
     bourne (1.4.0)
       mocha (~> 0.13.2)
     builder (3.1.4)
+    bullet (4.3.1)
+      uniform_notifier
     capybara (2.1.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -350,6 +352,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.2.0)
     uuidtools (2.1.4)
     vimeo (1.5.3)
       httparty (>= 0.4.5)
@@ -374,6 +377,7 @@ DEPENDENCIES
   binding_of_caller
   bourbon
   bourne
+  bullet
   capybara
   clearance!
   cocoon!
