@@ -1,9 +1,9 @@
 tr.concept-progress data-id="focus_rank-#{focus_rank.id}"
   td.title
-    = concept_image_link focus_rank.concept
-    span.concept_name = focus_rank.concept_name
+    = concept_image underscored_name(focus_rank.attributes["concept_name"])
+    span.concept_name = focus_rank.attributes["concept_name"]
   td.subject
-    = subject_icon focus_rank.concept.subject
+    = subject_icon focus_rank.subject_name
   td.position
     = focus_rank_position(focus_rank)
   td.accuracy

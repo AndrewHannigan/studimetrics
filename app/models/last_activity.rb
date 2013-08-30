@@ -10,6 +10,12 @@ class LastActivity
     @section ||= section_completion.try(:section)
   end
 
+  def practice_test
+    @practice_test ||= PracticeTest.joins(sections: {section_completions: :user_responses})
+                                      .where(section_completions: {user_id: user.id})
+                                      .order("user_responses.updated_at desc").first
+  end
+
   private
 
     def section_completion

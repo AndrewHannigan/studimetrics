@@ -36,5 +36,6 @@ Studimetrics::Application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost' }
 
   config.middleware.use Clearance::BackDoor
+  config.cache_store = :null_store
 end
 
