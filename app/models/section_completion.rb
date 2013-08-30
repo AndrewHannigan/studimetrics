@@ -14,6 +14,7 @@ class SectionCompletion < ActiveRecord::Base
 
   scope :math, -> { joins(section: :subject).where(subjects: { name: 'Math'}) }
   scope :reading, -> { joins(section: :subject).where(subjects: { name: 'Critical Reading'}) }
+  scope :critical_reading, -> { joins(section: :subject).where(subjects: { name: 'Critical Reading'}) }
   scope :writing, -> { joins(section: :subject).where(subjects: { name: 'Writing'}) }
 
   STATUS = ["Completed", "In-Progress", "Not Started"]

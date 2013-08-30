@@ -17,7 +17,8 @@ module ProfileHelper
   end
 
   def display_target_concepts
-    target_concepts = FocusRank.target_concepts_for_user(current_user).collect(&:concept)
+    target_concept_ids = FocusRank.target_concepts_for_user(current_user).collect(&:concept_id)
+    target_concepts = Concept.where(id: target_concept_ids)
     render "profiles/target_concepts", target_concepts: target_concepts
   end
 end

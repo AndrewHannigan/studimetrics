@@ -1,3 +1,4 @@
+- statistic = Statistic.new(current_user)
 .profile-block.question-accuracy
   h4 Question Accuracy
   .test-graph-wrapper
@@ -28,6 +29,6 @@
         .points-legend points
 
       javascript:
-        var mathSectionCompletionAccuracies = #{{current_user.section_completions.math.map(&:accuracy).to_json}};
-        var readingSectionCompletionAccuracies = #{{current_user.section_completions.reading.map(&:accuracy).to_json}};
-        var writingSectionCompletionAccuracies = #{{current_user.section_completions.writing.map(&:accuracy).to_json}};
+        var mathSectionCompletionAccuracies = #{{statistic.accuracy_for_subject_per_section_completion(math).to_json}};
+        var readingSectionCompletionAccuracies = #{{statistic.accuracy_for_subject_per_section_completion(reading).to_json}};
+        var writingSectionCompletionAccuracies = #{{statistic.accuracy_for_subject_per_section_completion(writing).to_json}};

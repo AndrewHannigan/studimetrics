@@ -8,7 +8,7 @@
     - grouped_focus_ranks = FocusRank.grouped_current_stats(current_user, 5)
     -  grouped_focus_ranks.each do |group|
          - next if group.empty?
-         h4 = group.first.concept.subject_name
+         h4 = group.first.subject.name
          table.concept-progress
           th.title
             = t "profile.concept_progress.title"

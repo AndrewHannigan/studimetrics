@@ -47,7 +47,9 @@ class User < ActiveRecord::Base
   end
 
   def total_seconds_studied
-   section_completions.sum(:section_time).to_f
+    Rails.cache.fetch("user_#{self.id}_total_seconds_studied") do
+      section_completions.sum(:section_time).to_f
+    end
   end
 
   def has_watched_concept_video?(concept_video)
