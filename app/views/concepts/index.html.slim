@@ -1,13 +1,15 @@
 - content_for :sidebar do
   = sidebar_home_link
 
-  #concepts
-    ul.concepts
-      = render @concepts
+  - cache ["concept_list", Concept.last_updated.cache_key] do
+    #concepts
+      ul.concepts
+        = render @concepts
 
-#concept-videos
-  h3 Concept Videos - Learn by Example
+- cache ["concept_videos", Concept.last_updated.cache_key] do
+  #concept-videos
+    h3 Concept Videos - Learn by Example
 
-  = render partial: 'concept_videos', collection: @concepts, as: 'concept'
+    = render partial: 'concept_videos', collection: @concepts, as: 'concept'
 
 = modal id: 'concept-video-modal', class: 'xlarge'
