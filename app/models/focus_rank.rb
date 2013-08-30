@@ -83,11 +83,13 @@ class FocusRank < ActiveRecord::Base
   end
 
   def self.grouped_current_stats(user, limit=5)
-    list = []
-    Subject.all.each do |subj|
-      list << FocusRank.targeted_concepts_for_user_and_subject(user, subj, limit)
+    Rails.cache.fetch("focus_rank_grouped_stats_for_user_#{user.id}") do
+      list = []
+      Subject.all.each do |subj|
+        list << FocusRank.targeted_concepts_for_user_and_subject(user, subj, limit)
+      end
+      list
     end
-    list
   end
 
   def self.current_stats_for_user(user, limit=5)
