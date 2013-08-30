@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def reading
-    @reading ||= Subject.where(name: "Critical Reading").first
+    @reading ||= Subject.where(name: "Reading").first
   end
 
   def writing

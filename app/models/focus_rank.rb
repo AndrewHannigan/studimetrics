@@ -1,5 +1,5 @@
 class FocusRank < ActiveRecord::Base
-  AVERAGE_RESPONSE_TIME = {"Math" => 20, "Critical Reading" => 30, "Writing" => 25}
+  AVERAGE_RESPONSE_TIME = {"Math" => 20, "Reading" => 30, "Writing" => 25}
   THRESHOLD = 0.30
   DISPLAY_LIMIT = 10
   TARGET_CONCEPT_LIMIT = 3
