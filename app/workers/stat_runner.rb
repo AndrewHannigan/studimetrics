@@ -25,6 +25,7 @@ class StatRunner
     end
 
     def fill_cache_for_focus_ranks(user)
+      Rails.cache.delete("focus_rank_grouped_stats_for_user_#{user.id}")
       FocusRank.grouped_current_stats(user, 5)
     end
 
