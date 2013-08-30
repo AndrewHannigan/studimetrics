@@ -58,7 +58,7 @@ describe FocusRank do
     it "returns subject with greatest frequency in top 5" do
       user = create :user
       math = create :subject, name: "Math"
-      reading = create :subject, name: "Critical Reading"
+      reading = create :subject, name: "Reading"
       writing = create :subject, name: "Writing"
 
       score = 10
@@ -84,7 +84,7 @@ describe FocusRank do
     it "returns concepts at most top 3 concepts for target subject" do
       user = create :user
       math = create :subject, name: "Math"
-      reading = create :subject, name: "Critical Reading"
+      reading = create :subject, name: "Reading"
       writing = create :subject, name: "Writing"
 
       score = 10

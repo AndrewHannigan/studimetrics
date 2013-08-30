@@ -13,7 +13,7 @@ feature 'user visits profile' do
     user = create :user
 
     math = create :subject, name: "Math"
-    critical_reading = create :subject, name: "Critical Reading"
+    critical_reading = create :subject, name: "Reading"
 
     algebra = create :concept, name: "Algebra", subject_id: math.id
     arithmetic = create :concept, name: "Arithmetic", subject_id: math.id
@@ -42,7 +42,7 @@ feature 'user visits profile' do
     user = create :user
 
     math = create :subject, name: "Math"
-    critical_reading = create :subject, name: "Critical Reading"
+    critical_reading = create :subject, name: "Reading"
 
     algebra = create :concept, name: "Algebra", subject_id: math.id
     arithmetic = create :concept, name: "Arithmetic", subject_id: math.id

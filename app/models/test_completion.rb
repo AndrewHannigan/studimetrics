@@ -24,7 +24,7 @@ class TestCompletion < ActiveRecord::Base
 
   def critical_reading_score
     return nil unless completed?
-    ConversionTable.converted_score("CR", raw_critical_reading_score.ceil)
+    ConversionTable.converted_score("R", raw_critical_reading_score.ceil)
   end
 
   def writing_score

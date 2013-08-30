@@ -1,6 +1,6 @@
 class CompositeScore < ActiveRecord::Base
   RECENT_QUESTIONS = 15
-  AVERAGE_QUESTIONS_FOR_SUBJECT = {"Math" => 54, "Critical Reading" => 67, "Writing" => 49}
+  AVERAGE_QUESTIONS_FOR_SUBJECT = {"Math" => 54, "Reading" => 67, "Writing" => 49}
   attr_accessor :pre_correction_score
 
   belongs_to :user

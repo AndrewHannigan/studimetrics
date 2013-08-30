@@ -10,7 +10,7 @@ class Importer
 
       puts "creating subjects"
       subjects = []
-      ["Math", "Critical Reading", "Writing"].each_with_index do |subject, i|
+      ["Math", "Reading", "Writing"].each_with_index do |subject, i|
         subjects << Subject.create!(name: subject, ordinal: i+1)
       end
 

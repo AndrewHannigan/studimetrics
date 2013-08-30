@@ -7,7 +7,7 @@ feature "User taking practice test" do
 
       User.any_instance.stubs(:has_responses?).returns(true)
 
-      subj = create :subject, name: "Critical Reading"
+      subj = create :subject, name: "Reading"
       section = create :section, subject: subj
 
       visit practice_tests_path as: user.id
