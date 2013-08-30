@@ -6,7 +6,7 @@ feature 'user logs in' do
     user = create :user
 
     math = create :subject, name: "Math"
-    critical_reading = create :subject, name: "Critical Reading"
+    critical_reading = create :subject, name: "Reading"
     writing = create :subject, name: "Writing"
 
     math_composite_score = create :composite_score, subject: math, user: user
@@ -15,7 +15,7 @@ feature 'user logs in' do
 
     ConversionTable.stubs(:converted_score).with("M", 0).returns(500)
     ConversionTable.stubs(:converted_score).with("W", 0).returns(600)
-    ConversionTable.stubs(:converted_score).with("CR", 0).returns(700)
+    ConversionTable.stubs(:converted_score).with("R", 0).returns(700)
 
     visit profile_path as: user.id
 

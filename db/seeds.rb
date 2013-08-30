@@ -52,7 +52,7 @@ writing_concept = {concepts: []}
 writing_concept[:concepts] << Concept.create(subject: writing_subject, name: "Elements of Writing")
 writing_concept[:concepts] << Concept.create(subject: writing_subject, name: "Misplaced Modifiers")
 
-reading_subject = Subject.create!(name: "Critical Reading", ordinal: 2)
+reading_subject = Subject.create!(name: "Reading", ordinal: 2)
 reading_concept = {concepts: []}
 
 reading_concept[:concepts] << Concept.create(subject: reading_subject, name: "Comprehension")
