@@ -11,4 +11,10 @@ describe ConceptVideo do
       end
     end
   end
+
+  describe 'pdf' do
+    it 'has one' do
+      expect(ConceptVideo).to have_attached_file(:pdf)
+    end
+  end
 end

@@ -10,6 +10,6 @@ class Admin::ConceptsController < AdminController
   private
 
   def permitted_params
-    params.permit(:concept => [:name, :subject_id, :description, :pdf])
+    params.permit(:concept => [:name, :subject_id, :description])
   end
 end

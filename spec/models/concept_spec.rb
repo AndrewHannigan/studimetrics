@@ -27,9 +27,4 @@ describe Concept do
     end
   end
 
-  describe 'pdf' do
-    it 'has one' do
-      expect(Concept).to have_attached_file(:pdf)
-    end
-  end
 end

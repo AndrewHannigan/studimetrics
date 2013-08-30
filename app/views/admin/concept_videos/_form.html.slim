@@ -2,5 +2,6 @@
   = f.association :concept, collection: Concept.order(:name), include_blank: false
   = f.input :video_link, label: 'Video ID'
   = f.input :caption
+  = f.input :pdf
 
   = f.button :submit
