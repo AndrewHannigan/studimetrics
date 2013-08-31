@@ -25,3 +25,4 @@
 //= require billing
 //= require settings
 //= require modals
+//= require tabs

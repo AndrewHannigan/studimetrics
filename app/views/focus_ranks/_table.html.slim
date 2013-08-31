@@ -1,23 +1,15 @@
 .focus-rank-table.profile-block
-  h4 Concepts by FocusRank and Subject
+  h4 FocusRank&trade;
 
   - if focus_ranks.length == 0
     = render 'focus_ranks/welcome_message'
 
   - else
     - grouped_focus_ranks = FocusRank.grouped_current_stats(current_user, 5)
-    -  grouped_focus_ranks.each do |group|
-         - next if group.empty?
-         h4 = group.first.subject.name
-         table.concept-progress
-          th.title
-            = t "profile.concept_progress.title"
-          th
-            = t "profile.concept_progress.subject"
-          th
-            = t "profile.concept_progress.focus_rank"
-          th
-            = t "profile.concept_progress.accuracy"
-          th
-            = t "profile.concept_progress.progress"
-          = render group
+    ul.tabs
+      - grouped_focus_ranks.each do |group|
+        - subject_name = group.first.subject_name
+        li
+          a href="##{subject_name}" = subject_name
+
+    = render partial: 'focus_ranks/tab_content', collection: grouped_focus_ranks, as: :group
