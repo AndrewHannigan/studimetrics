@@ -33,7 +33,7 @@ en:
     learn_about_focusrank_body_html: '<p>The FocusRank&trade; feature moves beyond just identifying your strengths and weaknesses. It runs individual performance data points through a dynamic algorithm to rank the importance of each concept.</p><p>In other words, it tells you where you can gain the most points in the shortest amount of time.</p>'
     concept_progress:
       no_focus_rank_message: "As you complete sections in a %{practice_test_link}, the concepts you need to focus on will appear here."
-      title: "concepts"
+      title: "Concepts"
       subject: "Subject"
       accuracy: "Accuracy"
       frequency: "Frequency"

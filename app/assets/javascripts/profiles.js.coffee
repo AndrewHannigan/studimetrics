@@ -16,6 +16,7 @@ pageLoaded = ->
   setupAccuracyGraphs()
   setupPercentileBars()
   setupCollegeTypeahead()
+  $('ul.tabs').tabs()
 
 setupCollegeTypeahead = ->
   $('#user_college_id').typeahead
