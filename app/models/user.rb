@@ -73,6 +73,10 @@ class User < ActiveRecord::Base
     last_4_digits.present?
   end
 
+  def score_report_recipients
+    ScoreReportEmail.recipients_for_user self
+  end
+
   private
 
   def create_or_update_stripe_customer
