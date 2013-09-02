@@ -1,7 +1,7 @@
 $ ->
   $(document).on 'click', '.change-card-link', toggleCreditCardForm
   $(document).on 'click', '[data-modal-confirm-id]', showConfirmModal
-  $(document).on 'keyup', '#score_report_emails', addScoreReportEmail
+  $(document).on 'keydown', '#score_report_emails', addScoreReportEmail
   $(document).on 'click', '.score-report-remove-link', removeScoreReportEmailFromPage
 
 toggleCreditCardForm = (event) ->
@@ -23,6 +23,7 @@ showConfirmModal = (event) ->
 addScoreReportEmail = (event) ->
   if event.which == 13
     event.preventDefault()
+    event.stopImmediatePropagation()
     $('#score-report-subscriptions li.none').detach()
 
     $.ajax
@@ -30,6 +31,8 @@ addScoreReportEmail = (event) ->
       dataType: 'script'
       url: 'score_report_emails'
       type: 'POST'
+
+    return false
 
 removeScoreReportEmailFromPage = (event) ->
   event.preventDefault()

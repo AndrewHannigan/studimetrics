@@ -56,6 +56,10 @@ Studimetrics::Application.routes.draw do
     get '/', to: 'profiles#show'
   end
 
+  if Rails.env.development?
+    mount MailPreview => 'mail_preview'
+  end
+
   root :to => 'high_voltage/pages#show', :id => 'home'
 
 end

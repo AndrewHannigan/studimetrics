@@ -143,10 +143,10 @@ describe User do
   describe '#score_report_emails' do
     it 'calls ScoreReportEmail' do
       user = User.new
-      ScoreReportEmail.expects(:recipients_for_user)
+      ScoreReportEmail.any_instance.expects(:recipients)
       user.score_report_recipients
 
-      expect(ScoreReportEmail).to have_received(:recipients_for_user).with(user)
+      expect(ScoreReportEmail.any_instance).to have_received(:recipients)
     end
   end
 

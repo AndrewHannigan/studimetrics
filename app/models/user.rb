@@ -74,7 +74,7 @@ class User < ActiveRecord::Base
   end
 
   def score_report_recipients
-    ScoreReportEmail.recipients_for_user self
+    ScoreReportEmail.new(self).recipients
   end
 
   private
