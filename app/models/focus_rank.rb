@@ -38,17 +38,19 @@ class FocusRank < ActiveRecord::Base
   end
 
   def self.target_subject_for_user(user)
-    target = nil
-    max_score = 0
-    Subject.all.each do |subj|
-      score = self.targeted_concepts_for_user_and_subject(user, subj).collect{|fr| fr.score}.inject(:+)
-      next unless score
-      if score > max_score
-        max_score = score
-        target = subj
+    Rails.cache.fetch("target_subject_for_user_#{user.id}") do
+      target = nil
+      max_score = 0
+      Subject.all.each do |subj|
+        score = self.targeted_concepts_for_user_and_subject(user, subj).collect{|fr| fr.score}.inject(:+)
+        next unless score
+        if score > max_score
+          max_score = score
+          target = subj
+        end
       end
+      target
     end
-    target
   end
 
   def self.sorted_stats_by_user_by_score(user)
