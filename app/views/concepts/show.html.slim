@@ -14,8 +14,5 @@
 
   = render(@concept.concept_videos) || 'No videos yet.'
 
-  - if @concept.pdf.present?
-    .view-passage-link
-      = link_to 'View Passage', @concept.pdf.url, target: :blank
 
 = modal id: 'concept-video-modal', class: 'xlarge'

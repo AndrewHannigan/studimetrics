@@ -21,5 +21,8 @@ table
     td Concept
     td = resource.concept_name
   tr
+    td PDF
+    td = resource.pdf.present? ? link_to('View Passage', resource.pdf.url, target: :blank, class: "view-passage-link") : "None"
+  tr
     td Created At
     td = resource.created_at
