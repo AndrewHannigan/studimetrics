@@ -42,6 +42,17 @@
       = f.association :college, label: 'Selected college', as: :string, input_html: { value: current_user.college_name }
       = f.input :college_id, as: :hidden, input_html: { id: 'hidden-college-id' }
 
+    fieldset
+      a name="score-reports"
+      h5 Score Reports
+      p These people will get an email summary when you complete a test. #{link_to 'View Sample', '', class: 'change-link'}
+
+      ul#score-report-subscriptions
+        == (render partial: 'score_report_recipient', collection: ScoreReportEmail.new(current_user).recipients, as: :email) || "<li class='none'>#{t 'settings.score_report_emails.none'}</li>"
+
+      = f.input :score_report_emails, label: 'Add another email' do
+        = text_field_tag :score_report_emails, nil, name: nil
+
     = f.button :submit, 'Save'
 
 = link_to 'Cancel Account', '', id: 'cancel-account-link', data: { modal_confirm_id: 'confirm-modal' }

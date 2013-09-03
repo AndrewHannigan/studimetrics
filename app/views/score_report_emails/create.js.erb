@@ -1,0 +1,6 @@
+<% if @score_report_email.errors.present? %>
+  alert('there was a problem with the email');
+<% else %>
+  $('#score-report-subscriptions').append("<%= escape_javascript render('settings/score_report_recipient', email: @score_report_email.email) %>");
+  $('#score_report_emails').val('');
+<% end %>
