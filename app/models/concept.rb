@@ -11,7 +11,6 @@ class Concept < ActiveRecord::Base
 
   ADDITIONAL_CONCEPTS_FOR_SIDEBAR = ['Vocabulary']
 
-  has_attached_file :pdf, path: "/:class/:attachment/:hash.:extension", hash_secret: "Uk2tEwMEsZ7gsh.WjzFC4jV26hzEdm!!"
 
   def self.filtered
     concept = arel_table

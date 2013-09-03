@@ -16,8 +16,5 @@ table
     td Description
     td = resource.description
   tr
-    td PDF
-    td = resource.pdf.present? ? link_to('View', resource.pdf.url, target: :blank) : 'None'
-  tr
     td Created At
     td = resource.created_at
