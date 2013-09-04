@@ -17,6 +17,8 @@ Studimetrics::Application.routes.draw do
     end
   end
 
+  resources :score_report_emails, only: [:create, :destroy]
+
   resources :colleges, only: [:index]
   resources :sections, only: [:show]
   resources :section_completions, only: [:new, :create, :update, :show]
@@ -52,6 +54,10 @@ Studimetrics::Application.routes.draw do
 
   constraints Clearance::Constraints::SignedIn.new do
     get '/', to: 'profiles#show'
+  end
+
+  if Rails.env.development?
+    mount MailPreview => 'mail_preview'
   end
 
   root :to => 'high_voltage/pages#show', :id => 'home'
