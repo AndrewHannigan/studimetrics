@@ -1,16 +1,68 @@
+- content_for(:extra_body_classes, 'landing-page')
+
 #feature
-  .info
-    h1
-      | Take control. <br/>
-        <span class="highlight">Trust your brain.</span><br/>
-        Own the SAT.
-    
-    p We are studimetrics, a revolutionary supplementary SAT tool that uses proprietary dynamic analytics software and a collaboration platform to help all students find their own path to success on the SAT.
-  
-    .feature-links
-      /= link_to 'Learn More', '', class: 'button'
-      = link_to 'Try It Out', sign_up_path, class: 'button'
+  #boost
+    h1 Simply the <span class="highlight">fastest</span> way to boost your SAT score
 
+    p Discover studimetrics, a powerful analytics engine that makes preparing for the SAT simple and efficient.
 
-  .graphic
-    = image_tag 'brain.gif'
+    = link_to 'Subscribe Now', sign_up_path, id: 'big-button', class: 'button'
+
+#bullets
+  .container
+    .bullet
+      h4 Focus on what's important.
+      p We don’t just stop at figuring out your strengths and weaknesses. We’ve engineered an advanced algorithm called <a href="">FocusRank™</a> that tells you what to study so you can earn the most points in the shortest amount of time.
+    .bullet
+      h4 No fluff. Just data.
+      p Everything we do or suggest is always backed by data from you. We continuously collect information and create useful summaries so you can see how you’re doing at a glance.
+    .bullet
+      h4 Learn by doing.
+      p Access hundreds of example problems specifically designed to help you learn the ins-and-outs of every concept. Each problem comes with a comprehensive step-by-step solutions video.
+    .bullet
+      h4 Genuine questions.
+      p All of our questions come from College Board’s Official SAT Study Guide (2nd Edition) because they are closest to what you’ll face on the actual exam. You’ll <a href="">need your own copy</a> to use our program.
+
+#pricing
+  .container
+    .price-block
+      h2 $9
+      h5 per month
+
+      ul
+        li.ss-check Analytics engine
+        li.ss-check 1500+ questions
+        li.ss-check 60 hours of lessons
+
+    .bottom-subscribe-block
+      h5 We know the stakes are high but preparing for the SAT isn’t rocket science. So pay a price that doesn’t take advantage of how important this is to you.
+      = link_to 'Subscribe Now', sign_up_path, id: 'big-button', class: 'button dark-gray'
+
+#screenshots.container
+  .screenshot
+    = image_tag 'landing/focusrank.png'
+    .description 
+      h3 See what you need to focus on.
+      p FocusRank&trade; will show you the items you need to work on the most, along with the trend. Watch it improve with every test.
+      p Not doing so well in writing? Click through to concept videos before taking your next test.
+
+  .screenshot
+    .description 
+      h3 Dont just get the answer, learn how to think.
+      p Each concept has one more more videos associated it, that will teach you step-by-step how to answer specific types of questions.
+      p Even better, these are linked straight from your FocusRank&trade; concepts, giving you a quick feedback loop to success.
+    = image_tag 'landing/concept_videos.png'
+
+  .screenshot
+    = image_tag 'landing/profile1.png'
+    .description 
+      h3 See it all on your profile.
+      p How do you stack up against that college you want to apply for? How much time do you have before your next SAT test? What subject should you focus on the most?
+      p All this and more, right when you log in.
+
+  .screenshot
+    .description 
+      h3 Easy to take tests, full of features.
+      p Highlight questions that correspond to your FocusRank&trade;. See exactly how long you're spending on the section as you go.
+      p For questions that require reading a passage, we even have a separate timer so you can see how much of your time you spend reading.
+    = image_tag 'landing/practice_test.png'

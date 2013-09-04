@@ -21,8 +21,8 @@ header {
   .bar {
     @include clearfix;
     padding: 10px;
-    background: $red;
-    border-bottom: 1px solid $gray;
+    @include linear-gradient(tint($red, 12%), $red);
+    border-bottom: 1px solid shade($red, 30%);
 
     a {
       color: $almost-white;
@@ -312,5 +312,64 @@ a.learn-more {
     background: $blue;
     color: $almost-white;
     font-weight: bold;
+  }
+}
+
+#footer {
+  padding: 18px;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  p.note {
+    text-align: center;
+    font-size: 11px;
+    margin-top: 32px;
+  }
+
+  .info {
+    @include span-columns(3);
+    color: shade($almost-white, 10%);
+
+    h3 {
+      color: $almost-white;
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+
+  .misc {
+    @include span-columns(3);
+    @include omega;
+
+    h5 {
+      margin-bottom: 24px;
+      font-size: 1em;
+      line-height: 1.2rem;
+    }
+
+    h6 {
+      line-height: 1rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  ul.nav {
+    @include span-columns(6);
+    margin-top: 0;
+    margin-left: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+
+    li {
+      width: 70px;
+      border: 1px solid #555;
+      text-align: center;
+      padding: 4px;
+      display: inline-block;
+      margin: 0 8px 8px;
+    }
   }
 }
