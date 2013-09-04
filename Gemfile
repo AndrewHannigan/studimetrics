@@ -41,6 +41,7 @@ gem 'aws-sdk', '~> 1.5.7'
 gem 'active_model_serializers'
 gem 'vimeo'
 gem 'stripe'
+gem 'mail_view'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -55,7 +56,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
-  gem 'mail_view'
 end
 
 group :development, :test do
