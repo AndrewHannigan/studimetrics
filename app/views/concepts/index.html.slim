@@ -1,12 +1,12 @@
 - content_for :sidebar do
   = sidebar_home_link
 
-  - cache ["concept_list", Concept.last_updated.cache_key] do
+  - cache ["concept_list", Concept.last_updated] do
     #concepts
       ul.concepts
         = render @concepts
 
-- cache ["concept_videos", Concept.last_updated.cache_key] do
+- cache ["concept_videos", Concept.last_updated] do
   #concept-videos
     h3 Concept Videos - Learn by Example
 

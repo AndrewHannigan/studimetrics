@@ -1,7 +1,11 @@
-- cache concept_video.cache_key do
-  = concept_video_link concept_video do
-    div.video
+- cache concept_video do
+  div.video
+    = concept_video_link concept_video do
       = image_tag concept_video.large_thumbnail
-      .caption 
+
+      .caption
         span.watched-indicator •
         span = concept_video.caption
+
+      - if concept_video.pdf.present?
+        div = link_to 'View Passage', concept_video.pdf.url, target: :blank
