@@ -1,7 +1,18 @@
 class UsersController < Clearance::UsersController
+  def create
+    @user = user_from_params
+    if @user.save
+      sign_in @user
+      SignupMailer.delay.added(@user.id)
+      redirect_back_or url_after_create
+    else
+      render :template => 'users/new'
+    end
+  end
 
   def deactivate
     if current_user.deactivate!
+      SignupMailer.delay.removed(current_user.id)
       sign_out
       flash_success_during_deactivate
       redirect_to url_after_destroy
