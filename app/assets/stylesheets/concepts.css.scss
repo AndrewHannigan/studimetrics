@@ -39,7 +39,7 @@
     @include clearfix;
     margin-bottom: $gutter;
 
-    a {
+    .video {
       @include span-columns(3 of 9);
       @include omega(3n);
     }
@@ -47,6 +47,7 @@
 
   .video {
     text-align: center;
+    margin-bottom: 24px;
 
     img {
       max-width: 100%;
@@ -58,6 +59,7 @@
     .caption {
       text-align: center;
       padding-bottom: 4px;
+      display: block;
 
       span {
         display: inline-block;
@@ -73,14 +75,14 @@
     }
   }
 
-  .unwatched {
-    .video {
+  .video {
+    .unwatched {
       color: #333;
-    }
 
-    .caption {
-      .watched-indicator {
-        display: inline-block;
+      .caption {
+        .watched-indicator {
+          display: inline-block;
+        }
       }
     }
   }
