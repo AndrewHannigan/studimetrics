@@ -1,0 +1,109 @@
+#faq
+  h2
+    ' Frequently Asked Questions
+  #faq_menu
+    = link_to("Account", {}, data: {anchor: "account"}, class: "faq_link active")
+    = link_to("Learn By Doing", {}, data: {anchor: "learn_by_doing"}, class: "faq_link")
+    = link_to("FocusRank™", {}, data: {anchor: "focus_rank"}, class: "faq_link")
+    = link_to("No Fluff. Just Data.", {}, data: {anchor: "no_fluff"}, class: "faq_link")
+    = link_to("Genuine Questions", {}, data: {anchor: "genuine_questions"}, class: "faq_link last")
+
+  hr
+
+  #account.faq_section.active
+    .question
+      ' How do I edit my profile?
+    .answer
+      p Click on #{link_to("settings", settings_path)} to edit your profile. You can change your basic information like name, email, location, and grade.
+
+    .question
+      ' Can I cancel my subscription?
+    .answer
+      p You can cancel your subscription whenever you want. To cancel:
+      ul
+        li
+          | Select #{link_to("settings", settings_path)}
+        li
+          | Select "Cancel account"
+        li
+          | Confirm your decision with OK
+      p Your account information will be saved in case you want to come back. When you cancel your subscription, your account will remain active until the end of the monthly billing cycle.
+
+    .question
+      ' What are weekly performance updates?
+    .answer
+      p We send automatic weekly performance updates via email to anyone you want. The performance update is not a report card-- it’s a simplified version of your profile page to keep anyone interested in your progress informed.
+      p If you’d rather keep things private, just delete all recipients on your Update list.
+
+    .question
+      ' Can I reset my data?
+    .answer
+      p Unfortunately, we don’t allow you to reset your data because many of our algorithms depend on performance data from all users to make recommendations. If we allowed for users to reset, important factors like average time and difficulty would get wacky.
+      p Our review feature does let you retake sections and provides summary analysis without it counting towards your overall performance data.
+
+  #learn_by_doing.faq_section.hidden
+    .question
+      ' What are concept videos?
+    .answer
+      p Concept videos are engineered to help you learn by doing rather than through boring lectures. Each video contains a practice problem that tests you on a specific aspect of any given concept. It gives you time to attempt the problem on your own and provides a detailed solution to fill in anything that you might have missed. We add new videos everyday.
+
+    .question
+      ' Why no solutions to specific questions?
+    .answer
+      p You never step in the same river twice and you never see the same questions twice. A solution to one specific question will not necessarily help you solve the next one. Every concept video we have is designed to teach you how to think, not what to think.
+
+    .question
+      'Can I download the videos?
+    .answer
+      p No, you can’t download the videos at this time but they are available for streaming. You can find all of our videos on our site, Youtube and Vimeo for free!
+
+  #focus_rank.faq_section.hidden
+    .question
+      ' What is FocusRank?
+    .answer
+      p FocusRank is an advanced algorithm that moves beyond just identifying your strengths and weaknesses. It’s uses your performance data along with numerous test statistics to rank concepts based on importance. In other words, it shows you which concepts to work on to get the most points as quickly as possible.
+
+    .question
+      ' How does it work?
+    .answer
+      p We can’t show you the exact algorithm since it’s our secret sauce but here’s the basic idea: FocusRank uses multiple data points to calculate each concept’s level of importance. Based on your individual performance data, FocusRank is able to create an ordered list of concepts to study to maximize the number of points you earn in the shortest amount of time.
+      p So for example, if you’re having trouble with one particular concept but it doesn’t show up on actual exams often or your particular learning pattern isn’t compatible, we direct you to other concepts that will help you get the most out of your study time.
+      p The best part about FocusRank is that it adapts after every question you answer. If you make big improvements on a top-ranked concept, the analytics engine will adjust to show you new concepts to master. This way, you’ll never be stuck and always keep improving.
+
+    .question
+      ' What’s the future of FocusRank?
+    .answer
+      p There is always room for improvement. Our statisticians and codemonkeys are always tweaking the algorithm to help FocusRank make better recommendations for all of our users.
+
+  #no_fluff.faq_section.hidden
+    .question
+      ' Why is data important?
+    .answer
+      p Coming soon.
+
+    .question
+      ' What kind of data do we track?
+    .answer
+      p Yes! Once you’re done with a section and submit your answers, you are redirected to the section review page. You’ll get to see the correct answers, concepts for each question, and a list of problems that you have been frequently missing.
+      p Want to retake a question? Our review feature allows you to retake sections and provides summary analysis without affecting your first scores.
+
+  #genuine_questions.faq_section.hidden
+    .question
+      ' What is it?
+    .answer
+      p The Official SAT Study Guide, also called the “Blue Book,” is the only study guide that’s published by the testmaker, College Board. It is the best source of practice questions because it’s closest to what you’ll face on the actual exam. We use the 2nd Edition for our program.
+
+    .question
+      ' Do I need a copy?
+    .answer
+      p You will need your own copy of the “Blue Book” to use our program. Our answer sheets are organized around the 10 practice tests found in the “Blue Book.” For example, Test 3 in our program is Test 3 in the Blue Book.
+
+    .question
+      ' Why use the Blue Book?
+    .answer
+      p We chose to use the Blue Book as our source of questions because it’s the best there is. College Board goes through a rigorous and painstaking process based on decades of research to create new questions, a process that other companies can’t replicate. Instead, studimetrics will help you get the most out of the Blue Book-- just one book, one program, and you’re ready to crush the SAT!
+
+    .question
+      ' Are we related to College Board?
+    .answer
+      p We are not affiliated with College Board in any way.

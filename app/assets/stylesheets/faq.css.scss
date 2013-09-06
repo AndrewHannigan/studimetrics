@@ -1,0 +1,71 @@
+#faq {
+  margin: 0 auto;
+  padding: 20px 0;
+  @include clearfix;
+
+  .links {
+    @include span-columns(12);
+  }
+
+  h1 {
+    font-size: 3em;
+    line-height: 1.1em;
+
+    .highlight {
+      color: $red;
+    }
+  }
+
+  h2 {
+    color: rgb(116, 157, 144);
+  }
+
+  hr {
+    color: rgb(116, 157, 144);
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .question {
+    color: $red;
+    font-size: 1.1em;
+    margin-bottom:0;
+  }
+
+  .answer {
+    margin-bottom:25px;
+  }
+
+  .faq_section {
+
+  }
+
+  .active {
+  }
+  .hidden {
+    display:none;
+  }
+  .faq_link {
+    padding-right:10px;
+    font-size: 1.2em;
+    margin-right: 10px;
+    border-right: 2px solid #eee;
+  }
+
+  #faq_menu {
+    margin-bottom: 20px;
+  }
+
+  .last {
+    border-right: none;
+  }
+
+  a:hover {
+    color: $red;
+  }
+  a.active {
+    color: $red;
+  }
+}

@@ -26,3 +26,4 @@
 //= require settings
 //= require modals
 //= require tabs
+//= require faq
