@@ -49,3 +49,21 @@
   border-radius: 8px;
   display: inline-block;
 }
+
+#score_report_emails {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+#add_score_report_email_button {
+  vertical-align: middle;
+  display: inline-block;
+  background: #eee;
+  color: #999;
+  padding: 4px 10px;
+  font-size: 12px;
+  border: 1px solid #bbb;
+  border-bottom: 2px solid #aaa;
+}
