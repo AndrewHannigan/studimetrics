@@ -2,6 +2,7 @@ $ ->
   $(document).on 'click', '.change-card-link', toggleCreditCardForm
   $(document).on 'click', '[data-modal-confirm-id]', showConfirmModal
   $(document).on 'keydown', '#score_report_emails', addScoreReportEmail
+  $(document).on 'click', '#add_score_report_email_button', addScoreReportEmail
   $(document).on 'click', '.score-report-remove-link', removeScoreReportEmailFromPage
 
 toggleCreditCardForm = (event) ->
@@ -21,7 +22,7 @@ showConfirmModal = (event) ->
   $("##{modal}").reveal(animation: 'fade')
 
 addScoreReportEmail = (event) ->
-  if event.which == 13
+  if event.type == 'click' || event.which == 13
     event.preventDefault()
     event.stopImmediatePropagation()
     $('#score-report-subscriptions li.none').detach()

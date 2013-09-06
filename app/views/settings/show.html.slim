@@ -45,13 +45,14 @@
     fieldset
       a name="score-reports"
       h5 Score Reports
-      p These people will get an email summary when you complete a test. #{link_to 'View Sample', '', class: 'change-link'}
+      p Subscribe additional emails to receive a weekly email summary of your progress.
 
       ul#score-report-subscriptions
         == (render partial: 'score_report_recipient', collection: ScoreReportEmail.new(current_user).recipients, as: :email) || "<li class='none'>#{t 'settings.score_report_emails.none'}</li>"
 
       = f.input :score_report_emails, label: 'Add another email' do
         = text_field_tag :score_report_emails, nil, name: nil
+        = link_to 'Add', '#', id: 'add_score_report_email_button', class: 'button'
 
     = f.button :submit, 'Save'
 
