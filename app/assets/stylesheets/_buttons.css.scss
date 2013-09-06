@@ -28,4 +28,15 @@ button, a.button, input[type="submit"] {
     background: $red;
     border-bottom: 3px solid darken($red, 10%);
   }
+
+  &.dark-gray {
+    background: $dark-gray;
+    border-bottom: 3px solid darken($dark-gray, 10%);
+  }
+
+  &.yellow {
+    background: $yellow;
+    border-bottom: 3px solid darken($yellow, 10%);
+    color: shade($yellow, 40%);
+  }
 }

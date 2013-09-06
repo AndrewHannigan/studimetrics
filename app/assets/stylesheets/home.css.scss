@@ -1,21 +1,10 @@
 #feature {
-  width: 80%;
   margin: 0 auto;
   padding: 20px 0;
-  border-bottom: 4px solid $red;
   @include clearfix;
-
-  .info {
-    @include span-columns(6);
-  }
-
-  .graphic {
-    @include span-columns(6);
-
-    img {
-      max-width: 100%;
-    }
-  }
+  @include background(linear-gradient(rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.3) 100%), asset-url('landing/landing_background1.jpg') no-repeat right 83%);
+  background-size: cover;
+  height: 480px;
 
   h1 {
     font-size: 3em;
@@ -25,12 +14,125 @@
       color: $red;
     }
   }
+}
+
+.landing-page {
+  #main-wrapper, #main-content {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+  #footer {
+    margin-top: 0;
+  }
+}
+
+#boost {
+  text-align: center;
+  width: 48%;
+  float: right;
+  margin-right: 2%;
+  color: $dark-gray;
+  @include radial-gradient(rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 40%);
 
   p {
-    font-size: 1.1em;
+    background: rgba(255,255,255,0.5);
+    margin-top: 25px;
+    padding: 4% 10%;
+    font-size: 20px;
+  }
+}
+
+#big-button {
+  font-size: 1.6em;
+  padding:18px;
+  margin: 24px 0;
+}
+
+#bullets{
+  border-top: 1px solid $gray;
+  border-bottom: 1px solid $gray;
+  @include pad;
+  padding-top: 40px;
+  background: $light-gray;
+  @include clearfix;
+
+  a {
+    color: shade($blue, 20%);
   }
 
-  .feature-links {
-    margin-top: 18px;
+  .bullet {
+    @include span-columns(5);
+    @include omega(2n);
+    margin-bottom: 24px;
+
+    &:nth-child(2n+1) {
+      @include shift(1);
+    }
+
+    h4 {
+      font-size: 1.3em;
+      color: $red;
+    }
+  }
+}
+
+#pricing {
+  background: $blue;
+  min-height: 150px;
+  color: $almost-white;
+  @include pad;
+  border-bottom: 1px solid shade($blue, 20%);
+
+  .price-block {
+    @include span-columns(4);
+    text-align: center;
+    border-right: 1px dashed shade($blue, 20%);
+
+    h2 {
+      font-size: 3.2em;
+      margin-bottom: 12px;
+    }
+
+    h5 {
+      font-weight: normal;
+    }
+
+    ul {
+      list-style: none;
+      margin: 20px auto;
+      padding: 0;
+      text-align: left;
+      width: 160px;
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .bottom-subscribe-block {
+    @include span-columns(8);
+  }
+}
+
+.ss-check::before {
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+#screenshots {
+  .screenshot {
+    margin: 6% 0 8% 0;
+    @include row;
+
+    img {
+      @include span-columns(5);
+    }
+
+    .description {
+      @include span-columns(7);
+    }
   }
 }
