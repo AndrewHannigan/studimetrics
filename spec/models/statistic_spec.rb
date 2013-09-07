@@ -1,6 +1,24 @@
 require 'spec_helper'
 
 describe Statistic do
+
+  describe "#target_subject" do
+    it "returns the subject with the lowest composite score for the user" do
+      user = create :user
+      math = create :subject, name: "Math"
+      reading = create :subject, name: "Reading"
+      writing = create :subject, name: "Writing"
+
+      create :composite_score, user: user, subject: math, composite_score: 0.0
+      create :composite_score, user: user, subject: reading, composite_score: 10.0
+      create :composite_score, user: user, subject: writing, composite_score: 20.0
+
+      statistic = Statistic.new(user)
+
+      expect(statistic.target_subject).to eq math
+    end
+  end
+
   describe "#accuracy_for_subject_per_section_completion" do
     context "when the user has not completed any section completions" do
       it "should return an empty array" do

@@ -14,4 +14,10 @@ class Statistic
     end
   end
 
+  def target_subject
+    Subject.joins(:composite_scores)
+      .where(composite_scores: {user: user})
+      .order("composite_scores.composite_score asc").first
+  end
+
 end
