@@ -2,7 +2,7 @@
   margin: 0 auto;
   padding: 20px 0;
   @include clearfix;
-  @include background(linear-gradient(rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.3) 100%), asset-url('landing/landing_background1.jpg') no-repeat right 83%);
+  @include background(linear-gradient(rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.3) 100%), asset-url('landing/chalkboard.jpg') no-repeat center bottom);
   background-size: cover;
   height: 480px;
 
@@ -11,7 +11,7 @@
     line-height: 1.1em;
 
     .highlight {
-      color: $red;
+      color: shade($almost-white, 10%);
     }
   }
 }
@@ -31,12 +31,13 @@
   text-align: center;
   width: 48%;
   float: right;
-  margin-right: 2%;
-  color: $dark-gray;
-  @include radial-gradient(rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 40%);
+  margin-right: 8%;
+  margin-top: 20px;
+  color: $almost-white;
+  @include radial-gradient(rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%);
 
   p {
-    background: rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.5);
     margin-top: 25px;
     padding: 4% 10%;
     font-size: 20px;
@@ -47,6 +48,9 @@
   font-size: 1.6em;
   padding:18px;
   margin: 24px 0;
+  background: $orange;
+  border-bottom-color: shade($orange, 15%);
+  color: $almost-white;
 }
 
 #bullets{
@@ -114,6 +118,8 @@
 
   .bottom-subscribe-block {
     @include span-columns(8);
+    text-align: center;
+    margin-top: 22px;
   }
 }
 
@@ -135,4 +141,145 @@
       @include span-columns(7);
     }
   }
+}
+
+#how-it-works {
+  background: $dark-gray;
+  @include background(linear-gradient(rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.3) 100%), asset-url('landing/gears.jpg') no-repeat center center);
+  background-size: cover;
+  color: $almost-white;
+  @include pad(6% 2%);
+  text-align: center;
+
+  h2 {
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+    margin-bottom: 32px;
+  }
+
+  ul {
+    font-size: 2em;
+    line-height: 2.0625rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    width: 9%;
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 60px;
+
+    &.line {
+      width: 24%;
+      height: 3px;
+      border-top: 3px solid tint($dark-gray, 5%);
+    }
+  }
+
+  ul.how-it-works-points {
+    li {
+      width: 33%;
+      padding: 20px;
+      vertical-align: top;
+    }
+  }
+
+  p.note {
+    font-size: 12px;
+    color: shade($almost-white, 20%);
+  }
+
+  .number {
+    @include linear-gradient($almost-white, shade($almost-white, 10%));
+    width: 60px;
+    height: 60px;
+    color: $dark-gray;
+    border-radius: 30px;
+    line-height: 52px;
+    border: 4px dotted tint($dark-gray, 30%);
+    margin: 0 auto;
+  }
+
+  h3 {
+    font-size: 0.75em;
+  }
+}
+
+#why-studi {
+  @include pad(2% 0 3% 0);
+  text-align: center;
+}
+
+.testimonial {
+  position: relative;
+  margin: 80px 20px 0 20px;
+  width: 230px;
+  display: inline-block;
+  .source {
+    height: 80px;
+    color: $red;
+    font-weight: bold;
+
+    .from {
+      font-weight: normal;
+      font-style: italic;
+    }
+  }
+
+  .photo {
+    float: none;
+    margin: 0 auto;
+    max-height: 48px;
+
+    img {
+      width: 48px;
+      height: 48px;
+      border-radius: 24px;
+      border-color: shade($almost-white, 10%);
+    }
+  }
+
+  .body {
+    position: absolute;
+    bottom: 90px;
+    left: 55%;
+    z-index: 999;
+    width: 230px;
+    height: 145px;
+    margin-left: -127px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    opacity: .9;
+    background-color: #ddd;
+    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0));
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.5) inset;
+    text-shadow: 0 1px 0 rgba(255,255,255,.4);
+
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      z-index: 1000;
+      bottom: -7px;
+      left: 50%;
+      margin-left: -8px;
+      border-top: 8px solid #ddd;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 0;
+    }
+  }
+}
+
+.testimonial .body:before,
+.testimonial .body:after
+{
+}
+
+.testimonial .body:before
+{
+  border-top-color: #ccc;
+  bottom: -8px;
 }
