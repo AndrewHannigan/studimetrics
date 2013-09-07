@@ -2,6 +2,7 @@ class PracticeTest < ActiveRecord::Base
   belongs_to :book
   has_many :sections
   has_many :questions, through: :sections
+  has_many :test_completions
 
   validates :book, presence: true
   validates :number, presence: true, uniqueness: { scope: :book_id }

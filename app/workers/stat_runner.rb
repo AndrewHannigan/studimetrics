@@ -13,6 +13,7 @@ class StatRunner
     fill_cache_for_percentage_complete_for_user(section_completion.user)
     fill_cache_for_accuracy_graph
     fill_cache_for_target_subject(section_completion.user)
+    fill_cache_for_next_section_for_target_subject_and_user(section_completion.user)
   end
 
   private
@@ -20,6 +21,12 @@ class StatRunner
     def fill_cache_for_target_subject(user)
       Rails.cache.delete("target_subject_for_user_#{user.id}")
       FocusRank.target_subject_for_user(user)
+    end
+
+    def fill_cache_for_next_section_for_target_subject_and_user(user)
+      Rails.cache.delete("next_section_for_target_subject_and_user_#{user.id}")
+      statistic = Statistic.new(user)
+      statistic.next_available_section_for_target_subject
     end
 
     def fill_cache_for_percentage_complete_for_user(user)

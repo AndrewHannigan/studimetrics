@@ -2,7 +2,7 @@
   h4
     span FocusRank Recommendations
   .info.target-subject
-    h5 = statistic.target_subject.try(:name) || "None Yet"
+    = display_target_subject
   .info.target-concepts
     h5 Concepts
     = display_target_concepts

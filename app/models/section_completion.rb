@@ -17,6 +17,7 @@ class SectionCompletion < ActiveRecord::Base
   scope :critical_reading, -> { joins(section: :subject).where(subjects: { name: 'Reading'}) }
   scope :writing, -> { joins(section: :subject).where(subjects: { name: 'Writing'}) }
   scope :completed, -> {where(status: "Completed")}
+  scope :incomplete, ->{where("status != 'Completed'")}
 
   STATUS = ["Completed", "In-Progress", "Not Started"]
   ACCURACY_POINTS_BOOST = 10
