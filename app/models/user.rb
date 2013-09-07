@@ -31,7 +31,10 @@ class User < ActiveRecord::Base
   end
 
   def current_test
-    PracticeTest.first
+    test = PracticeTest.joins(test_completions: :section_completions)
+      .where(section_completions: {user_id: self.id})
+      .order("section_completions.updated_at desc").first
+    test || PracticeTest.first
   end
 
   def has_responses?
