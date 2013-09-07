@@ -1,6 +1,8 @@
 class Subject < ActiveRecord::Base
   has_many :sections
   has_many :concepts
+  has_many :composite_scores
+
   default_scope {order("ordinal asc")}
 
   scope :not_reading, -> { where(name: ['Math', 'Writing']) }
