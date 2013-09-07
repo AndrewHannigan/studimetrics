@@ -74,7 +74,8 @@ class TestCompletion < ActiveRecord::Base
     end
 
     def raw_score_field_for_subject(subject_name)
-      "raw_#{subject_name.split(" ").join("").underscore}_score"
+      subject_name = "critical_reading" if subject_name.downcase == "reading"
+      "raw_#{subject_name.downcase}_score"
     end
 
 end
