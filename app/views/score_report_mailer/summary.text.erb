@@ -1,4 +1,82 @@
 studimetrics
-------------------
-Weekly Score Report
+
+**********************
+Weekly Progress Report
+<%= @score_report.timeframe %>
+**********************
+
+----------
 <%= @score_report.full_name %>
+----------
+
+Projected SAT Score
+-------------------
+<%= @score_report.projected_total_score %>
+
+Math
+<%= @score_report.math_score %>
+
+Reading
+<%= @score_report.reading_score %>
+
+Writing
+<%= @score_report.writing_score %>
+
+Hours Studied
+-------------
+
+Total Time
+----------
+<%= TimeConversions.seconds_to_hours_and_minutes @score_report.total_seconds_studied %>
+hrs, min
+
+This week
+---------
+<%= TimeConversions.seconds_to_hours_and_minutes @score_report.total_seconds_studied_this_week %>
+hrs, min
+
+College Comparison
+------------------
+<% college = @score_report.college %>
+
+<%= college.average_score%> Average SAT Score
+
+Reading
+<%= college.average_critical_reading %>
+
+Math
+<%= college.average_math %>
+
+Writing
+<%= college.average_writing %>
+
+Percentile
+----------
+Math
+<%= @score_report.percentile_in_words 'math' %>
+average range
+
+Reading
+<%= @score_report.percentile_in_words 'critical_reading' %>
+average range
+
+Writing
+<%= @score_report.percentile_in_words 'writing' %>
+average range
+
+Based on public data of average SAT scores for the selected school
+
+Next Exam
+---------
+<% if @score_report.sat_date.present? %>
+<%= @score_report.sat_date.strftime("%b #{@score_report.sat_date.day.ordinalize}").html_safe %>
+<% else %>
+No exam set
+<% end %>
+
+Top FocusRank Concepts
+----------------------
+<% @score_report.target_concepts.each do |concept| %>
+<%= concept.name %>
+
+<% end %>
