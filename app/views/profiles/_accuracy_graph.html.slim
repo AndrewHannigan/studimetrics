@@ -10,21 +10,21 @@
           em = t 'profile.accuracy_graph_demo_text'
     - else
 
-      h6 Math
       canvas#math-accuracy-graph.accuracy-graph width="670" height="130"
       .points
+        h6.math Math
         .number = user_points_with_indicator current_user, 'math'
         .points-legend points
 
-      h6 Reading
       canvas#reading-accuracy-graph.accuracy-graph width="670" height="130"
       .points
+        h6.reading Reading
         .number = user_points_with_indicator current_user, 'reading'
         .points-legend points
 
-      h6 Writing
       canvas#writing-accuracy-graph.accuracy-graph  width="670" height="130"
       .points
+        h6.writing Writing
         .number = user_points_with_indicator current_user, 'writing'
         .points-legend points
 
