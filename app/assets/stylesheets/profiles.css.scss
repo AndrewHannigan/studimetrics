@@ -295,12 +295,19 @@ table.concept-progress {
 
 .question-accuracy {
   h6 {
-    // width: 550px;
     text-align: center;
-    margin: 40px 0 0 0;
-    font-size: 14px;
+    margin: 0 0 4px 0;
+    font-size: 18px;
     font-weight: normal;
-    clear: both;
+    color: #a80005;
+
+    &.reading {
+      color: #749d90;
+    }
+
+    &.writing {
+      color: #f8c206;
+    }
   }
 }
 
@@ -318,5 +325,6 @@ table.concept-progress {
 }
 
 .accuracy-graph {
+  margin-top: 12px;
   float: left;
 }
