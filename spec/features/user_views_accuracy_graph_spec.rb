@@ -9,6 +9,11 @@ feature 'user views accuracy graph' do
 
   scenario 'shows a graph for each subject if there is at least 1 completed' do
     user = create :user
+
+    subj = create :subject, name: "Math"
+    subj = create :subject, name: "Reading"
+    subj = create :subject, name: "Writing"
+
     create :section_completion, :completed, user: user
     visit profile_path as: user.id
 
