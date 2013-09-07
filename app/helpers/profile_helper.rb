@@ -23,4 +23,8 @@ module ProfileHelper
     target_concepts = Concept.where(id: target_concept_ids)
     render "profiles/target_concepts", target_concepts: target_concepts
   end
+
+  def display_target_subject
+    render "profiles/target_subject"
+  end
 end

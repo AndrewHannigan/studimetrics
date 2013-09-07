@@ -2,6 +2,52 @@ require 'spec_helper'
 
 describe Statistic do
 
+  describe "#next_available_section_for_subject" do
+    context "when a section is available in the current practice test for the user" do
+      it "returns the available section in the given subject" do
+        user = create :user
+        subj = create :subject, name: "Math"
+        section = create :section, subject: subj
+
+        Statistic.any_instance.stubs(:target_subject).returns(subj)
+        statistic = Statistic.new(user)
+
+        expect(statistic.next_available_section_for_target_subject).to eq section.id
+      end
+    end
+
+    context "when a section is available but not in the current practice test" do
+      it "returns the available section in the next practice test" do
+        user = create :user
+        subj = create :subject, name: "Math"
+        section = create :section, subject: subj
+        create :section_completion, :completed, user: user, section: section, scoreable: true
+
+        section2 = create :section, subject: subj
+
+        Statistic.any_instance.stubs(:target_subject).returns(subj)
+        statistic = Statistic.new(user)
+
+        expect(user.current_test).to eq section.practice_test
+        expect(statistic.next_available_section_for_target_subject).to eq section2.id
+      end
+    end
+
+    context "when no section is incomplete for the given subject and user" do
+      it "returns nil" do
+        user = create :user
+        subj = create :subject, name: "Math"
+        section = create :section, subject: subj
+        create :section_completion, :completed, user: user, section: section, scoreable: true
+
+        Statistic.any_instance.stubs(:target_subject).returns(subj)
+        statistic = Statistic.new(user)
+
+        expect(statistic.next_available_section_for_target_subject).to eq nil
+      end
+    end
+  end
+
   describe "#target_subject" do
     it "returns the subject with the lowest composite score for the user" do
       user = create :user

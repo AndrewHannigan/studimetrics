@@ -1,0 +1,5 @@
+- if section_id = statistic.next_available_section_for_target_subject
+  h5
+    = link_to(statistic.target_subject.name, new_section_completion_path(section_id: section_id))
+- else
+  h5 = statistic.target_subject.try(:name) || "None Yet"
