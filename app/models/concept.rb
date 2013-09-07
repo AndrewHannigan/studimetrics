@@ -1,8 +1,8 @@
 class Concept < ActiveRecord::Base
   has_many :questions
   belongs_to :subject
-  has_many :focus_ranks
-  has_many :concept_videos
+  has_many :focus_ranks, dependent: :destroy
+  has_many :concept_videos, dependent: :destroy
 
   validates :name, uniqueness: true, presence: true
   scope :last_updated, ->{order("updated_at desc").first}
