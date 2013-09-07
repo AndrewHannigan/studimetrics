@@ -1,5 +1,11 @@
 $ ->
   $(document).on 'click', '.faq_link', displayFaqSection
+  $(document).on 'page:load', pageLoaded
+  pageLoaded()
+
+pageLoaded = (event) ->
+  anchor = location.hash.replace '#', ''
+  $("a[data-anchor='#{anchor}']").trigger 'click'
 
 displayFaqSection = (event) ->
   event.preventDefault()
