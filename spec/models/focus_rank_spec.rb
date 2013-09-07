@@ -1,6 +1,20 @@
 require 'spec_helper'
 
 describe FocusRank do
+
+  describe "before_destroy" do
+    it 'clears all focusrank caches' do
+      user = create :user
+      focus_rank = FocusRank.new user: user
+      Rails.cache.expects(:delete).twice
+
+      focus_rank.destroy
+
+      expect(Rails.cache).to have_received(:delete).with("target_subject_for_user_#{user.id}")
+      expect(Rails.cache).to have_received(:delete).with("focus_rank_grouped_stats_for_user_#{user.id}")
+    end
+  end
+
   describe "FocusRank#targeted_concepts_for_user_and_subject" do
     it "returns the lowest scored items first with a limit according to the constant LIMIT" do
       user = create :user

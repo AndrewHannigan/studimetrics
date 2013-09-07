@@ -10,6 +10,8 @@ class FocusRank < ActiveRecord::Base
   default_scope {order("focus_ranks.score desc")}
   delegate :name, to: :concept, prefix: true
 
+  before_destroy :clear_focusrank_cache
+
   def previous_focus_rank
     FocusRank.where(concept_id: self.concept_id, user_id: self.user_id)
       .where("id < #{self.id}").first
@@ -205,5 +207,10 @@ class FocusRank < ActiveRecord::Base
 
     def frequency_for_site_without_user
       responses_for_site_without_user.count
+    end
+
+    def clear_focusrank_cache
+      Rails.cache.delete("target_subject_for_user_#{user.id}")
+      Rails.cache.delete("focus_rank_grouped_stats_for_user_#{user.id}")
     end
 end
