@@ -47,21 +47,6 @@
     @include clearfix;
   }
 
-  .photo {
-    float: left;
-    width: 72px;
-    height: 72px;
-    margin: 10px 10px 6px 10px;
-
-    img {
-      border-radius: 37px;
-      border:3px solid $almost-white;
-      drop-shadow: 2px 2px 0 $gray;
-      max-height: 70px;
-      background: shade($almost-white, 2%);
-    }
-  }
-
   #total-hours-studied {
     color: tint($gray, 60%);
     font-size: 15px;
@@ -179,3 +164,19 @@ $menuWidth: 251px;
     color: $gray;
   }
 }
+
+.photo {
+  float: left;
+  width: 72px;
+  height: 72px;
+  margin: 10px 10px 6px 10px;
+
+  img {
+    border-radius: 37px;
+    border:3px solid $almost-white;
+    drop-shadow: 2px 2px 0 $gray;
+    max-height: 70px;
+    background: shade($almost-white, 2%);
+  }
+}
+
