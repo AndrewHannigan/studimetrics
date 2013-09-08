@@ -15,6 +15,7 @@ feature 'user views accuracy graph' do
     subj = create :subject, name: "Writing"
 
     create :section_completion, :completed, user: user
+    SectionCompletion.any_instance.stubs(:accuracy).returns(23.22)
     visit profile_path as: user.id
 
     expect(page).to have_css('.accuracy-graph', count: 3)

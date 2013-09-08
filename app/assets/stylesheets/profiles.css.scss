@@ -207,6 +207,7 @@ table.concept-progress {
 
 .test-graph-wrapper {
   position: relative;
+  @include clearfix;
 }
 
 .sample {

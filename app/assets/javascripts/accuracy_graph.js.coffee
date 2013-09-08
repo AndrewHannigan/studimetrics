@@ -20,6 +20,8 @@ class @AccuracyGraph
       datasets: [
         {
           fillColor: @color,
+          mouseover: @showTooltip,
+          mouseout: @hideTooltip,
           data: @accuracies
         }
       ]
@@ -38,6 +40,24 @@ class @AccuracyGraph
   labels: =>
     _.map @accuracies, (accuracy) ->
       ''
+
+  showTooltip: (event) =>
+    clearTimeout @autoHideTooltip
+    if @tooltip?
+      @tooltip.detach()
+    accuracy = @accuracies[event.point.datasetIndex]
+    top = event.point.y + 10
+    left = Math.min(event.point.x - 150, 450)
+    tooltip =  "<div id='graph-tooltip' style='top:#{top}px; left:#{left}px'>"
+    tooltip += "<div class='score'>Section Accuracy: #{accuracy}%</div>"
+    tooltip += "</div>"
+    @domElement.closest('.test-graph-wrapper').append(tooltip)
+    @tooltip = $('#graph-tooltip')
+    @autoHideTooltip = setTimeout @hideTooltip, 3000
+
+  hideTooltip: (event) =>
+    if @tooltip?
+      @tooltip.detach()
 
 
 $.fn.accuracyGraph = (options) ->

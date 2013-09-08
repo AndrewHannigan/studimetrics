@@ -1085,8 +1085,8 @@ window.Chart = function(context){
   }
   
   var Bar = function(data,config,ctx){
-    var maxSize, scaleHop, calculatedScale, labelHeight, scaleHeight, valueBounds, labelTemplateString, valueHop,widestXLabel, xAxisLength,yAxisPosX,xAxisPosY,barWidth, rotateLabels = 0;
-      
+    var maxSize, scaleHop, calculatedScale, labelHeight, scaleHeight, valueBounds, labelTemplateString, valueHop,widestXLabel, xAxisLength,yAxisPosX,xAxisPosY,barWidth, rotateLabels = 0, barPolygons = [], hoveredPoint;
+
     calculateDrawingSizes();
     
     valueBounds = getValueBounds();
@@ -1109,7 +1109,42 @@ window.Chart = function(context){
     scaleHop = Math.floor(scaleHeight/calculatedScale.steps);
     calculateXAxisSize();
     animationLoop(config,drawScale,drawBars,ctx);   
-    
+
+    if ('ontouchstart' in window) {
+      context.canvas.ontouchstart = function(event) {
+        event.offsetX = event.targetTouches[0].clientX - position.x;
+        event.offsetY = event.targetTouches[0].clientY - position.y;
+        activeBarHandler(event);
+      }
+    }
+    else {
+      context.canvas.onmousemove = function(event) {
+        activeBarHandler(event);
+      }
+    }
+
+    function activeBarHandler(event) {
+      var point = { x: event.offsetX, y: event.offsetY }
+      data.datasets[0].mouseout({event: event, point: point});
+      for (var i=0; i<barPolygons.length; i++) {
+        if (isPointInPoly(barPolygons[i], point)) {
+          point.datasetIndex = i
+          data.datasets[0].mouseover({event: event, point: point});
+          break;
+        }
+      }
+    }
+
+    //+ Jonas Raoni Soares Silva
+    //@ http://jsfromhell.com/math/is-point-in-poly [rev. #0]
+    function isPointInPoly(poly, pt){
+      for(var c = false, i = -1, l = poly.length, j = l - 1; ++i < l; j = i)
+        ((poly[i].y <= pt.y && pt.y < poly[j].y) || (poly[j].y <= pt.y && pt.y < poly[i].y))
+          && (pt.x < (poly[j].x - poly[i].x) * (pt.y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x)
+          && (c = !c);
+      return c;
+    }
+
     function drawBars(animPc){
       ctx.lineWidth = config.barStrokeWidth;
       for (var i=0; i<data.datasets.length; i++){
@@ -1117,17 +1152,26 @@ window.Chart = function(context){
           ctx.strokeStyle = data.datasets[i].strokeColor;
         for (var j=0; j<data.datasets[i].data.length; j++){
           var barOffset = yAxisPosX + config.barValueSpacing + valueHop*j + barWidth*i + config.barDatasetSpacing*i + config.barStrokeWidth*i;
-          
+
           ctx.beginPath();
           ctx.moveTo(barOffset, xAxisPosY);
-          ctx.lineTo(barOffset, xAxisPosY - animPc*calculateOffset(data.datasets[i].data[j],calculatedScale,scaleHop)+(config.barStrokeWidth/2));
-          ctx.lineTo(barOffset + barWidth, xAxisPosY - animPc*calculateOffset(data.datasets[i].data[j],calculatedScale,scaleHop)+(config.barStrokeWidth/2));
+          var topLeftPointY = xAxisPosY - animPc*calculateOffset(data.datasets[i].data[j],calculatedScale,scaleHop)+(config.barStrokeWidth/2)
+          ctx.lineTo(barOffset, topLeftPointY);
+          ctx.lineTo(barOffset + barWidth, topLeftPointY);
           ctx.lineTo(barOffset + barWidth, xAxisPosY);
           if(config.barShowStroke){
             ctx.stroke();
           }
           ctx.closePath();
           ctx.fill();
+
+          bar = [
+            { x: barOffset, y: xAxisPosY },
+            { x: barOffset, y: topLeftPointY },
+            { x: barOffset + barWidth, y: topLeftPointY },
+            { x: barOffset + barWidth, y: xAxisPosY }
+          ];
+          barPolygons[j] = bar;
         }
       }
       
