@@ -12,4 +12,11 @@ task :send_score_reports => :environment do
   end
 end
 
+desc 'send summary on Sunday only'
+task :send_score_reports_on_time => :environment do
+  if Time.now.utc.sunday?
+    Rake::Task[:send_score_reports].invoke
+  end
+end
+
 task(:default).enhance ['jasmine']
