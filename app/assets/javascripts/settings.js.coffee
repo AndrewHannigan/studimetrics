@@ -4,6 +4,7 @@ $ ->
   $(document).on 'keydown', '#score_report_emails', addScoreReportEmail
   $(document).on 'click', '#add_score_report_email_button', addScoreReportEmail
   $(document).on 'click', '.score-report-remove-link', removeScoreReportEmailFromPage
+  $(document).on 'keyup', '#card_number', updateSelectedCard
 
 toggleCreditCardForm = (event) ->
   event.preventDefault()
@@ -15,6 +16,15 @@ toggleCreditCardForm = (event) ->
   else
     $(this).text('Cancel - Keep stored card')
 
+updateSelectedCard = (event) ->
+  card_value = $("#card_number").val()
+  card = Stripe.card.cardType(card_value).toLowerCase();
+  if card.indexOf(" ") >= 0
+    card = card.replace(/\s+/g, '_');
+  selected_card = $(".credit_card_image.selected")
+  if selected_card
+    selected_card.removeClass("selected").addClass("disabled")
+  $("##{card}").addClass("selected").removeClass("disabled")
 
 showConfirmModal = (event) ->
   event.preventDefault()
