@@ -1,0 +1,4 @@
+#credit_card_options
+  - StripeCustomerManager::CREDIT_CARDS.each do |credit_card|
+    .credit_card_image.disabled id="#{credit_card}"
+      = image_tag("credit_cards/#{credit_card}.png")

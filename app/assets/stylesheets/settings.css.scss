@@ -14,6 +14,20 @@
   }
 }
 
+#credit_card_options {
+  @include clearfix;
+}
+
+.credit_card_image {
+  float: left;
+  padding-right: 3px;
+  @include clearfix;
+
+  &.disabled {
+    opacity: 0.4;
+  }
+}
+
 .next-billing-date {
   font-style: italic;
   font-size: 0.9rem;
