@@ -8,12 +8,12 @@
     ul.nav
       li About
       li Contact
-      li FAQ
+      li = link_to("FAQ", faq_path)
       li Blog
 
     .misc
       h5
-        div Don't have a the test book yet? 
+        div Don't have a the test book yet?
         div
           a href="" Get one here.
       h6
@@ -22,4 +22,4 @@
           a href="" Let us know.
 
   .container
-    p.note &copy; #{Date.today.year} Studimetrics Education Inc. All Rights Reserved. Terms of Use & Privacy Policy
+    p.note &copy; #{Date.today.year} Studimetrics Education Inc. All Rights Reserved. #{link_to "Terms of Use", terms_path} & #{link_to "Privacy Policy", privacy_path}
