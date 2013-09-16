@@ -27,12 +27,12 @@ en:
   profile:
     average_scores_disclaimer: 'Average scores are compiled from publicly available data.'
     percentile_disclaimer: 'Compare your score against the averages for your selected college'
-    accuracy_graph_demo_text: 'A graph of your past accuracy per section will show as soon as you complete one.'
-    graph_demo_text: 'A graph of your past practice tests will show as soon as you complete one.'
+    accuracy_graph_demo_text: 'We need more data! Start studying so we can make useful graphs for you'
+    graph_demo_text: 'We need more data! Start studying so we can make useful graphs for you'
     learn_about_focusrank_title_html: 'Learn about FocusRank&trade;'
     learn_about_focusrank_body_html: '<p>The FocusRank&trade; feature moves beyond just identifying your strengths and weaknesses. It runs individual performance data points through a dynamic algorithm to rank the importance of each concept.</p><p>In other words, it tells you where you can gain the most points in the shortest amount of time.</p>'
     concept_progress:
-      no_focus_rank_message: "As you complete sections in a %{practice_test_link}, the concepts you need to focus on will appear here."
+      no_focus_rank_message: "We need more data! See your FocusRank concepts as soon as you complete a few sections."
       title: "Concepts"
       subject: "Subject"
       accuracy: "Accuracy"
