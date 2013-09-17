@@ -27,3 +27,5 @@
 //= require modals
 //= require tabs
 //= require faq
+//= require wizard
+//= require sign_up
