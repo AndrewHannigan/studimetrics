@@ -2,58 +2,11 @@
 
 #feature
   #boost
-    h1 Simply the <span class="highlight">fastest</span> way to boost your SAT score
+    h1 The <span class="highlight">fastest</span> way to boost your SAT score
 
     p Discover studimetrics, a powerful analytics engine that makes preparing for the SAT simple and efficient.
 
     = link_to 'Subscribe Now', sign_up_path, id: 'big-button', class: 'button'
-
-#screenshots.container
-  .screenshot
-    = image_tag 'landing/focusrank.png'
-    .description
-      h3 Focus on what's important.
-      p
-        ' We don’t just stop at figuring out your strengths and weaknesses. We’ve engineered an advanced algorithm called
-        => link_to 'FocusRank&trade;'.html_safe, faq_path(anchor: 'focus_rank')
-        | that tells you what to study so you can earn the most points in the shortest amount of time.
-      = link_to 'Learn More', faq_path(anchor: 'focus_rank')
-
-  .screenshot
-    .description
-      h3 No fluff. Just data.
-      p Everything we do or suggest is always backed by data from you. We continuously collect information and create useful summaries so you can see how you’re doing at a glance.
-      = link_to 'Learn More', faq_path(anchor: 'no_fluff')
-    = image_tag 'landing/fluff_data_screenshot.png'
-
-  .screenshot
-    = image_tag 'landing/profile1.png'
-    .description
-      h3 Learn by doing.
-      p Access hundreds of example problems specifically designed to help you learn the ins-and-outs of every concept. Each problem comes with a comprehensive step-by-step solutions video.
-      = link_to 'Learn More', faq_path(anchor: 'learn_by_doing')
-
-  .screenshot
-    .description
-      h3 Genuine questions.
-      p All of our questions come from College Board’s Official SAT Study Guide (2nd Edition) because they are closest to what you’ll face on the actual exam. You’ll <a href="">need your own copy</a> to use our program.
-      = link_to 'Learn More', faq_path(anchor: 'genuine_questions')
-    = image_tag 'landing/book.png'
-
-#pricing
-  .container
-    .price-block
-      h2 $9
-      h5 per month
-
-      ul
-        li.ss-check Analytics engine
-        li.ss-check 1500+ questions
-        li.ss-check 60 hours of lessons
-
-    .bottom-subscribe-block
-      h5 We know the stakes are high but preparing for the SAT isn’t rocket science. So pay a price that doesn’t take advantage of how important this is to you.
-      = link_to 'Subscribe Now', sign_up_path, id: 'big-button', class: 'button dark-gray'
 
 #how-it-works
   .container
@@ -71,14 +24,61 @@
     ul.how-it-works-points
       li
         h3 Buy the book
-        p.description Access to all 10 tests from College Board’s Official SAT Study Guide 2nd Edition
+        p.description You'll need the practice tests from College Board’s Official SAT Study Guide (2nd Edition)
         p.note * We are not affiliated with College Board
       li
         h3 Use studimetrics
-        p.description Enter your answers into our analytics engine in real time and witness the magic
+        p.description Enter your practice test answers into our analytics engine and we’ll show you what to focus on
       li
-        h3 Crush
-        p.description Focus on what you need, master the concepts, and watch your scores go up
+        h3 Boost your scores
+        p.description Follow our tailored study plan and watch your scores go up
+
+#screenshots.container
+  .screenshot
+    = image_tag 'landing/focusrank.png'
+    .description
+      h3 Focus on what's important.
+      p
+        ' We don’t just figure out your strengths and weaknesses. We’ve engineered an advanced algorithm called
+        => link_to 'FocusRank&trade;'.html_safe, faq_path(anchor: 'focus_rank')
+        | that tells you what to study so you can gain the most points in the shortest amount of time.
+      = link_to 'Learn More', faq_path(anchor: 'focus_rank')
+
+  .screenshot
+    .description
+      h3 No fluff. Just data.
+      p Everything we do is driven by your performance data. We continuously collect information and create comprehensive data summaries so you can see how you’re doing at a glance.
+      = link_to 'Learn More', faq_path(anchor: 'no_fluff')
+    = image_tag 'landing/fluff_data_screenshot.png'
+
+  .screenshot
+    = image_tag 'landing/concept_videos.png'
+    .description
+      h3 Learn by doing.
+      p Access hundreds of example problems specifically designed to help you learn the details of every concept. Each problem comes with a comprehensive step-by-step solutions video.
+      = link_to 'Learn More', faq_path(anchor: 'learn_by_doing')
+
+  .screenshot
+    .description
+      h3 Genuine questions.
+      p All of our questions come from College Board’s Official SAT Study Guide (2nd Edition) because they are closest to what you’ll face on the actual exam. You’ll <a href="">need your own copy</a> to use our program.
+      = link_to 'Learn More', faq_path(anchor: 'genuine_questions')
+    = image_tag 'landing/book.png'
+
+#pricing
+  .container
+    .price-block
+      h2 $9
+      h5 per month
+
+      ul
+        li.ss-check Analytics engine
+        li.ss-check Comprehensive scoring
+        li.ss-check 60 hours of lessons
+
+    .bottom-subscribe-block
+      h5 We know the stakes are high but preparing for the SAT shouldn't cost a fortune. Providing innovation in education technology at a price that doesn't take advantage of how important this is to you.
+      = link_to 'Subscribe Now', sign_up_path, id: 'big-button', class: 'button dark-gray'
 
 #why-studi.container
   .testimonial
@@ -102,3 +102,6 @@
       .photo = image_tag 'http://s3.amazonaws.com/studimetrics-production/users/profile_images/thumb/missing.png'
       div Gina Kim
       div.from TJHSST Parent
+
+
+

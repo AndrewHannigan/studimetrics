@@ -325,7 +325,7 @@ a.learn-more {
   p.note {
     text-align: center;
     font-size: 11px;
-    margin-top: 32px;
+    margin-top: 24px;
   }
 
   .info {
@@ -355,21 +355,28 @@ a.learn-more {
     }
   }
 
-  ul.nav {
+  .nav {
     @include span-columns(6);
-    margin-top: 0;
-    margin-left: 0;
-    padding: 0;
-    list-style: none;
-    text-align: center;
 
-    li {
-      width: 70px;
-      border: 1px solid #555;
+    ul {
+      margin-top: 0;
+      margin-left: 0;
+      padding: 0;
+      list-style: none;
       text-align: center;
-      padding: 4px;
-      display: inline-block;
-      margin: 0 8px 8px;
+
+      li {
+        width: 70px;
+        border: 1px solid #555;
+        text-align: center;
+        padding: 4px;
+        display: inline-block;
+        margin: 0 8px 8px;
+      }
+
+      a {
+        color: $almost-white;
+      }
     }
   }
 }
