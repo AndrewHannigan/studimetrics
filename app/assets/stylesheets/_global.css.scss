@@ -48,6 +48,18 @@ header {
   }
 }
 
+.big-header {
+  color: $almost-white;
+  text-align: center;
+  margin: 4%;
+  font-size: 1.2rem;
+
+  p {
+    color: #e6c7c8;
+    font-size: 1.1rem;
+  }
+}
+
 #main-container, .container {
   @include outer-container;
 }

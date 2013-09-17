@@ -60,10 +60,6 @@ Studimetrics::Application.routes.draw do
     mount MailPreview => 'mail_preview'
   end
 
-  get "faq", to: 'high_voltage/pages#show', id: 'faq'
-  get "privacy_policy", to: 'high_voltage/pages#show', id: 'privacy_policy', as: "privacy"
-  get "terms_of_use", to: 'high_voltage/pages#show', id: 'terms_of_use', as: "terms"
-
   root :to => 'high_voltage/pages#show', :id => 'home'
 
 end
