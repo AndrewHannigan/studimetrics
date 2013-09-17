@@ -1125,7 +1125,6 @@ window.Chart = function(context){
 
     function activeBarHandler(event) {
       var point = { x: event.offsetX, y: event.offsetY }
-      data.datasets[0].mouseout({event: event, point: point});
       for (var i=0; i<barPolygons.length; i++) {
         if (isPointInPoly(barPolygons[i], point)) {
           point.datasetIndex = i
