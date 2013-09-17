@@ -9,8 +9,7 @@ class Concept < ActiveRecord::Base
 
   delegate :name, to: :subject, prefix: true
 
-  ADDITIONAL_CONCEPTS_FOR_SIDEBAR = ['Vocabulary']
-
+  ADDITIONAL_CONCEPTS_FOR_SIDEBAR = ['Reading Passage Questions', 'Vocabulary']
 
   def self.filtered
     concept = arel_table
