@@ -89,7 +89,7 @@
   border-bottom: 1px solid shade($blue, 20%);
 
   .price-block {
-    @include span-columns(4);
+    @include span-columns(5);
     text-align: center;
     border-right: 1px dashed shade($blue, 20%);
 
@@ -107,17 +107,16 @@
       margin: 20px auto;
       padding: 0;
       text-align: left;
-      width: 160px;
+      width: 44%;
     }
 
     li {
-      display: inline-block;
       vertical-align: middle;
     }
   }
 
   .bottom-subscribe-block {
-    @include span-columns(8);
+    @include span-columns(7);
     text-align: center;
     margin-top: 22px;
   }
@@ -144,12 +143,12 @@
 }
 
 #how-it-works {
-  background: $dark-gray;
-  @include background(linear-gradient(rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.3) 100%), asset-url('landing/gears.jpg') no-repeat center center);
-  background-size: cover;
-  color: $almost-white;
-  @include pad(6% 2%);
+  background: $light-gray;
+  color: shade($gray, 40%);
+  @include pad(2%);
   text-align: center;
+  border-top: 1px solid shade($light-gray, 10%);
+  border-bottom: 1px solid shade($light-gray, 10%);
 
   h2 {
     font-size: 2.5rem;
@@ -174,7 +173,7 @@
     &.line {
       width: 24%;
       height: 3px;
-      border-top: 3px solid tint($dark-gray, 5%);
+      border-top: 3px solid shade($light-gray, 10%);
     }
   }
 
@@ -188,7 +187,7 @@
 
   p.note {
     font-size: 12px;
-    color: shade($almost-white, 20%);
+    color: shade($light-gray, 40%);
   }
 
   .number {
@@ -214,7 +213,7 @@
 
 .testimonial {
   position: relative;
-  margin: 80px 20px 0 20px;
+  margin: 112px 20px 0 20px;
   width: 230px;
   display: inline-block;
   .source {
