@@ -28,7 +28,7 @@ en:
           'Sign in'
       user:
         create:
-          'Improve your score'
+          'Start Studying!'
     label:
       password:
         email:

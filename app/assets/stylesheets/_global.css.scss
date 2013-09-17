@@ -380,3 +380,52 @@ a.learn-more {
     }
   }
 }
+
+.wizard {
+  .step {
+    display: none;
+  }
+
+  .active {
+    display: block;
+  }
+}
+
+ul.numbers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+  line-height: 2.0625rem;
+  text-align: center;
+
+  li {
+    width: 9%;
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 60px;
+    opacity: 0.3;
+
+    &.active {
+      opacity: 1;
+    }
+
+    &.line {
+      width: 24%;
+      height: 3px;
+      border-top: 3px solid shade($light-gray, 10%);
+    }
+  }
+
+  .number {
+    @include linear-gradient($almost-white, shade($almost-white, 10%));
+    width: 60px;
+    height: 60px;
+    color: $dark-gray;
+    border-radius: 30px;
+    line-height: 52px;
+    border: 4px dotted tint($dark-gray, 30%);
+    margin: 0 auto;
+  }
+
+}
