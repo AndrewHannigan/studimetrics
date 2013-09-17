@@ -9,3 +9,8 @@ header
             li
               = link_to 'admin', admin_path
           = render 'user_session'
+
+    - if content_for? :big_header
+      .container
+        .big-header
+          = content_for :big_header

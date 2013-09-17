@@ -40,15 +40,15 @@
       h3 Focus on what's important.
       p
         ' We don’t just figure out your strengths and weaknesses. We’ve engineered an advanced algorithm called
-        => link_to 'FocusRank&trade;'.html_safe, faq_path(anchor: 'focus_rank')
+        => link_to 'FocusRank&trade;'.html_safe, page_path('faq', anchor: 'focus_rank')
         | that tells you what to study so you can gain the most points in the shortest amount of time.
-      = link_to 'Learn More', faq_path(anchor: 'focus_rank')
+      = link_to 'Learn More', page_path('faq', anchor: 'focus_rank')
 
   .screenshot
     .description
       h3 No fluff. Just data.
       p Everything we do is driven by your performance data. We continuously collect information and create comprehensive data summaries so you can see how you’re doing at a glance.
-      = link_to 'Learn More', faq_path(anchor: 'no_fluff')
+      = link_to 'Learn More', page_path('faq', anchor: 'no_fluff')
     = image_tag 'landing/fluff_data_screenshot.png'
 
   .screenshot
@@ -56,13 +56,13 @@
     .description
       h3 Learn by doing.
       p Access hundreds of example problems specifically designed to help you learn the details of every concept. Each problem comes with a comprehensive step-by-step solutions video.
-      = link_to 'Learn More', faq_path(anchor: 'learn_by_doing')
+      = link_to 'Learn More', page_path('faq', anchor: 'learn_by_doing')
 
   .screenshot
     .description
       h3 Genuine questions.
       p All of our questions come from College Board’s Official SAT Study Guide (2nd Edition) because they are closest to what you’ll face on the actual exam. You’ll <a href="">need your own copy</a> to use our program.
-      = link_to 'Learn More', faq_path(anchor: 'genuine_questions')
+      = link_to 'Learn More', page_path('faq', anchor: 'genuine_questions')
     = image_tag 'landing/book.png'
 
 #pricing
