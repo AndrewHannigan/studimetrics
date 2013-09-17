@@ -43,8 +43,7 @@ class @AccuracyGraph
 
   showTooltip: (event) =>
     clearTimeout @autoHideTooltip
-    if @tooltip?
-      @tooltip.detach()
+    @hideTooltip(event)
     accuracy = @accuracies[event.point.datasetIndex]
     top = event.point.y + 10
     left = Math.min(event.point.x - 150, 450)
@@ -53,11 +52,10 @@ class @AccuracyGraph
     tooltip += "</div>"
     @domElement.closest('.test-graph-wrapper').append(tooltip)
     @tooltip = $('#graph-tooltip')
-    @autoHideTooltip = setTimeout @hideTooltip, 3000
+    @autoHideTooltip = setTimeout @hideTooltip, 1500
 
   hideTooltip: (event) =>
-    if @tooltip?
-      @tooltip.detach()
+      $('#graph-tooltip').detach()
 
 
 $.fn.accuracyGraph = (options) ->
