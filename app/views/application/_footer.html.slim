@@ -5,11 +5,14 @@
       div 6830 Elm St
       div Suite B1
       div McLean, VA 22101
-    ul.nav
-      li About
-      li Contact
-      li = link_to("FAQ", faq_path)
-      li Blog
+    .nav
+      ul
+        li About
+        li Contact
+        li = link_to("FAQ", faq_path)
+        li Blog
+
+      p.note &copy; #{Date.today.year} Studimetrics Education Inc. All Rights Reserved. #{link_to "Terms of Use", terms_path} & #{link_to "Privacy Policy", privacy_path}
 
     .misc
       h5
@@ -20,6 +23,3 @@
         div Have a question or comment?
         div
           a href="" Let us know.
-
-  .container
-    p.note &copy; #{Date.today.year} Studimetrics Education Inc. All Rights Reserved. #{link_to "Terms of Use", terms_path} & #{link_to "Privacy Policy", privacy_path}
