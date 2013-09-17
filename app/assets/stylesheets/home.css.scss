@@ -156,25 +156,8 @@
     margin-bottom: 32px;
   }
 
-  ul {
-    font-size: 2em;
-    line-height: 2.0625rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
   li {
-    width: 9%;
-    display: inline-block;
-    vertical-align: middle;
-    min-width: 60px;
-
-    &.line {
-      width: 24%;
-      height: 3px;
-      border-top: 3px solid shade($light-gray, 10%);
-    }
+    opacity: 1;
   }
 
   ul.how-it-works-points {

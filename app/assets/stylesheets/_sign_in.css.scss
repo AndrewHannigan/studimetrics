@@ -49,14 +49,26 @@
 }
 
 .signup-left {
+  margin-top: 24px;
   @include span-columns(5);
+  min-height: 435px;
 
-  .submit-field {
-    margin-top: 10px;
+  fieldset {
+    legend {
+      text-transform: uppercase;
+      color: $gray;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+  }
+
+  .submit-field, .button {
+    margin-top: 18px;
   }
 }
 
 .signup-right {
+  margin-top: 24px;
   @include span-columns(7);
   @include omega;
 }
@@ -73,6 +85,9 @@
 
 .login-link {
   margin-top: 20px;
+  display: block;
+  text-align: center;
+  clear: both;
 }
 
 .user_card_month {

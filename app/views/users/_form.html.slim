@@ -1,8 +1,24 @@
-fieldset
-  = form.input :email, type: 'email'
-  = form.input :password
-  = form.input :first_name, label: "First Name"
-  = form.input :last_name, label: "Last Name"
+.wizard
+  fieldset.step.step1.active
+    legend Personal Information
+    = form.input :email, type: 'email'
+    = form.input :password
+    = form.input :first_name, label: "First Name"
+    = form.input :last_name, label: "Last Name"
 
-fieldset
-  = render 'users/credit_card_fields', form: form
+    = link_to 'Continue', '#', class: 'button', data: { next_step: 2 }
+
+  fieldset.step.step2
+    legend Get the Book
+    p You'll need the practice tests from College Board’s Official SAT Study Guide (2nd Edition) to begin using studimetrics.
+    p = link_to 'Order the practice test book here.', 'http://www.amazon.com/The-Official-SAT-Study-Guide/dp/0874478529', target: :blank
+
+    = link_to "I've got/ordered the book!", '#', class: 'button', data: { next_step: 3 }
+
+  fieldset.step.step3
+    legend Billing Information
+    = render 'users/credit_card_fields', form: form
+
+    .submit-field
+      = form.submit
+
