@@ -9,9 +9,13 @@ module ConceptHelper
   end
 
   def concept_image_link(concept)
-    link_to concept_path(concept) do
+    link_to concept_parent_path(concept) do
       concept_image concept
     end
+  end
+
+  def concept_parent_path(concept)
+    concept_path(concept.parent_concept || concept)
   end
 
 end

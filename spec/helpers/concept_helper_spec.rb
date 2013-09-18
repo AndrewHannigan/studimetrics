@@ -25,4 +25,18 @@ describe ConceptHelper do
       expect(helper).to have_received(:concept_image).with(concept)
     end
   end
+
+  describe '#concept_parent_path' do
+    it 'returns the path to a parent concept if there is one' do
+      parent_concept = create :concept, name: 'Reading Passage Questions'
+      concept = create :concept, name: 'Inference'
+
+      expect(helper.concept_parent_path(concept)).to include concept_path(parent_concept)
+    end
+
+    it 'returns the normal path otherwise' do
+      concept = create :concept, name: 'awesome'
+      expect(helper.concept_parent_path(concept)).to include concept_path(concept)
+    end
+  end
 end

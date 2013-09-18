@@ -329,3 +329,9 @@ table.concept-progress {
   margin-top: 12px;
   float: left;
 }
+
+.concept-progress {
+  a {
+    color: $dark-gray;
+  }
+}

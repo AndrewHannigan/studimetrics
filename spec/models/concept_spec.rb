@@ -13,4 +13,35 @@ describe Concept do
       expect(sidebar_concepts).to_not include(concept2)
     end
   end
+
+  describe '#has_parent_concept?' do
+    it 'returns true if present' do
+      concept = Concept.new
+      concept.expects(:parent_concept).returns(Concept.new)
+
+      expect(concept).to have_parent_concept
+    end
+
+    it 'returns false otherwise' do
+      concept = Concept.new
+      concept.expects(:parent_concept).returns(nil)
+
+      expect(concept).to_not have_parent_concept
+    end
+  end
+
+  describe '#parent_concept' do
+    it 'returns a parent concept if its included in PARENT_CONCEPTS' do
+      parent_concept = create :concept, name: 'Reading Passage Questions'
+      concept = Concept.new name: 'Inference'
+
+      expect(concept.parent_concept).to eq parent_concept
+    end
+
+    it 'returns nil otherwise' do
+      concept = Concept.new
+
+      expect(concept.parent_concept).to be_nil
+    end
+  end
 end
