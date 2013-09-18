@@ -1,8 +1,5 @@
 .tab-content
-  - if group.blank?
-    No data yet.
-
-  - else
+  - unless group.blank?
     table.concept-progress id="#{group.first.subject_name}"
       th.title
         = t "profile.concept_progress.title"
