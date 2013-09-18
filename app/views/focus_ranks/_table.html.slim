@@ -13,4 +13,4 @@
 
     - Subject.all.each do |subj|
       - targeted_focus_ranks = FocusRank.targeted_concepts_for_user_and_subject(current_user, subj, 5)
-      = render 'focus_ranks/tab_content', group: targeted_focus_ranks
+      = render 'focus_ranks/tab_content', group: targeted_focus_ranks, subject: subj

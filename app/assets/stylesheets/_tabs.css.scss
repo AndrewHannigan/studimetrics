@@ -28,4 +28,9 @@ ul.tabs {
 .tab-content {
   border-top: 1px solid $light-gray;
   margin-top: -1px;
+  min-height: 150px;
+
+  p.no-data {
+    margin-top: 24px;
+  }
 }
