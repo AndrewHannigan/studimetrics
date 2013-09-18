@@ -50,7 +50,8 @@ class User < ActiveRecord::Base
   end
 
   def total_seconds_studied
-    Rails.cache.fetch("user_#{self.id}_total_seconds_studied") do
+    section_completion = self.section_completions.last
+    Rails.cache.fetch("user_#{self.id}_#{section_completion.try(:cache_key)}_total_seconds_studied") do
       section_completions.sum(:section_time).to_f
     end
   end
