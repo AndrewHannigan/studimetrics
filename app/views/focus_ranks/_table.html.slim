@@ -5,11 +5,12 @@
     = render 'focus_ranks/welcome_message'
 
   - else
-    - grouped_focus_ranks = FocusRank.grouped_current_stats(current_user, 5)
     ul.tabs
-      - grouped_focus_ranks.each do |group|
-        - subject_name = group.first.subject_name
+      - Subject.all.each do |subj|
+        - subject_name = subj.name
         li
           a href="##{subject_name}" = subject_name
 
-    = render partial: 'focus_ranks/tab_content', collection: grouped_focus_ranks, as: :group
+    - Subject.all.each do |subj|
+      - targeted_focus_ranks = FocusRank.targeted_concepts_for_user_and_subject(current_user, subj, 5)
+      = render 'focus_ranks/tab_content', group: targeted_focus_ranks
