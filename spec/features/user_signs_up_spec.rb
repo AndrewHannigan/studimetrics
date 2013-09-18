@@ -28,6 +28,17 @@ feature 'User signs up' do
 
     expect(page).to have_content I18n.t('layouts.application.sign_out')
   end
+
+  scenario 'with already taken username', js: true do
+    user = create :user, email: 'asdf@wee.net'
+
+    visit sign_up_path
+
+    fill_in "Email", with: user.email
+    fill_in "Password", with: 'test1234'
+
+    expect(page).to have_content "has already been taken"
+  end
 end
 
 def go_to_step(step)
