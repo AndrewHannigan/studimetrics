@@ -200,16 +200,16 @@
  * Info
  */
 .hint--info:after {
-  background-color: #3986ac;
-  text-shadow: 0 -1px 0px #193b4d; }
+  background-color: #717a83;
+  text-shadow: 0 -1px 0px #383c3f; }
 .hint--info.hint--top:before {
-  border-top-color: #3986ac; }
+  border-top-color: #717a83; }
 .hint--info.hint--bottom:before {
-  border-bottom-color: #3986ac; }
+  border-bottom-color: #717a83; }
 .hint--info.hint--left:before {
-  border-left-color: #3986ac; }
+  border-left-color: #717a83; }
 .hint--info.hint--right:before {
-  border-right-color: #3986ac; }
+  border-right-color: #717a83; }
 
 /**
  * Success

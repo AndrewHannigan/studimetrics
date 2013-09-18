@@ -32,10 +32,6 @@
 
       .sidebar-content
         ul#main-nav class="#{content_for?(:sidebar) ? 'out' : ''}"
-          li class="#{controller_name == 'notifications' ? 'active' : ''}"
-            = link_to '' do
-              | Notifications
-              i class="ss-icon ss-symbolicons-block" bell
           li class="#{controller_name == 'profiles' ? 'active' : ''}"
             = link_to root_path do
               | Profile

@@ -11,7 +11,7 @@
         li class="#{'active' if practice_test == section_completion.practice_test}"
           = link_to practice_test.name, new_practice_test_next_section_for_test_path(practice_test)
     - if show_focus_rank_button
-      a href="" id="focus" class="question-action"
+      a href="" id="focus" class="question-action hint--left hint--rounded hint--info" data-hint="Highlight questions that apply to your FocusRank"
         i class="ss-icon ss-symbolicons-block" crosshair
         span FocusRank
   .wrapper
@@ -23,6 +23,6 @@
         li class="#{'active' if section == section_completion.section}"
           = link_to "#{section.name} - #{section.subject_name}", new_section_completion_path(section_id: section.id)
     - if show_reading_timer && section_completion.section.subject == reading
-      a href="" id="critical-reading-timer-button" class="question-action"
+      a href="" id="critical-reading-timer-button" class="question-action hint--left hint--rounded hint--info" data-hint="Start the reading timer when you begin reading each passage. Don't forget to stop the timer when you're done reading."
         i class="ss-icon ss-symbolicons-block" stopwatch
         span Reading
