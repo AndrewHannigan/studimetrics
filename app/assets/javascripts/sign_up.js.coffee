@@ -1,6 +1,7 @@
 $ ->
   $(document).on 'wizard:next-step', '.wizard', nextStep
   $(document).on 'page:load', pageLoaded
+  $(document).on 'blur', '#user_email', checkEmail
   pageLoaded()
 
 pageLoaded = ->
@@ -17,3 +18,8 @@ activateStepWithErrors = ->
   if  $('.wizard .error').length > 0
     $('.wizard .error').closest('.step').addClass('active')
 
+checkEmail = (event) ->
+  $.ajax 
+    url: '/check_uniques/email'
+    dataType: 'script'
+    data: { class: 'User', email: $(this).val() }

@@ -58,6 +58,12 @@ Studimetrics::Application.routes.draw do
 
   resource :contact_us, only: [:create]
 
+  resource :check_uniques, only: [] do
+    member do
+      get :email
+    end
+  end
+
   if Rails.env.development?
     mount MailPreview => 'mail_preview'
   end
