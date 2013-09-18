@@ -22,7 +22,7 @@ class @AccuracyGraph
           fillColor: @color,
           mouseover: @showTooltip,
           mouseout: @hideTooltip,
-          data: @accuracies
+          data: @accuracyPercentages()
         }
       ]
     }
@@ -37,6 +37,9 @@ class @AccuracyGraph
 
     @chart = new Chart(context).Bar(data, options)
 
+  accuracyPercentages: =>
+    _.pluck @accuracies, 'percent'
+
   labels: =>
     _.map @accuracies, (accuracy) ->
       ''
@@ -48,7 +51,9 @@ class @AccuracyGraph
     top = event.point.y + 10
     left = Math.min(event.point.x - 150, 450)
     tooltip =  "<div id='graph-tooltip' style='top:#{top}px; left:#{left}px'>"
-    tooltip += "<div class='score'>Section Accuracy: #{accuracy}%</div>"
+    tooltip += "<div class='score'>Test Number: #{accuracy.test_number}</div>"
+    tooltip += "<div class='score'>Section Number: #{accuracy.section_number}</div>"
+    tooltip += "<div class='score'>Section Accuracy: #{accuracy.percent}%</div>"
     tooltip += "</div>"
     @domElement.closest('.test-graph-wrapper').append(tooltip)
     @tooltip = $('#graph-tooltip')
