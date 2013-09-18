@@ -1,0 +1,17 @@
+- content_for :extra_body_classes, 'landing-page contact-page'
+
+- content_for :big_header do
+  h2 Contact us
+
+  p Hit us up with any questions you have. We look forward to hearing from you!
+
+.container
+  .contact-us-wrapper
+    h3 Send us an email
+
+    = simple_form_for :contact_us do |f|
+      = f.input :name
+      = f.input :email
+      = f.input :question, as: :text, label: 'Question or Comment'
+      = f.button :submit, 'Contact Us'
+

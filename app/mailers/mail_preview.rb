@@ -2,16 +2,24 @@ class MailPreview < MailView
 
   def score_report_summary
     user = User.first
-    mail = ScoreReportMailer.summary user
+    ScoreReportMailer.summary user
   end
 
   def signup_mailer_added
     user = User.first
-    mail = SignupMailer.added user
+    SignupMailer.added user
   end
 
   def signup_mailer_removed
     user = User.first
-    mail = SignupMailer.removed user
+    SignupMailer.removed user
+  end
+
+  def contact_us
+    contact_params = { name: 'Crazy Person', email: 'crazy@wee.net', question: "how do i use this?
+      something
+      something else"
+    }
+    ContactMailer.contact_us contact_params
   end
 end
