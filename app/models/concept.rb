@@ -10,6 +10,9 @@ class Concept < ActiveRecord::Base
   delegate :name, to: :subject, prefix: true
 
   ADDITIONAL_CONCEPTS_FOR_SIDEBAR = ['Reading Passage Questions', 'Vocabulary']
+  PARENT_CONCEPTS = [
+    { "Reading Passage Questions" => ['Inference', 'Direct Interpretation', 'Vocabulary-in-Context', 'Elements of Writing', 'Summarization', 'Tone/Attitude/Emotion'] }
+  ]
 
   def self.filtered
     concept = arel_table
@@ -28,7 +31,25 @@ class Concept < ActiveRecord::Base
     image_name
   end
 
+  def has_parent_concept?
+    parent_concept.present?
+  end
+
+  def parent_concept
+    Concept.where(name: parent_concept_name).first
+  end
+
   private
+
+  def parent_concept_name
+    parent_concept_hash = PARENT_CONCEPTS.detect do |parent_concept|
+      parent_concept.values.first.include? name
+    end
+
+    if parent_concept_hash.present?
+      parent_concept_hash.keys.first
+    end
+  end
 
   def self.underscored_name(concept_name)
     concept_name.titleize.gsub(/\//,' ').gsub(/\s+/, '_').underscore

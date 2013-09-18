@@ -1,7 +1,9 @@
 tr.concept-progress data-id="focus_rank-#{focus_rank.id}"
   td.title
-    = concept_image focus_rank.attributes["concept_name"]
-    span.concept_name = focus_rank.attributes["concept_name"]
+    - concept = Concept.where(name: focus_rank.attributes["concept_name"]).first
+    = link_to concept_parent_path(concept) do
+      = concept_image focus_rank.attributes["concept_name"]
+      span.concept_name = focus_rank.attributes["concept_name"]
   td.subject
     = subject_icon focus_rank.subject_name
   td.position
