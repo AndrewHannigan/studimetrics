@@ -15,6 +15,14 @@ class Statistic
     end
   end
 
+  def accuracy_for_subject_for_graph(subj)
+    return [] unless subj
+    subject_name = subj.name.titleize.gsub(/\//,' ').gsub(/\s+/, '_').underscore
+    user.section_completions.completed.send(subject_name).map do |section_completion|
+      { percent: section_completion.accuracy.round(2), test_number: section_completion.practice_test.number, section_number: section_completion.section.number }
+    end
+  end
+
   def target_subject
     Subject.joins(:composite_scores)
       .where(composite_scores: {user: user})
