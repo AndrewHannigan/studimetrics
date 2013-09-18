@@ -56,6 +56,8 @@ Studimetrics::Application.routes.draw do
     get '/', to: 'profiles#show'
   end
 
+  resource :contact_us, only: [:create]
+
   if Rails.env.development?
     mount MailPreview => 'mail_preview'
   end
