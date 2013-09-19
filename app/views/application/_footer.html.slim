@@ -17,8 +17,8 @@
       h5
         div Don't have a the test book yet?
         div
-          a href="" Get one here.
+          = link_to 'Get one here.', 'http://www.amazon.com/The-Official-SAT-Study-Guide/dp/0874478529', target: :blank
       h6
         div Have a question or comment?
         div
-          a href="" Let us know.
+          = link_to 'Let us know.', page_path('contact_us')
