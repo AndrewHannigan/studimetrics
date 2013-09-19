@@ -76,19 +76,15 @@ class CompositeScore < ActiveRecord::Base
       .where(section_completions: {user_id: user.id})
       .where(concepts: {id: concept_id}).limit(limit).order("user_responses.created_at desc")
       .where("questions.question_type = 'Free Response' AND user_responses.correct != 'false' OR questions.question_type != 'Free Response'")
-      .select("user_responses.id")
+      .select("user_responses.id, user_responses.correct")
     end
 
     def total_correct_user_responses_for_concept(concept_id)
-      user_responses_for_concept_excluding_incorrect_free_responses(concept_id)
-        .where(user_responses: {correct: true})
-        .uniq.count
+      user_responses_for_concept_excluding_incorrect_free_responses(concept_id).select{|response| response.correct == true}.length
     end
 
     def total_incorrect_user_responses_for_concept_excluding_free_responses(concept_id)
-      user_responses_for_concept_excluding_incorrect_free_responses(concept_id)
-        .where(user_responses: {correct: false})
-        .uniq.count
+      user_responses_for_concept_excluding_incorrect_free_responses(concept_id).select{|response| response.correct == false}.length
     end
 
     def concept_ids_with_responses
