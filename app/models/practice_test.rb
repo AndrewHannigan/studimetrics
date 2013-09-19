@@ -1,6 +1,6 @@
 class PracticeTest < ActiveRecord::Base
   belongs_to :book
-  has_many :sections
+  has_many :sections, -> {order 'sections.number asc'}
   has_many :questions, through: :sections
   has_many :test_completions
 
