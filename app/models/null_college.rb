@@ -4,7 +4,7 @@ class NullCollege
   end
 
   def profile_image
-    Paperclip::Attachment.new 'fake', self, default_url: 'http://s3.amazonaws.com/studimetrics-production/colleges/profile_images/thumb/missing.png'
+    Paperclip::Attachment.new 'fake', self, default_url: 'https://s3.amazonaws.com/studimetrics-production/colleges/profile_images/thumb/missing.png'
   end
 
   def average_score

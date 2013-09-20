@@ -81,25 +81,26 @@
       = link_to 'Subscribe Now', sign_up_path, id: 'big-button', class: 'button dark-gray'
 
 #why-studi.container
+  - profile_image = 'https://s3.amazonaws.com/studimetrics-production/users/profile_images/thumb/missing.png'
   .testimonial
     .body
       p FocusRank makes studying easy since it tells me exactly what I need to work on. I'm saving time and seeing huge improvements.
     .source
-      .photo = image_tag 'http://s3.amazonaws.com/studimetrics-production/users/profile_images/thumb/missing.png'
+      .photo = image_tag profile_image
       div Anthony Skaff
       div.from TJHSST 2014
   .testimonial
     .body
       p The videos are amazing! I'm actually learning how to solve each concept, not just memorizing solutions.
     .source
-      .photo = image_tag 'http://s3.amazonaws.com/studimetrics-production/users/profile_images/thumb/missing.png'
+      .photo = image_tag profile_image
       div Kevin Canas
       div.from Godinez Fundamental High School 2014
   .testimonial
     .body
       p High quality SAT prep that's based on data analysis -- studimetrics just makes sense.
     .source
-      .photo = image_tag 'http://s3.amazonaws.com/studimetrics-production/users/profile_images/thumb/missing.png'
+      .photo = image_tag profile_image
       div Yun Kim
       div.from TJHSST Parent
 
