@@ -1,6 +1,12 @@
 require 'sidekiq/web'
 Studimetrics::Application.routes.draw do
 
+  # force anything from studimetrics.com to redirect to www
+  constraints host: /^studimetrics.com/ do
+    get '/', to: redirect('https://www.studimetrics.com')
+    get '/*path', to: redirect {|params| "https://www.studimetrics.com/#{params[:path]}"}
+  end
+
   mount Sidekiq::Web => '/sidekiq'
 
   resources :users, controller: 'users', only: [:create] do
