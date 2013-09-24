@@ -11,13 +11,21 @@
   fieldset.step.step2
     legend Get the Book
     p You'll need the practice tests from College Board’s Official SAT Study Guide (2nd Edition) to begin using studimetrics.
-    p = link_to 'Order the practice test book here.', 'http://www.amazon.com/The-Official-SAT-Study-Guide/dp/0874478529', target: :blank
 
-    = link_to "I've got/ordered the book!", '#', class: 'button', data: { next_step: 3 }
+    p
+      = link_to 'http://www.amazon.com/The-Official-SAT-Study-Guide/dp/0874478529', target: :blank, id: 'book-link' do
+        = image_tag('landing/book.png', class: 'book-image')
+        p Order the book here!
+
+    = link_to 'Continue', '#', class: 'button', data: { next_step: 3 }
 
   fieldset.step.step3
     legend Billing Information
     = render 'users/credit_card_fields', form: form
+    p.disclaimer Your studimetrics subscription, which starts with a 14 day free offer, will begin when you click Start Studying! Simply cancel anytime in your first 2 weeks, and you will not be charged. To cancel, go to "Settings" and click on "Cancel Account" No refunds or credits for partial months. By clicking Start Studying, you authorize us to continue your month-to-month studimetrics membership (currently $12) automatically, charged monthly to the payment method provided, until you cancel. See Terms of Use for membership details.
+
+    .agree
+      = form.input :agree, as: :boolean, label: "I agree to the above conditions and the #{link_to 'Terms of Use', page_path('terms_of_use')} and #{link_to 'Privacy Policy', page_path('privacy_policy')}."
 
     .submit-field
       = form.submit
