@@ -47,9 +47,12 @@
     width: auto;
   }
 }
+.signup {
+  @include clearfix;
+  margin-top: 42px;
+}
 
 .signup-left {
-  margin-top: 24px;
   @include span-columns(5);
   min-height: 435px;
 
@@ -68,7 +71,6 @@
 }
 
 .signup-right {
-  margin-top: 24px;
   @include span-columns(7);
   @include omega;
 }
@@ -84,7 +86,7 @@
 }
 
 .login-link {
-  margin-top: 20px;
+  margin-top: 32px;
   display: block;
   text-align: center;
   clear: both;
@@ -106,6 +108,14 @@
 
   h2 {
     color: $blue;
+    margin-top: 0px;
+    margin-bottom: 14px;
+
+    &.smaller {
+      font-size: 1.5em;
+      line-height: 1.5em;
+      margin-top: 37px;
+    }
   }
 
   h3 {
@@ -128,5 +138,17 @@
   .subtitle {
     margin-top: 4px;
     font-size: 12px;
+  }
+}
+
+.disclaimer {
+  font-size: 11px;
+  line-height: 14px;
+  margin-top: 24px;
+}
+
+.agree {
+  label {
+    font-size: 11px;
   }
 }

@@ -1,5 +1,5 @@
 class StripeCustomerManager
-  DEFAULT_PLAN = 'studimetrics12'
+  DEFAULT_PLAN = '11221'
   CREDIT_CARDS = ["visa", "mastercard", "american_express", "discover", "diners_club", "jcb"]
 
   def self.create_or_update_stripe_customer(user)

@@ -24,6 +24,8 @@ feature 'User signs up' do
     select "6 - June", from: 'card_month'
     select Date.today.year+1, from: 'card_year'
 
+    check 'I agree to the above conditions and the Terms of Use and Privacy Policy.'
+
     click_on I18n.t('helpers.submit.user.create')
 
     expect(page).to have_content I18n.t('layouts.application.sign_out')
