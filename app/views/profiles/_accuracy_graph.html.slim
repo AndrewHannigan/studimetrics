@@ -1,36 +1,40 @@
 - statistic = Statistic.new(current_user)
 .profile-block.question-accuracy
   h4 Section Accuracy
-  .test-graph-wrapper
 
-    - if current_user.section_completions.completed.length == 0
+  - if current_user.section_completions.completed.length == 0
+    .test-graph-wrapper
       .sample
         = image_tag 'graph_demo.png'
         p
           em = t 'profile.accuracy_graph_demo_text'
-    - else
+  - else
 
-      canvas#math-accuracy-graph.accuracy-graph width="670" height="130"
-      .points
-        h6.math Math
-        .number = user_points_with_indicator current_user, 'math'
-        .points-legend points
+    = cache current_user.section_completions.completed.math.last do
+      .test-graph-wrapper
+        canvas#math-accuracy-graph.accuracy-graph width="670" height="130"
+        .points
+          h6.math Math
+          .number = user_points_with_indicator current_user, 'math'
+          .points-legend points
 
-  .test-graph-wrapper
-      canvas#reading-accuracy-graph.accuracy-graph width="670" height="130"
-      .points
-        h6.reading Reading
-        .number = user_points_with_indicator current_user, 'reading'
-        .points-legend points
+    = cache current_user.section_completions.completed.reading.last do
+      .test-graph-wrapper
+          canvas#reading-accuracy-graph.accuracy-graph width="670" height="130"
+          .points
+            h6.reading Reading
+            .number = user_points_with_indicator current_user, 'reading'
+            .points-legend points
 
-  .test-graph-wrapper
-      canvas#writing-accuracy-graph.accuracy-graph  width="670" height="130"
-      .points
-        h6.writing Writing
-        .number = user_points_with_indicator current_user, 'writing'
-        .points-legend points
+    = cache current_user.section_completions.completed.writing.last do
+      .test-graph-wrapper
+          canvas#writing-accuracy-graph.accuracy-graph  width="670" height="130"
+          .points
+            h6.writing Writing
+            .number = user_points_with_indicator current_user, 'writing'
+            .points-legend points
 
-      javascript:
-        var mathSectionCompletionAccuracies = #{{statistic.accuracy_for_subject_for_graph(math).to_json}};
-        var readingSectionCompletionAccuracies = #{{statistic.accuracy_for_subject_for_graph(reading).to_json}};
-        var writingSectionCompletionAccuracies = #{{statistic.accuracy_for_subject_for_graph(writing).to_json}};
+    javascript:
+      var mathSectionCompletionAccuracies = #{{statistic.accuracy_for_subject_for_graph(math).to_json}};
+      var readingSectionCompletionAccuracies = #{{statistic.accuracy_for_subject_for_graph(reading).to_json}};
+      var writingSectionCompletionAccuracies = #{{statistic.accuracy_for_subject_for_graph(writing).to_json}};

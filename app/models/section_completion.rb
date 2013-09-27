@@ -1,6 +1,6 @@
 class SectionCompletion < ActiveRecord::Base
   belongs_to :section
-  belongs_to :user
+  belongs_to :user, touch: true
   has_many :user_responses
   has_many :questions, -> { order 'position asc' }, through: :user_responses
   has_many :concepts, through: :questions
@@ -82,6 +82,12 @@ class SectionCompletion < ActiveRecord::Base
 
   def user_responses_sorted_by_question_position
     user_responses.sort_by{|r| r.question.position}
+  end
+
+  def associate_with_test_completion
+    return if retake?
+    test_completion = TestCompletion.where(user: user, practice_test_id: section.practice_test_id).first_or_create
+    update_attributes! test_completion: test_completion
   end
 
   private

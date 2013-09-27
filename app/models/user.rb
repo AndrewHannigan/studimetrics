@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :section_completions, -> { order 'updated_at asc' }
   has_many :user_responses, through: :section_completions
   has_many :test_completions, -> { order 'created_at asc' }
+  has_many :composite_scores
 
   delegate :name, to: :college, prefix: true
 
@@ -66,7 +67,12 @@ class User < ActiveRecord::Base
   end
 
   def upcoming_stripe_invoice
-    @stripe_invoice ||= Stripe::Invoice.upcoming customer: customer_id rescue nil
+    if invoice_json.nil?
+      Rails.cache.delete "user-#{id}-upcoming-invoice"
+      nil
+    else
+      OpenStruct.new JSON.parse(invoice_json)
+    end
   end
 
   def deactivate!
@@ -83,6 +89,16 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def invoice_json
+    Rails.cache.fetch "user-#{id}-upcoming-invoice" do
+      stripe_invoice = Stripe::Invoice.upcoming customer: customer_id rescue nil
+
+      if stripe_invoice
+        stripe_invoice.to_json
+      end
+    end
+  end
 
   def create_or_update_stripe_customer
     return if from_admin_tool

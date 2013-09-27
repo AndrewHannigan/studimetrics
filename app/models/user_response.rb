@@ -3,6 +3,8 @@ class UserResponse < ActiveRecord::Base
   belongs_to :section_completion, touch: true
   after_save :score_response
 
+  delegate :user, to: :section_completion
+
   def add_time(new_time)
     self.time = time + new_time.to_f
   end
@@ -21,6 +23,10 @@ class UserResponse < ActiveRecord::Base
 
   def correct?
     question.valid_answer? value
+  end
+
+  def requires_focus
+    question.requires_focus? user
   end
 
   private

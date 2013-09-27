@@ -1,7 +1,8 @@
 class College < ActiveRecord::Base
   include ProfileImage
 
-  belongs_to :user
+  has_many :users
+  after_save :touch_users
 
   def average_score
     average_math + average_critical_reading + average_writing
@@ -28,6 +29,13 @@ class College < ActiveRecord::Base
 
   def active_model_serializer
     CollegeSerializer
+  end
+
+  private
+
+  # TODO: put this into a background task
+  def touch_users
+    users.each {|u| u.touch}
   end
 
 end

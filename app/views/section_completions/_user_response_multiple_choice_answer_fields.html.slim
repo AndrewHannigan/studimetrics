@@ -1,5 +1,6 @@
-- requires_focus = requires_focus?(f.object.question)
-.question data-id="question-#{f.object.question.id}" data-requires-focus="#{requires_focus}" data-behavior="submit-user-response-click"
+.question data-id="question-#{f.object.question.id}" data-behavior="submit-user-response-click"
+  / we dont want an accidentl cache of real user values
+  - f.object.value = nil
 
   .question-number
     = "#{f.object.question.position}."

@@ -12,11 +12,17 @@ $ ->
   pageLoaded()
 
 pageLoaded = ->
+  convertTimestamps()
   setupTestGraph()
   setupAccuracyGraphs()
   setupPercentileBars()
   setupCollegeTypeahead()
   $('ul.tabs').tabs()
+
+convertTimestamps = ->
+  $('[data-timestamp]').each ->
+    timestamp = $(this).data('timestamp')
+    $(this).text moment.unix(timestamp).fromNow()
 
 setupCollegeTypeahead = ->
   $('#user_college_id').typeahead

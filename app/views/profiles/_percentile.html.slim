@@ -1,23 +1,24 @@
-.percentile.profile-block.right
-  h4 Your Percentile
-  .percentile-bar.math
-    span.bar data-behavior="math-bar"
-      span.indicator = projected_score_for_subject(math)
-    span.subject Math
-  .percentile-bar.reading
-    span.bar data-behavior="reading-bar"
-      span.indicator = projected_score_for_subject(reading)
-    span.subject Reading
-  .percentile-bar.writing
-    span.bar data-behavior="writing-bar"
-      span.indicator = projected_score_for_subject(writing)
-    span.subject Writing
+= cache [current_user, current_user.section_completions.last, 'percentiles'] do
+  .percentile.profile-block.right
+    h4 Your Percentile
+    .percentile-bar.math
+      span.bar data-behavior="math-bar"
+        span.indicator = projected_score_for_subject(math)
+      span.subject Math
+    .percentile-bar.reading
+      span.bar data-behavior="reading-bar"
+        span.indicator = projected_score_for_subject(reading)
+      span.subject Reading
+    .percentile-bar.writing
+      span.bar data-behavior="writing-bar"
+        span.indicator = projected_score_for_subject(writing)
+      span.subject Writing
 
-  .profile-note = t 'profile.percentile_disclaimer'
+    .profile-note = t 'profile.percentile_disclaimer'
 
-javascript:
-  var userScores = {reading: #{{projected_score_for_subject(reading).to_json}}, writing: #{{projected_score_for_subject(writing).to_json}}, math: #{{projected_score_for_subject(math).to_json}}}
-  var selectedCollege = new College()
-  selectedCollege.readingPercentileScores = #{{current_user.college.range_for_subject("critical_reading").to_json}}
-  selectedCollege.mathPercentileScores = #{{current_user.college.range_for_subject("math").to_json}}
-  selectedCollege.writingPercentileScores = #{{current_user.college.range_for_subject("writing").to_json}}
+  javascript:
+    var userScores = {reading: #{{projected_score_for_subject(reading).to_json}}, writing: #{{projected_score_for_subject(writing).to_json}}, math: #{{projected_score_for_subject(math).to_json}}}
+    var selectedCollege = new College()
+    selectedCollege.readingPercentileScores = #{{current_user.college.range_for_subject("critical_reading").to_json}}
+    selectedCollege.mathPercentileScores = #{{current_user.college.range_for_subject("math").to_json}}
+    selectedCollege.writingPercentileScores = #{{current_user.college.range_for_subject("writing").to_json}}
