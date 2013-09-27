@@ -10,7 +10,7 @@ class StripeCustomerManager
     end
   rescue Stripe::StripeError => e
     user.errors.add :stripe_token, e.message
-    Honeybadger.context user.attributes
+    Honeybadger.context user.attributes.merge(stripe_error: "#{e.message}")
     Honeybadger.notify "Stripe Error: #{e.message}"
     user.stripe_token = nil
     false
