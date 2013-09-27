@@ -47,11 +47,14 @@
       .questions-wrapper
         .questions
           - responses = @section_completion.user_responses_sorted_by_question_position
+          javascript:
+            var userResponses = #{{responses.to_json(methods: :requires_focus)}};
 
-          - responses.in_groups_of @section_completion.section.question_count_per_column, false do |question_list|
-            .question-list data-disabled=""
-                = f.simple_fields_for :user_responses, question_list do |user_response_form|
-                  = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
+          = cache @section_completion.section do
+            - responses.in_groups_of @section_completion.section.question_count_per_column, false do |question_list|
+              .question-list data-disabled=""
+                  = f.simple_fields_for :user_responses, question_list do |user_response_form|
+                    = render "user_response_#{user_response_form.object.question.answer_association_name.singularize}_fields", f: user_response_form
 
         = f.button :submit, 'Submit Answers', id: 'submit-answers-button', disabled: true
 

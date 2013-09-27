@@ -10,6 +10,8 @@
 //= require piechart
 //= require hogan
 //= require typeahead
+//= require moment
+//= require moment.translations
 
 //= require timer
 //= require disable_children

@@ -2,33 +2,34 @@
   #user-sidebar
     .sidebar-block
       .sidebar-header
-        .user-info
-          .photo
-            = link_to root_path do
-              = image_tag current_user.profile_image.url(:thumb), width: 70, height: 70
+        = cache [current_user, 'sidebar-header'] do
+          .user-info
+            .photo
+              = link_to root_path do
+                = image_tag current_user.profile_image.url(:thumb), width: 70, height: 70
 
-          .name-and-score
-            .name = current_user.full_name
-            .score = projected_total_score
+            .name-and-score
+              .name = current_user.full_name
+              .score = projected_total_score
 
-        #total-hours-studied
-          span> Total hours studied:
-          span.hours = TimeConversions.seconds_to_hours_and_minutes current_user.total_seconds_studied
+          #total-hours-studied
+            span> Total hours studied:
+            span.hours = TimeConversions.seconds_to_hours_and_minutes current_user.total_seconds_studied
 
-        .scores
-          .math-score
-            = subject_icon math
-            | Math
-            .number = projected_score_for_subject(math)
-          .reading-score
-            = subject_icon reading
-            | Reading
-            .number = projected_score_for_subject(reading)
+          .scores
+            .math-score
+              = subject_icon math
+              | Math
+              .number = projected_score_for_subject(math)
+            .reading-score
+              = subject_icon reading
+              | Reading
+              .number = projected_score_for_subject(reading)
 
-          .writing-score
-            = subject_icon writing
-            | Writing
-            .number = projected_score_for_subject(writing)
+            .writing-score
+              = subject_icon writing
+              | Writing
+              .number = projected_score_for_subject(writing)
 
       .sidebar-content
         ul#main-nav class="#{content_for?(:sidebar) ? 'out' : ''}"

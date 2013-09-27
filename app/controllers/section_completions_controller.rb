@@ -10,7 +10,7 @@ class SectionCompletionsController < ApplicationController
       return redirect_to :back
     end
 
-    @section_completion = find_or_create_section_completion(section)
+    @section_completion = section.find_or_create_section_completion_for_user current_user
     question_ids = @section_completion.question_ids
     section.questions.each do |question|
       unless question_ids.include? question.id
@@ -41,21 +41,6 @@ class SectionCompletionsController < ApplicationController
   def find_and_authorize_resource
     @section_completion = SectionCompletion.find params[:id]
     redirect_to root_path unless @section_completion.user == current_user
-  end
-
-  def associate_with_test_completion(section_completion)
-    return if section_completion.retake?
-    test_completion = TestCompletion.where(user: current_user, practice_test_id: section_completion.section.practice_test_id).first_or_create
-    section_completion.update_attributes!(test_completion: test_completion)
-  end
-
-  def find_or_create_section_completion(section)
-    section_completion = SectionCompletion.not_started_or_in_progress.where(user_id: current_user.id).where(section_id: section.id).last
-    section_completion.touch if section_completion
-    section_completion = section_completion || SectionCompletion.create(user: current_user, section: section)
-    section_completion.set_scoreable!
-    associate_with_test_completion(section_completion)
-    section_completion
   end
 
 end

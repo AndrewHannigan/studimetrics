@@ -1,17 +1,17 @@
-.profile-row
-  = focus_ranks_table
+= cache [current_user, 'profile'] do
+  .profile-row
+    = render 'focus_ranks/table'
 
-.profile-row
-  = render 'college_comparison'
-  = render 'percentile'
+  .profile-row
+    = render 'college_comparison'
+    = render 'percentile'
 
-.profile-row
-  = render 'next_exam'
-  = render 'target_subject_and_concepts'
+  .profile-row
+    = render 'next_exam'
+    = render 'target_subject_and_concepts'
 
-.profile-row
-  = render 'accuracy_graph'
+  .profile-row
+    = render 'accuracy_graph'
 
-
-.profile-row
-  = render 'test_history_graph'
+  .profile-row
+    = render 'test_history_graph'

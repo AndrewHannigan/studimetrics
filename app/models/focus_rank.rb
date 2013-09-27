@@ -5,7 +5,7 @@ class FocusRank < ActiveRecord::Base
   TARGET_CONCEPT_LIMIT = 3
   attr_accessor :accuracy
 
-  belongs_to :user
+  belongs_to :user, touch: true
   belongs_to :concept
   default_scope {order("focus_ranks.score desc")}
   delegate :name, to: :concept, prefix: true
@@ -64,9 +64,11 @@ class FocusRank < ActiveRecord::Base
   end
 
   def self.concept_ids_requiring_focus_for_user(user)
-    return [] unless user.focus_ranks.present?
-    limit = (user.focus_ranks.count * THRESHOLD).round
-    user.focus_ranks.limit(limit).pluck(:concept_id)
+    Rails.cache.fetch [user, 'focus_rank_concept_ids'] do
+      return [] unless user.focus_ranks.present?
+      limit = (user.focus_ranks.count * THRESHOLD).round
+      user.focus_ranks.limit(limit).pluck(:concept_id)
+    end
   end
 
   def self.concepts_require_focus_by_user?(concept_ids, user)

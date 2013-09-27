@@ -1,14 +1,15 @@
-tr.concept-progress data-id="focus_rank-#{focus_rank.id}"
-  td.title
-    - concept = Concept.where(name: focus_rank.attributes["concept_name"]).first
-    = link_to concept_parent_path(concept) do
-      = concept_image focus_rank.attributes["concept_name"]
-      span.concept_name = focus_rank.attributes["concept_name"]
-  td.subject
-    = subject_icon focus_rank.subject_name
-  td.position
-    = focus_rank_position(focus_rank)
-  td.accuracy
-    = focus_rank_accuracy(focus_rank)
-  td.percent_complete
-    = pie_chart number_to_percentage(focus_rank.percentage_complete, precision: 0)
+= cache focus_rank do
+  tr.concept-progress data-id="focus_rank-#{focus_rank.id}"
+    td.title
+      - concept = Concept.where(name: focus_rank.attributes["concept_name"]).first
+      = link_to concept_parent_path(concept) do
+        = concept_image focus_rank.attributes["concept_name"]
+        span.concept_name = focus_rank.attributes["concept_name"]
+    td.subject
+      = subject_icon focus_rank.subject_name
+    td.position
+      = focus_rank_position(focus_rank)
+    td.accuracy
+      = focus_rank_accuracy(focus_rank)
+    td.percent_complete
+      = pie_chart number_to_percentage(focus_rank.percentage_complete, precision: 0)

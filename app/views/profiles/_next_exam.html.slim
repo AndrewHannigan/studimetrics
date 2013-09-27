@@ -11,9 +11,9 @@
         h3 = sat_date.strftime "%b #{sat_date.day.ordinalize}"
         div == sat_date.strftime "<span class='year'>%Y</span>"
       .days-until
-        h3 = days_until_sat_registration sat_date
+        h3 data-timestamp="#{(sat_date - SatDate::REGISTRATION_DIFFERENTIAL).to_time.to_i}" 0 days
         span until registration deadline
-        h3 = days_until_sat sat_date
+        h3 data-timestamp="#{sat_date.to_time.to_i}" 0 days
         span until exam
 
     - else
