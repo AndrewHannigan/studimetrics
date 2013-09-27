@@ -49,6 +49,10 @@ class Question < ActiveRecord::Base
     answers.map(&:answer).join(', ')
   end
 
+  def requires_focus?(user)
+    FocusRank.concepts_require_focus_by_user?(concept_ids, user)
+  end
+
   private
 
   def answer_class_name

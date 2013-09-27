@@ -8,6 +8,16 @@ class @UserResponse
   constructor: (@domElement=null, @settings={}) ->
     if @domElement
       @questionId = parseInt @domElement.data('id').replace('question-','')
+      item = _.find window.userResponses, (resp) =>
+        resp.question_id == @questionId
+      if item?
+        @domElement.attr('data-requires-focus', item.requires_focus)
+
+        if @domElement.find('input.string').length > 0
+          @domElement.find('input.string').val item.value
+        else
+          @domElement.find("input[value=\"#{item.value}\"]").prop('checked', true).attr('checked', 'checked') if item.value?
+
       @domElement.data('user-response', this)
       @setupListeners()
     @timer = @settings.timer || new Timer()

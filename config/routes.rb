@@ -74,6 +74,8 @@ Studimetrics::Application.routes.draw do
     mount MailPreview => 'mail_preview'
   end
 
+  post 'stripe_event', controller: 'stripe_event', action: 'process_event'
+
   root :to => 'high_voltage/pages#show', :id => 'home'
 
 end

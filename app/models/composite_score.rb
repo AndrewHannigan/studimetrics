@@ -3,7 +3,7 @@ class CompositeScore < ActiveRecord::Base
   AVERAGE_QUESTIONS_FOR_SUBJECT = {"Math" => 54, "Reading" => 67, "Writing" => 49}
   attr_accessor :pre_correction_score
 
-  belongs_to :user
+  belongs_to :user, touch: true
   belongs_to :subject
   delegate :name, to: :subject, prefix: true
   delegate :concepts, to: :subject, prefix: true

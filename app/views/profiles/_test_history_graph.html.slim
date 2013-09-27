@@ -8,9 +8,10 @@
         p
           em = t 'profile.graph_demo_text'
     -else
-      - test_scores = ActiveModel::ArraySerializer.new current_user.test_completions.completed, each_serializer: TestCompletionSerializer
-      canvas#test-graph width="750" height="400"
+      = cache current_user.test_completions.completed.last
+        - test_scores = ActiveModel::ArraySerializer.new current_user.test_completions.completed, each_serializer: TestCompletionSerializer
+        canvas#test-graph width="750" height="400"
 
-      javascript:
-        var testScores = #{{test_scores.to_json}}
-        var averageCollegeSatScore = #{current_user.college.average_score};
+        javascript:
+          var testScores = #{{test_scores.to_json}}
+          var averageCollegeSatScore = #{current_user.college.average_score};
