@@ -5,7 +5,7 @@ class SubscriptionCanceler
     cancel_subscription stripe_customer
     remove_cards stripe_customer
   rescue Stripe::InvalidRequestError => ex
-    Honeybadger.context user.attributes
+    Honeybadger.context user.attributes.merge(stripe_error: "#{ex.message}")
     Honeybadger.notify "Stripe Error: #{ex.message}"
     false
   end
