@@ -107,7 +107,7 @@
       margin: 20px auto;
       padding: 0;
       text-align: left;
-      width: 44%;
+      width: 56%;
     }
 
     li {
@@ -138,6 +138,10 @@
 
     .description {
       @include span-columns(7);
+    }
+
+    h3 {
+      color: #4092d5;
     }
   }
 }

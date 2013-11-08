@@ -2,9 +2,6 @@
   .container
     .info
       h3 studimetrics
-      div 6830 Elm St
-      div Suite B1
-      div McLean, VA 22101
     .nav
       ul
         li = link_to 'About', page_path('about')
@@ -14,10 +11,6 @@
       p.note &copy; #{Date.today.year} Studimetrics Education Inc. All Rights Reserved. #{link_to "Terms of Use", page_path('terms_of_use')} & #{link_to "Privacy Policy", page_path('privacy_policy')}
 
     .misc
-      h5
-        div Don't have a copy of the book?
-        div
-          = link_to 'Get one here.', Book::AMAZON_LINK, target: :blank
       h6
         div Have a question or comment?
         div

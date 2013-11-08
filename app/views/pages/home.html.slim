@@ -2,68 +2,30 @@
 
 #feature
   #boost
-    h1 The <span class="highlight">fastest</span> way to boost your SAT score
+    h1 SAT prep made <span class="highlight">simple</span>.
 
-    p Discover studimetrics, a powerful analytics engine that makes preparing for the SAT simple and efficient.
+    p Find the most efficient way to improve your SAT score
 
     = link_to 'Free Trial', sign_up_path, id: 'big-button', class: 'button'
 
-#how-it-works
-  .container
-    h2 How it works
-    ul.numbers
-      li
-        .number 1
-      li.line
-      li
-        .number 2
-      li.line
-      li
-        .number 3
-
-    ul.how-it-works-points
-      li
-        h3 Buy the book
-        p.description You'll need the practice tests from College Board’s Official SAT Study Guide (2nd Edition)
-        p.note * We are not affiliated with College Board
-      li
-        h3 Use studimetrics
-        p.description Enter your practice test answers into our analytics engine and we’ll show you what to focus on
-      li
-        h3 Boost your scores
-        p.description Follow our tailored study plan and watch your scores go up
-
 #screenshots.container
+  .screenshot
+    = image_tag 'landing/book.png'
+    .description
+      h3 Get the "Blue Book"
+      p You'll need a copy of the Official SAT Study Guide 2nd Edition to practice questions from the test makers themselves.
+
+  .screenshot
+    .description
+      h3 Take practice tests
+      p Enter your answers from the blue book into studimetrics to get instant grading, track your progress, and predict your score.
+    = image_tag 'landing/test.png'
+
   .screenshot
     = image_tag 'landing/focusrank.png'
     .description
-      h3 Focus on what's important.
-      p
-        ' We don’t just figure out your strengths and weaknesses. We’ve engineered an advanced algorithm called
-        => link_to 'FocusRank&trade;'.html_safe, page_path('faq', anchor: 'focus_rank')
-        | that tells you what to study so you can gain the most points in the shortest amount of time.
-      = link_to 'Learn More', page_path('faq', anchor: 'focus_rank')
-
-  .screenshot
-    .description
-      h3 No fluff. Just data.
-      p Everything we do is driven by your performance data. We continuously collect information and create comprehensive data summaries so you can see how you’re doing at a glance.
-      = link_to 'Learn More', page_path('faq', anchor: 'no_fluff')
-    = image_tag 'landing/fluff_data_screenshot.png'
-
-  .screenshot
-    = image_tag 'landing/concept_videos.png'
-    .description
-      h3 Learn by doing.
-      p Access hundreds of example problems specifically designed to help you learn the details of every concept. Each problem comes with a comprehensive step-by-step solutions video.
-      = link_to 'Learn More', page_path('faq', anchor: 'learn_by_doing')
-
-  .screenshot
-    .description
-      h3 Genuine questions.
-      p All of our questions come from College Board’s Official SAT Study Guide (2nd Edition) because they are closest to what you’ll face on the actual exam. You’ll <a href="">need your own copy</a> to use our program.
-      = link_to 'Learn More', page_path('faq', anchor: 'genuine_questions')
-    = image_tag 'landing/book.png'
+      h3 Improve your score
+      p See where you're losing the most points and find the fastest way to improve.
 
 #pricing
   .container
@@ -72,37 +34,10 @@
       h5 per month
 
       ul
-        li.ss-check Analytics engine
-        li.ss-check Comprehensive scoring
-        li.ss-check 10 hours of lessons
+        li.ss-check Find where you're losing points
+        li.ss-check Get instant score reports
+        li.ss-check Save time and improve
 
     .bottom-subscribe-block
-      h5 We know the stakes are high but preparing for the SAT shouldn't cost a fortune. Providing innovation in education technology at a price that doesn't take advantage of how important this is to you.
+      h5 Don't pay a price that takes advantage of<br />how important this is to you.
       = link_to 'Free Trial', sign_up_path, id: 'big-button', class: 'button dark-gray'
-
-#why-studi.container
-  - profile_image = 'https://s3.amazonaws.com/studimetrics-production/users/profile_images/thumb/missing.png'
-  .testimonial
-    .body
-      p FocusRank makes studying easy since it tells me exactly what I need to work on. I'm saving time and seeing huge improvements.
-    .source
-      .photo = image_tag profile_image
-      div Anthony Skaff
-      div.from TJHSST 2014
-  .testimonial
-    .body
-      p The videos are amazing! I'm actually learning how to solve each concept, not just memorizing solutions.
-    .source
-      .photo = image_tag profile_image
-      div Kevin Canas
-      div.from Godinez Fundamental High School 2014
-  .testimonial
-    .body
-      p High quality SAT prep that's based on data analysis -- studimetrics just makes sense.
-    .source
-      .photo = image_tag profile_image
-      div Yun Kim
-      div.from TJHSST Parent
-
-
-
