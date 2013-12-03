@@ -88,6 +88,10 @@ class User < ActiveRecord::Base
     ScoreReportEmail.new(self).recipients
   end
 
+  def valid_stripe_customer?
+    customer_id.present? && stripe_customer.present?
+  end
+
   private
 
   def invoice_json

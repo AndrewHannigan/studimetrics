@@ -150,4 +150,19 @@ describe User do
     end
   end
 
+  describe '#valid_stripe_customer?' do
+    it 'returns true if they are valid' do
+      customer = Stripe::Customer.create email: 'asdf@wee.net'
+      user = User.new customer_id: customer.id
+
+      expect(user).to be_valid_stripe_customer
+    end
+
+    it 'returns false otherwise' do
+      user = User.new
+
+      expect(user).to_not be_valid_stripe_customer
+    end
+  end
+
 end
