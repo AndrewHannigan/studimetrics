@@ -19,3 +19,7 @@
 .rvmrc
 .rbenv-vars
 .env
+
+# Ignore Andrew's notes
+andrew/*
+.DS_Store
