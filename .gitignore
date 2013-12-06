@@ -22,3 +22,4 @@
 
 # Ignore Andrew's notes
 andrew/*
+.DS_Store
