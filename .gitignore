@@ -19,3 +19,6 @@
 .rvmrc
 .rbenv-vars
 .env
+
+# Ignore Andrew's notes
+andrew/*
