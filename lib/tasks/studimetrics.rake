@@ -5,7 +5,7 @@ end
 
 desc 'send score reports'
 task :send_score_reports => :environment do
-  User.find_in_batches do |users|
+  User.where(active: true).find_in_batches do |users|
     users.each do |user|
       ScoreReportMailer.summary(user.id).deliver
     end
