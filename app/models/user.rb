@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   delegate :name, to: :college, prefix: true
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :state, :highschool, presence: true
   validates :email, email: true, presence: true
   validates :password, presence: true, on: :create
   validates :sat_date, inclusion: { in: SatDate.upcoming_dates }, allow_nil: true
