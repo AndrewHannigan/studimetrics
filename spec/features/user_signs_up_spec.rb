@@ -15,7 +15,6 @@ feature 'User signs up' do
     fill_in "Password", with: "test1234"
     fill_in "Email", with: "test@example.com"
     select "New York", from: "State"
-    select "10th", from: "Grade"
 
     go_to_step 2
 
