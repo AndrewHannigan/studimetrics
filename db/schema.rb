@@ -243,7 +243,7 @@ ActiveRecord::Schema.define(version: 20131226190626) do
     t.string   "customer_id"
     t.string   "last_4_digits"
     t.boolean  "active",                                 default: true,  null: false
-    t.string   "highschool",                                             null: false
+    t.string   "high_school",                                            null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
