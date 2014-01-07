@@ -25,13 +25,10 @@ describe SatDate do
     it 'returns all future SAT dates' do
       Timecop.travel Time.local(2013, 7, 5) do
         dates = SatDate.upcoming_dates
-        expect(dates[0].to_s).to eq '10/05/2013'
-        expect(dates[1].to_s).to eq '11/02/2013'
-        expect(dates[2].to_s).to eq '12/07/2013'
-        expect(dates[3].to_s).to eq '01/25/2014'
-        expect(dates[4].to_s).to eq '03/08/2014'
-        expect(dates[5].to_s).to eq '05/03/2014'
-        expect(dates[6].to_s).to eq '06/07/2014'
+        expect(dates[0].to_s).to eq '01/25/2014'
+        expect(dates[1].to_s).to eq '03/08/2014'
+        expect(dates[2].to_s).to eq '05/03/2014'
+        expect(dates[3].to_s).to eq '06/07/2014'
       end
     end
   end
