@@ -1,31 +1,55 @@
 - content_for(:extra_body_classes, 'landing-page')
 
 #feature
+  #video
+    iframe allowfullscreen="0" frameborder="0" height="358" width="575" mozallowfullscreen="0" src="//player.vimeo.com/video/83472873?portrait=0&title=0&byline=0" webkitallowfullscreen="0" 
+
   #boost
-    h1 SAT prep made <span class="highlight">simple</span>.
+    h1 Your <span class="highlight">essential</span> SAT Prep companion
 
-    p Find the most efficient way to improve your SAT score
+    p Our adaptive data analytics help you prepare for the SAT from the first day to exam day. 
 
-    = link_to 'Free Trial', sign_up_path, id: 'big-button', class: 'button'
+    = link_to 'Try it for Free', sign_up_path, id: 'big-button', class: 'button'
 
 #screenshots.container
   .screenshot
     = image_tag 'landing/book.png'
     .description
-      h3 Get the "Blue Book"
-      p You'll need a copy of the Official SAT Study Guide 2nd Edition to practice questions from the test makers themselves.
+      h3 Analyze your practice tests. 
+      p Understand what your scores really mean. We break down the SAT into detailed concepts, identify where you’re losing the most points, and show you the most efficient way to study. Available for all 10 practice tests in the Official SAT Study Guide 2nd Edition.
 
   .screenshot
     .description
-      h3 Take practice tests
-      p Enter your answers from the blue book into studimetrics to get instant grading, track your progress, and predict your score.
+      h3 Save time 
+      p Don’t study what you already know. When you self-study, we’ll be your roadmap.  Our algorithm adapts with each section you complete, so you’ll always know precisely what to work on next to keep improving.
     = image_tag 'landing/test.png'
 
   .screenshot
     = image_tag 'landing/focusrank.png'
     .description
-      h3 Improve your score
-      p See where you're losing the most points and find the fastest way to improve.
+      h3 Optimize outside help 
+      p Get the most out of your tutors or classes. You’ll know exactly what you need help on so you can focus your time together, and studimetrics can monitor your progress to see if they’re actually helping you improve.
+
+  .screenshot
+    .description
+      h3 Get awesome features 
+      p Our new beta feature “concept lessons” helps you learn the foundation of each of the SAT concepts. We’ll keep adding helpful features like average SATs statistics for each US college and weekly score reports that you can send to parents and counselors.
+    = image_tag 'landing/test.png'
+
+#howitworks
+  .container
+    .price-block
+      h2 $9
+      h5 per month
+
+      ul
+        li.ss-check Find where you're losing points
+        li.ss-check Get instant score reports
+        li.ss-check Save time and improve
+
+    .bottom-subscribe-block
+      h5 Don't pay a price that takes advantage of<br />how important this is to you.
+      = link_to 'Free Trial', sign_up_path, id: 'big-button', class: 'button dark-gray'
 
 #pricing
   .container
