@@ -93,45 +93,69 @@
   }
 }
 
-#howitworks {
-  background: $blue;
-  min-height: 150px;
+
+#how-it-works {
+  background: $dark-gray;
+  @include background(linear-gradient(rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.3) 100%), asset-url('landing/gears.jpg') no-repeat center center);
+  background-size: cover;
   color: $almost-white;
-  @include pad;
-  border-bottom: 1px solid shade($blue, 20%);
+  @include pad(6% 2%);
+  text-align: center;
 
-  .price-block {
-    @include span-columns(5);
-    text-align: center;
-    border-right: 1px dashed shade($blue, 20%);
+  h2 {
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+    margin-bottom: 32px;
+  }
 
-    h2 {
-      font-size: 3.2em;
-      margin-bottom: 12px;
+  ul {
+    font-size: 2em;
+    line-height: 2.0625rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    width: 9%;
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 60px;
+
+    &.line {
+      width: 24%;
+      height: 3px;
+      border-top: 3px solid tint($dark-gray, 5%);
     }
+  }
 
-    h5 {
-      font-weight: normal;
-    }
-
-    ul {
-      list-style: none;
-      margin: 20px auto;
-      padding: 0;
-      text-align: left;
-      width: 56%;
-    }
-
+  ul.how-it-works-points {
     li {
-      vertical-align: middle;
+      width: 33%;
+      padding: 20px;
+      vertical-align: top;
+      h3 {
+        font-size: 26px;
+      }
     }
   }
 
-  .bottom-subscribe-block {
-    @include span-columns(7);
-    text-align: center;
-    margin-top: 22px;
+  p.note {
+    font-size: 12px;
+    color: shade($almost-white, 20%);
   }
+
+  .number {
+    @include linear-gradient($almost-white, shade($almost-white, 10%));
+    width: 60px;
+    height: 60px;
+    color: $dark-gray;
+    border-radius: 30px;
+    line-height: 52px;
+    border: 4px dotted tint($dark-gray, 30%);
+    margin: 0 auto;
+  }
+
 }
 
 #pricing {
@@ -227,6 +251,15 @@
       width: 33%;
       padding: 20px;
       vertical-align: top;
+
+      .how-to-cartoon {
+        height: 225px;
+      }
+
+      .boost-cartoon {
+        padding-top: 60px;
+      }
+
     }
 
     h3 {

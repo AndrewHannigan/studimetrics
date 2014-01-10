@@ -7,13 +7,13 @@
   #boost
     h1 Your <span class="highlight">essential</span> SAT Prep companion
 
-    p Our adaptive data analytics help you prepare for the SAT from the first day to exam day. 
+    p Our adaptive data analytics help you prepare for the SAT from the first day to exam day.
 
     = link_to 'Try it for Free', sign_up_path, id: 'big-button', class: 'button'
 
 #screenshots.container
   .screenshot
-    = image_tag 'landing/book.png'
+    = image_tag 'landing/analyze.png'
     .description
       h3 Analyze your practice tests. 
       p Understand what your scores really mean. We break down the SAT into detailed concepts, identify where you’re losing the most points, and show you the most efficient way to study. Available for all 10 practice tests in the Official SAT Study Guide 2nd Edition.
@@ -22,10 +22,10 @@
     .description
       h3 Save time 
       p Don’t study what you already know. When you self-study, we’ll be your roadmap.  Our algorithm adapts with each section you complete, so you’ll always know precisely what to work on next to keep improving.
-    = image_tag 'landing/test.png'
+    = image_tag 'landing/save_time.png'
 
   .screenshot
-    = image_tag 'landing/focusrank.png'
+    = image_tag 'landing/optimize.png'
     .description
       h3 Optimize outside help 
       p Get the most out of your tutors or classes. You’ll know exactly what you need help on so you can focus your time together, and studimetrics can monitor your progress to see if they’re actually helping you improve.
@@ -34,22 +34,40 @@
     .description
       h3 Get awesome features 
       p Our new beta feature “concept lessons” helps you learn the foundation of each of the SAT concepts. We’ll keep adding helpful features like average SATs statistics for each US college and weekly score reports that you can send to parents and counselors.
-    = image_tag 'landing/test.png'
+    = image_tag 'landing/concept_lessons.png'
 
-#howitworks
+
+#how-it-works
   .container
-    .price-block
-      h2 $9
-      h5 per month
+    h2 How it works
+    ul.numbers
+      li
+        .number 1
+      li.line
+      li
+        .number 2
+      li.line
+      li
+        .number 3
 
-      ul
-        li.ss-check Find where you're losing points
-        li.ss-check Get instant score reports
-        li.ss-check Save time and improve
+    ul.how-it-works-points
+      li
+        .how-to-cartoon
+          =image_tag('landing/cartoon_book.png')
+        h3 Get the "Blue Book" 
+        p.description You’ll need your own copy of the Official SAT Study Guide 2nd Edition to get started.
+        p.note * We are not affiliated with College Board
+      li
+        .how-to-cartoon
+          =image_tag('landing/laptop.png')
+        h3 Take practice tests 
+        p.description Submit your answers into studimetrics to get instant grading, projected scores, and much more.
+      li
+        .how-to-cartoon.boost-cartoon
+          =image_tag('landing/boost.png')
+        h3 Boost your score
+        p.description You can self-study or find a tutor – whatever you choose, studimetrics is here to help!
 
-    .bottom-subscribe-block
-      h5 Don't pay a price that takes advantage of<br />how important this is to you.
-      = link_to 'Free Trial', sign_up_path, id: 'big-button', class: 'button dark-gray'
 
 #pricing
   .container
