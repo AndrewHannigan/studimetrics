@@ -4,6 +4,7 @@ $ ->
   $(document).on 'click', '.test-item', toggleTestSubMenu
   $(document).on 'click', '#focus', window.toggleFocusRank
   $(document).on 'click', '[data-behavior~=dropdown]', toggleDropdown
+  $(document).on 'click', 'span.down-arrow', toggleDropdownArrow
   $(document).on 'click', '[data-behavior="modal:cancel"]', (event) ->
     event.preventDefault()
     $(event.target).closest('.reveal-modal').trigger('reveal:close')
@@ -25,6 +26,12 @@ pageLoaded = ->
 
 clearLocalStorage = ->
   $('.section-timer').data('timer').removeTimeFromStorage()
+
+toggleDropdownArrow = (event) ->
+  event.stopPropagation()
+  trigger = $(event.target)
+  trigger.parents('.section-switcher').click()
+  trigger.parents('.test-switcher').click()
 
 toggleDropdown = (event) ->
   $('.dropdown-menu').hide()

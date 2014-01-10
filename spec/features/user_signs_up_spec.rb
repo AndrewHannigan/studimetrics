@@ -11,8 +11,10 @@ feature 'User signs up' do
 
     fill_in "First Name", with: "Robert"
     fill_in "Last Name", with: "Beene"
+    fill_in "High School", with: "St. John's Prep"
     fill_in "Password", with: "test1234"
     fill_in "Email", with: "test@example.com"
+    select "New York", from: "State"
 
     go_to_step 2
 
