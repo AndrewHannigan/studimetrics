@@ -5,8 +5,6 @@
       = link_to concept_parent_path(concept) do
         = concept_image focus_rank.attributes["concept_name"]
         span.concept_name = focus_rank.attributes["concept_name"]
-    td.subject
-      = subject_icon focus_rank.subject_name
     td.position
       = focus_rank_position(focus_rank)
     td.accuracy

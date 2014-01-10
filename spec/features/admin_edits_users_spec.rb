@@ -12,6 +12,7 @@ feature 'admin manages users' do
     fill_in "Email", with: "test@example.com"
     fill_in "Password", with: "test1234"
     fill_in "City", with: "New York City"
+    fill_in "High School", with: "St. John's Prep"
     select "New York", from: "State"
     select "10th", from: "Grade"
 

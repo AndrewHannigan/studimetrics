@@ -37,7 +37,7 @@ class UsersController < Clearance::UsersController
   end
 
   def allowed_user_params
-    params[:user].permit(:first_name, :last_name, :email, :password, :grade, :city, :state, :stripe_token, :coupon)
+    params[:user].permit(:first_name, :last_name, :email, :password, :grade, :high_school, :city, :state, :stripe_token, :coupon)
   end
 
   def user_from_params
