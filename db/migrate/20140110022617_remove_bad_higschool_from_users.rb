@@ -1,5 +1,6 @@
 class RemoveBadHigschoolFromUsers < ActiveRecord::Migration
   def change
-    remove_column :users, :highschool, :string
+    # this was only needed to remove bad development state... was never live in production
+    # remove_column :users, :highschool, :string
   end
 end
