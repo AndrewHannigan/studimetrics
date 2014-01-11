@@ -1,0 +1,43 @@
+- content_for(:extra_body_classes, 'landing-page')
+
+#feature
+  #boost
+    h1 SAT prep made <span class="highlight">simple</span>.
+
+    p Find the most efficient way to improve your SAT score
+
+    = link_to 'Free Trial', sign_up_path, id: 'big-button', class: 'button'
+
+#screenshots.container
+  .screenshot
+    = image_tag 'landing/book.png'
+    .description
+      h3 Get the "Blue Book"
+      p You'll need a copy of the Official SAT Study Guide 2nd Edition to practice questions from the test makers themselves.
+
+  .screenshot
+    .description
+      h3 Take practice tests
+      p Enter your answers from the blue book into studimetrics to get instant grading, track your progress, and predict your score.
+    = image_tag 'landing/test.png'
+
+  .screenshot
+    = image_tag 'landing/focusrank.png'
+    .description
+      h3 Improve your score
+      p See where you're losing the most points and find the fastest way to improve.
+
+#pricing
+  .container
+    .price-block
+      h2 $9
+      h5 per month
+
+      ul
+        li.ss-check Find where you're losing points
+        li.ss-check Get instant score reports
+        li.ss-check Save time and improve
+
+    .bottom-subscribe-block
+      h5 Don't pay a price that takes advantage of<br />how important this is to you.
+      = link_to 'Free Trial', sign_up_path, id: 'big-button', class: 'button dark-gray'
