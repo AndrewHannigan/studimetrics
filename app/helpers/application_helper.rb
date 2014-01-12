@@ -26,4 +26,8 @@ module ApplicationHelper
   def show_welcome_back_modal?
     signed_in? && !current_user.active? && params[:controller] != 'settings'
   end
+
+  def monthly_price
+    9
+  end
 end
