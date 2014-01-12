@@ -7,6 +7,9 @@
   @include span-columns(10);
   @include shift(1);
   margin-top: 24px;
+  .h3 {
+    text-align: center;
+  }
 }
 
 .team-member {
@@ -22,5 +25,10 @@
 
   .title {
     color: $gray;
+  }
+
+  .description {
+    color: $dark-gray;
+    font-size: 16px;
   }
 }
