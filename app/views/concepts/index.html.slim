@@ -8,7 +8,9 @@
 
 - cache ["concept_videos", Concept.last_updated] do
   #concept-videos
-    h3 Concept Videos - Learn by Example
+    h3 Concept Lessons  
+
+    h5 This is a new feature in Beta testing!  Let us know what you think #{link_to 'here.', page_path('contact_us')}
 
     = render partial: 'concept_videos', collection: @concepts, as: 'concept'
 
