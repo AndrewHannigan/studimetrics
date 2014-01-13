@@ -2,16 +2,16 @@
   margin: 0 auto;
   padding: 20px 0;
   @include clearfix;
-//  @include background(linear-gradient(rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.3) 100%), asset-url('landing/chalkboard.jpg') no-repeat center bottom);
-  background-color: $red;
-  height: 530px;
+  @include background(linear-gradient(rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.3) 100%), asset-url('landing/chalkboard.jpg') no-repeat center bottom);
+  background-size: cover;
+  height: 480px;
 
   h1 {
     font-size: 3em;
     line-height: 1.1em;
 
     .highlight {
-      color: $light-gray;
+      color: shade($almost-white, 10%);
     }
   }
 }
@@ -27,32 +27,20 @@
   }
 }
 
-#video{
-  float: left;
-  margin-left: 120px;
-  margin-top: 40px;
-}
-
 #boost {
-  text-align: left;
-  width: 30%; 
+  text-align: center;
+  width: 48%;
   float: right;
   margin-right: 8%;
-  margin-top: 30px;
+  margin-top: 20px;
   color: $almost-white;
-  //@include radial-gradient(rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%);
+  @include radial-gradient(rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%);
 
-  h1 {
-    width: 400px;
-  }
   p {
-    //background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.5);
     margin-top: 25px;
-    padding: 4% 0%;
+    padding: 4% 10%;
     font-size: 20px;
-  }
-  .button {
-    margin-left: 50px;
   }
 }
 
@@ -90,47 +78,6 @@
       font-size: 1.3em;
       color: $red;
     }
-  }
-}
-
-#howitworks {
-  background: $blue;
-  min-height: 150px;
-  color: $almost-white;
-  @include pad;
-  border-bottom: 1px solid shade($blue, 20%);
-
-  .price-block {
-    @include span-columns(5);
-    text-align: center;
-    border-right: 1px dashed shade($blue, 20%);
-
-    h2 {
-      font-size: 3.2em;
-      margin-bottom: 12px;
-    }
-
-    h5 {
-      font-weight: normal;
-    }
-
-    ul {
-      list-style: none;
-      margin: 20px auto;
-      padding: 0;
-      text-align: left;
-      width: 56%;
-    }
-
-    li {
-      vertical-align: middle;
-    }
-  }
-
-  .bottom-subscribe-block {
-    @include span-columns(7);
-    text-align: center;
-    margin-top: 22px;
   }
 }
 
@@ -194,7 +141,7 @@
     }
 
     h3 {
-      color: $red;
+      color: #4092d5;
     }
   }
 }
