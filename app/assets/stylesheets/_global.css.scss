@@ -21,9 +21,8 @@ header {
   .bar {
     @include clearfix;
     padding: 10px;
-    @include linear-gradient(tint($red, 12%), $red);
-    border-bottom: 1px solid shade($red, 30%);
-
+    @include linear-gradient(tint($red, 5%), $red);
+//    border-bottom: 1px solid shade($red, 30%);
     a {
       color: $almost-white;
       font-weight: bold;
