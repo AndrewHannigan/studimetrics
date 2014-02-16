@@ -234,7 +234,6 @@ ActiveRecord::Schema.define(version: 20140110022617) do
     t.string   "state",                                                  null: false
     t.string   "grade"
     t.integer  "college_id"
-    t.string   "profile_image"
     t.string   "profile_image_file_name"
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"
