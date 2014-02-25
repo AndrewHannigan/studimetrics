@@ -6,7 +6,7 @@ $ ->
 
 pageLoaded = ->
   activateStepWithErrors()
-  $('#new_user').on 'submit', checkTerms
+#  $('#new_user').on 'submit', checkTerms
 
 nextStep = (event) ->
   step = event.step
@@ -25,8 +25,10 @@ checkEmail = (event) ->
     dataType: 'script'
     data: { class: 'User', email: $(this).val() }
 
+###
 checkTerms = (event) ->
   unless $('#user_agree').is(':checked')
     event.preventDefault()
     event.stopImmediatePropagation()
     alert 'You must agree to the Terms and Conditions'
+###

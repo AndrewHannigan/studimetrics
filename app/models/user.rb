@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :email, email: true, presence: true
   validates :password, presence: true, on: :create
   validates :sat_date, inclusion: { in: SatDate.upcoming_dates }, allow_nil: true
-  validates :stripe_token, presence: { message: 'Invalid credit card.' }, on: :create, unless: 'from_admin_tool.present?'
+#  validates :stripe_token, presence: { message: 'Invalid credit card.' }, on: :create, unless: 'from_admin_tool.present?'
   validates :customer_id, presence: true, on: :update
 
   attr_accessor :stripe_token, :coupon, :from_admin_tool, :agree

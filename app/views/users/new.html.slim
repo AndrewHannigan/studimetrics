@@ -1,24 +1,10 @@
-ul.numbers
-  li.step1.active
-    .number
-      a href="#" data-goto-step="1" 1
-  li.line
-  li.step2
-    .number
-      a href="#" data-goto-step="2" 2
-  li.line
-  li.step3
-    .number
-      a href="#" data-goto-step="3" 3
-
-
 .signup
   .signup-left
     = simple_form_for @user, html: { class: 'credit_card' } do |form|
       = render partial: 'users/form', object: form
 
   .signup-right
-    h2 Start your free 14 day trial!
+    h2 Sign up and take practice tests. 
     p Study with us for 2 weeks and watch your scores improve. You will not be charged until after your free trial ends. Cancel anytime.
 
     h2.smaller Study fast. Study smart.

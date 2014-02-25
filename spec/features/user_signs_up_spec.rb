@@ -16,17 +16,17 @@ feature 'User signs up' do
     fill_in "Email", with: "test@example.com"
     select "New York", from: "State"
 
-    go_to_step 2
-
-    go_to_step 3
-
-    find('input[data-id="stripe_token"]').set('fake_token')
-    fill_in "card_number", with: '4242424242424242'
-    fill_in "card_code", with: '711'
-    select "6 - June", from: 'card_month'
-    select Date.today.year+1, from: 'card_year'
-
-    check 'I agree to the above conditions and the Terms of Use and Privacy Policy.'
+#    go_to_step 2
+#
+#    go_to_step 3
+#
+#    find('input[data-id="stripe_token"]').set('fake_token')
+#    fill_in "card_number", with: '4242424242424242'
+#    fill_in "card_code", with: '711'
+#    select "6 - June", from: 'card_month'
+#    select Date.today.year+1, from: 'card_year'
+#
+#    check 'I agree to the above conditions and the Terms of Use and Privacy Policy.'
 
     click_on I18n.t('helpers.submit.user.create')
 
