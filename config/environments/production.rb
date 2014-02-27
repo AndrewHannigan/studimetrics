@@ -111,4 +111,6 @@ Studimetrics::Application.configure do
       secret_access_key: ENV['S3_SECRET']
     }
   }
+
+  config.middleware.use('PartyFoul::Middleware')
 end
