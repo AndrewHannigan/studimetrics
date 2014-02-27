@@ -29,7 +29,6 @@ gem 'slim'
 gem 'unicorn'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'honeybadger'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'cocoon', github: 'nathanvda/cocoon'
 gem "safe_yaml", "~> 0.9.5" # remove when cocoon is updated
@@ -42,6 +41,7 @@ gem 'active_model_serializers'
 gem 'vimeo'
 gem 'stripe'
 gem 'mail_view'
+gem 'party_foul'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
