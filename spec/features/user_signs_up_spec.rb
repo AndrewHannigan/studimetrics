@@ -2,9 +2,9 @@ require 'spec_helper'
 
 feature 'User signs up' do
   scenario 'with complete basic information', js: true do
-    card_token = StripeMock.generate_card_token(last4: "9191", exp_month: 99, exp_year: 3005)
-    mocked_stripe_customer = Stripe::Customer.create card: card_token
-    StripeCustomerManager.expects(:create_or_update_stripe_customer).returns(mocked_stripe_customer)
+#    card_token = StripeMock.generate_card_token(last4: "9191", exp_month: 99, exp_year: 3005)
+#    mocked_stripe_customer = Stripe::Customer.create card: card_token
+#    StripeCustomerManager.expects(:create_or_update_stripe_customer).returns(mocked_stripe_customer)
 
     visit root_path
     click_link "sign up"

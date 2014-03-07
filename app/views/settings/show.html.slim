@@ -12,20 +12,6 @@
       = f.input :state, collection: State::US
       = f.input :grade, collection: User::GRADES
 
-    fieldset class="#{f.object.has_active_credit_card? ? 'active-card' : ''}"
-      a name="billing"
-      h5
-        span Billing Information
-        - if f.object.has_active_credit_card?
-          = link_to 'Change card', '#', class: 'change-link change-card-link'
-      #stored_billing
-        span Stored Card: ****#{f.object.last_4_digits}
-
-      #update_credit_card
-        = render 'users/credit_card_fields', form: f
-
-      - invoice = f.object.upcoming_stripe_invoice
-      p.next-billing-date Next Charge: #{next_charge_for_stripe_invoice invoice}
 
     fieldset
       a name="sat-date"

@@ -16,11 +16,11 @@ class User < ActiveRecord::Base
   validates :password, presence: true, on: :create
   validates :sat_date, inclusion: { in: SatDate.upcoming_dates }, allow_nil: true
 #  validates :stripe_token, presence: { message: 'Invalid credit card.' }, on: :create, unless: 'from_admin_tool.present?'
-  validates :customer_id, presence: true, on: :update
+#  validates :customer_id, presence: true, on: :update
 
   attr_accessor :stripe_token, :coupon, :from_admin_tool, :agree
 
-  before_save :create_or_update_stripe_customer
+#  before_save :create_or_update_stripe_customer
 
   GRADES = %w(9th 10th 11th 12th)
 
@@ -114,6 +114,7 @@ class User < ActiveRecord::Base
       self.active = last_4_digits.present?
     end
     stripe_customer
+    binding.pry
   end
 
   def last_4_from_stripe_customer(stripe_customer)

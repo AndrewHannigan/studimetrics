@@ -4,25 +4,25 @@ describe User do
   it_behaves_like "a profile image"
 
   describe 'create_or_update_stripe_customer' do
-    it 'does not save a user if there was is a stripe issue' do
-      StripeCustomerManager.expects(:create_or_update_stripe_customer).returns(false)
-      user = build :user, customer_id: nil, stripe_token: 'asdf', from_admin_tool: false
-      user.save
+#    it 'does not save a user if there was is a stripe issue' do
+#      StripeCustomerManager.expects(:create_or_update_stripe_customer).returns(false)
+#      user = build :user, customer_id: nil, stripe_token: 'asdf', from_admin_tool: false
+#      user.save
+#
+#      expect(user.id).to be_nil
+#    end
 
-      expect(user.id).to be_nil
-    end
-
-    it 'sets the last 4 and the customer id if successful' do
-      card_token = StripeMock.generate_card_token(last4: "9191", exp_month: 99, exp_year: 3005)
-      mocked_stripe_customer = Stripe::Customer.create card: card_token
-      StripeCustomerManager.expects(:create_or_update_stripe_customer).returns(mocked_stripe_customer)
-
-      user = build :user, customer_id: nil, stripe_token: 'asdf', from_admin_tool: false
-      user.save
-
-      expect(user.customer_id).to eq mocked_stripe_customer.id
-      expect(user.last_4_digits).to eq '9191'
-    end
+#    it 'sets the last 4 and the customer id if successful' do
+#      card_token = StripeMock.generate_card_token(last4: "9191", exp_month: 99, exp_year: 3005)
+#      mocked_stripe_customer = Stripe::Customer.create card: card_token
+#      StripeCustomerManager.expects(:create_or_update_stripe_customer).returns(mocked_stripe_customer)
+#
+#      user = build :user, customer_id: nil, stripe_token: 'asdf', from_admin_tool: false
+#      user.save
+#
+#      expect(user.customer_id).to eq mocked_stripe_customer.id
+#      expect(user.last_4_digits).to eq '9191'
+#    end
   end
 
   describe "#location" do
