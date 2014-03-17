@@ -55,6 +55,7 @@
 .signup-left {
   @include span-columns(5);
   min-height: 435px;
+  padding-left: 40px;
 
   fieldset {
     legend {
@@ -71,7 +72,8 @@
 }
 
 .signup-right {
-  @include span-columns(7);
+  float: right;
+  @include span-columns(6);
   @include omega;
 }
 

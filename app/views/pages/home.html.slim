@@ -5,11 +5,45 @@
     iframe allowfullscreen="0" frameborder="0" height="358" width="575" mozallowfullscreen="0" src="//player.vimeo.com/video/83472873?portrait=0&title=0&byline=0" webkitallowfullscreen="0" 
 
   #boost
-    h1 Your <span class="highlight">essential</span> SAT Prep companion
+    h1 The <span class="highlight">smarter</span> way to </br> take SAT practice tests
 
-    p Our adaptive data analytics help you prepare for the SAT from the first day to exam day.
+    p Join the students who are better preparing for the SATs by getting more out of their pratice tests.  Get your tests scored and analyzed instantly, use our tools to identify where you are losing points, and boost your score.  Oh, and it's free!
 
-    = link_to 'Try it for Free', sign_up_path, id: 'big-button', class: 'button'
+    /p Our adaptive data analytics help you prepare for the SAT from the first day to exam day.
+
+
+    = link_to 'Click to Start', sign_up_path, id: 'big-button', class: 'button'
+
+#how-it-works
+  .container
+    h2 How it works
+    ul.numbers
+      li
+        .number 1
+      li.line
+      li
+        .number 2
+      li.line
+      li
+        .number 3
+
+    ul.how-it-works-points
+      li
+        .how-to-cartoon
+          =image_tag('landing/cartoon_book.png')
+        h3 Get the "Blue Book" 
+        p.description You’ll need your own copy of the Official SAT Study Guide 2nd Edition to get started.
+        p.note * We are not affiliated with College Board
+      li
+        .how-to-cartoon
+          =image_tag('landing/laptop.png')
+        h3 Take practice tests 
+        p.description Submit your answers into studimetrics to get instant grading, concept breakdowns, projected scores, and much more.
+      li
+        .how-to-cartoon.boost-cartoon
+          =image_tag('landing/boost.png')
+        h3 Boost your score
+        p.description You can self-study or find a tutor – whatever you choose, studimetrics is here to help!
 
 #screenshots.container
   .screenshot
@@ -37,49 +71,16 @@
     = image_tag 'landing/concept_lessons.png'
 
 
-#how-it-works
-  .container
-    h2 How it works
-    ul.numbers
-      li
-        .number 1
-      li.line
-      li
-        .number 2
-      li.line
-      li
-        .number 3
-
-    ul.how-it-works-points
-      li
-        .how-to-cartoon
-          =image_tag('landing/cartoon_book.png')
-        h3 Get the "Blue Book" 
-        p.description You’ll need your own copy of the Official SAT Study Guide 2nd Edition to get started.
-        p.note * We are not affiliated with College Board
-      li
-        .how-to-cartoon
-          =image_tag('landing/laptop.png')
-        h3 Take practice tests 
-        p.description Submit your answers into studimetrics to get instant grading, projected scores, and much more.
-      li
-        .how-to-cartoon.boost-cartoon
-          =image_tag('landing/boost.png')
-        h3 Boost your score
-        p.description You can self-study or find a tutor – whatever you choose, studimetrics is here to help!
-
-
 #pricing
   .container
     .price-block
-      h2 $9
-      h5 per month
-
+      h2 Free.
+      h5 Seriously, $0.
       ul
         li.ss-check Find where you're losing points
         li.ss-check Get instant score reports
         li.ss-check Save time and improve
 
     .bottom-subscribe-block
-      h5 Don't pay a price that takes advantage of<br />how important this is to you.
-      = link_to 'Free Trial', sign_up_path, id: 'big-button', class: 'button dark-gray'
+      h5 SAT prep shouldn't cost a fortune.  In fact, we believe the basic tools for SAT prep should be free.  So we made them free.  Sign up now to start improving your SAT score.
+      = link_to 'Click to Start', sign_up_path, id: 'big-button', class: 'button dark-gray'

@@ -21,8 +21,14 @@ pageLoaded = ->
   questionTimer = $('.question-timer').data('timer')
   $('[data-behavior~="submit-user-response-click"]').userResponse(timer: questionTimer)
   $('[data-behavior~="submit-user-response-keyup"]').userResponse(timer: questionTimer)
+  setInterval(blinkPlayButton, 1000)
   if $('body').hasClass('section_completions-show')
     clearLocalStorage()
+
+blinkPlayButton = ->
+  if $('#section-play-button').text() == 'play'  
+    $('#section-play-button').fadeTo(500, 0.05)
+    $('#section-play-button').fadeTo(500, 1)
 
 clearLocalStorage = ->
   $('.section-timer').data('timer').removeTimeFromStorage()
@@ -166,3 +172,5 @@ calculateTotalHeight = (subMenuItem) ->
     height = height + 18
 
   height
+
+
