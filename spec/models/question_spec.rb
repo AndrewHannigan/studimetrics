@@ -59,7 +59,7 @@ describe Question do
 
   describe 'accepted_response' do
     it 'returns a comma separated list of correct answers' do
-      question = create :question, :with_answers
+      question = FactoryGirl.create :question, :with_answers
       create :multiple_choice_answer, question: question, value: 'B'
       expect(question.accepted_response).to eq('B, A')
     end

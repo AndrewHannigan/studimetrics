@@ -1,35 +1,20 @@
-ul.numbers
-  li.step1.active
-    .number
-      a href="#" data-goto-step="1" 1
-  li.line
-  li.step2
-    .number
-      a href="#" data-goto-step="2" 2
-  li.line
-  li.step3
-    .number
-      a href="#" data-goto-step="3" 3
-
-
 .signup
   .signup-left
     = simple_form_for @user, html: { class: 'credit_card' } do |form|
       = render partial: 'users/form', object: form
 
   .signup-right
-    h2 Start your free 14 day trial!
-    p Study with us for 2 weeks and watch your scores improve. You will not be charged until after your free trial ends. Cancel anytime.
-
+    h2 Ready to get more out of your practice tests?
+    p Study with us and watch your scores improve.  Sign up for a free account and start studying today! 
     h2.smaller Study fast. Study smart.
-    p We know the stakes are high but preparing for the SAT shouldn't cost a fortune. Providing innovation in education technology at a price that doesn't take advantage of how important this is to you.
+    p We know the stakes are high but preparing for the SAT shouldn't cost a fortune. We provide innovation in education technology without charging a price that takes advantage of how important this is to you.
 
     ul.signup-bullets
       li.ss-check Analytics engine
       li.ss-check Comprehensive scoring
       li.ss-check See where you're losing points
 
-    h3 All for only $9/month.
+    h3 Did we mention it's free? 
 
 .login-link
   = link_to 'Already have an account?', sign_in_path

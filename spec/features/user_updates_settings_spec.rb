@@ -22,24 +22,24 @@ feature 'user updates settings' do
     end
   end
 
-  scenario 'updates credit card' do
-    stripe_customer = Stripe::Customer.create
-    user = create :user, customer_id: stripe_customer.id
-
-    visit settings_path as: user.id
-
-    click_link 'Change card'
-
-    fill_in_fake_credit_card
-
-    click_button 'Save'
-
-    expect_successful_settings_save
-
-    click_link 'Settings'
-
-    expect(page).to have_content("Stored Card: ****9191")
-  end
+#  scenario 'updates credit card' do
+#    stripe_customer = Stripe::Customer.create
+#    user = create :user, customer_id: stripe_customer.id
+#
+#    visit settings_path as: user.id
+#
+#    click_link 'Change card'
+#
+#    fill_in_fake_credit_card
+#
+#    click_button 'Save'
+#
+#    expect_successful_settings_save
+#
+#    click_link 'Settings'
+#
+#    expect(page).to have_content("Stored Card: ****9191")
+#  end
 end
 
 def flash_message

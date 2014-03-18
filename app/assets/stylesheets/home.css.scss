@@ -9,9 +9,10 @@
   h1 {
     font-size: 3em;
     line-height: 1.1em;
+    color: $light-gray;
 
     .highlight {
-      color: $light-gray;
+      text-shadow: 2px 2px #333;
     }
   }
 }
@@ -35,7 +36,7 @@
 
 #boost {
   text-align: left;
-  width: 30%; 
+  width: 35%; 
   float: right;
   margin-right: 12%;
   margin-top: 30px;
@@ -43,16 +44,17 @@
   //@include radial-gradient(rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%);
 
   h1 {
-    width: 400px;
+    width: 100%;
   }
   p {
     //background: rgba(0,0,0,0.5);
     margin-top: 25px;
-    padding: 4% 0%;
+    padding: 4% 40px 4% 0%;
     font-size: 20px;
+    line-height: 140%;
   }
   .button {
-    margin-left: 50px;
+    margin-left: 160px;
   }
 }
 
@@ -193,7 +195,7 @@
   }
 
   .bottom-subscribe-block {
-    @include span-columns(7);
+    @include span-columns(6);
     text-align: center;
     margin-top: 22px;
   }

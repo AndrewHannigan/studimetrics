@@ -48,7 +48,7 @@ en:
   users:
     deactivate_success: 'Your account has been cancelled. Thank you for using Studimetrics!'
     deactivate_failure: 'There was an error deactivating your account. Please contact support@studimetrics.com for assistance.'
-    reactivate_message: "We kept your account nice and safe, and all of your previous stats are ready to go. We just need you to re-enter your credit card information and you can get back to business."
+    reactivate_message: "We kept your account nice and safe, and all of your previous stats are ready to go!"
   score_reports:
     summary:
       subject: Your Studimetrics Weekly Score Report

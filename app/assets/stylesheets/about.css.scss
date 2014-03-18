@@ -9,6 +9,17 @@ p.about {
   padding-right: 180px;
 }
 
+#quote {
+  font-size: 25px;
+  margin: 30px 70px;
+  color: $dark-gray;
+  line-height: 100%;
+  font-style: italic;
+  .quote_emphasis {
+    color: #FFF;
+    font-style: bold;
+  }
+}
 
 .team {
   @include span-columns(10);
