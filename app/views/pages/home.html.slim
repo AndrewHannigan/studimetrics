@@ -1,18 +1,17 @@
 - content_for(:extra_body_classes, 'landing-page')
 
 #feature
+
   #video
-    iframe allowfullscreen="0" frameborder="0" height="358" width="575" mozallowfullscreen="0" src="//player.vimeo.com/video/83472873?portrait=0&title=0&byline=0" webkitallowfullscreen="0" 
+    iframe allowfullscreen="0" frameborder="0" height="537" width="862" mozallowfullscreen="0" src="//player.vimeo.com/video/83472873?portrait=0&/title=0&byline=0" webkitallowfullscreen="0" 
 
   #boost
     h1 The <span class="highlight">smarter</span> way to </br> take SAT practice tests
 
-    p Join the students who are better preparing for the SATs by getting more out of their pratice tests.  Get your tests scored and analyzed instantly, use our tools to identify where you are losing points, and boost your score.  Oh, and it's free!
+    #sub-boost
+      p Join the students who are better preparing for the SATs by using our game-changing practice platform to get more out of their pratice tests.  Get your tests scored and analyzed instantly, use our tools to identify where you are losing points, and start boosting your score.  Oh, and it's free!
 
-    /p Our adaptive data analytics help you prepare for the SAT from the first day to exam day.
-
-
-    = link_to 'Click to Start', sign_up_path, id: 'big-button', class: 'button'
+      = link_to 'Click Here to Start', sign_up_path, id: 'big-button', class: 'button'
 
 #how-it-works
   .container
