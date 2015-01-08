@@ -27,7 +27,7 @@ feature 'admin manages books' do
 
     fill_in 'Name', with: 'Updated Book Name'
     select 'College Board', from: 'Publisher'
-    select '1994', from: 'book_publish_date_1i'
+    select '2014', from: 'book_publish_date_1i'
     select 'June', from: 'book_publish_date_2i'
     select '10', from: 'book_publish_date_3i'
 
